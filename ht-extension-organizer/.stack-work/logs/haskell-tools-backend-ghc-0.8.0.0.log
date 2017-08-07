@@ -1,0 +1,27 @@
+Configuring haskell-tools-backend-ghc-0.8.0.0...
+Building haskell-tools-backend-ghc-0.8.0.0...
+Preprocessing library haskell-tools-backend-ghc-0.8.0.0...
+[ 1 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.SourceMap ( Language/Haskell/Tools/AST/FromGHC/SourceMap.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/SourceMap.o )
+[ 2 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.GHCUtils ( Language/Haskell/Tools/AST/FromGHC/GHCUtils.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/GHCUtils.o )
+[ 3 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.Monad ( Language/Haskell/Tools/AST/FromGHC/Monad.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/Monad.o )
+[ 4 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.Literals ( Language/Haskell/Tools/AST/FromGHC/Literals.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/Literals.o )
+[ 5 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.Utils ( Language/Haskell/Tools/AST/FromGHC/Utils.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/Utils.o )
+[ 6 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.Names ( Language/Haskell/Tools/AST/FromGHC/Names.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/Names.o )
+[ 7 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.TH[boot] ( Language/Haskell/Tools/AST/FromGHC/TH.hs-boot, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/TH.o-boot )
+[ 8 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.Types[boot] ( Language/Haskell/Tools/AST/FromGHC/Types.hs-boot, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/Types.o-boot )
+[ 9 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.Kinds ( Language/Haskell/Tools/AST/FromGHC/Kinds.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/Kinds.o )
+[10 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.Types ( Language/Haskell/Tools/AST/FromGHC/Types.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/Types.o )
+[11 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.Exprs[boot] ( Language/Haskell/Tools/AST/FromGHC/Exprs.hs-boot, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/Exprs.o-boot )
+[12 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.Patterns ( Language/Haskell/Tools/AST/FromGHC/Patterns.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/Patterns.o )
+[13 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.Binds[boot] ( Language/Haskell/Tools/AST/FromGHC/Binds.hs-boot, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/Binds.o-boot )
+[14 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.Stmts ( Language/Haskell/Tools/AST/FromGHC/Stmts.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/Stmts.o )
+[15 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.Exprs ( Language/Haskell/Tools/AST/FromGHC/Exprs.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/Exprs.o )
+[16 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.Binds ( Language/Haskell/Tools/AST/FromGHC/Binds.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/Binds.o )
+[17 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.Decls ( Language/Haskell/Tools/AST/FromGHC/Decls.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/Decls.o )
+[18 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.Modules ( Language/Haskell/Tools/AST/FromGHC/Modules.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/Modules.o )
+[19 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.TH ( Language/Haskell/Tools/AST/FromGHC/TH.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/TH.o )
+[20 of 21] Compiling Language.Haskell.Tools.AST.FromGHC.AddTypeInfo ( Language/Haskell/Tools/AST/FromGHC/AddTypeInfo.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC/AddTypeInfo.o )
+[21 of 21] Compiling Language.Haskell.Tools.AST.FromGHC ( Language/Haskell/Tools/AST/FromGHC.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/AST/FromGHC.o )
+Installing library in
+/home/anabra/.stack/snapshots/x86_64-linux/lts-9.0/8.0.2/lib/x86_64-linux-ghc-8.0.2/haskell-tools-backend-ghc-0.8.0.0-3KtSPpoZE3sLa0V8quWkdu
+Registering haskell-tools-backend-ghc-0.8.0.0...
