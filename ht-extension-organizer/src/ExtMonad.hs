@@ -21,8 +21,9 @@ import Control.Monad.Identity
 deriving instance Ord Extension
 
 
-type ExtMonad  dom = State (SMap.Map Extension [SrcSpan])
-type ExtDomain dom = (HasNameInfo dom)
+type ExtMonad  dom   = State (SMap.Map Extension [SrcSpan])
+type ExtMonadT dom m = StateT (SMap.Map Extension [SrcSpan]) m
+type ExtDomain dom   = (HasNameInfo dom)
 
 addOccurence :: (HasRange v, Ord k) =>
                 k -> v -> SMap.Map k [SrcSpan] -> SMap.Map k [SrcSpan]

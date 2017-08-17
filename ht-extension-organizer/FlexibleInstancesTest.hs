@@ -1,4 +1,8 @@
-{-# LANGUAGE MultiParamTypeClasses, TypeOperators, FlexibleInstances #-}
+{-# LANGUAGE MultiParamTypeClasses,
+             TypeOperators,
+             FlexibleInstances,
+             KindSignatures
+             #-}
 
 module FlexibleInstancesTest where
 
@@ -69,9 +73,12 @@ instance (T2 a b) :!: (T1 a) where
 instance (a :+: b) :!: (T1 a) where
   j _ _ = True
 
--- TODO: should accept => add more UType ctors
-instance C1 [a] where
+-- OK (KindSignatures)
+instance C1 [(a :: *)] where
   f1 _ = True
+
+instance C2 (T1 a) (T1 a) where
+  f2 _ _ = True
 
 -- FlexibleInstances
 instance C1 Int where
@@ -125,8 +132,7 @@ instance C1 (T2 a (T1 b)) where
 instance C1 (T2 (T1 a) b) where
   f1 _ = True
 
--- FlexibleInstances (no location info)
--- TODO: Preserve location info
+-- FlexibleInstances
 instance C1 ((T1 a) :+: b) where
   f1 _ = True
 
