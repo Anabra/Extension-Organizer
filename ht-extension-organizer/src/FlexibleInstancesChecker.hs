@@ -25,12 +25,7 @@ import Name as GHC (isTyVarName, isTyConName, isWiredInName)
 
 import Debug.Trace
 
-refact ::
-     (Data.Data.Data (node dom stage), Data.Data.Data (inner dom stage),
-      Monad m) =>
-     (inner dom stage -> m (inner dom stage))
-     -> node dom stage -> m (node dom stage)
-refact op arg = (biplateRef !~ op) arg
+-- TODO: write "deriving instance ..." tests (should work)
 
 -- TODO: as in PlaceComments
 chkFlexibleInstances sp = (nodesContained sp !~ chkInstanceRule)
@@ -47,6 +42,13 @@ chkInstanceRule r@(InstanceRule _ _ ihead) = do
   chkInstanceHead ihead
   return $! r
 chkInstanceRule r = return r
+
+refact ::
+     (Data.Data.Data (node dom stage), Data.Data.Data (inner dom stage),
+      Monad m) =>
+     (inner dom stage -> m (inner dom stage))
+     -> node dom stage -> m (node dom stage)
+refact op arg = (biplateRef !~ op) arg
 
 
 -- one IHApp will only check its own tyvars (their structure and uniqueness)

@@ -14,14 +14,14 @@ import Data.List
 import qualified Data.Set as Set
 import qualified Data.Map.Strict as SMap
 import Control.Monad.State
-import Control.Reference ((^.), (!~), (.-), biplateRef)
+import Control.Reference ((^.), (&), (!~), (.-), biplateRef)
 
 import Debug.Trace (trace, traceShow)
 
 import ExtMonad
 import RecordWildCardsChecker
 import FlexibleInstancesChecker
-import Control.Monad.Identity
+import DerivingsChecker
 
 {-# ANN module "HLint: ignore Use mappend" #-}
 
@@ -36,8 +36,8 @@ tryOut = tryRefactor (localRefactoring . collectExtensions)
 -- NOTE: We will need a read-only reference
 -- NOTE: Need to understand (Getter/Setter `op` f) types
 collectExtensions :: ExtDomain dom => RealSrcSpan -> LocalRefactoring dom
-collectExtensions sp = \node -> do
-  let (res, exts) = flip runState SMap.empty . runAllChecks sp $ node
+collectExtensions sp = \moduleAST -> do
+  let (res, exts) = flip runState SMap.empty . runAllChecks sp $ moduleAST
       xs          = SMap.assocs $ exts
   forM xs (\(ext, loc) -> do
     traceShow ext $ return ()
@@ -48,3 +48,4 @@ collectExtensions sp = \node -> do
   return res
   where runAllChecks sp = chkRecordWildCards sp
                           >=> chkFlexibleInstances sp
+                          >=> (modDecl & annList !~ chkDerivings)
