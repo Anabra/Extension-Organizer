@@ -35,7 +35,7 @@
 
 
   TODO:
-  - write tests for GADTs, data instances and stand alone derivings
+  - write tests for GADTs, data instances
 -}
 
 
@@ -53,6 +53,7 @@ import Control.Monad.Trans.Maybe
 import SrcLoc (RealSrcSpan, SrcSpan(..))
 import qualified Name as GHC (Name)
 import qualified GHC
+import qualified TyCoRep as GHC
 import PrelNames
 
 import Debug.Trace
@@ -156,15 +157,15 @@ separateByKeyword keyw derivs
 
 
 
--- TODO: what if it is a synonym for a newtype?
 chkStandaloneDeriving :: HasNameInfo dom => Decl dom -> ExtMonad dom (Decl dom)
 chkStandaloneDeriving d@(Refact.StandaloneDeriving instRule) = do
   addOccurenceM Ext.StandaloneDeriving d
   let ihead = instRule ^. irHead
       ty    = rightmostType ihead
       cls   = getClassCon   ihead
-  itIsNewType <- isNewtype ty
-  if itIsNewType
+  itIsNewType    <- isNewtype ty
+  itIsSynNewType <- isSynNewType ty
+  if itIsNewType || itIsSynNewType
     then chkClassForNewtype cls
     else chkClassForData    cls
   return d
@@ -179,19 +180,50 @@ rightmostType :: InstanceHead dom -> Type dom
 rightmostType ihead
   | AppInstanceHead _ tyvar <- skipParens ihead = tyvar
 
--- TODO: Return false if the type is certainly not a newtype
+-- NOTE: Return false if the type is certainly not a type synonym.
+--       Returns true if it is a synonym or it could not have been looked up.
+-- This behaviour will produce false positives.
+-- This is desirable since the underlying type might be a newtype
+-- in which case GeneralizedNewtypeDeriving might be necessary.
+isSynNewType :: HasNameInfo dom => Type dom -> ExtMonad dom Bool
+isSynNewType t = do
+  mtycon <- runMaybeT . lookupType $ t
+  case mtycon >>= lookupSynDef of
+    Just def -> do addOccurenceM TypeSynonymInstances t
+                   return (GHC.isNewTyCon def)
+    Nothing  -> return True
+
+-- TODO: could be exported
+lookupSynDef :: GHC.TyThing -> Maybe GHC.TyCon
+lookupSynDef syn = do
+  tycon <- tyconFromTyThing syn
+  rhs <- GHC.synTyConRhs_maybe tycon
+  tyconFromGHCType rhs
+
+tyconFromTyThing :: GHC.TyThing -> Maybe GHC.TyCon
+tyconFromTyThing (GHC.ATyCon tycon) = Just tycon
+tyconFromTyThing _ = Nothing
+
+-- won't bother
+tyconFromGHCType :: GHC.Type -> Maybe GHC.TyCon
+tyconFromGHCType (GHC.AppTy t1 t2) = tyconFromGHCType t1
+tyconFromGHCType (GHC.TyConApp tycon _) = Just tycon
+tyconFromGHCType _ = Nothing
+
+
+-- NOTE: Return false if the type is certainly not a newtype
 --       Returns true if it is a newtype or it could not have been looked up
 isNewtype :: HasNameInfo dom => Type dom -> ExtMonad dom Bool
 isNewtype t = do
-  result <- runMaybeT . isNewtype' $ t
-  return $! fromMaybe True result
+  tycon <- runMaybeT . lookupType $ t
+  return $! maybe True isNewtypeTyCon tycon
 
-isNewtype' :: HasNameInfo dom => Type dom -> MaybeT (ExtMonad dom) Bool
-isNewtype' t = do
-  name  <- liftMaybe . nameFromType   $ t
-  sname <- liftMaybe . getSemName     $ name
-  tycon <- MaybeT    . GHC.lookupName $ sname
-  return $! isNewtypeTyCon tycon
+-- TODO: could be exported
+lookupType :: HasNameInfo dom => Type dom -> MaybeT (ExtMonad dom) GHC.TyThing
+lookupType t = do
+  name  <- liftMaybe . nameFromType $ t
+  sname <- liftMaybe . getSemName   $ name
+  MaybeT . GHC.lookupName $ sname
     where liftMaybe = MaybeT . return
 
 -- NOTE: gives just name if the type being scrutinised can be newtype

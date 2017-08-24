@@ -4,10 +4,11 @@
              DeriveTraversable,
              DeriveAnyClass,
              GeneralizedNewtypeDeriving,
-             StandaloneDeriving
+             StandaloneDeriving,
+             TypeSynonymInstances
              #-}
 
-module StandaloneDerivingTest where
+module DerivingTypeSynonymTest where
 
 import Data.Data
 import Data.Typeable
@@ -21,7 +22,9 @@ class C1 a where
 
 -------------------- Data derivings --------------------
 
-data D0 a = D0
+data D0' a = D0'
+
+type D0 = D0'
 
 -- OK
 deriving instance Show    (D0 a)
@@ -47,7 +50,9 @@ deriving instance C1 (D0 a)
 
 -------------------- Newtype derivings --------------------
 
-newtype T0 a = T0 (D0 a)
+newtype T0' a = T0 (D0' a)
+
+type T0 = T0'
 
 -- OK
 deriving instance Show    (T0 a)

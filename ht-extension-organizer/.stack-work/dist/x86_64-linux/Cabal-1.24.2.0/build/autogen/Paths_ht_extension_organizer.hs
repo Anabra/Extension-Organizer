@@ -29,12 +29,12 @@ version :: Version
 version = Version [0,1,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
-bindir     = "/home/anabra/ELTE/Haskell Tools/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.0/8.0.2/bin"
-libdir     = "/home/anabra/ELTE/Haskell Tools/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.0/8.0.2/lib/x86_64-linux-ghc-8.0.2/ht-extension-organizer-0.1.0.0-Kk7UmqT0ifs1CsxLL2BO4h"
-dynlibdir  = "/home/anabra/ELTE/Haskell Tools/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.0/8.0.2/lib/x86_64-linux-ghc-8.0.2"
-datadir    = "/home/anabra/ELTE/Haskell Tools/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.0/8.0.2/share/x86_64-linux-ghc-8.0.2/ht-extension-organizer-0.1.0.0"
-libexecdir = "/home/anabra/ELTE/Haskell Tools/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.0/8.0.2/libexec"
-sysconfdir = "/home/anabra/ELTE/Haskell Tools/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.0/8.0.2/etc"
+bindir     = "/home/anabra/ELTE/Haskell Tools/ht-extension-organizer/Extension-Organizer/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.0/8.0.2/bin"
+libdir     = "/home/anabra/ELTE/Haskell Tools/ht-extension-organizer/Extension-Organizer/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.0/8.0.2/lib/x86_64-linux-ghc-8.0.2/ht-extension-organizer-0.1.0.0-Kk7UmqT0ifs1CsxLL2BO4h"
+dynlibdir  = "/home/anabra/ELTE/Haskell Tools/ht-extension-organizer/Extension-Organizer/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.0/8.0.2/lib/x86_64-linux-ghc-8.0.2"
+datadir    = "/home/anabra/ELTE/Haskell Tools/ht-extension-organizer/Extension-Organizer/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.0/8.0.2/share/x86_64-linux-ghc-8.0.2/ht-extension-organizer-0.1.0.0"
+libexecdir = "/home/anabra/ELTE/Haskell Tools/ht-extension-organizer/Extension-Organizer/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.0/8.0.2/libexec"
+sysconfdir = "/home/anabra/ELTE/Haskell Tools/ht-extension-organizer/Extension-Organizer/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.0/8.0.2/etc"
 
 getBinDir, getLibDir, getDynLibDir, getDataDir, getLibexecDir, getSysconfDir :: IO FilePath
 getBinDir = catchIO (getEnv "ht_extension_organizer_bindir") (\_ -> return bindir)
