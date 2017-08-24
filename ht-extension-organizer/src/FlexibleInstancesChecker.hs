@@ -25,10 +25,13 @@ import Name as GHC (isTyVarName, isTyConName, isWiredInName)
 
 import Debug.Trace
 
+{-# ANN module "HLint: ignore Redundant bracket" #-}
+
 -- TODO: write "deriving instance ..." tests (should work)
+-- TODO: should expand type synonims  !!!
 
 -- TODO: as in PlaceComments
-chkFlexibleInstances sp = (nodesContained sp !~ chkInstanceRule)
+chkFlexibleInstances sp = nodesContained sp !~ chkInstanceRule
 
 
 -- this check DOES transform the AST for its internal computations
@@ -48,7 +51,7 @@ refact ::
       Monad m) =>
      (inner dom stage -> m (inner dom stage))
      -> node dom stage -> m (node dom stage)
-refact op arg = (biplateRef !~ op) arg
+refact op = biplateRef !~ op
 
 
 -- one IHApp will only check its own tyvars (their structure and uniqueness)
@@ -84,7 +87,7 @@ chkInstanceHead app = return app
 chkTyVars :: ExtDomain dom => Type dom -> ExtMonad dom (Type dom)
 chkTyVars vars = do
   exts <- get
-  (isOk, (cs, vs)) <- (runStateT (runMaybeT (chkAll vars)) ([],[]))
+  (isOk, (cs, vs)) <- runStateT (runMaybeT (chkAll vars)) ([],[])
   case isOk of
     Just isOk ->
       unless (isOk && length vs == (length . nub $ vs)) --tyvars are different
@@ -92,11 +95,11 @@ chkTyVars vars = do
     _         -> error "chkTyVars: Couldn't look up something"
   return vars
 
-  where chkAll x = do
+  where chkAll x =
           ifM (chkTopLevel x) $
             chkOnlyApp x
 
-        chkTopLevel x = do -- NOTE: this resembles a monadic bind ... (Cont?)
+        chkTopLevel x = -- NOTE: this resembles a monadic bind ... (Cont?)
           ifM (chkListType x) .
             ifM (chkTupleType x) .
               ifM (chkUnitTyCon x) $

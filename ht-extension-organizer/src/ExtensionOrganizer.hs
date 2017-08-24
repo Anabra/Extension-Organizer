@@ -1,4 +1,5 @@
-{-# LANGUAGE FlexibleContexts, StandaloneDeriving, TypeFamilies #-}
+{-# LANGUAGE FlexibleContexts,
+             TypeFamilies #-}
 
 module ExtensionOrganizer where
 
@@ -29,6 +30,7 @@ import DerivingsChecker
 --       that will will avoid unnecessary checks.
 --       For example if it already found a record wildcard, it won't check again
 
+
 tryOut :: String -> String -> IO ()
 tryOut = tryRefactor (localRefactoring . collectExtensions)
 
@@ -37,11 +39,11 @@ tryOut = tryRefactor (localRefactoring . collectExtensions)
 -- NOTE: Need to understand (Getter/Setter `op` f) types
 collectExtensions :: ExtDomain dom => RealSrcSpan -> LocalRefactoring dom
 collectExtensions sp = \moduleAST -> do
-  let (res, exts) = flip runState SMap.empty . runAllChecks sp $ moduleAST
-      xs          = SMap.assocs $ exts
-  forM xs (\(ext, loc) -> do
+  (res, exts) <- flip runStateT SMap.empty . runAllChecks sp $ moduleAST
+  let xs = SMap.assocs exts
+  forM_ xs (\(ext, loc) -> do
     traceShow ext $ return ()
-    forM loc (\l -> do
+    forM loc (\l ->
       traceShow l $ return ()
       )
     )

@@ -1,8 +1,7 @@
 {-# LANGUAGE FlexibleContexts,
              TypeFamilies,
              TypeSynonymInstances,
-             FlexibleInstances,
-             MultiWayIf
+             FlexibleInstances
              #-}
 
 {-
@@ -37,7 +36,6 @@
 
   TODO:
   - write tests for GADTs, data instances and stand alone derivings
-  - lookup tycon at standalone deriving
 -}
 
 
@@ -49,10 +47,12 @@ import Language.Haskell.Tools.Refactor as Refact hiding (Enum)
 import Language.Haskell.Tools.PrettyPrint (prettyPrint)
 import Language.Haskell.Tools.AST
 
-import Data.Maybe (listToMaybe)
+import Data.Maybe (listToMaybe, fromMaybe)
+import Control.Monad.Trans.Maybe
 
 import SrcLoc (RealSrcSpan, SrcSpan(..))
 import qualified Name as GHC (Name)
+import qualified GHC
 import PrelNames
 
 import Debug.Trace
@@ -140,12 +140,6 @@ chkDataInstance d@(DataInstance keyw _ _ derivs) = do
   return d
 chkDataInstance d = return d
 
-chkStandaloneDeriving :: HasNameInfo dom => Decl dom -> ExtMonad dom (Decl dom)
-chkStandaloneDeriving d@(Refact.StandaloneDeriving instRule) = do
-  addOccurenceM Ext.StandaloneDeriving d
-  return d
-chkStandaloneDeriving d = return d
-
 separateByKeyword :: HasNameInfo dom =>
                      DataOrNewtypeKeyword dom ->
                      AnnMaybeG UDeriving dom SrcTemplateStage ->
@@ -162,6 +156,60 @@ separateByKeyword keyw derivs
 
 
 
+-- TODO: what if it is a synonym for a newtype?
+chkStandaloneDeriving :: HasNameInfo dom => Decl dom -> ExtMonad dom (Decl dom)
+chkStandaloneDeriving d@(Refact.StandaloneDeriving instRule) = do
+  addOccurenceM Ext.StandaloneDeriving d
+  let ihead = instRule ^. irHead
+      ty    = rightmostType ihead
+      cls   = getClassCon   ihead
+  itIsNewType <- isNewtype ty
+  if itIsNewType
+    then chkClassForNewtype cls
+    else chkClassForData    cls
+  return d
+chkStandaloneDeriving d = return d
+
+getClassCon :: InstanceHead dom -> InstanceHead dom
+getClassCon (AppInstanceHead f _) = getClassCon f
+getClassCon (ParenInstanceHead x) = getClassCon x
+getClassCon x = x
+
+rightmostType :: InstanceHead dom -> Type dom
+rightmostType ihead
+  | AppInstanceHead _ tyvar <- skipParens ihead = tyvar
+
+-- TODO: Return false if the type is certainly not a newtype
+--       Returns true if it is a newtype or it could not have been looked up
+isNewtype :: HasNameInfo dom => Type dom -> ExtMonad dom Bool
+isNewtype t = do
+  result <- runMaybeT . isNewtype' $ t
+  return $! fromMaybe True result
+
+isNewtype' :: HasNameInfo dom => Type dom -> MaybeT (ExtMonad dom) Bool
+isNewtype' t = do
+  name  <- liftMaybe . nameFromType   $ t
+  sname <- liftMaybe . getSemName     $ name
+  tycon <- MaybeT    . GHC.lookupName $ sname
+  return $! isNewtypeTyCon tycon
+    where liftMaybe = MaybeT . return
+
+-- NOTE: gives just name if the type being scrutinised can be newtype
+--       else it gives nothing
+nameFromType :: Type dom -> Maybe (Name dom)
+nameFromType (TypeApp f _)    = nameFromType f
+nameFromType (ParenType x)    = nameFromType x
+nameFromType (KindedType t k) = nameFromType t
+nameFromType (VarType x)      = Just x
+nameFromType _                = Nothing
+
+isNewtypeTyCon :: GHC.TyThing -> Bool
+isNewtypeTyCon (GHC.ATyCon tycon) = GHC.isNewTyCon tycon
+isNewtypeTyCon _ = False
+
+
+
+
 chkDerivingClause :: HasNameInfo dom =>
                      (InstanceHead dom -> ExtMonad dom (InstanceHead dom)) ->
                      Deriving dom ->
@@ -172,11 +220,16 @@ chkDerivingClause checker d@(DerivingMulti xs) = do
   mapM_ checker classes
   return d
 
--- Checks an individual class inside a deriving clause in a data declaration
--- NOTE: If a class in a deriving clause is wired in, and the code compiles,
---       means that the class is a DerivableClass.
---       If it is not wired in, or it is not a simple class ctor application,
---       then it cannot be derived traditionally.
+{-
+ Checks an individual class inside a deriving clause in a data declaration
+ NOTE: If a class in a deriving clause is wired in, and the code compiles,
+       means that the class is a DerivableClass.
+       If it is not wired in, or it is not a simple class ctor application,
+       then it cannot be derived traditionally.
+
+ NOTE: Works only for "class names". If it gets an input from a standalone
+       deriving clause, it has to be simplified.
+-}
 chkClassForData :: HasNameInfo dom =>
                    InstanceHead dom -> ExtMonad dom (InstanceHead dom)
 chkClassForData x
@@ -184,7 +237,7 @@ chkClassForData x
     Just sname <- getSemName name,
     isWiredInClass sname
     = do
-      let className = (name ^. (simpleName & unqualifiedName & simpleNameStr))
+      let className = name ^. (simpleName & unqualifiedName & simpleNameStr)
       case readIntoExt className of
         Just ext -> addOccurenceM ext x >> return x
         Nothing  -> return x
@@ -192,6 +245,7 @@ chkClassForData x
 
 
 -- TODO: really similar to chkClassForData, try to refactor
+-- NOTE: always adds GeneralizedNewtypeDeriving
 chkClassForNewtype :: HasNameInfo dom =>
                       InstanceHead dom -> ExtMonad dom (InstanceHead dom)
 chkClassForNewtype x
@@ -199,7 +253,7 @@ chkClassForNewtype x
     Just sname <- getSemName name,
     isWiredInClass sname
     = do
-      let className = (name ^. (simpleName & unqualifiedName & simpleNameStr))
+      let className = name ^. (simpleName & unqualifiedName & simpleNameStr)
       when (canBeGeneralized sname)
         (addOccurenceM GeneralizedNewtypeDeriving x)
       case readIntoExt className of
@@ -210,6 +264,7 @@ chkClassForNewtype x
       addOccurenceM DeriveAnyClass x
       return x
 
+canBeGeneralized :: GHC.Name -> Bool
 canBeGeneralized = not . flip elem notGNTD
 notGNTD = [ dataClassName
           , typeableClassName
@@ -221,4 +276,4 @@ skipParens (ParenInstanceHead x) = skipParens x
 skipParens x = x
 
 getSemName :: HasNameInfo dom => Name dom -> Maybe GHC.Name
-getSemName x = semanticsName $ (x ^. simpleName)
+getSemName x = semanticsName (x ^. simpleName)

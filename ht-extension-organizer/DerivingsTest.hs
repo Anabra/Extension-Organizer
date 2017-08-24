@@ -1,5 +1,4 @@
 {-# LANGUAGE DeriveDataTypeable,
-             DeriveGeneric,
              DeriveFunctor,
              DeriveFoldable,
              DeriveTraversable,
@@ -22,6 +21,8 @@ class C1 a where
 class C2 a b where
   f2 :: a -> b -> ()
   f2 _ _ = ()
+
+--------------------- Data tests ---------------------
 
 -- OK
 data D1 a = D1 a
@@ -53,6 +54,9 @@ data D5 a = D5 a
 data D6 a = D6
   deriving (Eq, Ord, Enum, Ix, Bounded, Show, Read,
             Data, Typeable, Functor, Foldable, Traversable)
+
+--------------------- Newtype tests ---------------------
+
 
 -- DeriveDataTypeable
 newtype T1 a = T1 (D6 a)
