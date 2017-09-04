@@ -1,0 +1,30 @@
+Configuring haskell-tools-refactor-0.8.1.0...
+Building haskell-tools-refactor-0.8.1.0...
+Preprocessing library haskell-tools-refactor-0.8.1.0...
+[ 1 of 24] Compiling Language.Haskell.Tools.Refactor.RefactorBase ( Language/Haskell/Tools/Refactor/RefactorBase.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/RefactorBase.o )
+[ 2 of 24] Compiling Language.Haskell.Tools.Refactor.Prepare ( Language/Haskell/Tools/Refactor/Prepare.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Prepare.o )
+[ 3 of 24] Compiling Language.Haskell.Tools.Refactor.GetModules ( Language/Haskell/Tools/Refactor/GetModules.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/GetModules.o )
+[ 4 of 24] Compiling Language.Haskell.Tools.Refactor.Session ( Language/Haskell/Tools/Refactor/Session.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Session.o )
+[ 5 of 24] Compiling Language.Haskell.Tools.Refactor.ChangeAST ( Language/Haskell/Tools/Refactor/ChangeAST.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/ChangeAST.o )
+[ 6 of 24] Compiling Language.Haskell.Tools.Refactor.ListOperations ( Language/Haskell/Tools/Refactor/ListOperations.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/ListOperations.o )
+[ 7 of 24] Compiling Language.Haskell.Tools.Refactor.Helpers ( Language/Haskell/Tools/Refactor/Helpers.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Helpers.o )
+[ 8 of 24] Compiling Language.Haskell.Tools.Refactor.BindingElem ( Language/Haskell/Tools/Refactor/BindingElem.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/BindingElem.o )
+[ 9 of 24] Compiling Language.Haskell.Tools.Refactor ( Language/Haskell/Tools/Refactor.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor.o )
+[10 of 24] Compiling Language.Haskell.Tools.Refactor.Predefined.DataToNewtype ( Language/Haskell/Tools/Refactor/Predefined/DataToNewtype.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Predefined/DataToNewtype.o )
+[11 of 24] Compiling Language.Haskell.Tools.Refactor.Predefined.DollarApp ( Language/Haskell/Tools/Refactor/Predefined/DollarApp.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Predefined/DollarApp.o )
+[12 of 24] Compiling Language.Haskell.Tools.Refactor.Predefined.DollarApp1 ( Language/Haskell/Tools/Refactor/Predefined/DollarApp1.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Predefined/DollarApp1.o )
+[13 of 24] Compiling Language.Haskell.Tools.Refactor.Predefined.DollarApp2 ( Language/Haskell/Tools/Refactor/Predefined/DollarApp2.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Predefined/DollarApp2.o )
+[14 of 24] Compiling Language.Haskell.Tools.Refactor.Predefined.DollarApp3 ( Language/Haskell/Tools/Refactor/Predefined/DollarApp3.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Predefined/DollarApp3.o )
+[15 of 24] Compiling Language.Haskell.Tools.Refactor.Predefined.ExtractBinding ( Language/Haskell/Tools/Refactor/Predefined/ExtractBinding.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Predefined/ExtractBinding.o )
+[16 of 24] Compiling Language.Haskell.Tools.Refactor.Predefined.FloatOut ( Language/Haskell/Tools/Refactor/Predefined/FloatOut.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Predefined/FloatOut.o )
+[17 of 24] Compiling Language.Haskell.Tools.Refactor.Predefined.GenerateExports ( Language/Haskell/Tools/Refactor/Predefined/GenerateExports.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Predefined/GenerateExports.o )
+[18 of 24] Compiling Language.Haskell.Tools.Refactor.Predefined.GenerateTypeSignature ( Language/Haskell/Tools/Refactor/Predefined/GenerateTypeSignature.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Predefined/GenerateTypeSignature.o )
+[19 of 24] Compiling Language.Haskell.Tools.Refactor.Predefined.HelloRefactor ( Language/Haskell/Tools/Refactor/Predefined/HelloRefactor.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Predefined/HelloRefactor.o )
+[20 of 24] Compiling Language.Haskell.Tools.Refactor.Predefined.IfToGuards ( Language/Haskell/Tools/Refactor/Predefined/IfToGuards.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Predefined/IfToGuards.o )
+[21 of 24] Compiling Language.Haskell.Tools.Refactor.Predefined.InlineBinding ( Language/Haskell/Tools/Refactor/Predefined/InlineBinding.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Predefined/InlineBinding.o )
+[22 of 24] Compiling Language.Haskell.Tools.Refactor.Predefined.OrganizeImports ( Language/Haskell/Tools/Refactor/Predefined/OrganizeImports.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Predefined/OrganizeImports.o )
+[23 of 24] Compiling Language.Haskell.Tools.Refactor.Predefined.RenameDefinition ( Language/Haskell/Tools/Refactor/Predefined/RenameDefinition.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Predefined/RenameDefinition.o )
+[24 of 24] Compiling Language.Haskell.Tools.Refactor.Perform ( Language/Haskell/Tools/Refactor/Perform.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Refactor/Perform.o )
+Installing library in
+/home/anabra/.stack/snapshots/x86_64-linux/lts-9.3/8.0.2/lib/x86_64-linux-ghc-8.0.2/haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8
+Registering haskell-tools-refactor-0.8.1.0...

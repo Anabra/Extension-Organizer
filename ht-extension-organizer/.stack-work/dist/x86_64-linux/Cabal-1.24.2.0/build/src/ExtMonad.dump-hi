@@ -1,0 +1,520 @@
+
+==================== FINAL INTERFACE ====================
+2017-09-03 23:39:00.226139 UTC
+
+interface ht-extension-organizer-0.1.0.0-1NgBbe619AH4JExLErEUCI:ExtMonad [orphan module] 8002
+  interface hash: 8501aa1d5f8664b071b541caa7917fb9
+  ABI hash: 6efef839e8084e4944c989299f7e8b99
+  export-list hash: 78fe3d4ca4f10930e37e7961f002463e
+  orphan hash: f41249e66531a88ac8e955ccf541c279
+  flag hash: 3f3f61a842eb005e949760c28999d5fc
+  sig of: Nothing
+  used TH splices: True
+  where
+exports:
+  Control.Monad.<$!>
+  Control.Monad.<=<
+  Control.Monad.>=>
+  Control.Monad.filterM
+  Control.Monad.foldM
+  Control.Monad.foldM_
+  Control.Monad.forever
+  Control.Monad.guard
+  Control.Monad.mapAndUnzipM
+  Control.Monad.mfilter
+  Control.Monad.replicateM
+  Control.Monad.replicateM_
+  Control.Monad.unless
+  Control.Monad.zipWithM
+  Control.Monad.zipWithM_
+  Data.Foldable.forM_
+  Data.Foldable.mapM_
+  Data.Foldable.msum
+  Data.Foldable.sequence_
+  Data.Function.fix
+  Data.Functor.void
+  Data.Traversable.forM
+  GHC.Base.=<<
+  GHC.Base.ap
+  GHC.Base.join
+  GHC.Base.liftM
+  GHC.Base.liftM2
+  GHC.Base.liftM3
+  GHC.Base.liftM4
+  GHC.Base.liftM5
+  GHC.Base.when
+  ExtMonad.addOccurence
+  ExtMonad.addOccurenceM
+  ExtMonad.runExtMonad
+  Control.Monad.State.Class.gets
+  Control.Monad.State.Class.modify
+  Control.Monad.State.Class.modify'
+  Control.Monad.Trans.State.Lazy.evalState
+  Control.Monad.Trans.State.Lazy.evalStateT
+  Control.Monad.Trans.State.Lazy.execState
+  Control.Monad.Trans.State.Lazy.execStateT
+  Control.Monad.Trans.State.Lazy.mapState
+  Control.Monad.Trans.State.Lazy.mapStateT
+  Control.Monad.Trans.State.Lazy.runState
+  Control.Monad.Trans.State.Lazy.withState
+  Control.Monad.Trans.State.Lazy.withStateT
+  Control.Monad.Fix.MonadFix{Control.Monad.Fix.mfix}
+  Control.Monad.IO.Class.MonadIO{Control.Monad.IO.Class.liftIO}
+  Data.Traversable.Traversable|{Data.Traversable.mapM Data.Traversable.sequence}
+  GHC.Base.Functor{GHC.Base.fmap}
+  GHC.Base.Monad{GHC.Base.>> GHC.Base.>>= GHC.Base.fail GHC.Base.return}
+  GHC.Base.MonadPlus{GHC.Base.mplus GHC.Base.mzero}
+  GHC.LanguageExtensions.Type.Extension{GHC.LanguageExtensions.Type.AllowAmbiguousTypes GHC.LanguageExtensions.Type.AlternativeLayoutRule GHC.LanguageExtensions.Type.AlternativeLayoutRuleTransitional GHC.LanguageExtensions.Type.ApplicativeDo GHC.LanguageExtensions.Type.Arrows GHC.LanguageExtensions.Type.AutoDeriveTypeable GHC.LanguageExtensions.Type.BangPatterns GHC.LanguageExtensions.Type.BinaryLiterals GHC.LanguageExtensions.Type.CApiFFI GHC.LanguageExtensions.Type.ConstrainedClassMethods GHC.LanguageExtensions.Type.ConstraintKinds GHC.LanguageExtensions.Type.Cpp GHC.LanguageExtensions.Type.DataKinds GHC.LanguageExtensions.Type.DatatypeContexts GHC.LanguageExtensions.Type.DefaultSignatures GHC.LanguageExtensions.Type.DeriveAnyClass GHC.LanguageExtensions.Type.DeriveDataTypeable GHC.LanguageExtensions.Type.DeriveFoldable GHC.LanguageExtensions.Type.DeriveFunctor GHC.LanguageExtensions.Type.DeriveGeneric GHC.LanguageExtensions.Type.DeriveLift GHC.LanguageExtensions.Type.DeriveTraversable GHC.LanguageExtensions.Type.DisambiguateRecordFields GHC.LanguageExtensions.Type.DoAndIfThenElse GHC.LanguageExtensions.Type.DuplicateRecordFields GHC.LanguageExtensions.Type.EmptyCase GHC.LanguageExtensions.Type.EmptyDataDecls GHC.LanguageExtensions.Type.ExistentialQuantification GHC.LanguageExtensions.Type.ExplicitForAll GHC.LanguageExtensions.Type.ExplicitNamespaces GHC.LanguageExtensions.Type.ExtendedDefaultRules GHC.LanguageExtensions.Type.FlexibleContexts GHC.LanguageExtensions.Type.FlexibleInstances GHC.LanguageExtensions.Type.ForeignFunctionInterface GHC.LanguageExtensions.Type.FunctionalDependencies GHC.LanguageExtensions.Type.GADTSyntax GHC.LanguageExtensions.Type.GADTs GHC.LanguageExtensions.Type.GHCForeignImportPrim GHC.LanguageExtensions.Type.GeneralizedNewtypeDeriving GHC.LanguageExtensions.Type.ImplicitParams GHC.LanguageExtensions.Type.ImplicitPrelude GHC.LanguageExtensions.Type.ImpredicativeTypes GHC.LanguageExtensions.Type.IncoherentInstances GHC.LanguageExtensions.Type.InstanceSigs GHC.LanguageExtensions.Type.InterruptibleFFI GHC.LanguageExtensions.Type.JavaScriptFFI GHC.LanguageExtensions.Type.KindSignatures GHC.LanguageExtensions.Type.LambdaCase GHC.LanguageExtensions.Type.LiberalTypeSynonyms GHC.LanguageExtensions.Type.MagicHash GHC.LanguageExtensions.Type.MonadComprehensions GHC.LanguageExtensions.Type.MonadFailDesugaring GHC.LanguageExtensions.Type.MonoLocalBinds GHC.LanguageExtensions.Type.MonoPatBinds GHC.LanguageExtensions.Type.MonomorphismRestriction GHC.LanguageExtensions.Type.MultiParamTypeClasses GHC.LanguageExtensions.Type.MultiWayIf GHC.LanguageExtensions.Type.NPlusKPatterns GHC.LanguageExtensions.Type.NamedWildCards GHC.LanguageExtensions.Type.NegativeLiterals GHC.LanguageExtensions.Type.NondecreasingIndentation GHC.LanguageExtensions.Type.NullaryTypeClasses GHC.LanguageExtensions.Type.NumDecimals GHC.LanguageExtensions.Type.OverlappingInstances GHC.LanguageExtensions.Type.OverloadedLabels GHC.LanguageExtensions.Type.OverloadedLists GHC.LanguageExtensions.Type.OverloadedStrings GHC.LanguageExtensions.Type.PackageImports GHC.LanguageExtensions.Type.ParallelArrays GHC.LanguageExtensions.Type.ParallelListComp GHC.LanguageExtensions.Type.PartialTypeSignatures GHC.LanguageExtensions.Type.PatternGuards GHC.LanguageExtensions.Type.PatternSynonyms GHC.LanguageExtensions.Type.PolyKinds GHC.LanguageExtensions.Type.PostfixOperators GHC.LanguageExtensions.Type.QuasiQuotes GHC.LanguageExtensions.Type.RankNTypes GHC.LanguageExtensions.Type.RebindableSyntax GHC.LanguageExtensions.Type.RecordPuns GHC.LanguageExtensions.Type.RecordWildCards GHC.LanguageExtensions.Type.RecursiveDo GHC.LanguageExtensions.Type.RelaxedLayout GHC.LanguageExtensions.Type.RelaxedPolyRec GHC.LanguageExtensions.Type.RoleAnnotations GHC.LanguageExtensions.Type.ScopedTypeVariables GHC.LanguageExtensions.Type.StandaloneDeriving GHC.LanguageExtensions.Type.StaticPointers GHC.LanguageExtensions.Type.Strict GHC.LanguageExtensions.Type.StrictData GHC.LanguageExtensions.Type.TemplateHaskell GHC.LanguageExtensions.Type.TemplateHaskellQuotes GHC.LanguageExtensions.Type.TraditionalRecordSyntax GHC.LanguageExtensions.Type.TransformListComp GHC.LanguageExtensions.Type.TupleSections GHC.LanguageExtensions.Type.TypeApplications GHC.LanguageExtensions.Type.TypeFamilies GHC.LanguageExtensions.Type.TypeFamilyDependencies GHC.LanguageExtensions.Type.TypeInType GHC.LanguageExtensions.Type.TypeOperators GHC.LanguageExtensions.Type.TypeSynonymInstances GHC.LanguageExtensions.Type.UnboxedTuples GHC.LanguageExtensions.Type.UndecidableInstances GHC.LanguageExtensions.Type.UndecidableSuperClasses GHC.LanguageExtensions.Type.UnicodeSyntax GHC.LanguageExtensions.Type.UnliftedFFITypes GHC.LanguageExtensions.Type.ViewPatterns}
+  ExtMonad.ExtDomain
+  ExtMonad.ExtMonad
+  Control.Monad.State.Class.MonadState{Control.Monad.State.Class.get Control.Monad.State.Class.put Control.Monad.State.Class.state}
+  Control.Monad.Trans.Class.MonadTrans{Control.Monad.Trans.Class.lift}
+  Control.Monad.Trans.State.Lazy.State
+  Control.Monad.Trans.State.Lazy.StateT{Control.Monad.Trans.State.Lazy.StateT runStateT}
+module dependencies:
+package dependencies: array-0.5.1.1@array-0.5.1.1 base-4.9.1.0
+                      binary-0.8.3.0@binary-0.8.3.0
+                      bytestring-0.10.8.1@bytestring-0.10.8.1
+                      containers-0.5.7.1@containers-0.5.7.1
+                      deepseq-1.4.2.0@deepseq-1.4.2.0 directory-1.3.0.0@directory-1.3.0.0
+                      either-4.4.1.1@either-4.4.1.1-6PiwKYkn4v6B4KO2R2Fu1b
+                      filepath-1.4.1.1@filepath-1.4.1.1 ghc-8.0.2
+                      ghc-boot-8.0.2@ghc-boot-8.0.2 ghc-boot-th-8.0.2@ghc-boot-th-8.0.2
+                      ghc-paths-0.1.0.9@ghc-paths-0.1.0.9-AhaDlGOsRAepox069XzG
+                      ghc-prim-0.5.0.0 ghci-8.0.2@ghci-8.0.2
+                      hashable-1.2.6.1@hashable-1.2.6.1-2ZLNuHq395GGIHwEHuqZol
+                      haskell-tools-ast-0.8.1.0@haskell-tools-ast-0.8.1.0-I9ZMaCkuuwT3FoQkwMjyW6
+                      haskell-tools-backend-ghc-0.8.1.0@haskell-tools-backend-ghc-0.8.1.0-DqHnbK8OPi6CBD5cIPITWq
+                      haskell-tools-prettyprint-0.8.1.0@haskell-tools-prettyprint-0.8.1.0-F9iWkGq5ppnLH6whHm0DlC
+                      haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8
+                      haskell-tools-rewrite-0.8.1.0@haskell-tools-rewrite-0.8.1.0-85A6q9dMQgvKEKG9I8fxVU
+                      hoopl-3.10.2.1@hoopl-3.10.2.1 hpc-0.6.0.3@hpc-0.6.0.3
+                      instance-control-0.1.1.1@instance-control-0.1.1.1-1defRS82vAAEmZKRhe67aa
+                      integer-gmp-1.0.0.1 mtl-2.2.1@mtl-2.2.1-BLKBelFsPB3BoFeSWSOYj6
+                      pretty-1.1.3.3@pretty-1.1.3.3 process-1.4.3.0@process-1.4.3.0
+                      references-0.3.2.2@references-0.3.2.2-y362bKYomIKNQKMTfOWVo
+                      safe-0.3.15@safe-0.3.15-2Yd45VWFfdcKqKyispOifY
+                      split-0.2.3.2@split-0.2.3.2-CJl40zTyCIV16Pr60nb7CT
+                      syb-0.7@syb-0.7-4OKdCpwGutyB1rNRmoa0ya template-haskell-2.11.1.0
+                      text-1.2.2.2@text-1.2.2.2-9UQZjEJZQFSGMffj1Z5g00
+                      time-1.6.0.1@time-1.6.0.1 transformers-0.5.2.0@transformers-0.5.2.0
+                      uniplate-1.6.12@uniplate-1.6.12-4PyZX21trQJ5lfk0CDvC7U
+                      unix-2.7.2.1@unix-2.7.2.1
+                      unordered-containers-0.2.8.0@unordered-containers-0.2.8.0-Bp9XgxjuHxcI4tFehVMDGC
+orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
+         binary-0.8.3.0@binary-0.8.3.0:Data.Binary.Generic
+         bytestring-0.10.8.1@bytestring-0.10.8.1:Data.ByteString.Builder
+         ghc-8.0.2:BlockId ghc-8.0.2:DsMonad ghc-8.0.2:LoadIface
+         ghc-8.0.2:PPC.Ppr ghc-8.0.2:PprCmm ghc-8.0.2:PprCmmDecl
+         ghc-8.0.2:PprCmmExpr ghc-8.0.2:PprCore ghc-8.0.2:SPARC.Ppr
+         ghc-8.0.2:TcEnv ghc-8.0.2:TcRnMonad ghc-8.0.2:X86.Ppr
+         ghc-boot-8.0.2@ghc-boot-8.0.2:GHC.LanguageExtensions
+         ghci-8.0.2@ghci-8.0.2:GHCi.Message
+         ghci-8.0.2@ghci-8.0.2:GHCi.TH.Binary
+         hashable-1.2.6.1@hashable-1.2.6.1-2ZLNuHq395GGIHwEHuqZol:Data.Hashable.Generic
+         haskell-tools-ast-0.8.1.0@haskell-tools-ast-0.8.1.0-I9ZMaCkuuwT3FoQkwMjyW6:Language.Haskell.Tools.AST.Instances.Data
+         haskell-tools-ast-0.8.1.0@haskell-tools-ast-0.8.1.0-I9ZMaCkuuwT3FoQkwMjyW6:Language.Haskell.Tools.AST.Instances.Eq
+         haskell-tools-ast-0.8.1.0@haskell-tools-ast-0.8.1.0-I9ZMaCkuuwT3FoQkwMjyW6:Language.Haskell.Tools.AST.Instances.Generic
+         haskell-tools-ast-0.8.1.0@haskell-tools-ast-0.8.1.0-I9ZMaCkuuwT3FoQkwMjyW6:Language.Haskell.Tools.AST.Instances.SemanticTraversal
+         haskell-tools-ast-0.8.1.0@haskell-tools-ast-0.8.1.0-I9ZMaCkuuwT3FoQkwMjyW6:Language.Haskell.Tools.AST.Instances.Show
+         haskell-tools-ast-0.8.1.0@haskell-tools-ast-0.8.1.0-I9ZMaCkuuwT3FoQkwMjyW6:Language.Haskell.Tools.AST.Instances.SourceInfoTraversal
+         haskell-tools-ast-0.8.1.0@haskell-tools-ast-0.8.1.0-I9ZMaCkuuwT3FoQkwMjyW6:Language.Haskell.Tools.AST.SemaInfoTypes
+         haskell-tools-ast-0.8.1.0@haskell-tools-ast-0.8.1.0-I9ZMaCkuuwT3FoQkwMjyW6:Language.Haskell.Tools.AST.Utils.GHCInstances
+         haskell-tools-backend-ghc-0.8.1.0@haskell-tools-backend-ghc-0.8.1.0-DqHnbK8OPi6CBD5cIPITWq:Language.Haskell.Tools.AST.FromGHC.Utils
+         haskell-tools-prettyprint-0.8.1.0@haskell-tools-prettyprint-0.8.1.0-F9iWkGq5ppnLH6whHm0DlC:Language.Haskell.Tools.Transform.RangeTemplate
+         haskell-tools-prettyprint-0.8.1.0@haskell-tools-prettyprint-0.8.1.0-F9iWkGq5ppnLH6whHm0DlC:Language.Haskell.Tools.Transform.SourceTemplate
+         haskell-tools-prettyprint-0.8.1.0@haskell-tools-prettyprint-0.8.1.0-F9iWkGq5ppnLH6whHm0DlC:Language.Haskell.Tools.Transform.SourceTemplateHelpers
+         haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8:Language.Haskell.Tools.Refactor.RefactorBase
+         references-0.3.2.2@references-0.3.2.2-y362bKYomIKNQKMTfOWVo:Control.Reference.Predefined.Containers.Tree
+         references-0.3.2.2@references-0.3.2.2-y362bKYomIKNQKMTfOWVo:Control.Reference.TH.Records
+         syb-0.7@syb-0.7-4OKdCpwGutyB1rNRmoa0ya:Data.Generics.Instances
+         text-1.2.2.2@text-1.2.2.2-9UQZjEJZQFSGMffj1Z5g00:Data.Text
+         text-1.2.2.2@text-1.2.2.2-9UQZjEJZQFSGMffj1Z5g00:Data.Text.Lazy
+         text-1.2.2.2@text-1.2.2.2-9UQZjEJZQFSGMffj1Z5g00:Data.Text.Show
+         time-1.6.0.1@time-1.6.0.1:Data.Time.Calendar.Gregorian
+         time-1.6.0.1@time-1.6.0.1:Data.Time.Format.Parse
+         time-1.6.0.1@time-1.6.0.1:Data.Time.LocalTime.LocalTime
+         transformers-0.5.2.0@transformers-0.5.2.0:Control.Monad.Trans.Error
+         uniplate-1.6.12@uniplate-1.6.12-4PyZX21trQJ5lfk0CDvC7U:Data.Generics.Uniplate.Data
+family instance modules: base-4.9.1.0:Control.Applicative
+                         base-4.9.1.0:Data.Complex base-4.9.1.0:Data.Either
+                         base-4.9.1.0:Data.Functor.Compose base-4.9.1.0:Data.Functor.Const
+                         base-4.9.1.0:Data.Functor.Identity
+                         base-4.9.1.0:Data.Functor.Product base-4.9.1.0:Data.Functor.Sum
+                         base-4.9.1.0:Data.List.NonEmpty base-4.9.1.0:Data.Monoid
+                         base-4.9.1.0:Data.Semigroup base-4.9.1.0:Data.Type.Equality
+                         base-4.9.1.0:Data.Version base-4.9.1.0:Data.Void
+                         base-4.9.1.0:GHC.Exts base-4.9.1.0:GHC.Generics
+                         base-4.9.1.0:GHC.IO.Exception base-4.9.1.0:GHC.TypeLits
+                         containers-0.5.7.1@containers-0.5.7.1:Data.IntMap.Base
+                         containers-0.5.7.1@containers-0.5.7.1:Data.IntSet.Base
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Sequence
+                         containers-0.5.7.1@containers-0.5.7.1:Data.Set.Base
+                         ghc-8.0.2:PlaceHolder ghc-8.0.2:TrieMap
+                         ghc-boot-th-8.0.2@ghc-boot-th-8.0.2:GHC.LanguageExtensions.Type
+                         ghci-8.0.2@ghci-8.0.2:GHCi.FFI ghci-8.0.2@ghci-8.0.2:GHCi.Message
+                         ghci-8.0.2@ghci-8.0.2:GHCi.ResolvedBCO
+                         ghci-8.0.2@ghci-8.0.2:SizedSeq
+                         haskell-tools-ast-0.8.1.0@haskell-tools-ast-0.8.1.0-I9ZMaCkuuwT3FoQkwMjyW6:Language.Haskell.Tools.AST.Ann
+                         haskell-tools-ast-0.8.1.0@haskell-tools-ast-0.8.1.0-I9ZMaCkuuwT3FoQkwMjyW6:Language.Haskell.Tools.AST.Instances.Generic
+                         haskell-tools-prettyprint-0.8.1.0@haskell-tools-prettyprint-0.8.1.0-F9iWkGq5ppnLH6whHm0DlC:Language.Haskell.Tools.Transform.RangeTemplate
+                         haskell-tools-prettyprint-0.8.1.0@haskell-tools-prettyprint-0.8.1.0-F9iWkGq5ppnLH6whHm0DlC:Language.Haskell.Tools.Transform.SourceTemplate
+                         hoopl-3.10.2.1@hoopl-3.10.2.1:Compiler.Hoopl.Block
+                         hoopl-3.10.2.1@hoopl-3.10.2.1:Compiler.Hoopl.Dataflow
+                         hoopl-3.10.2.1@hoopl-3.10.2.1:Compiler.Hoopl.Fuel
+                         hoopl-3.10.2.1@hoopl-3.10.2.1:Compiler.Hoopl.Label
+                         hoopl-3.10.2.1@hoopl-3.10.2.1:Compiler.Hoopl.Unique
+                         pretty-1.1.3.3@pretty-1.1.3.3:Text.PrettyPrint.Annotated.HughesPJ
+                         pretty-1.1.3.3@pretty-1.1.3.3:Text.PrettyPrint.HughesPJ
+                         references-0.3.2.2@references-0.3.2.2-y362bKYomIKNQKMTfOWVo:Control.Reference.Predefined.Containers
+                         references-0.3.2.2@references-0.3.2.2-y362bKYomIKNQKMTfOWVo:Control.Reference.Predefined.Containers.Tree
+                         references-0.3.2.2@references-0.3.2.2-y362bKYomIKNQKMTfOWVo:Control.Reference.Types
+                         template-haskell-2.11.1.0:Language.Haskell.TH.Syntax
+                         text-1.2.2.2@text-1.2.2.2-9UQZjEJZQFSGMffj1Z5g00:Data.Text
+                         text-1.2.2.2@text-1.2.2.2-9UQZjEJZQFSGMffj1Z5g00:Data.Text.Lazy
+                         unordered-containers-0.2.8.0@unordered-containers-0.2.8.0-Bp9XgxjuHxcI4tFehVMDGC:Data.HashMap.Base
+                         unordered-containers-0.2.8.0@unordered-containers-0.2.8.0-Bp9XgxjuHxcI4tFehVMDGC:Data.HashSet
+import  -/  base-4.9.1.0:Data.Foldable 3e0b6967a1da89945d0e2d47266337a2
+import  -/  base-4.9.1.0:Data.Functor 5ab1dc703df5b482e77efb697833ca3c
+import  -/  base-4.9.1.0:Data.Tuple 7dc4bbb45d2e69c991ffac438beeca11
+import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
+import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
+import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map.Base d432f6875983131473086af8cb290590
+import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map.Strict 9d0c0962e53270a0a3fb5cb63723a381
+import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Set 3ed2324fd1e757464a8ac2b636a64e5a
+import  -/  ghc-8.0.2:GHC 2331686350095b94008a49ce7901eaa2
+import  -/  ghc-8.0.2:GhcMonad fe90acc3f77ca6bdb0686328a3d31d0f
+import  -/  ghc-8.0.2:SrcLoc ae8e460a2b77026f9c6a4d6cdcc5d57e
+import  -/  ghc-boot-th-8.0.2@ghc-boot-th-8.0.2:GHC.LanguageExtensions.Type 92441ea50916fa3940e20fae60f255d7
+import  -/  ghc-paths-0.1.0.9@ghc-paths-0.1.0.9-AhaDlGOsRAepox069XzG:GHC.Paths ac6199ac2bb4710a40d06f6d09a37983
+import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
+import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
+import  -/  haskell-tools-ast-0.8.1.0@haskell-tools-ast-0.8.1.0-I9ZMaCkuuwT3FoQkwMjyW6:Language.Haskell.Tools.AST.Ann 07e8f66a2b6d7f18951fb774264c8644
+import  -/  haskell-tools-ast-0.8.1.0@haskell-tools-ast-0.8.1.0-I9ZMaCkuuwT3FoQkwMjyW6:Language.Haskell.Tools.AST.SemaInfoClasses c2ef5a6a7a968ca08e3bc3c3b14a4a2f
+import  -/  haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8:Language.Haskell.Tools.Refactor 84acc8d60e278de91351468f26f90e1c
+import  -/  mtl-2.2.1@mtl-2.2.1-BLKBelFsPB3BoFeSWSOYj6:Control.Monad.State 749dca8ca0e6625b32091d445bd92b01
+import  -/  mtl-2.2.1@mtl-2.2.1-BLKBelFsPB3BoFeSWSOYj6:Control.Monad.State.Class 6d31234b0a911b56412061943d18b89e
+import  -/  transformers-0.5.2.0@transformers-0.5.2.0:Control.Monad.Trans.State.Lazy 371607e50dde46b5f4103b3ab334a497
+Module target ht-extension-organizer-0.1.0.0-1NgBbe619AH4JExLErEUCI:ExtMonad annotated by 1059 of type [Char]
+c65520e51bae4acd9e3a94ba0a961b31
+  $fOrdExtension ::
+    GHC.Classes.Ord GHC.LanguageExtensions.Type.Extension
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ GHC.LanguageExtensions.Type.Extension
+                  GHC.LanguageExtensions.Type.$fEqExtension
+                  ExtMonad.$fOrdExtension_$ccompare
+                  ExtMonad.$fOrdExtension_$c<
+                  ExtMonad.$fOrdExtension_$c<=
+                  ExtMonad.$fOrdExtension_$c>
+                  ExtMonad.$fOrdExtension_$c>=
+                  ExtMonad.$fOrdExtension_$cmax
+                  ExtMonad.$fOrdExtension_$cmin -}
+76418f20277cef4dd31c34320c1c052e
+  $fOrdExtension_$c< ::
+    GHC.LanguageExtensions.Type.Extension
+    -> GHC.LanguageExtensions.Type.Extension -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: GHC.LanguageExtensions.Type.Extension)
+                   (b :: GHC.LanguageExtensions.Type.Extension) ->
+                 case a of x1 { DEFAULT ->
+                 case b of x2 { DEFAULT ->
+                 GHC.Prim.tagToEnum#
+                   @ GHC.Types.Bool
+                   (GHC.Prim.<#
+                      (GHC.Prim.dataToTag# @ GHC.LanguageExtensions.Type.Extension x1)
+                      (GHC.Prim.dataToTag#
+                         @ GHC.LanguageExtensions.Type.Extension
+                         x2)) } }) -}
+083aa331ad9db80b6a50a2e6662083c4
+  $fOrdExtension_$c<= ::
+    GHC.LanguageExtensions.Type.Extension
+    -> GHC.LanguageExtensions.Type.Extension -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: GHC.LanguageExtensions.Type.Extension)
+                   (b :: GHC.LanguageExtensions.Type.Extension) ->
+                 case a of x1 { DEFAULT ->
+                 case b of x2 { DEFAULT ->
+                 GHC.Prim.tagToEnum#
+                   @ GHC.Types.Bool
+                   (GHC.Prim.<=#
+                      (GHC.Prim.dataToTag# @ GHC.LanguageExtensions.Type.Extension x1)
+                      (GHC.Prim.dataToTag#
+                         @ GHC.LanguageExtensions.Type.Extension
+                         x2)) } }) -}
+b80d11e90f59f2c45ae5a34b7fed8368
+  $fOrdExtension_$c> ::
+    GHC.LanguageExtensions.Type.Extension
+    -> GHC.LanguageExtensions.Type.Extension -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: GHC.LanguageExtensions.Type.Extension)
+                   (b :: GHC.LanguageExtensions.Type.Extension) ->
+                 case a of x1 { DEFAULT ->
+                 case b of x2 { DEFAULT ->
+                 GHC.Prim.tagToEnum#
+                   @ GHC.Types.Bool
+                   (GHC.Prim.>#
+                      (GHC.Prim.dataToTag# @ GHC.LanguageExtensions.Type.Extension x1)
+                      (GHC.Prim.dataToTag#
+                         @ GHC.LanguageExtensions.Type.Extension
+                         x2)) } }) -}
+18a7af1260ea9a6b0e867aa89d9c4dd9
+  $fOrdExtension_$c>= ::
+    GHC.LanguageExtensions.Type.Extension
+    -> GHC.LanguageExtensions.Type.Extension -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: GHC.LanguageExtensions.Type.Extension)
+                   (b :: GHC.LanguageExtensions.Type.Extension) ->
+                 case a of x1 { DEFAULT ->
+                 case b of x2 { DEFAULT ->
+                 GHC.Prim.tagToEnum#
+                   @ GHC.Types.Bool
+                   (GHC.Prim.>=#
+                      (GHC.Prim.dataToTag# @ GHC.LanguageExtensions.Type.Extension x1)
+                      (GHC.Prim.dataToTag#
+                         @ GHC.LanguageExtensions.Type.Extension
+                         x2)) } }) -}
+a37c90095ab0f4084c6f99e6c9ae04e0
+  $fOrdExtension_$ccompare ::
+    GHC.LanguageExtensions.Type.Extension
+    -> GHC.LanguageExtensions.Type.Extension -> GHC.Types.Ordering
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: GHC.LanguageExtensions.Type.Extension)
+                   (b :: GHC.LanguageExtensions.Type.Extension) ->
+                 case a of x1 { DEFAULT ->
+                 case b of x2 { DEFAULT ->
+                 let {
+                   b# :: GHC.Prim.Int#
+                   = GHC.Prim.dataToTag# @ GHC.LanguageExtensions.Type.Extension x2
+                 } in
+                 let {
+                   a# :: GHC.Prim.Int#
+                   = GHC.Prim.dataToTag# @ GHC.LanguageExtensions.Type.Extension x1
+                 } in
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.<# a# b#) of wild {
+                   GHC.Types.False
+                   -> case GHC.Prim.tagToEnum#
+                             @ GHC.Types.Bool
+                             (GHC.Prim.==# a# b#) of wild1 {
+                        GHC.Types.False -> GHC.Types.GT GHC.Types.True -> GHC.Types.EQ }
+                   GHC.Types.True -> GHC.Types.LT } } }) -}
+907d2b2128bfa9112b116acb88e81a3a
+  $fOrdExtension_$cmax ::
+    GHC.LanguageExtensions.Type.Extension
+    -> GHC.LanguageExtensions.Type.Extension
+    -> GHC.LanguageExtensions.Type.Extension
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (x :: GHC.LanguageExtensions.Type.Extension)
+                   (y :: GHC.LanguageExtensions.Type.Extension) ->
+                 case x of x1 { DEFAULT ->
+                 case y of x2 { DEFAULT ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.<=#
+                           (GHC.Prim.dataToTag# @ GHC.LanguageExtensions.Type.Extension x1)
+                           (GHC.Prim.dataToTag#
+                              @ GHC.LanguageExtensions.Type.Extension
+                              x2)) of wild {
+                   GHC.Types.False -> x1 GHC.Types.True -> x2 } } }) -}
+b9e18308dff9df04509f3e450d2b48b8
+  $fOrdExtension_$cmin ::
+    GHC.LanguageExtensions.Type.Extension
+    -> GHC.LanguageExtensions.Type.Extension
+    -> GHC.LanguageExtensions.Type.Extension
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (x :: GHC.LanguageExtensions.Type.Extension)
+                   (y :: GHC.LanguageExtensions.Type.Extension) ->
+                 case x of x1 { DEFAULT ->
+                 case y of x2 { DEFAULT ->
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.<=#
+                           (GHC.Prim.dataToTag# @ GHC.LanguageExtensions.Type.Extension x1)
+                           (GHC.Prim.dataToTag#
+                              @ GHC.LanguageExtensions.Type.Extension
+                              x2)) of wild {
+                   GHC.Types.False -> x2 GHC.Types.True -> x1 } } }) -}
+dc0792b6c8538183da39577dcd463813
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   ExtMonad.$trModule2
+                   ExtMonad.$trModule1) -}
+a10bef8da60b431862c20f14d96647ef
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS "ExtMonad"#) -}
+b6460c1ef38fde417d5754c15903dab7
+  $trModule2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   "ht-extension-organizer-0.1.0.0-1NgBbe619AH4JExLErEUCI"#) -}
+9c2711a12fb4585de58cde40d63b8c17
+  type ExtDomain dom =
+    Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom
+    :: GHC.Types.Constraint
+9082366c14e6863467573cd95104adfa
+  type ExtMonad dom =
+    Control.Monad.Trans.State.Lazy.StateT
+      (Data.Map.Base.Map
+         GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
+      GhcMonad.Ghc
+    :: * -> *
+2712f64a912692481a57e8ec7e0a9b6d
+  addOccurence ::
+    (GHC.Classes.Ord k, Language.Haskell.Tools.AST.Ann.HasRange a) =>
+    k
+    -> a
+    -> Data.Map.Base.Map k [SrcLoc.SrcSpan]
+    -> Data.Map.Base.Map k [SrcLoc.SrcSpan]
+  {- Arity: 4,
+     Strictness: <L,U(A,C(C1(U)),A,A,A,A,A,A)><L,1*U(1*C1(U),A)><L,U><L,U>,
+     Unfolding: (\ @ k
+                   @ a
+                   ($dOrd :: GHC.Classes.Ord k)
+                   ($dHasRange :: Language.Haskell.Tools.AST.Ann.HasRange a)
+                   (key :: k)
+                   (node :: a) ->
+                 let {
+                   eta1 :: SrcLoc.SrcSpan
+                   = Language.Haskell.Tools.AST.Ann.getRange @ a $dHasRange node
+                 } in
+                 let {
+                   eta2 :: [SrcLoc.SrcSpan]
+                   = GHC.Types.: @ SrcLoc.SrcSpan eta1 (GHC.Types.[] @ SrcLoc.SrcSpan)
+                 } in
+                 \ (eta3 :: Data.Map.Base.Map k [SrcLoc.SrcSpan]) ->
+                 Data.Map.Strict.insertWithKey
+                   @ k
+                   @ [SrcLoc.SrcSpan]
+                   $dOrd
+                   (ExtMonad.addOccurence1 @ k)
+                   key
+                   eta2
+                   eta3) -}
+8d412b68220c84653dd507ed8867c40f
+  addOccurence1 ::
+    k -> [SrcLoc.SrcSpan] -> [SrcLoc.SrcSpan] -> [SrcLoc.SrcSpan]
+  {- Arity: 3, HasNoCafRefs,
+     Unfolding: (\ @ k
+                   (ds :: k)[OneShot]
+                   (x' :: [SrcLoc.SrcSpan])[OneShot]
+                   (y' :: [SrcLoc.SrcSpan])[OneShot] ->
+                 GHC.Base.++ @ SrcLoc.SrcSpan x' y') -}
+8a455580ad51ae9a9f7b605e075194b3
+  addOccurenceM ::
+    (Control.Monad.State.Class.MonadState
+       (Data.Map.Base.Map k [SrcLoc.SrcSpan]) m,
+     Language.Haskell.Tools.AST.Ann.HasRange v, GHC.Classes.Ord k) =>
+    k -> v -> m ()
+  {- Arity: 5,
+     Strictness: <S(LLLC(S)),1*U(A,A,A,1*C1(U))><L,1*U(1*C1(U),A)><L,U(A,C(C1(U)),A,A,A,A,A,A)><L,U><L,U>,
+     Unfolding: (\ @ k
+                   @ (m :: * -> *)
+                   @ v
+                   ($dMonadState :: Control.Monad.State.Class.MonadState
+                                      (Data.Map.Base.Map k [SrcLoc.SrcSpan]) m)
+                   ($dHasRange :: Language.Haskell.Tools.AST.Ann.HasRange v)
+                   ($dOrd :: GHC.Classes.Ord k)
+                   (extension :: k)
+                   (element :: v) ->
+                 let {
+                   eta1 :: SrcLoc.SrcSpan
+                   = Language.Haskell.Tools.AST.Ann.getRange @ v $dHasRange element
+                 } in
+                 let {
+                   eta2 :: [SrcLoc.SrcSpan]
+                   = GHC.Types.: @ SrcLoc.SrcSpan eta1 (GHC.Types.[] @ SrcLoc.SrcSpan)
+                 } in
+                 Control.Monad.State.Class.state
+                   @ (Data.Map.Base.Map k [SrcLoc.SrcSpan])
+                   @ m
+                   $dMonadState
+                   @ ()
+                   (\ (s1 :: Data.Map.Base.Map k [SrcLoc.SrcSpan]) ->
+                    (GHC.Tuple.(),
+                     Data.Map.Strict.insertWithKey
+                       @ k
+                       @ [SrcLoc.SrcSpan]
+                       $dOrd
+                       (ExtMonad.addOccurence1 @ k)
+                       extension
+                       eta2
+                       s1))) -}
+841d56f3396f2d239017d3dff1a79c89
+  runExtMonad :: ExtMonad.ExtMonad dom a -> GHC.Types.IO a
+  {- Arity: 2, Strictness: <L,1*C1(U)><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                (\ @ dom @ a -> ExtMonad.runExtMonad1 @ a)
+                  `cast`
+                (forall (dom :: <*>_N) (a :: <*>_N).
+                 <Control.Monad.Trans.State.Lazy.StateT
+                    (Data.Map.Base.Map
+                       GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
+                    GhcMonad.Ghc
+                    a>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <a>_R)) -}
+77d68d49a4f6070b5c8557679e27f1c9
+  runExtMonad1 ::
+    Control.Monad.Trans.State.Lazy.StateT
+      (Data.Map.Base.Map
+         GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
+      GhcMonad.Ghc
+      a
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, a #)
+  {- Arity: 2, Strictness: <L,1*C1(U)><S,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a
+                   (x :: Control.Monad.Trans.State.Lazy.StateT
+                           (Data.Map.Base.Map
+                              GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
+                           GhcMonad.Ghc
+                           a)
+                   (eta :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                 case GHC.runGhc1
+                        @ (a,
+                           Data.Map.Base.Map
+                             GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
+                        ExtMonad.runExtMonad2
+                        (x `cast`
+                         (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                              <Data.Map.Base.Map
+                                 GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan]>_N
+                              <GhcMonad.Ghc>_R
+                              <a>_N)
+                           (Data.Map.Base.Tip
+                              @ GHC.LanguageExtensions.Type.Extension
+                              @ [SrcLoc.SrcSpan]))
+                        eta of ds { (#,#) ipv ipv1 ->
+                 (# ipv,
+                    Data.Tuple.fst
+                      @ a
+                      @ (Data.Map.Base.Map
+                           GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
+                      ipv1 #) }) -}
+f1ddbeaf526183e4c796fa81b493288c
+  runExtMonad2 :: GHC.Base.Maybe GHC.IO.FilePath
+  {- Strictness: m2,
+     Unfolding: (GHC.Base.Just @ GHC.IO.FilePath GHC.Paths.libdir) -}
+instance GHC.Classes.Ord [GHC.LanguageExtensions.Type.Extension]
+  = ExtMonad.$fOrdExtension
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

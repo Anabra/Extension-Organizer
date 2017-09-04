@@ -1,0 +1,16 @@
+Configuring haskell-tools-prettyprint-0.8.1.0...
+Building haskell-tools-prettyprint-0.8.1.0...
+Preprocessing library haskell-tools-prettyprint-0.8.1.0...
+[ 1 of 10] Compiling Language.Haskell.Tools.Transform.SourceTemplate ( Language/Haskell/Tools/Transform/SourceTemplate.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Transform/SourceTemplate.o )
+[ 2 of 10] Compiling Language.Haskell.Tools.Transform.SourceTemplateHelpers ( Language/Haskell/Tools/Transform/SourceTemplateHelpers.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Transform/SourceTemplateHelpers.o )
+[ 3 of 10] Compiling Language.Haskell.Tools.Transform.RangeTemplate ( Language/Haskell/Tools/Transform/RangeTemplate.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Transform/RangeTemplate.o )
+[ 4 of 10] Compiling Language.Haskell.Tools.Transform.RangeTemplateToSourceTemplate ( Language/Haskell/Tools/Transform/RangeTemplateToSourceTemplate.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Transform/RangeTemplateToSourceTemplate.o )
+[ 5 of 10] Compiling Language.Haskell.Tools.Transform.RangeToRangeTemplate ( Language/Haskell/Tools/Transform/RangeToRangeTemplate.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Transform/RangeToRangeTemplate.o )
+[ 6 of 10] Compiling Language.Haskell.Tools.Transform.PlaceComments ( Language/Haskell/Tools/Transform/PlaceComments.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Transform/PlaceComments.o )
+[ 7 of 10] Compiling Language.Haskell.Tools.Transform ( Language/Haskell/Tools/Transform.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/Transform.o )
+[ 8 of 10] Compiling Language.Haskell.Tools.PrettyPrint.RoseTree ( Language/Haskell/Tools/PrettyPrint/RoseTree.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/PrettyPrint/RoseTree.o )
+[ 9 of 10] Compiling Language.Haskell.Tools.PrettyPrint ( Language/Haskell/Tools/PrettyPrint.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/PrettyPrint.o )
+[10 of 10] Compiling Language.Haskell.Tools.IndentationUtils ( Language/Haskell/Tools/IndentationUtils.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Language/Haskell/Tools/IndentationUtils.o )
+Installing library in
+/home/anabra/.stack/snapshots/x86_64-linux/lts-9.3/8.0.2/lib/x86_64-linux-ghc-8.0.2/haskell-tools-prettyprint-0.8.1.0-F9iWkGq5ppnLH6whHm0DlC
+Registering haskell-tools-prettyprint-0.8.1.0...

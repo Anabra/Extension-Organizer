@@ -9,7 +9,7 @@ module FlexibleInstancesChecker where
 
 import ExtMonad
 import Control.Reference ((.-), (^.), (!~), (&), biplateRef, Traversal)
-import Language.Haskell.Tools.Refactor
+import Language.Haskell.Tools.Refactor as Refact
 import Language.Haskell.Tools.PrettyPrint (prettyPrint)
 import Language.Haskell.Tools.AST
 
@@ -30,9 +30,14 @@ import Debug.Trace
 -- TODO: write "deriving instance ..." tests (should work)
 -- TODO: should expand type synonims  !!!
 
--- TODO: as in PlaceComments
-chkFlexibleInstances sp = nodesContained sp !~ chkInstanceRule
+chkFlexibleInstances :: ExtDomain dom =>
+                        Decl dom -> ExtMonad dom (Decl dom)
+chkFlexibleInstances d@(Refact.StandaloneDeriving rule) = checkedReturn rule d
+chkFlexibleInstances d@(InstanceDecl rule _) = checkedReturn rule d
+chkFlexibleInstances d = return d
 
+checkedReturn :: ExtDomain dom => InstanceRule dom -> a -> ExtMonad dom a
+checkedReturn rule x = chkInstanceRule rule >> return x
 
 -- this check DOES transform the AST for its internal computations
 -- but returns the original one at the end

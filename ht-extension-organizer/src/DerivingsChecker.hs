@@ -188,12 +188,19 @@ rightmostType ihead
 isSynNewType :: HasNameInfo dom => Type dom -> ExtMonad dom Bool
 isSynNewType t = do
   mtycon <- runMaybeT . lookupType $ t
-  case mtycon >>= lookupSynDef of
-    Just def -> do addOccurenceM TypeSynonymInstances t
-                   return (GHC.isNewTyCon def)
-    Nothing  -> return True
+  case mtycon of
+    Nothing    -> return True
+    Just tycon -> isSynNewType' tycon
+  where isSynNewType' x = case lookupSynDef x of
+                            Nothing  -> return False
+                            Just def -> do
+                                        addOccurenceM TypeSynonymInstances t
+                                        return (GHC.isNewTyCon def)
+
 
 -- TODO: could be exported
+-- NOTE: Returns Nothing if it is not a type synonym
+--       (or has some weird structure I didn't think of)
 lookupSynDef :: GHC.TyThing -> Maybe GHC.TyCon
 lookupSynDef syn = do
   tycon <- tyconFromTyThing syn

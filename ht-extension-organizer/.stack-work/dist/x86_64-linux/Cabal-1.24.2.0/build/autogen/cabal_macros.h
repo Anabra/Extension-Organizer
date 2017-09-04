@@ -35,19 +35,26 @@
   (major1) == 8 && (major2) <  0 || \
   (major1) == 8 && (major2) == 0 && (minor) <= 2)
 
-/* package haskell-tools-ast-0.8.0.0 */
-#define VERSION_haskell_tools_ast "0.8.0.0"
+/* package ghc-paths-0.1.0.9 */
+#define VERSION_ghc_paths "0.1.0.9"
+#define MIN_VERSION_ghc_paths(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  1 || \
+  (major1) == 0 && (major2) == 1 && (minor) <= 0)
+
+/* package haskell-tools-ast-0.8.1.0 */
+#define VERSION_haskell_tools_ast "0.8.1.0"
 #define MIN_VERSION_haskell_tools_ast(major1,major2,minor) (\
   (major1) <  0 || \
   (major1) == 0 && (major2) <  8 || \
-  (major1) == 0 && (major2) == 8 && (minor) <= 0)
+  (major1) == 0 && (major2) == 8 && (minor) <= 1)
 
-/* package haskell-tools-backend-ghc-0.8.0.0 */
-#define VERSION_haskell_tools_backend_ghc "0.8.0.0"
+/* package haskell-tools-backend-ghc-0.8.1.0 */
+#define VERSION_haskell_tools_backend_ghc "0.8.1.0"
 #define MIN_VERSION_haskell_tools_backend_ghc(major1,major2,minor) (\
   (major1) <  0 || \
   (major1) == 0 && (major2) <  8 || \
-  (major1) == 0 && (major2) == 8 && (minor) <= 0)
+  (major1) == 0 && (major2) == 8 && (minor) <= 1)
 
 /* package haskell-tools-cli-0.8.0.0 */
 #define VERSION_haskell_tools_cli "0.8.0.0"
@@ -56,40 +63,40 @@
   (major1) == 0 && (major2) <  8 || \
   (major1) == 0 && (major2) == 8 && (minor) <= 0)
 
-/* package haskell-tools-daemon-0.8.0.0 */
-#define VERSION_haskell_tools_daemon "0.8.0.0"
+/* package haskell-tools-daemon-0.8.1.0 */
+#define VERSION_haskell_tools_daemon "0.8.1.0"
 #define MIN_VERSION_haskell_tools_daemon(major1,major2,minor) (\
   (major1) <  0 || \
   (major1) == 0 && (major2) <  8 || \
-  (major1) == 0 && (major2) == 8 && (minor) <= 0)
+  (major1) == 0 && (major2) == 8 && (minor) <= 1)
 
-/* package haskell-tools-debug-0.8.0.0 */
-#define VERSION_haskell_tools_debug "0.8.0.0"
+/* package haskell-tools-debug-0.8.1.0 */
+#define VERSION_haskell_tools_debug "0.8.1.0"
 #define MIN_VERSION_haskell_tools_debug(major1,major2,minor) (\
   (major1) <  0 || \
   (major1) == 0 && (major2) <  8 || \
-  (major1) == 0 && (major2) == 8 && (minor) <= 0)
+  (major1) == 0 && (major2) == 8 && (minor) <= 1)
 
-/* package haskell-tools-prettyprint-0.8.0.0 */
-#define VERSION_haskell_tools_prettyprint "0.8.0.0"
+/* package haskell-tools-prettyprint-0.8.1.0 */
+#define VERSION_haskell_tools_prettyprint "0.8.1.0"
 #define MIN_VERSION_haskell_tools_prettyprint(major1,major2,minor) (\
   (major1) <  0 || \
   (major1) == 0 && (major2) <  8 || \
-  (major1) == 0 && (major2) == 8 && (minor) <= 0)
+  (major1) == 0 && (major2) == 8 && (minor) <= 1)
 
-/* package haskell-tools-refactor-0.8.0.0 */
-#define VERSION_haskell_tools_refactor "0.8.0.0"
+/* package haskell-tools-refactor-0.8.1.0 */
+#define VERSION_haskell_tools_refactor "0.8.1.0"
 #define MIN_VERSION_haskell_tools_refactor(major1,major2,minor) (\
   (major1) <  0 || \
   (major1) == 0 && (major2) <  8 || \
-  (major1) == 0 && (major2) == 8 && (minor) <= 0)
+  (major1) == 0 && (major2) == 8 && (minor) <= 1)
 
-/* package haskell-tools-rewrite-0.8.0.0 */
-#define VERSION_haskell_tools_rewrite "0.8.0.0"
+/* package haskell-tools-rewrite-0.8.1.0 */
+#define VERSION_haskell_tools_rewrite "0.8.1.0"
 #define MIN_VERSION_haskell_tools_rewrite(major1,major2,minor) (\
   (major1) <  0 || \
   (major1) == 0 && (major2) <  8 || \
-  (major1) == 0 && (major2) == 8 && (minor) <= 0)
+  (major1) == 0 && (major2) == 8 && (minor) <= 1)
 
 /* package mtl-2.2.1 */
 #define VERSION_mtl "2.2.1"
@@ -98,8 +105,8 @@
   (major1) == 2 && (major2) <  2 || \
   (major1) == 2 && (major2) == 2 && (minor) <= 1)
 
-/* package references-0.3.2.1 */
-#define VERSION_references "0.3.2.1"
+/* package references-0.3.2.2 */
+#define VERSION_references "0.3.2.2"
 #define MIN_VERSION_references(major1,major2,minor) (\
   (major1) <  0 || \
   (major1) == 0 && (major2) <  3 || \
@@ -111,6 +118,90 @@
   (major1) <  0 || \
   (major1) == 0 && (major2) <  5 || \
   (major1) == 0 && (major2) == 5 && (minor) <= 2)
+
+/* package Cabal-1.24.2.0 */
+#define VERSION_Cabal "1.24.2.0"
+#define MIN_VERSION_Cabal(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  24 || \
+  (major1) == 1 && (major2) == 24 && (minor) <= 2)
+
+/* package directory-1.3.0.0 */
+#define VERSION_directory "1.3.0.0"
+#define MIN_VERSION_directory(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  3 || \
+  (major1) == 1 && (major2) == 3 && (minor) <= 0)
+
+/* package either-4.4.1.1 */
+#define VERSION_either "4.4.1.1"
+#define MIN_VERSION_either(major1,major2,minor) (\
+  (major1) <  4 || \
+  (major1) == 4 && (major2) <  4 || \
+  (major1) == 4 && (major2) == 4 && (minor) <= 1)
+
+/* package filepath-1.4.1.1 */
+#define VERSION_filepath "1.4.1.1"
+#define MIN_VERSION_filepath(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  4 || \
+  (major1) == 1 && (major2) == 4 && (minor) <= 1)
+
+/* package old-time-1.1.0.3 */
+#define VERSION_old_time "1.1.0.3"
+#define MIN_VERSION_old_time(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  1 || \
+  (major1) == 1 && (major2) == 1 && (minor) <= 0)
+
+/* package polyparse-1.12 */
+#define VERSION_polyparse "1.12"
+#define MIN_VERSION_polyparse(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  12 || \
+  (major1) == 1 && (major2) == 12 && (minor) <= 0)
+
+/* package split-0.2.3.2 */
+#define VERSION_split "0.2.3.2"
+#define MIN_VERSION_split(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  2 || \
+  (major1) == 0 && (major2) == 2 && (minor) <= 3)
+
+/* package tasty-0.11.2.5 */
+#define VERSION_tasty "0.11.2.5"
+#define MIN_VERSION_tasty(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  11 || \
+  (major1) == 0 && (major2) == 11 && (minor) <= 2)
+
+/* package tasty-hunit-0.9.2 */
+#define VERSION_tasty_hunit "0.9.2"
+#define MIN_VERSION_tasty_hunit(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  9 || \
+  (major1) == 0 && (major2) == 9 && (minor) <= 2)
+
+/* package template-haskell-2.11.1.0 */
+#define VERSION_template_haskell "2.11.1.0"
+#define MIN_VERSION_template_haskell(major1,major2,minor) (\
+  (major1) <  2 || \
+  (major1) == 2 && (major2) <  11 || \
+  (major1) == 2 && (major2) == 11 && (minor) <= 1)
+
+/* package time-1.6.0.1 */
+#define VERSION_time "1.6.0.1"
+#define MIN_VERSION_time(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  6 || \
+  (major1) == 1 && (major2) == 6 && (minor) <= 0)
+
+/* package uniplate-1.6.12 */
+#define VERSION_uniplate "1.6.12"
+#define MIN_VERSION_uniplate(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  6 || \
+  (major1) == 1 && (major2) == 6 && (minor) <= 12)
 
 /* tool alex-3.1.6 */
 #define TOOL_VERSION_alex "3.1.6"
@@ -189,7 +280,7 @@
   (major1) == 2 && (major2) <  26 || \
   (major1) == 2 && (major2) == 26 && (minor) <= 0)
 
-#define CURRENT_COMPONENT_ID "ht-extension-organizer-0.1.0.0-Kk7UmqT0ifs1CsxLL2BO4h"
+#define CURRENT_COMPONENT_ID "ht-extension-organizer-0.1.0.0-1NgBbe619AH4JExLErEUCI"
 
-#define CURRENT_PACKAGE_KEY "ht-extension-organizer-0.1.0.0-Kk7UmqT0ifs1CsxLL2BO4h"
+#define CURRENT_PACKAGE_KEY "ht-extension-organizer-0.1.0.0-1NgBbe619AH4JExLErEUCI"
 

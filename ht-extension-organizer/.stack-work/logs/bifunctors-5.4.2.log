@@ -19,5 +19,5 @@ Preprocessing library bifunctors-5.4.2...
 [16 of 17] Compiling Data.Bifunctor.Tannen ( src/Data/Bifunctor/Tannen.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/Bifunctor/Tannen.o )
 [17 of 17] Compiling Data.Bifunctor.Wrapped ( src/Data/Bifunctor/Wrapped.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Data/Bifunctor/Wrapped.o )
 Installing library in
-/home/anabra/.stack/snapshots/x86_64-linux/lts-9.0/8.0.2/lib/x86_64-linux-ghc-8.0.2/bifunctors-5.4.2-5j5AtkN8t5O1W8mEe1pi0q
+/home/anabra/.stack/snapshots/x86_64-linux/lts-9.3/8.0.2/lib/x86_64-linux-ghc-8.0.2/bifunctors-5.4.2-KcF2f75KyQm5BjgJ8WkHCw
 Registering bifunctors-5.4.2...

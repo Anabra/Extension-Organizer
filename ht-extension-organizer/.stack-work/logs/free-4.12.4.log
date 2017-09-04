@@ -18,5 +18,5 @@ Preprocessing library free-4.12.4...
 [15 of 16] Compiling Control.Alternative.Free.Final ( src/Control/Alternative/Free/Final.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Control/Alternative/Free/Final.o )
 [16 of 16] Compiling Control.Alternative.Free ( src/Control/Alternative/Free.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.2.0/build/Control/Alternative/Free.o )
 Installing library in
-/home/anabra/.stack/snapshots/x86_64-linux/lts-9.0/8.0.2/lib/x86_64-linux-ghc-8.0.2/free-4.12.4-JUYfwQOGje1F6ljlwhsQfP
+/home/anabra/.stack/snapshots/x86_64-linux/lts-9.3/8.0.2/lib/x86_64-linux-ghc-8.0.2/free-4.12.4-C2gBQV0m8J42HxqSLTFyVx
 Registering free-4.12.4...
