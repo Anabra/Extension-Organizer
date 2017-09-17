@@ -1,7 +1,8 @@
 {-# LANGUAGE FlexibleContexts,
              TypeFamilies,
              TypeSynonymInstances,
-             FlexibleInstances
+             FlexibleInstances,
+             MultiWayIf
              #-}
 
 {-
@@ -113,7 +114,7 @@ wiredInClasses = [ eqClassName
 isWiredInClass = flip elem wiredInClasses
 
 
-chkDerivings :: HasNameInfo dom => Decl dom -> ExtMonad dom (Decl dom)
+chkDerivings :: HasNameInfo dom => Decl dom -> ExtMonad (Decl dom)
 chkDerivings = chkDataDecl
            >=> chkGADTDataDecl
            >=> chkDataInstance
@@ -121,20 +122,20 @@ chkDerivings = chkDataDecl
 
 
 
-chkDataDecl :: HasNameInfo dom => Decl dom -> ExtMonad dom (Decl dom)
+chkDataDecl :: HasNameInfo dom => Decl dom -> ExtMonad (Decl dom)
 chkDataDecl d@(DataDecl keyw _ _ _ derivs) = do
   separateByKeyword keyw derivs
   return d
 chkDataDecl d = return d
 
-chkGADTDataDecl :: HasNameInfo dom => Decl dom -> ExtMonad dom (Decl dom)
+chkGADTDataDecl :: HasNameInfo dom => Decl dom -> ExtMonad (Decl dom)
 chkGADTDataDecl d@(GADTDataDecl keyw _ _ _ _ derivs) = do
   addOccurenceM GADTs d
   separateByKeyword keyw derivs
   return d
 chkGADTDataDecl d = return d
 
-chkDataInstance :: HasNameInfo dom => Decl dom -> ExtMonad dom (Decl dom)
+chkDataInstance :: HasNameInfo dom => Decl dom -> ExtMonad (Decl dom)
 chkDataInstance d@(DataInstance keyw _ _ derivs) = do
   addOccurenceM TypeFamilies d
   separateByKeyword keyw derivs
@@ -144,7 +145,7 @@ chkDataInstance d = return d
 separateByKeyword :: HasNameInfo dom =>
                      DataOrNewtypeKeyword dom ->
                      AnnMaybeG UDeriving dom SrcTemplateStage ->
-                     ExtMonad dom ()
+                     ExtMonad ()
 separateByKeyword keyw derivs
   | isNewtypeDecl keyw = checkWith chkClassForNewtype
   | otherwise          = checkWith chkClassForData
@@ -157,7 +158,7 @@ separateByKeyword keyw derivs
 
 
 
-chkStandaloneDeriving :: HasNameInfo dom => Decl dom -> ExtMonad dom (Decl dom)
+chkStandaloneDeriving :: HasNameInfo dom => Decl dom -> ExtMonad (Decl dom)
 chkStandaloneDeriving d@(Refact.StandaloneDeriving instRule) = do
   addOccurenceM Ext.StandaloneDeriving d
   let ihead = instRule ^. irHead
@@ -185,7 +186,7 @@ rightmostType ihead
 -- This behaviour will produce false positives.
 -- This is desirable since the underlying type might be a newtype
 -- in which case GeneralizedNewtypeDeriving might be necessary.
-isSynNewType :: HasNameInfo dom => Type dom -> ExtMonad dom Bool
+isSynNewType :: HasNameInfo dom => Type dom -> ExtMonad Bool
 isSynNewType t = do
   mtycon <- runMaybeT . lookupType $ t
   case mtycon of
@@ -220,13 +221,13 @@ tyconFromGHCType _ = Nothing
 
 -- NOTE: Return false if the type is certainly not a newtype
 --       Returns true if it is a newtype or it could not have been looked up
-isNewtype :: HasNameInfo dom => Type dom -> ExtMonad dom Bool
+isNewtype :: HasNameInfo dom => Type dom -> ExtMonad Bool
 isNewtype t = do
   tycon <- runMaybeT . lookupType $ t
   return $! maybe True isNewtypeTyCon tycon
 
 -- TODO: could be exported
-lookupType :: HasNameInfo dom => Type dom -> MaybeT (ExtMonad dom) GHC.TyThing
+lookupType :: HasNameInfo dom => Type dom -> MaybeT ExtMonad GHC.TyThing
 lookupType t = do
   name  <- liftMaybe . nameFromType $ t
   sname <- liftMaybe . getSemName   $ name
@@ -250,9 +251,9 @@ isNewtypeTyCon _ = False
 
 
 chkDerivingClause :: HasNameInfo dom =>
-                     (InstanceHead dom -> ExtMonad dom (InstanceHead dom)) ->
+                     (InstanceHead dom -> ExtMonad (InstanceHead dom)) ->
                      Deriving dom ->
-                     ExtMonad dom (Deriving dom)
+                     ExtMonad (Deriving dom)
 chkDerivingClause checker d@(DerivingOne   x)  = checker x >> return d
 chkDerivingClause checker d@(DerivingMulti xs) = do
   let classes = xs ^. annListElems
@@ -270,7 +271,7 @@ chkDerivingClause checker d@(DerivingMulti xs) = do
        deriving clause, it has to be simplified.
 -}
 chkClassForData :: HasNameInfo dom =>
-                   InstanceHead dom -> ExtMonad dom (InstanceHead dom)
+                   InstanceHead dom -> ExtMonad (InstanceHead dom)
 chkClassForData x
   | InstanceHead name <- skipParens x,
     Just sname <- getSemName name,
@@ -286,21 +287,26 @@ chkClassForData x
 -- TODO: really similar to chkClassForData, try to refactor
 -- NOTE: always adds GeneralizedNewtypeDeriving
 chkClassForNewtype :: HasNameInfo dom =>
-                      InstanceHead dom -> ExtMonad dom (InstanceHead dom)
+                      InstanceHead dom -> ExtMonad (InstanceHead dom)
 chkClassForNewtype x
   | InstanceHead name <- skipParens x,
     Just sname <- getSemName name,
     isWiredInClass sname
     = do
       let className = name ^. (simpleName & unqualifiedName & simpleNameStr)
-      when (canBeGeneralized sname)
+      deriveAnyOff <- liftM not $ isTurnedOn DeriveAnyClass
+      when (canBeGeneralized sname && deriveAnyOff)
         (addOccurenceM GeneralizedNewtypeDeriving x)
       case readIntoExt className of
         Just ext -> addOccurenceM ext x >> return x
         Nothing  -> return x
   | otherwise = do
-      addOccurenceM GeneralizedNewtypeDeriving x
-      addOccurenceM DeriveAnyClass x
+      gntdOn      <- isTurnedOn GeneralizedNewtypeDeriving
+      deriveAnyOn <- isTurnedOn DeriveAnyClass
+      if | gntdOn && deriveAnyOn -> addOccurenceM DeriveAnyClass x
+         | deriveAnyOn           -> addOccurenceM DeriveAnyClass x
+         | gntdOn                -> addOccurenceM GeneralizedNewtypeDeriving x
+         | otherwise             -> return ()
       return x
 
 canBeGeneralized :: GHC.Name -> Bool

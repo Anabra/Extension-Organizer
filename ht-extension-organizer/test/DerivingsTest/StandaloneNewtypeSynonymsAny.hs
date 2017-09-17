@@ -8,4 +8,4 @@ module StandaloneNewtypeSynonymsAny where
 import SynonymDefinitions
 import StandaloneDataSynonyms
 
-deriving instance C1 (T0 a) {-* TypeSynonymInstances, StandaloneDeriving, GeneralizedNewtypeDeriving, DeriveAnyClass *-}
+deriving instance C1 (T0 a) {-* TypeSynonymInstances, StandaloneDeriving, DeriveAnyClass *-}

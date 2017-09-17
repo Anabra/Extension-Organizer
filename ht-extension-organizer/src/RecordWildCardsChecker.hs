@@ -1,18 +1,26 @@
-{-# LANGUAGE FlexibleContexts, TypeFamilies #-}
+{-# LANGUAGE FlexibleContexts,
+             TypeFamilies
+             #-}
 
 module RecordWildCardsChecker where
 
 import ExtMonad
-import Control.Reference ((!~))
+import Control.Reference ((!~), (&), biplateRef)
 import Language.Haskell.Tools.Refactor
 
-chkRecordWildCards sp = (nodesContained sp !~ chkRecordWildCardsPat)
-                          >=> (nodesContained sp !~ chkRecordWildCardsExpr)
+--chkRecordWildCards sp = (biplateRef !~ chkRecordWildCardsPat)
+--                          >=> (biplateRef !~ chkRecordWildCardsExpr)
 
-chkRecordWildCardsPat :: PatternField dom -> ExtMonad dom (PatternField dom)
-chkRecordWildCardsPat p@(FieldWildcardPattern x) = addOccurenceM RecordWildCards x >> return p
-chkRecordWildCardsPat p = return p
+chkRecordWildCardsPat :: CheckNode Pattern
+chkRecordWildCardsPat = patternFields & annList !~ chkRecordWildCardsPatField
 
-chkRecordWildCardsExpr :: FieldUpdate dom -> ExtMonad dom (FieldUpdate dom)
-chkRecordWildCardsExpr e@(FieldWildcard x) = addOccurenceM RecordWildCards x >> return e
-chkRecordWildCardsExpr e = return e
+chkRecordWildCardsPatField :: CheckNode PatternField
+chkRecordWildCardsPatField p@(FieldWildcardPattern x) = addOccurenceM RecordWildCards x >> return p
+chkRecordWildCardsPatField p = return p
+
+chkRecordWildCardsExpr :: CheckNode Expr
+chkRecordWildCardsExpr = exprRecFields & annList !~ chkRecordWildCardsFieldUpdate
+
+chkRecordWildCardsFieldUpdate :: CheckNode FieldUpdate
+chkRecordWildCardsFieldUpdate e@(FieldWildcard x) = addOccurenceM RecordWildCards x >> return e
+chkRecordWildCardsFieldUpdate e = return e

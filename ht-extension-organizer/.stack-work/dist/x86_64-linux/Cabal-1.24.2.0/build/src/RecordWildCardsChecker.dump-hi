@@ -1,21 +1,22 @@
 
 ==================== FINAL INTERFACE ====================
-2017-09-03 23:39:03.63147 UTC
+2017-09-17 21:33:23.972728 UTC
 
-interface ht-extension-organizer-0.1.0.0-1NgBbe619AH4JExLErEUCI:RecordWildCardsChecker 8002
-  interface hash: df8fe73901fb45cd85751c950ad947bb
-  ABI hash: 12f3b9bedb54acbffe9e9f963498b748
-  export-list hash: 9eefb0279d08d0f59521eb14428b9b37
-  orphan hash: e03d401bba0e5423febf37ed3c70c808
+interface ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:RecordWildCardsChecker 8002
+  interface hash: fbe852a857721252e4911a340ae46218
+  ABI hash: f9138ed63ad25a0557699080a27539d2
+  export-list hash: f953d2d81fd9b4ebcb6a6cd7488b1d35
+  orphan hash: 615b5053b63f185535fe600e89303058
   flag hash: 3765faaf2f7c34423ae2f3781e67b8fa
   sig of: Nothing
   used TH splices: False
   where
 exports:
-  RecordWildCardsChecker.chkRecordWildCards
   RecordWildCardsChecker.chkRecordWildCardsExpr
+  RecordWildCardsChecker.chkRecordWildCardsFieldUpdate
   RecordWildCardsChecker.chkRecordWildCardsPat
-module dependencies: ExtMonad
+  RecordWildCardsChecker.chkRecordWildCardsPatField
+module dependencies: ExtMap ExtMonad
 package dependencies: array-0.5.1.1@array-0.5.1.1 base-4.9.1.0
                       binary-0.8.3.0@binary-0.8.3.0
                       bytestring-0.10.8.1@bytestring-0.10.8.1
@@ -69,7 +70,7 @@ orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
          haskell-tools-prettyprint-0.8.1.0@haskell-tools-prettyprint-0.8.1.0-F9iWkGq5ppnLH6whHm0DlC:Language.Haskell.Tools.Transform.SourceTemplate
          haskell-tools-prettyprint-0.8.1.0@haskell-tools-prettyprint-0.8.1.0-F9iWkGq5ppnLH6whHm0DlC:Language.Haskell.Tools.Transform.SourceTemplateHelpers
          haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8:Language.Haskell.Tools.Refactor.RefactorBase
-         ht-extension-organizer-0.1.0.0-1NgBbe619AH4JExLErEUCI:ExtMonad
+         ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:ExtMonad
          references-0.3.2.2@references-0.3.2.2-y362bKYomIKNQKMTfOWVo:Control.Reference.Predefined.Containers.Tree
          references-0.3.2.2@references-0.3.2.2-y362bKYomIKNQKMTfOWVo:Control.Reference.TH.Records
          syb-0.7@syb-0.7-4OKdCpwGutyB1rNRmoa0ya:Data.Generics.Instances
@@ -120,50 +121,192 @@ family instance modules: base-4.9.1.0:Control.Applicative
                          text-1.2.2.2@text-1.2.2.2-9UQZjEJZQFSGMffj1Z5g00:Data.Text.Lazy
                          unordered-containers-0.2.8.0@unordered-containers-0.2.8.0-Bp9XgxjuHxcI4tFehVMDGC:Data.HashMap.Base
                          unordered-containers-0.2.8.0@unordered-containers-0.2.8.0-Bp9XgxjuHxcI4tFehVMDGC:Data.HashSet
-import  -/  base-4.9.1.0:Control.Monad a6784c5dab0d75c63dabec5a37843f98
 import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
 import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
 import  -/  ghc-boot-th-8.0.2@ghc-boot-th-8.0.2:GHC.LanguageExtensions.Type 92441ea50916fa3940e20fae60f255d7
-import  -/  haskell-tools-ast-0.8.1.0@haskell-tools-ast-0.8.1.0-I9ZMaCkuuwT3FoQkwMjyW6:Language.Haskell.Tools.AST.Helpers 686b27398ad9e18bc691422b21273fbb
+import  -/  haskell-tools-ast-0.8.1.0@haskell-tools-ast-0.8.1.0-I9ZMaCkuuwT3FoQkwMjyW6:Language.Haskell.Tools.AST.Ann 07e8f66a2b6d7f18951fb774264c8644
+import  -/  haskell-tools-ast-0.8.1.0@haskell-tools-ast-0.8.1.0-I9ZMaCkuuwT3FoQkwMjyW6:Language.Haskell.Tools.AST.References 46cb31a69f53297ab865876852473aa3
 import  -/  haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8:Language.Haskell.Tools.Refactor 84acc8d60e278de91351468f26f90e1c
 import  -/  haskell-tools-rewrite-0.8.1.0@haskell-tools-rewrite-0.8.1.0-85A6q9dMQgvKEKG9I8fxVU:Language.Haskell.Tools.AST.ElementTypes df954b524d036aee274d8ad0f571417a
 import  -/  haskell-tools-rewrite-0.8.1.0@haskell-tools-rewrite-0.8.1.0-85A6q9dMQgvKEKG9I8fxVU:Language.Haskell.Tools.AST.Match.Exprs 40e6739cc8a80bd68ce2dee2765b9b5e
 import  -/  haskell-tools-rewrite-0.8.1.0@haskell-tools-rewrite-0.8.1.0-85A6q9dMQgvKEKG9I8fxVU:Language.Haskell.Tools.AST.Match.Patterns 2fd4c4dbea6a0193d161dd2ecdde7cd7
-import  -/  ExtMonad 6efef839e8084e4944c989299f7e8b99
-  exports: 78fe3d4ca4f10930e37e7961f002463e
-  ExtMonad 9082366c14e6863467573cd95104adfa
-  addOccurenceM 8a455580ad51ae9a9f7b605e075194b3
+import  -/  ExtMonad ba8ffd9426181404fb75035ef644b9e7
+  exports: 51ded8efed0652d9c90b74dc7d2ea417
+  CheckNode d2a8a000f373c241c0362787c4b3f842
+  addOccurenceM 71387d0d2739879a11fb1935a16e7cc4
 import  -/  references-0.3.2.2@references-0.3.2.2-y362bKYomIKNQKMTfOWVo:Control.Reference d89ee82346f6e25c55a8a19dbf84658e
+import  -/  references-0.3.2.2@references-0.3.2.2-y362bKYomIKNQKMTfOWVo:Control.Reference.Combinators ab836299cfb9898d02f637bc65b3765a
 import  -/  references-0.3.2.2@references-0.3.2.2-y362bKYomIKNQKMTfOWVo:Control.Reference.Operators 55e717f4df077a71cb70a96f85f6a393
-b085131bb82f67e508fd419bc97c2083
-  $s$fApplicativeStateT ::
+1d4320c037ba6337caa6bb2725514513
+  $s$fApplicativeReaderT ::
+    GHC.Base.Applicative
+      (Control.Monad.Trans.Reader.ReaderT
+         r
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ r.
+                  @ (Control.Monad.Trans.Reader.ReaderT
+                       r
+                       (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+                  (Control.Monad.Trans.Reader.$fApplicativeReaderT_$cp1Applicative
+                     @ (Control.Monad.Trans.State.Lazy.StateT
+                          ExtMap.ExtMap GhcMonad.Ghc)
+                     @ r
+                     RecordWildCardsChecker.$s$fApplicativeReaderT1)
+                  (\ @ a (eta :: a) ->
+                   let {
+                     m1 :: Control.Monad.Trans.State.Lazy.StateT
+                             ExtMap.ExtMap GhcMonad.Ghc a
+                     = GHC.Base.$
+                         @ 'GHC.Types.PtrRepLifted
+                         @ (Data.Map.Base.Map
+                              (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                              [SrcLoc.SrcSpan]
+                            -> GhcMonad.Ghc
+                                 (a,
+                                  Data.Map.Base.Map
+                                    (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                    [SrcLoc.SrcSpan]))
+                         @ (Control.Monad.Trans.State.Lazy.StateT
+                              (Data.Map.Base.Map
+                                 (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                 [SrcLoc.SrcSpan])
+                              GhcMonad.Ghc
+                              a)
+                         (\ (tpl :: Data.Map.Base.Map
+                                      (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                      [SrcLoc.SrcSpan]
+                                    -> GhcMonad.Ghc
+                                         (a,
+                                          Data.Map.Base.Map
+                                            (ExtMap.LogicalRelation
+                                               GHC.LanguageExtensions.Type.Extension)
+                                            [SrcLoc.SrcSpan])) ->
+                          tpl)
+                           `cast`
+                         (<Data.Map.Base.Map
+                             (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                             [SrcLoc.SrcSpan]
+                           -> GhcMonad.Ghc
+                                (a,
+                                 Data.Map.Base.Map
+                                   (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                   [SrcLoc.SrcSpan])>_R
+                          ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                        <Data.Map.Base.Map
+                                           (ExtMap.LogicalRelation
+                                              GHC.LanguageExtensions.Type.Extension)
+                                           [SrcLoc.SrcSpan]>_N
+                                        <GhcMonad.Ghc>_R
+                                        <a>_N))
+                         (\ (s1 :: Data.Map.Base.Map
+                                     (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                     [SrcLoc.SrcSpan])
+                            (eta1 :: GhcMonad.Session)
+                            (eta2 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                          ((GhcMonad.$fApplicativeGhc_$cpure
+                              @ (a,
+                                 Data.Map.Base.Map
+                                   (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                   [SrcLoc.SrcSpan])
+                              (eta, s1))
+                             `cast`
+                           (GhcMonad.N:Ghc[0]
+                                <(a,
+                                  Data.Map.Base.Map
+                                    (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                    [SrcLoc.SrcSpan])>_R)
+                             eta1)
+                            `cast`
+                          (GHC.Types.N:IO[0]
+                               <(a,
+                                 Data.Map.Base.Map
+                                   (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                   [SrcLoc.SrcSpan])>_R)
+                            eta2)
+                           `cast`
+                         (<Data.Map.Base.Map
+                             (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                             [SrcLoc.SrcSpan]>_R
+                          ->_R Trans
+                                   (<GhcMonad.Session>_R
+                                    ->_R Sym (GHC.Types.N:IO[0]
+                                                  <(a,
+                                                    Data.Map.Base.Map
+                                                      (ExtMap.LogicalRelation
+                                                         GHC.LanguageExtensions.Type.Extension)
+                                                      [SrcLoc.SrcSpan])>_R))
+                                   (Sym (GhcMonad.N:Ghc[0]
+                                             <(a,
+                                               Data.Map.Base.Map
+                                                 (ExtMap.LogicalRelation
+                                                    GHC.LanguageExtensions.Type.Extension)
+                                                 [SrcLoc.SrcSpan])>_R)))
+                   } in
+                   (\ (eta1 :: r) ->
+                    GHC.Base.const
+                      @ (Control.Monad.Trans.State.Lazy.StateT
+                           ExtMap.ExtMap GhcMonad.Ghc a)
+                      @ r
+                      m1
+                      eta1)
+                     `cast`
+                   (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                             <*>_N
+                             <r>_R
+                             <Control.Monad.Trans.State.Lazy.StateT
+                                ExtMap.ExtMap GhcMonad.Ghc>_R
+                             <a>_N)))
+                  (Control.Monad.Trans.Reader.$fApplicativeReaderT_$c<*>
+                     @ (Control.Monad.Trans.State.Lazy.StateT
+                          ExtMap.ExtMap GhcMonad.Ghc)
+                     @ r
+                     RecordWildCardsChecker.$s$fApplicativeReaderT1)
+                  (Control.Monad.Trans.Reader.$fApplicativeReaderT_$c*>
+                     @ (Control.Monad.Trans.State.Lazy.StateT
+                          ExtMap.ExtMap GhcMonad.Ghc)
+                     @ r
+                     RecordWildCardsChecker.$s$fApplicativeReaderT1)
+                  (Control.Monad.Trans.Reader.$fApplicativeReaderT_$c<*
+                     @ (Control.Monad.Trans.State.Lazy.StateT
+                          ExtMap.ExtMap GhcMonad.Ghc)
+                     @ r
+                     RecordWildCardsChecker.$s$fApplicativeReaderT1) -}
+8c9e01ae71276dc0d96464fc87ac6db7
+  $s$fApplicativeReaderT1 ::
+    GHC.Base.Applicative
+      (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                (RecordWildCardsChecker.$s$fApplicativeReaderT_$s$fApplicativeStateT
+                   @ (Data.Map.Base.Map
+                        (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                        [SrcLoc.SrcSpan])) -}
+54eb5c5ff5aaa783f4e91c91a77a34ca
+  $s$fApplicativeReaderT_$s$fApplicativeStateT ::
     GHC.Base.Applicative
       (Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc)
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun: @ s.
                   @ (Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc)
-                  (RecordWildCardsChecker.$s$fApplicativeStateT_$s$fApplicativeStateT_$cp1Applicative
+                  (RecordWildCardsChecker.$s$fApplicativeReaderT_$s$fApplicativeStateT_$cp1Applicative
                      @ s)
-                  (RecordWildCardsChecker.$s$fApplicativeStateT_$s$fApplicativeStateT_$cpure
+                  (RecordWildCardsChecker.$s$fApplicativeReaderT_$s$fApplicativeStateT_$cpure
                      @ s)
-                  (RecordWildCardsChecker.$s$fApplicativeStateT_$s$fApplicativeStateT_$c<*>
+                  (RecordWildCardsChecker.$s$fApplicativeReaderT_$s$fApplicativeStateT_$c<*>
                      @ s)
                   (Control.Monad.Trans.State.Lazy.$fApplicativeStateT_$c*>
                      @ GhcMonad.Ghc
                      @ s
-                     RecordWildCardsChecker.$s$fApplicativeStateT_$dFunctor
+                     GhcMonad.$fFunctorGhc
                      GhcMonad.$fMonadGhc)
                   (Control.Monad.Trans.State.Lazy.$fApplicativeStateT_$c<*
                      @ GhcMonad.Ghc
                      @ s
-                     RecordWildCardsChecker.$s$fApplicativeStateT_$dFunctor
+                     GhcMonad.$fFunctorGhc
                      GhcMonad.$fMonadGhc) -}
-846ab7674cf8a9da9d270d8f00785914
-  $s$fApplicativeStateT_$dFunctor :: GHC.Base.Functor GhcMonad.Ghc
-  {- Strictness: m,
-     Unfolding: InlineRule (0, True, True) GhcMonad.$fFunctorGhc -}
-28532de90fe3aafbeb14be947e762ae2
-  $s$fApplicativeStateT_$s$fApplicativeStateT_$c<*> ::
+40a113bcc4ebc3179314ef07db76d95b
+  $s$fApplicativeReaderT_$s$fApplicativeStateT_$c<*> ::
     Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc (a -> b)
     -> Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc a
     -> Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc b
@@ -174,9 +317,9 @@ b085131bb82f67e508fd419bc97c2083
                 (\ @ s
                    @ a
                    @ b
-                   (ds2 :: Control.Monad.Trans.State.Lazy.StateT
-                             s GhcMonad.Ghc (a -> b))
-                   (ds3 :: Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc a) ->
+                   (ds :: Control.Monad.Trans.State.Lazy.StateT
+                            s GhcMonad.Ghc (a -> b))
+                   (ds1 :: Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc a) ->
                  GHC.Base.$
                    @ 'GHC.Types.PtrRepLifted
                    @ (s -> GhcMonad.Ghc (b, s))
@@ -190,35 +333,35 @@ b085131bb82f67e508fd419bc97c2083
                     GhcMonad.$fMonadGhc_$c>>=
                       @ (a -> b, s)
                       @ (b, s)
-                      (ds2
+                      (ds
                          `cast`
                        (Control.Monad.Trans.State.Lazy.N:StateT[0]
                             <s>_N <GhcMonad.Ghc>_R <a -> b>_N)
                          s1)
-                      (\ (ds4 :: (a -> b, s)) ->
+                      (\ (ds2 :: (a -> b, s)) ->
                        GhcMonad.$fMonadGhc_$c>>=
                          @ (a, s)
                          @ (b, s)
-                         (ds3
+                         (ds1
                             `cast`
                           (Control.Monad.Trans.State.Lazy.N:StateT[0]
                                <s>_N <GhcMonad.Ghc>_R <a>_N)
-                            (case ds4 of wild { (,) f s' -> s' }))
-                         (\ (ds5 :: (a, s)) ->
+                            (case ds2 of wild { (,) f s' -> s' }))
+                         (\ (ds3 :: (a, s)) ->
                           GhcMonad.$fApplicativeGhc_$cpure
                             @ (b, s)
-                            (case ds4 of wild { (,) f s' ->
-                             f (case ds5 of wild1 { (,) x s'' -> x }) },
-                             case ds5 of wild { (,) x s'' -> s'' }))))) -}
-b36effa63e4936e288f519054aeee30c
-  $s$fApplicativeStateT_$s$fApplicativeStateT_$cp1Applicative ::
+                            (case ds2 of wild { (,) f s' ->
+                             f (case ds3 of wild1 { (,) x s'' -> x }) },
+                             case ds3 of wild { (,) x s'' -> s'' }))))) -}
+2923b15dd0a1e9ec4521370af300f130
+  $s$fApplicativeReaderT_$s$fApplicativeStateT_$cp1Applicative ::
     GHC.Base.Functor
       (Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc)
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
-                RecordWildCardsChecker.$s$fApplicativeStateT_$s$fFunctorStateT -}
-c17967564fd71f4c51d67c7b58798355
-  $s$fApplicativeStateT_$s$fApplicativeStateT_$cpure ::
+                RecordWildCardsChecker.$s$fApplicativeReaderT_$s$fFunctorStateT -}
+11963862008919520d6bab259bd24325
+  $s$fApplicativeReaderT_$s$fApplicativeStateT_$cpure ::
     a -> Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc a
   {- Arity: 4, HasNoCafRefs, Strictness: <L,U><L,U><L,A><S,U>,
      Inline: INLINE (sat-args=1),
@@ -248,21 +391,21 @@ c17967564fd71f4c51d67c7b58798355
                     ->_R Trans
                              (<GhcMonad.Session>_R ->_R Sym (GHC.Types.N:IO[0] <(a, s)>_R))
                              (Sym (GhcMonad.N:Ghc[0] <(a, s)>_R)))) -}
-b401f27125bf8506e856768f1922ca93
-  $s$fApplicativeStateT_$s$fFunctorStateT ::
+cf02b2da371f08fc55c6219147124905
+  $s$fApplicativeReaderT_$s$fFunctorStateT ::
     GHC.Base.Functor
       (Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc)
   {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun: @ s.
                   @ (Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc)
-                  (RecordWildCardsChecker.$s$fApplicativeStateT_$s$fFunctorStateT_$cfmap
+                  (RecordWildCardsChecker.$s$fApplicativeReaderT_$s$fFunctorStateT_$cfmap
                      @ s)
                   (Control.Monad.Trans.State.Lazy.$fFunctorStateT_$c<$
                      @ GhcMonad.Ghc
                      @ s
                      GhcMonad.$fFunctorGhc) -}
-43668a60e0f40fbb6b2e8ddf0fb8e847
-  $s$fApplicativeStateT_$s$fFunctorStateT_$cfmap ::
+767c4c74c16fa847f13d445a04af9ec1
+  $s$fApplicativeReaderT_$s$fFunctorStateT_$cfmap ::
     (a -> b)
     -> Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc a
     -> Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc b
@@ -291,69 +434,360 @@ b401f27125bf8506e856768f1922ca93
                       (GhcMonad.$fFunctorGhc_$cfmap
                          @ (a, s)
                          @ (b, s)
-                         (\ (ds2 :: (a, s)) ->
-                          (f (case ds2 of wild { (,) a1 s' -> a1 }),
-                           case ds2 of wild { (,) a1 s' -> s' })))
+                         (\ (ds :: (a, s)) ->
+                          (f (case ds of wild { (,) a1 s' -> a1 }),
+                           case ds of wild { (,) a1 s' -> s' })))
                       (Control.Monad.Trans.State.Lazy.runStateT
                          @ s
                          @ GhcMonad.Ghc
                          @ a
                          m1
                          s1))) -}
-cbeb8ac13254cf0849284df39a6029fc
-  $s$fHasRangeAnn ::
-    Language.Haskell.Tools.AST.Ann.HasRange
-      (Language.Haskell.Tools.AST.Ann.Ann
-         elem dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+ca3521b01f94f13f406f8a5cc93f3cf6
+  $s$fFunctorReaderT ::
+    GHC.Base.Functor
+      (Control.Monad.Trans.Reader.ReaderT
+         r
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
   {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
-     Unfolding: DFun: @ (elem :: GHC.Types.*
-                                 -> GHC.Types.* -> GHC.Types.*)
-                      @ dom.
-                  @ (Language.Haskell.Tools.AST.Ann.Ann
-                       elem dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
-                  (RecordWildCardsChecker.$s$fHasRangeAnn_$s$fHasRangeAnn_$cgetRange
-                     @ elem
-                     @ dom)
-                  (Language.Haskell.Tools.AST.Ann.$fHasRangeAnn_$csetRange
-                     @ Language.Haskell.Tools.AST.Ann.SrcTemplateStage
-                     @ elem
-                     @ dom
-                     Language.Haskell.Tools.Transform.SourceTemplate.$fSourceInfoSrcTemplateStage) -}
-6858c4e7e04e6aff0ee384135b56f802
-  $s$fHasRangeAnn_$s$fHasRangeAnn_$cgetRange ::
-    Language.Haskell.Tools.AST.Ann.Ann
-      elem dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage
-    -> SrcLoc.SrcSpan
-  {- Arity: 1, HasNoCafRefs,
-     Strictness: <S(S(LS(SLLL))L),1*U(1*U(A,1*U(1*U,A,A,A)),A)>,
+     Unfolding: DFun: @ r.
+                  @ (Control.Monad.Trans.Reader.ReaderT
+                       r
+                       (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+                  (Control.Monad.Trans.Reader.$fFunctorReaderT_$cfmap
+                     @ (Control.Monad.Trans.State.Lazy.StateT
+                          ExtMap.ExtMap GhcMonad.Ghc)
+                     @ r
+                     RecordWildCardsChecker.$s$fFunctorReaderT1)
+                  (Control.Monad.Trans.Reader.$fFunctorReaderT_$c<$
+                     @ (Control.Monad.Trans.State.Lazy.StateT
+                          ExtMap.ExtMap GhcMonad.Ghc)
+                     @ r
+                     RecordWildCardsChecker.$s$fFunctorReaderT1) -}
+bc24ad2c10e9deffeea93b1fef454f89
+  $s$fFunctorReaderT1 ::
+    GHC.Base.Functor
+      (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                (RecordWildCardsChecker.$s$fApplicativeReaderT_$s$fFunctorStateT
+                   @ (Data.Map.Base.Map
+                        (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                        [SrcLoc.SrcSpan])) -}
+c7ea80ea078c5257666b1cebb4b6ef78
+  $s$fMonadReaderT ::
+    GHC.Base.Monad
+      (Control.Monad.Trans.Reader.ReaderT
+         r
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ r.
+                  @ (Control.Monad.Trans.Reader.ReaderT
+                       r
+                       (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+                  (Control.Monad.Trans.Reader.$fMonadReaderT_$cp1Monad
+                     @ (Control.Monad.Trans.State.Lazy.StateT
+                          ExtMap.ExtMap GhcMonad.Ghc)
+                     @ r
+                     RecordWildCardsChecker.$s$fMonadReaderT1)
+                  (Control.Monad.Trans.Reader.$fMonadReaderT_$c>>=
+                     @ (Control.Monad.Trans.State.Lazy.StateT
+                          ExtMap.ExtMap GhcMonad.Ghc)
+                     @ r
+                     RecordWildCardsChecker.$s$fMonadReaderT1)
+                  (RecordWildCardsChecker.$s$fMonadReaderT_$s$fMonadReaderT_$c>> @ r)
+                  (RecordWildCardsChecker.$s$fMonadReaderT_$s$fMonadReaderT_$creturn
+                     @ r)
+                  (Control.Monad.Trans.Reader.$fMonadReaderT_$cfail
+                     @ (Control.Monad.Trans.State.Lazy.StateT
+                          ExtMap.ExtMap GhcMonad.Ghc)
+                     @ r
+                     RecordWildCardsChecker.$s$fMonadReaderT1) -}
+34b4d83722efb5a0759b5a7e5855faa9
+  $s$fMonadReaderT1 ::
+    GHC.Base.Monad
+      (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                (RecordWildCardsChecker.$s$fMonadReaderT_$s$fMonadStateT
+                   @ (Data.Map.Base.Map
+                        (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                        [SrcLoc.SrcSpan])) -}
+bc33746d5cc9420dcafc69cbe7053bdf
+  $s$fMonadReaderT_$s$fMonadReaderT_$c>> ::
+    Control.Monad.Trans.Reader.ReaderT
+      r
+      (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc)
+      a
+    -> Control.Monad.Trans.Reader.ReaderT
+         r
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc)
+         b
+    -> Control.Monad.Trans.Reader.ReaderT
+         r
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc)
+         b
+  {- Arity: 3, HasNoCafRefs, Strictness: <L,1*C1(U)><L,1*C1(U)><L,U>,
+     Inline: INLINE (sat-args=2),
+     Unfolding: InlineRule (2, False, False)
+                (\ @ r
+                   @ a
+                   @ b
+                   (m1 :: Control.Monad.Trans.Reader.ReaderT
+                            r
+                            (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc)
+                            a)
+                   (k :: Control.Monad.Trans.Reader.ReaderT
+                           r
+                           (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc)
+                           b) ->
+                 GHC.Base.$
+                   @ 'GHC.Types.PtrRepLifted
+                   @ (r
+                      -> Control.Monad.Trans.State.Lazy.StateT
+                           ExtMap.ExtMap GhcMonad.Ghc b)
+                   @ (Control.Monad.Trans.Reader.ReaderT
+                        r
+                        (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc)
+                        b)
+                   (\ (tpl :: r
+                              -> Control.Monad.Trans.State.Lazy.StateT
+                                   ExtMap.ExtMap GhcMonad.Ghc b) ->
+                    tpl)
+                     `cast`
+                   (<r
+                     -> Control.Monad.Trans.State.Lazy.StateT
+                          ExtMap.ExtMap GhcMonad.Ghc b>_R
+                    ->_R Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                  <*>_N
+                                  <r>_R
+                                  <Control.Monad.Trans.State.Lazy.StateT
+                                     ExtMap.ExtMap GhcMonad.Ghc>_R
+                                  <b>_N))
+                   (\ (r1 :: r) ->
+                    let {
+                      m2 :: Control.Monad.Trans.State.Lazy.StateT
+                              (Data.Map.Base.Map
+                                 (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                 [SrcLoc.SrcSpan])
+                              GhcMonad.Ghc
+                              a
+                      = Control.Monad.Trans.Reader.runReaderT
+                          @ r
+                          @ *
+                          @ (Control.Monad.Trans.State.Lazy.StateT
+                               ExtMap.ExtMap GhcMonad.Ghc)
+                          @ a
+                          m1
+                          r1
+                    } in
+                    GHC.Base.$
+                      @ 'GHC.Types.PtrRepLifted
+                      @ (Data.Map.Base.Map
+                           (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                           [SrcLoc.SrcSpan]
+                         -> GhcMonad.Ghc
+                              (b,
+                               Data.Map.Base.Map
+                                 (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                 [SrcLoc.SrcSpan]))
+                      @ (Control.Monad.Trans.State.Lazy.StateT
+                           (Data.Map.Base.Map
+                              (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                              [SrcLoc.SrcSpan])
+                           GhcMonad.Ghc
+                           b)
+                      (\ (tpl :: Data.Map.Base.Map
+                                   (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                   [SrcLoc.SrcSpan]
+                                 -> GhcMonad.Ghc
+                                      (b,
+                                       Data.Map.Base.Map
+                                         (ExtMap.LogicalRelation
+                                            GHC.LanguageExtensions.Type.Extension)
+                                         [SrcLoc.SrcSpan])) ->
+                       tpl)
+                        `cast`
+                      (<Data.Map.Base.Map
+                          (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                          [SrcLoc.SrcSpan]
+                        -> GhcMonad.Ghc
+                             (b,
+                              Data.Map.Base.Map
+                                (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                [SrcLoc.SrcSpan])>_R
+                       ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                     <Data.Map.Base.Map
+                                        (ExtMap.LogicalRelation
+                                           GHC.LanguageExtensions.Type.Extension)
+                                        [SrcLoc.SrcSpan]>_N
+                                     <GhcMonad.Ghc>_R
+                                     <b>_N))
+                      (\ (s1 :: Data.Map.Base.Map
+                                  (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                  [SrcLoc.SrcSpan]) ->
+                       GhcMonad.$fMonadGhc_$c>>=
+                         @ (a,
+                            Data.Map.Base.Map
+                              (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                              [SrcLoc.SrcSpan])
+                         @ (b,
+                            Data.Map.Base.Map
+                              (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                              [SrcLoc.SrcSpan])
+                         (Control.Monad.Trans.State.Lazy.runStateT
+                            @ (Data.Map.Base.Map
+                                 (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                 [SrcLoc.SrcSpan])
+                            @ GhcMonad.Ghc
+                            @ a
+                            m2
+                            s1)
+                         (\ (ds :: (a,
+                                    Data.Map.Base.Map
+                                      (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                      [SrcLoc.SrcSpan])) ->
+                          Control.Monad.Trans.State.Lazy.runStateT
+                            @ (Data.Map.Base.Map
+                                 (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                 [SrcLoc.SrcSpan])
+                            @ GhcMonad.Ghc
+                            @ b
+                            (Control.Monad.Trans.Reader.runReaderT
+                               @ r
+                               @ *
+                               @ (Control.Monad.Trans.State.Lazy.StateT
+                                    ExtMap.ExtMap GhcMonad.Ghc)
+                               @ b
+                               k
+                               r1)
+                            (case ds of wild { (,) a1 s' -> s' }))))) -}
+dc3787c61c96d0ec76af02aa02a3d1c3
+  $s$fMonadReaderT_$s$fMonadReaderT_$creturn ::
+    a
+    -> Control.Monad.Trans.Reader.ReaderT
+         r
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc)
+         a
+  {- Arity: 5, HasNoCafRefs, Strictness: <L,U><L,A><L,U><L,A><S,U>,
      Unfolding: InlineRule (1, True, False)
-                (\ @ (elem :: GHC.Types.* -> GHC.Types.* -> GHC.Types.*)
-                   @ dom
-                   (eta :: Language.Haskell.Tools.AST.Ann.Ann
-                             elem dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage) ->
-                 case eta of wild { Language.Haskell.Tools.AST.Ann.Ann a ds2 ->
-                 case a of wild1 { Language.Haskell.Tools.AST.Ann.NodeInfo ds3 ds4 ->
-                 Language.Haskell.Tools.Transform.SourceTemplate._sourceTemplateNodeRange
-                   ds4 } }) -}
-cce35aa4c3765cf5f2fb74af218b7414
-  $s$fMonadStateT ::
+                (\ @ r @ a (eta :: a) ->
+                 let {
+                   m1 :: Control.Monad.Trans.State.Lazy.StateT
+                           ExtMap.ExtMap GhcMonad.Ghc a
+                   = GHC.Base.$
+                       @ 'GHC.Types.PtrRepLifted
+                       @ (Data.Map.Base.Map
+                            (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                            [SrcLoc.SrcSpan]
+                          -> GhcMonad.Ghc
+                               (a,
+                                Data.Map.Base.Map
+                                  (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                  [SrcLoc.SrcSpan]))
+                       @ (Control.Monad.Trans.State.Lazy.StateT
+                            (Data.Map.Base.Map
+                               (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                               [SrcLoc.SrcSpan])
+                            GhcMonad.Ghc
+                            a)
+                       (\ (tpl :: Data.Map.Base.Map
+                                    (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                    [SrcLoc.SrcSpan]
+                                  -> GhcMonad.Ghc
+                                       (a,
+                                        Data.Map.Base.Map
+                                          (ExtMap.LogicalRelation
+                                             GHC.LanguageExtensions.Type.Extension)
+                                          [SrcLoc.SrcSpan])) ->
+                        tpl)
+                         `cast`
+                       (<Data.Map.Base.Map
+                           (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                           [SrcLoc.SrcSpan]
+                         -> GhcMonad.Ghc
+                              (a,
+                               Data.Map.Base.Map
+                                 (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                 [SrcLoc.SrcSpan])>_R
+                        ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                      <Data.Map.Base.Map
+                                         (ExtMap.LogicalRelation
+                                            GHC.LanguageExtensions.Type.Extension)
+                                         [SrcLoc.SrcSpan]>_N
+                                      <GhcMonad.Ghc>_R
+                                      <a>_N))
+                       (\ (s1 :: Data.Map.Base.Map
+                                   (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                   [SrcLoc.SrcSpan])
+                          (eta1 :: GhcMonad.Session)
+                          (eta2 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                        ((GhcMonad.$fApplicativeGhc_$cpure
+                            @ (a,
+                               Data.Map.Base.Map
+                                 (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                 [SrcLoc.SrcSpan])
+                            (eta, s1))
+                           `cast`
+                         (GhcMonad.N:Ghc[0]
+                              <(a,
+                                Data.Map.Base.Map
+                                  (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                  [SrcLoc.SrcSpan])>_R)
+                           eta1)
+                          `cast`
+                        (GHC.Types.N:IO[0]
+                             <(a,
+                               Data.Map.Base.Map
+                                 (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                 [SrcLoc.SrcSpan])>_R)
+                          eta2)
+                         `cast`
+                       (<Data.Map.Base.Map
+                           (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                           [SrcLoc.SrcSpan]>_R
+                        ->_R Trans
+                                 (<GhcMonad.Session>_R
+                                  ->_R Sym (GHC.Types.N:IO[0]
+                                                <(a,
+                                                  Data.Map.Base.Map
+                                                    (ExtMap.LogicalRelation
+                                                       GHC.LanguageExtensions.Type.Extension)
+                                                    [SrcLoc.SrcSpan])>_R))
+                                 (Sym (GhcMonad.N:Ghc[0]
+                                           <(a,
+                                             Data.Map.Base.Map
+                                               (ExtMap.LogicalRelation
+                                                  GHC.LanguageExtensions.Type.Extension)
+                                               [SrcLoc.SrcSpan])>_R)))
+                 } in
+                 (\ (eta1 :: r) -> m1)
+                   `cast`
+                 (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                           <*>_N
+                           <r>_R
+                           <Control.Monad.Trans.State.Lazy.StateT
+                              ExtMap.ExtMap GhcMonad.Ghc>_R
+                           <a>_N))) -}
+aae3a5104b31bae69a47c8a569124007
+  $s$fMonadReaderT_$s$fMonadStateT ::
     GHC.Base.Monad
       (Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc)
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun: @ s.
                   @ (Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc)
-                  (RecordWildCardsChecker.$s$fMonadStateT_$s$fMonadStateT_$cp1Monad
+                  (RecordWildCardsChecker.$s$fMonadReaderT_$s$fMonadStateT_$cp1Monad
                      @ s)
-                  (RecordWildCardsChecker.$s$fMonadStateT_$s$fMonadStateT_$c>>= @ s)
-                  (RecordWildCardsChecker.$s$fMonadStateT_$s$fMonadStateT_$c>> @ s)
+                  (RecordWildCardsChecker.$s$fMonadReaderT_$s$fMonadStateT_$c>>= @ s)
+                  (RecordWildCardsChecker.$s$fMonadReaderT_$s$fMonadStateT_$c>> @ s)
                   (Control.Monad.Trans.State.Lazy.$fMonadStateT_$creturn
                      @ GhcMonad.Ghc
                      @ s
                      GhcMonad.$fMonadGhc)
-                  (RecordWildCardsChecker.$s$fMonadStateT_$s$fMonadStateT_$cfail
+                  (RecordWildCardsChecker.$s$fMonadReaderT_$s$fMonadStateT_$cfail
                      @ s) -}
-6eae6a4fbde3177501c476cdede976cc
-  $s$fMonadStateT_$s$fMonadStateT_$c>> ::
+3a33864097c551679a6e527bca8f0bdb
+  $s$fMonadReaderT_$s$fMonadStateT_$c>> ::
     Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc a
     -> Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc b
     -> Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc b
@@ -385,15 +819,15 @@ cce35aa4c3765cf5f2fb74af218b7414
                          @ a
                          m1
                          s1)
-                      (\ (ds2 :: (a, s)) ->
+                      (\ (ds :: (a, s)) ->
                        Control.Monad.Trans.State.Lazy.runStateT
                          @ s
                          @ GhcMonad.Ghc
                          @ b
                          k
-                         (case ds2 of wild { (,) a1 s' -> s' })))) -}
-046ed5040a040680184de85b0b5a54e2
-  $s$fMonadStateT_$s$fMonadStateT_$c>>= ::
+                         (case ds of wild { (,) a1 s' -> s' })))) -}
+564c0f295b8b0f6f9f3c8b3bfc83d2bb
+  $s$fMonadReaderT_$s$fMonadStateT_$c>>= ::
     Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc a
     -> (a -> Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc b)
     -> Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc b
@@ -426,15 +860,15 @@ cce35aa4c3765cf5f2fb74af218b7414
                          @ a
                          m1
                          s1)
-                      (\ (ds2 :: (a, s)) ->
+                      (\ (ds :: (a, s)) ->
                        Control.Monad.Trans.State.Lazy.runStateT
                          @ s
                          @ GhcMonad.Ghc
                          @ b
-                         (k (case ds2 of wild { (,) a1 s' -> a1 }))
-                         (case ds2 of wild { (,) a1 s' -> s' })))) -}
-08488eaa9bd4b8d0d5697f97fc7225cb
-  $s$fMonadStateT_$s$fMonadStateT_$cfail ::
+                         (k (case ds of wild { (,) a1 s' -> a1 }))
+                         (case ds of wild { (,) a1 s' -> s' })))) -}
+5e279cf24d3add082e0e11bd0795bd6d
+  $s$fMonadReaderT_$s$fMonadStateT_$cfail ::
     GHC.Base.String
     -> Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc a
   {- Arity: 2, Strictness: <B,U><B,A>x, Inline: INLINE (sat-args=1),
@@ -449,28 +883,26 @@ cce35aa4c3765cf5f2fb74af218b7414
                    (<s -> GhcMonad.Ghc (a, s)>_R
                     ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
                                   <s>_N <GhcMonad.Ghc>_R <a>_N))
-                   (\ (ds2 :: s) -> GhcMonad.$fMonadGhc_$s$dmfail @ (a, s) str)) -}
-f4f456adac51027d1cc84c07a2e327a4
-  $s$fMonadStateT_$s$fMonadStateT_$cp1Monad ::
+                   (\ (ds :: s) -> GhcMonad.$fMonadGhc_$s$dmfail @ (a, s) str)) -}
+c7d798b6c82bfe6a33e2eaa196a81c7f
+  $s$fMonadReaderT_$s$fMonadStateT_$cp1Monad ::
     GHC.Base.Applicative
       (Control.Monad.Trans.State.Lazy.StateT s GhcMonad.Ghc)
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
-                RecordWildCardsChecker.$s$fApplicativeStateT -}
-7ea31df251bd8635d9d2b2388da3799b
+                RecordWildCardsChecker.$s$fApplicativeReaderT_$s$fApplicativeStateT -}
+0f1ce77682ae2d4614605a4e012021df
   $s$fRefMonadswr ::
     Control.Reference.Representation.RefMonads
-      (Control.Monad.Trans.State.Lazy.StateT
-         (Data.Map.Base.Map
-            GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
-         GhcMonad.Ghc)
+      (Control.Monad.Trans.Reader.ReaderT
+         [GHC.LanguageExtensions.Type.Extension]
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
       Data.Proxy.Proxy
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
-                  @ (Control.Monad.Trans.State.Lazy.StateT
-                       (Data.Map.Base.Map
-                          GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
-                       GhcMonad.Ghc)
+                  @ (Control.Monad.Trans.Reader.ReaderT
+                       [GHC.LanguageExtensions.Type.Extension]
+                       (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
                   @ Data.Proxy.Proxy
                   RecordWildCardsChecker.$s$fRefMonadswr3
                   RecordWildCardsChecker.$s$fRefMonadswr2
@@ -478,75 +910,80 @@ f4f456adac51027d1cc84c07a2e327a4
                   RecordWildCardsChecker.$s$fRefMonadswr_$s$fRefMonadswr_$cp4RefMonads
                   RecordWildCardsChecker.$s$fRefMonadswr_$s$fRefMonadswr_$cp5RefMonads
                   RecordWildCardsChecker.$s$fRefMonadswr_$s$fRefMonadswr_$cp6RefMonads -}
-5a66a444da336dd2be69c807491992cc
+7ce929550ea0bec1b407eb82b59cb804
   $s$fRefMonadswr1 ::
     GHC.Base.Monad
-      (Control.Monad.Trans.State.Lazy.StateT
-         (Data.Map.Base.Map
-            GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
-         GhcMonad.Ghc)
+      (Control.Monad.Trans.Reader.ReaderT
+         [GHC.LanguageExtensions.Type.Extension]
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
-                (RecordWildCardsChecker.$s$fMonadStateT
-                   @ (Data.Map.Base.Map
-                        GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])) -}
-8836d57a7338f18bc3ccf50c4c79ebfe
+                (RecordWildCardsChecker.$s$fMonadReaderT
+                   @ [GHC.LanguageExtensions.Type.Extension]) -}
+a3c1906b3368a3555649be84db96ecbc
   $s$fRefMonadswr2 ::
     GHC.Base.Applicative
-      (Control.Monad.Trans.State.Lazy.StateT
-         (Data.Map.Base.Map
-            GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
-         GhcMonad.Ghc)
+      (Control.Monad.Trans.Reader.ReaderT
+         [GHC.LanguageExtensions.Type.Extension]
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
-                (RecordWildCardsChecker.$s$fApplicativeStateT
-                   @ (Data.Map.Base.Map
-                        GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])) -}
-0a36f0c9a4aed5c00f9489f0e8cc166b
+                (RecordWildCardsChecker.$s$fApplicativeReaderT
+                   @ [GHC.LanguageExtensions.Type.Extension]) -}
+2abeeb7fb0e3ab0aa3161ea67255ecd8
   $s$fRefMonadswr3 ::
     GHC.Base.Functor
-      (Control.Monad.Trans.State.Lazy.StateT
-         (Data.Map.Base.Map
-            GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
-         GhcMonad.Ghc)
+      (Control.Monad.Trans.Reader.ReaderT
+         [GHC.LanguageExtensions.Type.Extension]
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
-                (RecordWildCardsChecker.$s$fApplicativeStateT_$s$fFunctorStateT
-                   @ (Data.Map.Base.Map
-                        GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])) -}
-2fd7bcf94dc38861b925e9e9c2ee2ac3
+                (RecordWildCardsChecker.$s$fFunctorReaderT
+                   @ [GHC.LanguageExtensions.Type.Extension]) -}
+70a93690563021ff59efc373913abff6
   $s$fRefMonadswr_$s$fRefMonadswr_$cp4RefMonads ::
     GHC.Base.Functor Data.Proxy.Proxy
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True) Data.Proxy.$fFunctorProxy -}
-771357d098adb713286513809d102999
+20383b1cc5559f418252291cfad212d3
   $s$fRefMonadswr_$s$fRefMonadswr_$cp5RefMonads ::
     GHC.Base.Applicative Data.Proxy.Proxy
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 Data.Proxy.$fApplicativeProxy -}
-dbacb02571e67e8ad33cd1b68b382f48
+235c471a91f019d5ad1485ca0108f13f
   $s$fRefMonadswr_$s$fRefMonadswr_$cp6RefMonads ::
     GHC.Base.Monad Data.Proxy.Proxy
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True) Data.Proxy.$fMonadProxy -}
-f4f94ac1567cbd0f3034e63c38623ccd
+6110483e9143ff65f34254e2ed6e1d91
+  $sannList1 :: [a] -> Data.Proxy.Proxy a
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,A>,
+     Unfolding: InlineRule (1, True, True)
+                (\ @ a (eta :: [a]) -> Data.Proxy.Proxy @ * @ a) -}
+5293703f16c2b0d356c7fbc5dc5460d9
+  $sexprRecFields1 :: GHC.Base.Maybe a -> Data.Proxy.Proxy a
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,A>,
+     Unfolding: InlineRule (1, True, True)
+                (\ @ a (eta :: GHC.Base.Maybe a) -> Data.Proxy.Proxy @ * @ a) -}
+069f616fed569fedc99284c4b71302f6
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.Module
                    RecordWildCardsChecker.$trModule2
                    RecordWildCardsChecker.$trModule1) -}
-0b13801de9dc8a6c7ac8d8e37311d4fd
+7fee1ca7610bd33a067a1ceb23053877
   $trModule1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "RecordWildCardsChecker"#) -}
-c6b6b323ea0841cbb514c9a8db610a07
+ce5df4e43ba2147de3e75b2864b5d272
   $trModule2 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
-                   "ht-extension-organizer-0.1.0.0-1NgBbe619AH4JExLErEUCI"#) -}
-7f0ac21cbba55c2d91cfe0d782d9306f
-  $wchkRecordWildCardsExpr ::
+                   "ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL"#) -}
+53c90a0d656cc1df14d5597d5abb9077
+  $wchkRecordWildCardsFieldUpdate ::
+    ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.Ann.NodeInfo
       (Language.Haskell.Tools.AST.Ann.SemanticInfo
          dom Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate)
@@ -554,14 +991,15 @@ c6b6b323ea0841cbb514c9a8db610a07
          Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
     -> Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
          dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage
-    -> Data.Map.Base.Map
-         GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan]
+    -> ExtMap.ExtMap
     -> GhcMonad.Ghc
          (Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom,
-          Data.Map.Base.Map
-            GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
-  {- Arity: 3, Strictness: <L,U><S,U><L,U>, Inline: [0],
+          ExtMap.ExtMap)
+  {- Arity: 4,
+     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),1*U(1*U(A,A,1*U(1*U),A,A,A,A,A,A,A,A,A,A),A)><L,U><S,U><L,U>,
+     Inline: [0],
      Unfolding: (\ @ dom
+                   (w :: ExtMonad.ExtDomain dom)
                    (ww :: Language.Haskell.Tools.AST.Ann.NodeInfo
                             (Language.Haskell.Tools.AST.Ann.SemanticInfo
                                dom Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate)
@@ -569,8 +1007,27 @@ c6b6b323ea0841cbb514c9a8db610a07
                                Language.Haskell.Tools.AST.Ann.SrcTemplateStage))
                    (ww1 :: Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
                              dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
-                   (w :: Data.Map.Base.Map
-                           GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan]) ->
+                   (w1 :: ExtMap.ExtMap) ->
+                 case GHC.Types.HEq_sc
+                        @ *
+                        @ *
+                        @ (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                             dom Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls)
+                        @ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo
+                        (Language.Haskell.Tools.AST.Ann.$p3Domain
+                           @ dom
+                           (GHC.Classes.$p1(%,%)
+                              @ (Language.Haskell.Tools.AST.Ann.Domain dom)
+                              @ (Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo'
+                                   (Language.Haskell.Tools.AST.Ann.SemanticInfo
+                                      dom
+                                      Language.Haskell.Tools.AST.Representation.Names.UQualifiedName))
+                              w))
+                          `cast`
+                        (Data.Type.Equality.N:~[0]
+                             <*>_N <Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                      dom
+                                      Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls>_N <Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo>_N) of cobox0 { DEFAULT ->
                  let {
                    wild :: Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom
                    = Language.Haskell.Tools.AST.Ann.Ann
@@ -583,72 +1040,81 @@ c6b6b323ea0841cbb514c9a8db610a07
                  case ww1 of wild1 {
                    DEFAULT
                    -> let {
-                        lvl8 :: (Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom,
-                                 Data.Map.Base.Map
-                                   GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
-                        = (wild, w)
+                        lvl17 :: (Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom,
+                                  Data.Map.Base.Map
+                                    (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                    [SrcLoc.SrcSpan])
+                        = (wild, w1)
                       } in
                       (\ (eta :: GhcMonad.Session)
                          (eta1 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                       (# eta1, lvl8 #))
+                       (# eta1, lvl17 #))
                         `cast`
                       (Trans
                            (<GhcMonad.Session>_R
                             ->_R Sym (GHC.Types.N:IO[0]
                                           <(Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom,
                                             Data.Map.Base.Map
-                                              GHC.LanguageExtensions.Type.Extension
+                                              (ExtMap.LogicalRelation
+                                                 GHC.LanguageExtensions.Type.Extension)
                                               [SrcLoc.SrcSpan])>_R))
                            (Sym (GhcMonad.N:Ghc[0]
                                      <(Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom,
                                        Data.Map.Base.Map
-                                         GHC.LanguageExtensions.Type.Extension
+                                         (ExtMap.LogicalRelation
+                                            GHC.LanguageExtensions.Type.Extension)
                                          [SrcLoc.SrcSpan])>_R)))
                    Language.Haskell.Tools.AST.Representation.Exprs.UFieldWildcard wc
                    -> let {
                         a1 :: Data.Map.Base.Map
-                                GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan]
+                                (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                [SrcLoc.SrcSpan]
                         = Data.Map.Strict.insertWithKey
-                            @ GHC.LanguageExtensions.Type.Extension
+                            @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                             @ [SrcLoc.SrcSpan]
-                            ExtMonad.$fOrdExtension
-                            (ExtMonad.addOccurence1 @ GHC.LanguageExtensions.Type.Extension)
-                            GHC.LanguageExtensions.Type.RecordWildCards
+                            ExtMonad.$s$fOrdLogicalRelation
+                            (ExtMonad.addOccurence1
+                               @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension))
+                            RecordWildCardsChecker.chkRecordWildCardsExpr2
                             (GHC.Types.:
                                @ SrcLoc.SrcSpan
-                               (case wc of wild2 { Language.Haskell.Tools.AST.Ann.Ann a ds2 ->
-                                case a of wild3 { Language.Haskell.Tools.AST.Ann.NodeInfo ds3 ds4 ->
-                                case ds4
+                               (case wc of wild2 { Language.Haskell.Tools.AST.Ann.Ann a ds ->
+                                case a of wild3 { Language.Haskell.Tools.AST.Ann.NodeInfo ds1 ds2 ->
+                                case ds2
                                        `cast`
-                                     (Language.Haskell.Tools.Transform.SourceTemplate.D:R:SpanInfoSrcTemplateStage0[0]) of wild4 { Language.Haskell.Tools.Transform.SourceTemplate.SourceTemplateNode ds5 ds6 ds7 ds8 ->
-                                ds5 } } })
+                                     (Language.Haskell.Tools.Transform.SourceTemplate.D:R:SpanInfoSrcTemplateStage0[0]) of wild4 { Language.Haskell.Tools.Transform.SourceTemplate.SourceTemplateNode ds4 ds5 ds3 ds6 ->
+                                ds4 } } })
                                (GHC.Types.[] @ SrcLoc.SrcSpan))
-                            w
+                            w1
                       } in
                       let {
-                        lvl8 :: (Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom,
-                                 Data.Map.Base.Map
-                                   GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
+                        lvl17 :: (Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom,
+                                  Data.Map.Base.Map
+                                    (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                    [SrcLoc.SrcSpan])
                         = (wild, a1)
                       } in
                       (\ (s :: GhcMonad.Session)
                          (s1 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                       (# s1, lvl8 #))
+                       (# s1, lvl17 #))
                         `cast`
                       (Trans
                            (<GhcMonad.Session>_R
                             ->_R Sym (GHC.Types.N:IO[0]
                                           <(Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom,
                                             Data.Map.Base.Map
-                                              GHC.LanguageExtensions.Type.Extension
+                                              (ExtMap.LogicalRelation
+                                                 GHC.LanguageExtensions.Type.Extension)
                                               [SrcLoc.SrcSpan])>_R))
                            (Sym (GhcMonad.N:Ghc[0]
                                      <(Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom,
                                        Data.Map.Base.Map
-                                         GHC.LanguageExtensions.Type.Extension
-                                         [SrcLoc.SrcSpan])>_R))) }) -}
-26fe1a09976f4e73970f8e2aa210e3ca
-  $wchkRecordWildCardsPat ::
+                                         (ExtMap.LogicalRelation
+                                            GHC.LanguageExtensions.Type.Extension)
+                                         [SrcLoc.SrcSpan])>_R))) } }) -}
+64f48db67cd0232b3dac1a5b7ba36901
+  $wchkRecordWildCardsPatField ::
+    ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.Ann.NodeInfo
       (Language.Haskell.Tools.AST.Ann.SemanticInfo
          dom
@@ -657,14 +1123,15 @@ c6b6b323ea0841cbb514c9a8db610a07
          Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
     -> Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
          dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage
-    -> Data.Map.Base.Map
-         GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan]
+    -> ExtMap.ExtMap
     -> GhcMonad.Ghc
          (Language.Haskell.Tools.AST.ElementTypes.PatternField dom,
-          Data.Map.Base.Map
-            GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
-  {- Arity: 3, Strictness: <L,U><S,U><L,U>, Inline: [0],
+          ExtMap.ExtMap)
+  {- Arity: 4,
+     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),1*U(1*U(A,A,1*U(1*U),A,A,A,A,A,A,A,A,A,A),A)><L,U><S,U><L,U>,
+     Inline: [0],
      Unfolding: (\ @ dom
+                   (w :: ExtMonad.ExtDomain dom)
                    (ww :: Language.Haskell.Tools.AST.Ann.NodeInfo
                             (Language.Haskell.Tools.AST.Ann.SemanticInfo
                                dom
@@ -673,8 +1140,27 @@ c6b6b323ea0841cbb514c9a8db610a07
                                Language.Haskell.Tools.AST.Ann.SrcTemplateStage))
                    (ww1 :: Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
                              dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
-                   (w :: Data.Map.Base.Map
-                           GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan]) ->
+                   (w1 :: ExtMap.ExtMap) ->
+                 case GHC.Types.HEq_sc
+                        @ *
+                        @ *
+                        @ (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                             dom Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls)
+                        @ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo
+                        (Language.Haskell.Tools.AST.Ann.$p3Domain
+                           @ dom
+                           (GHC.Classes.$p1(%,%)
+                              @ (Language.Haskell.Tools.AST.Ann.Domain dom)
+                              @ (Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo'
+                                   (Language.Haskell.Tools.AST.Ann.SemanticInfo
+                                      dom
+                                      Language.Haskell.Tools.AST.Representation.Names.UQualifiedName))
+                              w))
+                          `cast`
+                        (Data.Type.Equality.N:~[0]
+                             <*>_N <Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                      dom
+                                      Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls>_N <Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo>_N) of cobox0 { DEFAULT ->
                  let {
                    wild :: Language.Haskell.Tools.AST.ElementTypes.PatternField dom
                    = Language.Haskell.Tools.AST.Ann.Ann
@@ -687,14 +1173,15 @@ c6b6b323ea0841cbb514c9a8db610a07
                  case ww1 of wild1 {
                    DEFAULT
                    -> let {
-                        lvl8 :: (Language.Haskell.Tools.AST.ElementTypes.PatternField dom,
-                                 Data.Map.Base.Map
-                                   GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
-                        = (wild, w)
+                        lvl17 :: (Language.Haskell.Tools.AST.ElementTypes.PatternField dom,
+                                  Data.Map.Base.Map
+                                    (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                    [SrcLoc.SrcSpan])
+                        = (wild, w1)
                       } in
                       (\ (eta :: GhcMonad.Session)
                          (eta1 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                       (# eta1, lvl8 #))
+                       (# eta1, lvl17 #))
                         `cast`
                       (Trans
                            (<GhcMonad.Session>_R
@@ -702,43 +1189,48 @@ c6b6b323ea0841cbb514c9a8db610a07
                                           <(Language.Haskell.Tools.AST.ElementTypes.PatternField
                                               dom,
                                             Data.Map.Base.Map
-                                              GHC.LanguageExtensions.Type.Extension
+                                              (ExtMap.LogicalRelation
+                                                 GHC.LanguageExtensions.Type.Extension)
                                               [SrcLoc.SrcSpan])>_R))
                            (Sym (GhcMonad.N:Ghc[0]
                                      <(Language.Haskell.Tools.AST.ElementTypes.PatternField dom,
                                        Data.Map.Base.Map
-                                         GHC.LanguageExtensions.Type.Extension
+                                         (ExtMap.LogicalRelation
+                                            GHC.LanguageExtensions.Type.Extension)
                                          [SrcLoc.SrcSpan])>_R)))
                    Language.Haskell.Tools.AST.Representation.Patterns.UFieldWildcardPattern wildc
                    -> let {
                         a1 :: Data.Map.Base.Map
-                                GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan]
+                                (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                [SrcLoc.SrcSpan]
                         = Data.Map.Strict.insertWithKey
-                            @ GHC.LanguageExtensions.Type.Extension
+                            @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                             @ [SrcLoc.SrcSpan]
-                            ExtMonad.$fOrdExtension
-                            (ExtMonad.addOccurence1 @ GHC.LanguageExtensions.Type.Extension)
-                            GHC.LanguageExtensions.Type.RecordWildCards
+                            ExtMonad.$s$fOrdLogicalRelation
+                            (ExtMonad.addOccurence1
+                               @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension))
+                            RecordWildCardsChecker.chkRecordWildCardsExpr2
                             (GHC.Types.:
                                @ SrcLoc.SrcSpan
-                               (case wildc of wild2 { Language.Haskell.Tools.AST.Ann.Ann a ds2 ->
-                                case a of wild3 { Language.Haskell.Tools.AST.Ann.NodeInfo ds3 ds4 ->
-                                case ds4
+                               (case wildc of wild2 { Language.Haskell.Tools.AST.Ann.Ann a ds ->
+                                case a of wild3 { Language.Haskell.Tools.AST.Ann.NodeInfo ds1 ds2 ->
+                                case ds2
                                        `cast`
-                                     (Language.Haskell.Tools.Transform.SourceTemplate.D:R:SpanInfoSrcTemplateStage0[0]) of wild4 { Language.Haskell.Tools.Transform.SourceTemplate.SourceTemplateNode ds5 ds6 ds7 ds8 ->
-                                ds5 } } })
+                                     (Language.Haskell.Tools.Transform.SourceTemplate.D:R:SpanInfoSrcTemplateStage0[0]) of wild4 { Language.Haskell.Tools.Transform.SourceTemplate.SourceTemplateNode ds4 ds5 ds3 ds6 ->
+                                ds4 } } })
                                (GHC.Types.[] @ SrcLoc.SrcSpan))
-                            w
+                            w1
                       } in
                       let {
-                        lvl8 :: (Language.Haskell.Tools.AST.ElementTypes.PatternField dom,
-                                 Data.Map.Base.Map
-                                   GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
+                        lvl17 :: (Language.Haskell.Tools.AST.ElementTypes.PatternField dom,
+                                  Data.Map.Base.Map
+                                    (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                    [SrcLoc.SrcSpan])
                         = (wild, a1)
                       } in
                       (\ (s :: GhcMonad.Session)
                          (s1 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                       (# s1, lvl8 #))
+                       (# s1, lvl17 #))
                         `cast`
                       (Trans
                            (<GhcMonad.Session>_R
@@ -746,134 +1238,683 @@ c6b6b323ea0841cbb514c9a8db610a07
                                           <(Language.Haskell.Tools.AST.ElementTypes.PatternField
                                               dom,
                                             Data.Map.Base.Map
-                                              GHC.LanguageExtensions.Type.Extension
+                                              (ExtMap.LogicalRelation
+                                                 GHC.LanguageExtensions.Type.Extension)
                                               [SrcLoc.SrcSpan])>_R))
                            (Sym (GhcMonad.N:Ghc[0]
                                      <(Language.Haskell.Tools.AST.ElementTypes.PatternField dom,
                                        Data.Map.Base.Map
-                                         GHC.LanguageExtensions.Type.Extension
-                                         [SrcLoc.SrcSpan])>_R))) }) -}
-8d1716c00d854869a620193269d56467
-  chkRecordWildCards ::
-    (Language.Haskell.Tools.AST.Ann.SemanticInfo'
-       dom Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls
-     GHC.Prim.~# Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo,
-     GHC.Show.Show
-       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
-          dom Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls),
-     GHC.Show.Show
-       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
-          dom Language.Haskell.Tools.AST.Ann.SameInfoModuleCls),
-     GHC.Show.Show
-       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
-          dom Language.Haskell.Tools.AST.Ann.SameInfoImportCls),
-     GHC.Show.Show
-       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
-          dom Language.Haskell.Tools.AST.Ann.SameInfoExprCls),
-     GHC.Show.Show
-       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
-          dom Language.Haskell.Tools.AST.Ann.SameInfoNameCls),
-     Data.Data.Data
-       (node dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage),
-     Data.Data.Data
-       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
-          dom Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls),
-     Data.Data.Data
-       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
-          dom Language.Haskell.Tools.AST.Ann.SameInfoModuleCls),
-     Data.Data.Data
-       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
-          dom Language.Haskell.Tools.AST.Ann.SameInfoImportCls),
-     Data.Data.Data
-       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
-          dom Language.Haskell.Tools.AST.Ann.SameInfoExprCls),
-     Data.Data.Data
-       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
-          dom Language.Haskell.Tools.AST.Ann.SameInfoNameCls),
-     Data.Data.Data dom) =>
-    SrcLoc.RealSrcSpan
-    -> node dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage
-    -> Control.Monad.Trans.State.Lazy.StateT
-         (Data.Map.Base.Map
-            GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
-         GhcMonad.Ghc
-         (node dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
-  {- Arity: 13,
-     Strictness: <L,U><L,1*U><L,1*U><L,1*U><L,1*U><L,1*U><L,U(U,U,U,U,U,U,U,U,U,U,U,U,U,U,U)><L,1*U><L,1*U><L,1*U><L,1*U><L,1*U><L,U(U,U,U,U,U,U,U,U,U,U,U,U,U,U,U)> -}
-e299ff915f698971d2dd93065cf2cac5
+                                         (ExtMap.LogicalRelation
+                                            GHC.LanguageExtensions.Type.Extension)
+                                         [SrcLoc.SrcSpan])>_R))) } }) -}
+bdac816811bb5cc65bf68bb502b383b7
   chkRecordWildCardsExpr ::
+    ExtMonad.CheckNode Language.Haskell.Tools.AST.ElementTypes.Expr
+  {- Arity: 1,
+     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),A)>,
+     Unfolding: (\ @ dom ($d(%,%) :: ExtMonad.ExtDomain dom) ->
+                 case GHC.Types.HEq_sc
+                        @ *
+                        @ *
+                        @ (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                             dom Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls)
+                        @ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo
+                        (Language.Haskell.Tools.AST.Ann.$p3Domain
+                           @ dom
+                           (GHC.Classes.$p1(%,%)
+                              @ (Language.Haskell.Tools.AST.Ann.Domain dom)
+                              @ (Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo'
+                                   (Language.Haskell.Tools.AST.Ann.SemanticInfo
+                                      dom
+                                      Language.Haskell.Tools.AST.Representation.Names.UQualifiedName))
+                              $d(%,%)))
+                          `cast`
+                        (Data.Type.Equality.N:~[0]
+                             <*>_N <Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                      dom
+                                      Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls>_N <Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo>_N) of cobox0 { DEFAULT ->
+                 case RecordWildCardsChecker.chkRecordWildCardsExpr3
+                        @ dom of wild { Control.Reference.Representation.Reference ds1 ds2 ds3 ds4 ds5 ds6 ->
+                 ds3
+                   (RecordWildCardsChecker.chkRecordWildCardsExpr1 @ dom $d(%,%))
+                     `cast`
+                   (<Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom>_R
+                    ->_R Trans
+                             (<[GHC.LanguageExtensions.Type.Extension]>_R
+                              ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                            <ExtMap.ExtMap>_N
+                                            <GhcMonad.Ghc>_R
+                                            <Language.Haskell.Tools.AST.ElementTypes.FieldUpdate
+                                               dom>_N))
+                             (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                       <*>_N
+                                       <[GHC.LanguageExtensions.Type.Extension]>_R
+                                       <Control.Monad.Trans.State.Lazy.StateT
+                                          ExtMap.ExtMap GhcMonad.Ghc>_R
+                                       <Language.Haskell.Tools.AST.ElementTypes.FieldUpdate
+                                          dom>_N))) } }) -}
+b30b38377abfd8de88ba62048f2d4313
+  chkRecordWildCardsExpr1 ::
+    ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom
-    -> ExtMonad.ExtMonad
-         dom (Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom)
-  {- Arity: 2, Strictness: <S(LS),1*U(U,U)><L,U>,
+    -> [GHC.LanguageExtensions.Type.Extension]
+    -> ExtMap.ExtMap
+    -> GhcMonad.Ghc
+         (Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom,
+          ExtMap.ExtMap)
+  {- Arity: 4,
+     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),1*U(1*U(A,A,1*U(1*U),A,A,A,A,A,A,A,A,A,A),A)><S(LS),1*U(U,U)><L,A><L,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (4, True, False)
+                (\ @ dom
+                   (w :: ExtMonad.ExtDomain dom)
+                   (w1 :: Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom)
+                   (w2 :: [GHC.LanguageExtensions.Type.Extension])
+                   (w3 :: ExtMap.ExtMap) ->
+                 case w1 of ww { Language.Haskell.Tools.AST.Ann.Ann ww1 ww2 ->
+                 RecordWildCardsChecker.$wchkRecordWildCardsFieldUpdate
+                   @ dom
+                   w
+                   ww1
+                   ww2
+                   w3 }) -}
+60f763bcc0cc3cafc442170d0552d734
+  chkRecordWildCardsExpr2 ::
+    ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension
+  {- HasNoCafRefs,
+     Unfolding: (ExtMap.LVar
+                   @ GHC.LanguageExtensions.Type.Extension
+                   GHC.LanguageExtensions.Type.RecordWildCards) -}
+bf5fd14ac3f999d6b32c06c5eb15df27
+  chkRecordWildCardsExpr3 ::
+    Control.Reference.Representation.Reference
+      (Control.Monad.Trans.Reader.ReaderT
+         [GHC.LanguageExtensions.Type.Extension]
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+      Control.Reference.Representation.MU
+      Control.Reference.Representation.MU
+      Control.Reference.Representation.MU
+      (Language.Haskell.Tools.AST.Ann.Ann
+         Language.Haskell.Tools.AST.Representation.Exprs.UExpr
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.Ann
+         Language.Haskell.Tools.AST.Representation.Exprs.UExpr
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.Ann
+         Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.Ann
+         Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+  {- Unfolding: (\ @ dom ->
+                 case Control.Reference.Combinators.$w&
+                        @ (Control.Monad.Trans.Reader.ReaderT
+                             [GHC.LanguageExtensions.Type.Extension]
+                             (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+                        @ Control.Reference.Representation.MU
+                        @ Control.Reference.Representation.MU
+                        @ Control.Reference.Representation.MU
+                        @ (Language.Haskell.Tools.AST.Ann.Ann
+                             Language.Haskell.Tools.AST.Representation.Exprs.UExpr
+                             dom
+                             Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                        @ (Language.Haskell.Tools.AST.Ann.Ann
+                             Language.Haskell.Tools.AST.Representation.Exprs.UExpr
+                             dom
+                             Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                        @ (Language.Haskell.Tools.AST.Ann.AnnListG
+                             Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+                             dom
+                             Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                        @ (Language.Haskell.Tools.AST.Ann.AnnListG
+                             Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+                             dom
+                             Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                        @ (Language.Haskell.Tools.AST.Ann.Ann
+                             Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+                             dom
+                             Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                        @ (Language.Haskell.Tools.AST.Ann.Ann
+                             Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+                             dom
+                             Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                        (RecordWildCardsChecker.chkRecordWildCardsExpr5 @ dom)
+                        (RecordWildCardsChecker.chkRecordWildCardsExpr4
+                           @ dom) of ww { (#,,,,,#) ww1 ww2 ww3 ww4 ww5 ww6 ->
+                 Control.Reference.Representation.Reference
+                   @ (Control.Monad.Trans.Reader.ReaderT
+                        [GHC.LanguageExtensions.Type.Extension]
+                        (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+                   @ Control.Reference.Representation.MU
+                   @ Control.Reference.Representation.MU
+                   @ Control.Reference.Representation.MU
+                   @ (Language.Haskell.Tools.AST.Ann.Ann
+                        Language.Haskell.Tools.AST.Representation.Exprs.UExpr
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.Ann
+                        Language.Haskell.Tools.AST.Representation.Exprs.UExpr
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.Ann
+                        Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.Ann
+                        Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   ww1
+                   ww2
+                   ww3
+                   ww4
+                   ww5
+                   ww6 }) -}
+829d8980cfe617771246c7efb661a7ec
+  chkRecordWildCardsExpr4 ::
+    Control.Reference.Representation.Reference
+      (Control.Monad.Trans.Reader.ReaderT
+         [GHC.LanguageExtensions.Type.Extension]
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+      Control.Reference.Representation.MU
+      Control.Reference.Representation.MU
+      Control.Reference.Representation.MU
+      (Language.Haskell.Tools.AST.Ann.AnnListG
+         Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.AnnListG
+         Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.Ann
+         Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.Ann
+         Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+  {- Unfolding: (\ @ dom ->
+                 case Language.Haskell.Tools.AST.Ann.$wannList
+                        @ Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+                        @ dom
+                        @ Language.Haskell.Tools.AST.Ann.SrcTemplateStage
+                        @ (Control.Monad.Trans.Reader.ReaderT
+                             [GHC.LanguageExtensions.Type.Extension]
+                             (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+                        @ Control.Reference.Representation.MU
+                        RecordWildCardsChecker.$s$fRefMonadswr
+                        RecordWildCardsChecker.$sannList1
+                          `cast`
+                        (Sym (Control.Instances.Morph.N:Morph[0]
+                                  <[]>_N
+                                  <Data.Proxy.Proxy>_N)) of ww { (#,,,,,#) ww1 ww2 ww3 ww4 ww5 ww6 ->
+                 Control.Reference.Representation.Reference
+                   @ (Control.Monad.Trans.Reader.ReaderT
+                        [GHC.LanguageExtensions.Type.Extension]
+                        (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+                   @ Control.Reference.Representation.MU
+                   @ Control.Reference.Representation.MU
+                   @ Control.Reference.Representation.MU
+                   @ (Language.Haskell.Tools.AST.Ann.AnnListG
+                        Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.AnnListG
+                        Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.Ann
+                        Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.Ann
+                        Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   ww1
+                   ww2
+                   ww3
+                   ww4
+                   ww5
+                   ww6 }) -}
+1e2a145fabed9490340e1baa4e1e8b0f
+  chkRecordWildCardsExpr5 ::
+    Control.Reference.Representation.Reference
+      (Control.Monad.Trans.Reader.ReaderT
+         [GHC.LanguageExtensions.Type.Extension]
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+      Control.Reference.Representation.MU
+      Control.Reference.Representation.MU
+      Control.Reference.Representation.MU
+      (Language.Haskell.Tools.AST.Ann.Ann
+         Language.Haskell.Tools.AST.Representation.Exprs.UExpr
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.Ann
+         Language.Haskell.Tools.AST.Representation.Exprs.UExpr
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.AnnListG
+         Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.AnnListG
+         Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+  {- Unfolding: (\ @ dom ->
+                 case Language.Haskell.Tools.AST.References.$wexprRecFields
+                        @ dom
+                        @ Language.Haskell.Tools.AST.Ann.SrcTemplateStage
+                        @ (Control.Monad.Trans.Reader.ReaderT
+                             [GHC.LanguageExtensions.Type.Extension]
+                             (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+                        @ Control.Reference.Representation.MU
+                        (RecordWildCardsChecker.$s$fMonadReaderT
+                           @ [GHC.LanguageExtensions.Type.Extension])
+                        Data.Proxy.$fMonadPlusProxy
+                        RecordWildCardsChecker.$sexprRecFields1
+                          `cast`
+                        (Sym (Control.Instances.Morph.N:Morph[0]
+                                  <GHC.Base.Maybe>_N
+                                  <Data.Proxy.Proxy>_N)) of ww { (#,,,,,#) ww1 ww2 ww3 ww4 ww5 ww6 ->
+                 Control.Reference.Representation.Reference
+                   @ (Control.Monad.Trans.Reader.ReaderT
+                        [GHC.LanguageExtensions.Type.Extension]
+                        (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+                   @ Control.Reference.Representation.MU
+                   @ Control.Reference.Representation.MU
+                   @ Control.Reference.Representation.MU
+                   @ (Language.Haskell.Tools.AST.Ann.Ann
+                        Language.Haskell.Tools.AST.Representation.Exprs.UExpr
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.Ann
+                        Language.Haskell.Tools.AST.Representation.Exprs.UExpr
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.AnnListG
+                        Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.AnnListG
+                        Language.Haskell.Tools.AST.Representation.Exprs.UFieldUpdate
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   ww1
+                   ww2
+                   ww3
+                   ww4
+                   ww5
+                   ww6 }) -}
+a0990383fd3f713b042c6aab7382f73c
+  chkRecordWildCardsFieldUpdate ::
+    ExtMonad.CheckNode
+      Language.Haskell.Tools.AST.ElementTypes.FieldUpdate
+  {- Arity: 4,
+     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),1*U(1*U(A,A,1*U(1*U),A,A,A,A,A,A,A,A,A,A),A)><S(LS),1*U(U,U)><L,A><L,U>,
      Unfolding: InlineRule (0, True, True)
                 RecordWildCardsChecker.chkRecordWildCardsExpr1
                   `cast`
-                (forall (dom :: <GHC.Types.*>_N).
-                 <Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom>_R
-                 ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
-                               <Data.Map.Base.Map
-                                  GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan]>_N
-                               <GhcMonad.Ghc>_R
-                               <Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom>_N)) -}
-698183c2ee51b32daddcaa5bfbedb3cc
-  chkRecordWildCardsExpr1 ::
-    Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom
-    -> Data.Map.Base.Map
-         GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan]
+                (forall (dom :: <*>_N).
+                 <ExtMonad.ExtDomain dom>_R
+                 ->_R <Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom>_R
+                 ->_R Trans
+                          (<[GHC.LanguageExtensions.Type.Extension]>_R
+                           ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                         <ExtMap.ExtMap>_N
+                                         <GhcMonad.Ghc>_R
+                                         <Language.Haskell.Tools.AST.ElementTypes.FieldUpdate
+                                            dom>_N))
+                          (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                    <*>_N
+                                    <[GHC.LanguageExtensions.Type.Extension]>_R
+                                    <Control.Monad.Trans.State.Lazy.StateT
+                                       ExtMap.ExtMap GhcMonad.Ghc>_R
+                                    <Language.Haskell.Tools.AST.ElementTypes.FieldUpdate
+                                       dom>_N))) -}
+5091cac1e291dce022650c852e4648d1
+  chkRecordWildCardsPat ::
+    ExtMonad.CheckNode Language.Haskell.Tools.AST.ElementTypes.Pattern
+  {- Arity: 1,
+     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),A)>,
+     Unfolding: (\ @ dom ($d(%,%) :: ExtMonad.ExtDomain dom) ->
+                 case GHC.Types.HEq_sc
+                        @ *
+                        @ *
+                        @ (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                             dom Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls)
+                        @ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo
+                        (Language.Haskell.Tools.AST.Ann.$p3Domain
+                           @ dom
+                           (GHC.Classes.$p1(%,%)
+                              @ (Language.Haskell.Tools.AST.Ann.Domain dom)
+                              @ (Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo'
+                                   (Language.Haskell.Tools.AST.Ann.SemanticInfo
+                                      dom
+                                      Language.Haskell.Tools.AST.Representation.Names.UQualifiedName))
+                              $d(%,%)))
+                          `cast`
+                        (Data.Type.Equality.N:~[0]
+                             <*>_N <Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                      dom
+                                      Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls>_N <Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo>_N) of cobox0 { DEFAULT ->
+                 case RecordWildCardsChecker.chkRecordWildCardsPat2
+                        @ dom of wild { Control.Reference.Representation.Reference ds1 ds2 ds3 ds4 ds5 ds6 ->
+                 ds3
+                   (RecordWildCardsChecker.chkRecordWildCardsPat1 @ dom $d(%,%))
+                     `cast`
+                   (<Language.Haskell.Tools.AST.ElementTypes.PatternField dom>_R
+                    ->_R Trans
+                             (<[GHC.LanguageExtensions.Type.Extension]>_R
+                              ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                            <ExtMap.ExtMap>_N
+                                            <GhcMonad.Ghc>_R
+                                            <Language.Haskell.Tools.AST.ElementTypes.PatternField
+                                               dom>_N))
+                             (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                       <*>_N
+                                       <[GHC.LanguageExtensions.Type.Extension]>_R
+                                       <Control.Monad.Trans.State.Lazy.StateT
+                                          ExtMap.ExtMap GhcMonad.Ghc>_R
+                                       <Language.Haskell.Tools.AST.ElementTypes.PatternField
+                                          dom>_N))) } }) -}
+b25eaa3ec48e2d6eb33f486a5d82c3a8
+  chkRecordWildCardsPat1 ::
+    ExtMonad.ExtDomain dom =>
+    Language.Haskell.Tools.AST.ElementTypes.PatternField dom
+    -> [GHC.LanguageExtensions.Type.Extension]
+    -> ExtMap.ExtMap
     -> GhcMonad.Ghc
-         (Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom,
-          Data.Map.Base.Map
-            GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
-  {- Arity: 2, Strictness: <S(LS),1*U(U,U)><L,U>, Inline: INLINE[0],
-     Unfolding: InlineRule (2, True, False)
+         (Language.Haskell.Tools.AST.ElementTypes.PatternField dom,
+          ExtMap.ExtMap)
+  {- Arity: 4,
+     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),1*U(1*U(A,A,1*U(1*U),A,A,A,A,A,A,A,A,A,A),A)><S(LS),1*U(U,U)><L,A><L,U>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (4, True, False)
                 (\ @ dom
-                   (w :: Language.Haskell.Tools.AST.ElementTypes.FieldUpdate dom)
-                   (w1 :: Data.Map.Base.Map
-                            GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan]) ->
-                 case w of ww { Language.Haskell.Tools.AST.Ann.Ann ww1 ww2 ->
-                 RecordWildCardsChecker.$wchkRecordWildCardsExpr
+                   (w :: ExtMonad.ExtDomain dom)
+                   (w1 :: Language.Haskell.Tools.AST.ElementTypes.PatternField dom)
+                   (w2 :: [GHC.LanguageExtensions.Type.Extension])
+                   (w3 :: ExtMap.ExtMap) ->
+                 case w1 of ww { Language.Haskell.Tools.AST.Ann.Ann ww1 ww2 ->
+                 RecordWildCardsChecker.$wchkRecordWildCardsPatField
                    @ dom
+                   w
                    ww1
                    ww2
-                   w1 }) -}
-ed7f9ad9e5e22bae571ac8bc736c616b
-  chkRecordWildCardsPat ::
-    Language.Haskell.Tools.AST.ElementTypes.PatternField dom
-    -> ExtMonad.ExtMonad
-         dom (Language.Haskell.Tools.AST.ElementTypes.PatternField dom)
-  {- Arity: 2, Strictness: <S(LS),1*U(U,U)><L,U>,
+                   w3 }) -}
+83811acdc2e3506d929858dc766f4e64
+  chkRecordWildCardsPat2 ::
+    Control.Reference.Representation.Reference
+      (Control.Monad.Trans.Reader.ReaderT
+         [GHC.LanguageExtensions.Type.Extension]
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+      Control.Reference.Representation.MU
+      Control.Reference.Representation.MU
+      Control.Reference.Representation.MU
+      (Language.Haskell.Tools.AST.Ann.Ann
+         Language.Haskell.Tools.AST.Representation.Patterns.UPattern
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.Ann
+         Language.Haskell.Tools.AST.Representation.Patterns.UPattern
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.Ann
+         Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.Ann
+         Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+  {- Unfolding: (\ @ dom ->
+                 case Control.Reference.Combinators.$w&
+                        @ (Control.Monad.Trans.Reader.ReaderT
+                             [GHC.LanguageExtensions.Type.Extension]
+                             (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+                        @ Control.Reference.Representation.MU
+                        @ Control.Reference.Representation.MU
+                        @ Control.Reference.Representation.MU
+                        @ (Language.Haskell.Tools.AST.Ann.Ann
+                             Language.Haskell.Tools.AST.Representation.Patterns.UPattern
+                             dom
+                             Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                        @ (Language.Haskell.Tools.AST.Ann.Ann
+                             Language.Haskell.Tools.AST.Representation.Patterns.UPattern
+                             dom
+                             Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                        @ (Language.Haskell.Tools.AST.Ann.AnnListG
+                             Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+                             dom
+                             Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                        @ (Language.Haskell.Tools.AST.Ann.AnnListG
+                             Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+                             dom
+                             Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                        @ (Language.Haskell.Tools.AST.Ann.Ann
+                             Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+                             dom
+                             Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                        @ (Language.Haskell.Tools.AST.Ann.Ann
+                             Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+                             dom
+                             Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                        (RecordWildCardsChecker.chkRecordWildCardsPat4 @ dom)
+                        (RecordWildCardsChecker.chkRecordWildCardsPat3
+                           @ dom) of ww { (#,,,,,#) ww1 ww2 ww3 ww4 ww5 ww6 ->
+                 Control.Reference.Representation.Reference
+                   @ (Control.Monad.Trans.Reader.ReaderT
+                        [GHC.LanguageExtensions.Type.Extension]
+                        (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+                   @ Control.Reference.Representation.MU
+                   @ Control.Reference.Representation.MU
+                   @ Control.Reference.Representation.MU
+                   @ (Language.Haskell.Tools.AST.Ann.Ann
+                        Language.Haskell.Tools.AST.Representation.Patterns.UPattern
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.Ann
+                        Language.Haskell.Tools.AST.Representation.Patterns.UPattern
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.Ann
+                        Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.Ann
+                        Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   ww1
+                   ww2
+                   ww3
+                   ww4
+                   ww5
+                   ww6 }) -}
+2ef591d3198730c6318ce5b5097285b2
+  chkRecordWildCardsPat3 ::
+    Control.Reference.Representation.Reference
+      (Control.Monad.Trans.Reader.ReaderT
+         [GHC.LanguageExtensions.Type.Extension]
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+      Control.Reference.Representation.MU
+      Control.Reference.Representation.MU
+      Control.Reference.Representation.MU
+      (Language.Haskell.Tools.AST.Ann.AnnListG
+         Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.AnnListG
+         Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.Ann
+         Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.Ann
+         Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+  {- Unfolding: (\ @ dom ->
+                 case Language.Haskell.Tools.AST.Ann.$wannList
+                        @ Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+                        @ dom
+                        @ Language.Haskell.Tools.AST.Ann.SrcTemplateStage
+                        @ (Control.Monad.Trans.Reader.ReaderT
+                             [GHC.LanguageExtensions.Type.Extension]
+                             (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+                        @ Control.Reference.Representation.MU
+                        RecordWildCardsChecker.$s$fRefMonadswr
+                        RecordWildCardsChecker.$sannList1
+                          `cast`
+                        (Sym (Control.Instances.Morph.N:Morph[0]
+                                  <[]>_N
+                                  <Data.Proxy.Proxy>_N)) of ww { (#,,,,,#) ww1 ww2 ww3 ww4 ww5 ww6 ->
+                 Control.Reference.Representation.Reference
+                   @ (Control.Monad.Trans.Reader.ReaderT
+                        [GHC.LanguageExtensions.Type.Extension]
+                        (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+                   @ Control.Reference.Representation.MU
+                   @ Control.Reference.Representation.MU
+                   @ Control.Reference.Representation.MU
+                   @ (Language.Haskell.Tools.AST.Ann.AnnListG
+                        Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.AnnListG
+                        Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.Ann
+                        Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.Ann
+                        Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   ww1
+                   ww2
+                   ww3
+                   ww4
+                   ww5
+                   ww6 }) -}
+0b7cbe5d21c12031c04567cb1c42142a
+  chkRecordWildCardsPat4 ::
+    Control.Reference.Representation.Reference
+      (Control.Monad.Trans.Reader.ReaderT
+         [GHC.LanguageExtensions.Type.Extension]
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+      Control.Reference.Representation.MU
+      Control.Reference.Representation.MU
+      Control.Reference.Representation.MU
+      (Language.Haskell.Tools.AST.Ann.Ann
+         Language.Haskell.Tools.AST.Representation.Patterns.UPattern
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.Ann
+         Language.Haskell.Tools.AST.Representation.Patterns.UPattern
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.AnnListG
+         Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+      (Language.Haskell.Tools.AST.Ann.AnnListG
+         Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+         dom
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+  {- Unfolding: (\ @ dom ->
+                 case Language.Haskell.Tools.AST.References.$wpatternFields
+                        @ dom
+                        @ Language.Haskell.Tools.AST.Ann.SrcTemplateStage
+                        @ (Control.Monad.Trans.Reader.ReaderT
+                             [GHC.LanguageExtensions.Type.Extension]
+                             (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+                        @ Control.Reference.Representation.MU
+                        (RecordWildCardsChecker.$s$fMonadReaderT
+                           @ [GHC.LanguageExtensions.Type.Extension])
+                        Data.Proxy.$fMonadPlusProxy
+                        RecordWildCardsChecker.$sexprRecFields1
+                          `cast`
+                        (Sym (Control.Instances.Morph.N:Morph[0]
+                                  <GHC.Base.Maybe>_N
+                                  <Data.Proxy.Proxy>_N)) of ww { (#,,,,,#) ww1 ww2 ww3 ww4 ww5 ww6 ->
+                 Control.Reference.Representation.Reference
+                   @ (Control.Monad.Trans.Reader.ReaderT
+                        [GHC.LanguageExtensions.Type.Extension]
+                        (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+                   @ Control.Reference.Representation.MU
+                   @ Control.Reference.Representation.MU
+                   @ Control.Reference.Representation.MU
+                   @ (Language.Haskell.Tools.AST.Ann.Ann
+                        Language.Haskell.Tools.AST.Representation.Patterns.UPattern
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.Ann
+                        Language.Haskell.Tools.AST.Representation.Patterns.UPattern
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.AnnListG
+                        Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   @ (Language.Haskell.Tools.AST.Ann.AnnListG
+                        Language.Haskell.Tools.AST.Representation.Patterns.UPatternField
+                        dom
+                        Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+                   ww1
+                   ww2
+                   ww3
+                   ww4
+                   ww5
+                   ww6 }) -}
+774142626c04af0dca0ce0c393f33345
+  chkRecordWildCardsPatField ::
+    ExtMonad.CheckNode
+      Language.Haskell.Tools.AST.ElementTypes.PatternField
+  {- Arity: 4,
+     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),1*U(1*U(A,A,1*U(1*U),A,A,A,A,A,A,A,A,A,A),A)><S(LS),1*U(U,U)><L,A><L,U>,
      Unfolding: InlineRule (0, True, True)
                 RecordWildCardsChecker.chkRecordWildCardsPat1
                   `cast`
-                (forall (dom :: <GHC.Types.*>_N).
-                 <Language.Haskell.Tools.AST.ElementTypes.PatternField dom>_R
-                 ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
-                               <Data.Map.Base.Map
-                                  GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan]>_N
-                               <GhcMonad.Ghc>_R
-                               <Language.Haskell.Tools.AST.ElementTypes.PatternField dom>_N)) -}
-9224082970ffb57da0da7db22a670fb2
-  chkRecordWildCardsPat1 ::
-    Language.Haskell.Tools.AST.ElementTypes.PatternField dom
-    -> Data.Map.Base.Map
-         GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan]
-    -> GhcMonad.Ghc
-         (Language.Haskell.Tools.AST.ElementTypes.PatternField dom,
-          Data.Map.Base.Map
-            GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])
-  {- Arity: 2, Strictness: <S(LS),1*U(U,U)><L,U>, Inline: INLINE[0],
-     Unfolding: InlineRule (2, True, False)
-                (\ @ dom
-                   (w :: Language.Haskell.Tools.AST.ElementTypes.PatternField dom)
-                   (w1 :: Data.Map.Base.Map
-                            GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan]) ->
-                 case w of ww { Language.Haskell.Tools.AST.Ann.Ann ww1 ww2 ->
-                 RecordWildCardsChecker.$wchkRecordWildCardsPat
-                   @ dom
-                   ww1
-                   ww2
-                   w1 }) -}
+                (forall (dom :: <*>_N).
+                 <ExtMonad.ExtDomain dom>_R
+                 ->_R <Language.Haskell.Tools.AST.ElementTypes.PatternField dom>_R
+                 ->_R Trans
+                          (<[GHC.LanguageExtensions.Type.Extension]>_R
+                           ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                         <ExtMap.ExtMap>_N
+                                         <GhcMonad.Ghc>_R
+                                         <Language.Haskell.Tools.AST.ElementTypes.PatternField
+                                            dom>_N))
+                          (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                    <*>_N
+                                    <[GHC.LanguageExtensions.Type.Extension]>_R
+                                    <Control.Monad.Trans.State.Lazy.StateT
+                                       ExtMap.ExtMap GhcMonad.Ghc>_R
+                                    <Language.Haskell.Tools.AST.ElementTypes.PatternField
+                                       dom>_N))) -}
+"SPEC/RecordWildCardsChecker $fApplicativeReaderT @ (StateT
+                                                      ExtMap Ghc) _" [ALWAYS] forall @ r
+                                                                                                                                                 ($dApplicative :: GHC.Base.Applicative
+                                                                                                                                                                     (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                                                                                        ExtMap.ExtMap
+                                                                                                                                                                        GhcMonad.Ghc))
+  Control.Monad.Trans.Reader.$fApplicativeReaderT @ (Control.Monad.Trans.State.Lazy.StateT
+                                                       ExtMap.ExtMap GhcMonad.Ghc)
+                                                  @ r
+                                                  $dApplicative
+  = RecordWildCardsChecker.$s$fApplicativeReaderT @ r
 "SPEC/RecordWildCardsChecker $fApplicativeStateT @ Ghc _" [ALWAYS] forall @ s
                                                                           ($dMonad :: GHC.Base.Monad
                                                                                         GhcMonad.Ghc)
@@ -883,7 +1924,8 @@ ed7f9ad9e5e22bae571ac8bc736c616b
                                                      @ s
                                                      $dFunctor
                                                      $dMonad
-  = RecordWildCardsChecker.$s$fApplicativeStateT @ s
+  = RecordWildCardsChecker.$s$fApplicativeReaderT_$s$fApplicativeStateT
+      @ s
 "SPEC/RecordWildCardsChecker $fApplicativeStateT_$c<*> @ Ghc _" [ALWAYS] forall @ s
                                                                                 ($dMonad :: GHC.Base.Monad
                                                                                               GhcMonad.Ghc)
@@ -893,7 +1935,7 @@ ed7f9ad9e5e22bae571ac8bc736c616b
                                                            @ s
                                                            $dFunctor
                                                            $dMonad
-  = RecordWildCardsChecker.$s$fApplicativeStateT_$s$fApplicativeStateT_$c<*>
+  = RecordWildCardsChecker.$s$fApplicativeReaderT_$s$fApplicativeStateT_$c<*>
       @ s
 "SPEC/RecordWildCardsChecker $fApplicativeStateT_$cp1Applicative @ Ghc _" [ALWAYS] forall @ s
                                                                                           ($dMonad :: GHC.Base.Monad
@@ -904,7 +1946,7 @@ ed7f9ad9e5e22bae571ac8bc736c616b
                                                                      @ s
                                                                      $dFunctor
                                                                      $dMonad
-  = RecordWildCardsChecker.$s$fApplicativeStateT_$s$fApplicativeStateT_$cp1Applicative
+  = RecordWildCardsChecker.$s$fApplicativeReaderT_$s$fApplicativeStateT_$cp1Applicative
       @ s
 "SPEC/RecordWildCardsChecker $fApplicativeStateT_$cpure @ Ghc _" [ALWAYS] forall @ s
                                                                                  ($dMonad :: GHC.Base.Monad
@@ -915,15 +1957,26 @@ ed7f9ad9e5e22bae571ac8bc736c616b
                                                             @ s
                                                             $dFunctor
                                                             $dMonad
-  = RecordWildCardsChecker.$s$fApplicativeStateT_$s$fApplicativeStateT_$cpure
+  = RecordWildCardsChecker.$s$fApplicativeReaderT_$s$fApplicativeStateT_$cpure
       @ s
+"SPEC/RecordWildCardsChecker $fFunctorReaderT @ (StateT
+                                                  ExtMap Ghc) _" [ALWAYS] forall @ r
+                                                                                                                                         ($dFunctor :: GHC.Base.Functor
+                                                                                                                                                         (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                                                                            ExtMap.ExtMap
+                                                                                                                                                            GhcMonad.Ghc))
+  Control.Monad.Trans.Reader.$fFunctorReaderT @ (Control.Monad.Trans.State.Lazy.StateT
+                                                   ExtMap.ExtMap GhcMonad.Ghc)
+                                              @ r
+                                              $dFunctor
+  = RecordWildCardsChecker.$s$fFunctorReaderT @ r
 "SPEC/RecordWildCardsChecker $fFunctorStateT @ Ghc _" [ALWAYS] forall @ s
                                                                       ($dFunctor :: GHC.Base.Functor
                                                                                       GhcMonad.Ghc)
   Control.Monad.Trans.State.Lazy.$fFunctorStateT @ GhcMonad.Ghc
                                                  @ s
                                                  $dFunctor
-  = RecordWildCardsChecker.$s$fApplicativeStateT_$s$fFunctorStateT
+  = RecordWildCardsChecker.$s$fApplicativeReaderT_$s$fFunctorStateT
       @ s
 "SPEC/RecordWildCardsChecker $fFunctorStateT_$cfmap @ Ghc _" [ALWAYS] forall @ s
                                                                              ($dFunctor :: GHC.Base.Functor
@@ -931,98 +1984,107 @@ ed7f9ad9e5e22bae571ac8bc736c616b
   Control.Monad.Trans.State.Lazy.$fFunctorStateT_$cfmap @ GhcMonad.Ghc
                                                         @ s
                                                         $dFunctor
-  = RecordWildCardsChecker.$s$fApplicativeStateT_$s$fFunctorStateT_$cfmap
+  = RecordWildCardsChecker.$s$fApplicativeReaderT_$s$fFunctorStateT_$cfmap
       @ s
-"SPEC/RecordWildCardsChecker $fHasRangeAnn @ SrcTemplateStage _ _" [ALWAYS] forall @ (elem :: GHC.Types.*
-                                                                                              -> GHC.Types.*
-                                                                                              -> GHC.Types.*)
-                                                                                   @ dom
-                                                                                   ($dSourceInfo :: Language.Haskell.Tools.AST.Ann.SourceInfo
-                                                                                                      Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
-  Language.Haskell.Tools.AST.Ann.$fHasRangeAnn @ Language.Haskell.Tools.AST.Ann.SrcTemplateStage
-                                               @ elem
-                                               @ dom
-                                               $dSourceInfo
-  = RecordWildCardsChecker.$s$fHasRangeAnn @ elem @ dom
-"SPEC/RecordWildCardsChecker $fHasRangeAnn_$cgetRange @ SrcTemplateStage _ _" [ALWAYS] forall @ (elem :: GHC.Types.*
-                                                                                                         -> GHC.Types.*
-                                                                                                         -> GHC.Types.*)
-                                                                                              @ dom
-                                                                                              ($dSourceInfo :: Language.Haskell.Tools.AST.Ann.SourceInfo
-                                                                                                                 Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
-  Language.Haskell.Tools.AST.Ann.$fHasRangeAnn_$cgetRange @ Language.Haskell.Tools.AST.Ann.SrcTemplateStage
-                                                          @ elem
-                                                          @ dom
-                                                          $dSourceInfo
-  = RecordWildCardsChecker.$s$fHasRangeAnn_$s$fHasRangeAnn_$cgetRange
-      @ elem
-      @ dom
+"SPEC/RecordWildCardsChecker $fMonadReaderT @ (StateT ExtMap Ghc) _" [ALWAYS] forall @ r
+                                                                                     ($dMonad :: GHC.Base.Monad
+                                                                                                   (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                      ExtMap.ExtMap
+                                                                                                      GhcMonad.Ghc))
+  Control.Monad.Trans.Reader.$fMonadReaderT @ (Control.Monad.Trans.State.Lazy.StateT
+                                                 ExtMap.ExtMap GhcMonad.Ghc)
+                                            @ r
+                                            $dMonad
+  = RecordWildCardsChecker.$s$fMonadReaderT @ r
+"SPEC/RecordWildCardsChecker $fMonadReaderT_$c>> @ (StateT
+                                                     ExtMap Ghc) _" [ALWAYS] forall @ r
+                                                                                                                                               ($dMonad :: GHC.Base.Monad
+                                                                                                                                                             (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                                                                                ExtMap.ExtMap
+                                                                                                                                                                GhcMonad.Ghc))
+  Control.Monad.Trans.Reader.$fMonadReaderT_$c>> @ (Control.Monad.Trans.State.Lazy.StateT
+                                                      ExtMap.ExtMap GhcMonad.Ghc)
+                                                 @ r
+                                                 $dMonad
+  = RecordWildCardsChecker.$s$fMonadReaderT_$s$fMonadReaderT_$c>> @ r
+"SPEC/RecordWildCardsChecker $fMonadReaderT_$creturn @ (StateT
+                                                         ExtMap Ghc) _" [ALWAYS] forall @ r
+                                                                                                                                                       ($dMonad :: GHC.Base.Monad
+                                                                                                                                                                     (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                                                                                        ExtMap.ExtMap
+                                                                                                                                                                        GhcMonad.Ghc))
+  Control.Monad.Trans.Reader.$fMonadReaderT_$creturn @ (Control.Monad.Trans.State.Lazy.StateT
+                                                          ExtMap.ExtMap GhcMonad.Ghc)
+                                                     @ r
+                                                     $dMonad
+  = RecordWildCardsChecker.$s$fMonadReaderT_$s$fMonadReaderT_$creturn
+      @ r
 "SPEC/RecordWildCardsChecker $fMonadStateT @ Ghc _" [ALWAYS] forall @ s
                                                                     ($dMonad :: GHC.Base.Monad
                                                                                   GhcMonad.Ghc)
   Control.Monad.Trans.State.Lazy.$fMonadStateT @ GhcMonad.Ghc
                                                @ s
                                                $dMonad
-  = RecordWildCardsChecker.$s$fMonadStateT @ s
+  = RecordWildCardsChecker.$s$fMonadReaderT_$s$fMonadStateT @ s
 "SPEC/RecordWildCardsChecker $fMonadStateT_$c>> @ Ghc _" [ALWAYS] forall @ s
                                                                          ($dMonad :: GHC.Base.Monad
                                                                                        GhcMonad.Ghc)
   Control.Monad.Trans.State.Lazy.$fMonadStateT_$c>> @ GhcMonad.Ghc
                                                     @ s
                                                     $dMonad
-  = RecordWildCardsChecker.$s$fMonadStateT_$s$fMonadStateT_$c>> @ s
+  = RecordWildCardsChecker.$s$fMonadReaderT_$s$fMonadStateT_$c>> @ s
 "SPEC/RecordWildCardsChecker $fMonadStateT_$c>>= @ Ghc _" [ALWAYS] forall @ s
                                                                           ($dMonad :: GHC.Base.Monad
                                                                                         GhcMonad.Ghc)
   Control.Monad.Trans.State.Lazy.$fMonadStateT_$c>>= @ GhcMonad.Ghc
                                                      @ s
                                                      $dMonad
-  = RecordWildCardsChecker.$s$fMonadStateT_$s$fMonadStateT_$c>>= @ s
+  = RecordWildCardsChecker.$s$fMonadReaderT_$s$fMonadStateT_$c>>= @ s
 "SPEC/RecordWildCardsChecker $fMonadStateT_$cfail @ Ghc _" [ALWAYS] forall @ s
                                                                            ($dMonad :: GHC.Base.Monad
                                                                                          GhcMonad.Ghc)
   Control.Monad.Trans.State.Lazy.$fMonadStateT_$cfail @ GhcMonad.Ghc
                                                       @ s
                                                       $dMonad
-  = RecordWildCardsChecker.$s$fMonadStateT_$s$fMonadStateT_$cfail @ s
+  = RecordWildCardsChecker.$s$fMonadReaderT_$s$fMonadStateT_$cfail
+      @ s
 "SPEC/RecordWildCardsChecker $fMonadStateT_$cp1Monad @ Ghc _" [ALWAYS] forall @ s
                                                                               ($dMonad :: GHC.Base.Monad
                                                                                             GhcMonad.Ghc)
   Control.Monad.Trans.State.Lazy.$fMonadStateT_$cp1Monad @ GhcMonad.Ghc
                                                          @ s
                                                          $dMonad
-  = RecordWildCardsChecker.$s$fMonadStateT_$s$fMonadStateT_$cp1Monad
+  = RecordWildCardsChecker.$s$fMonadReaderT_$s$fMonadStateT_$cp1Monad
       @ s
-"SPEC/RecordWildCardsChecker $fRefMonadswr @ (StateT
-                                               (Map Extension [SrcSpan]) Ghc) @ Proxy" [ALWAYS] forall ($dMonad1 :: GHC.Base.Monad
-                                                                                                                                                                           Data.Proxy.Proxy)
-                                                                                                                                                            ($dApplicative1 :: GHC.Base.Applicative
-                                                                                                                                                                                 Data.Proxy.Proxy)
-                                                                                                                                                            ($dFunctor1 :: GHC.Base.Functor
-                                                                                                                                                                             Data.Proxy.Proxy)
-                                                                                                                                                            ($dMonad :: GHC.Base.Monad
-                                                                                                                                                                          (Control.Monad.Trans.State.Lazy.StateT
-                                                                                                                                                                             (Data.Map.Base.Map
-                                                                                                                                                                                GHC.LanguageExtensions.Type.Extension
-                                                                                                                                                                                [SrcLoc.SrcSpan])
-                                                                                                                                                                             GhcMonad.Ghc))
-                                                                                                                                                            ($dApplicative :: GHC.Base.Applicative
+"SPEC/RecordWildCardsChecker $fRefMonadswr @ (ReaderT
+                                               [Extension] (StateT ExtMap Ghc)) @ Proxy" [ALWAYS] forall ($dMonad1 :: GHC.Base.Monad
+                                                                                                                                                                              Data.Proxy.Proxy)
+                                                                                                                                                               ($dApplicative1 :: GHC.Base.Applicative
+                                                                                                                                                                                    Data.Proxy.Proxy)
+                                                                                                                                                               ($dFunctor1 :: GHC.Base.Functor
+                                                                                                                                                                                Data.Proxy.Proxy)
+                                                                                                                                                               ($dMonad :: GHC.Base.Monad
+                                                                                                                                                                             (Control.Monad.Trans.Reader.ReaderT
+                                                                                                                                                                                [GHC.LanguageExtensions.Type.Extension]
                                                                                                                                                                                 (Control.Monad.Trans.State.Lazy.StateT
-                                                                                                                                                                                   (Data.Map.Base.Map
-                                                                                                                                                                                      GHC.LanguageExtensions.Type.Extension
-                                                                                                                                                                                      [SrcLoc.SrcSpan])
-                                                                                                                                                                                   GhcMonad.Ghc))
-                                                                                                                                                            ($dFunctor :: GHC.Base.Functor
-                                                                                                                                                                            (Control.Monad.Trans.State.Lazy.StateT
-                                                                                                                                                                               (Data.Map.Base.Map
-                                                                                                                                                                                  GHC.LanguageExtensions.Type.Extension
-                                                                                                                                                                                  [SrcLoc.SrcSpan])
-                                                                                                                                                                               GhcMonad.Ghc))
-  Control.Reference.Representation.$fRefMonadswr @ (Control.Monad.Trans.State.Lazy.StateT
-                                                      (Data.Map.Base.Map
-                                                         GHC.LanguageExtensions.Type.Extension
-                                                         [SrcLoc.SrcSpan])
-                                                      GhcMonad.Ghc)
+                                                                                                                                                                                   ExtMap.ExtMap
+                                                                                                                                                                                   GhcMonad.Ghc)))
+                                                                                                                                                               ($dApplicative :: GHC.Base.Applicative
+                                                                                                                                                                                   (Control.Monad.Trans.Reader.ReaderT
+                                                                                                                                                                                      [GHC.LanguageExtensions.Type.Extension]
+                                                                                                                                                                                      (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                                                                                                         ExtMap.ExtMap
+                                                                                                                                                                                         GhcMonad.Ghc)))
+                                                                                                                                                               ($dFunctor :: GHC.Base.Functor
+                                                                                                                                                                               (Control.Monad.Trans.Reader.ReaderT
+                                                                                                                                                                                  [GHC.LanguageExtensions.Type.Extension]
+                                                                                                                                                                                  (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                                                                                                     ExtMap.ExtMap
+                                                                                                                                                                                     GhcMonad.Ghc)))
+  Control.Reference.Representation.$fRefMonadswr @ (Control.Monad.Trans.Reader.ReaderT
+                                                      [GHC.LanguageExtensions.Type.Extension]
+                                                      (Control.Monad.Trans.State.Lazy.StateT
+                                                         ExtMap.ExtMap GhcMonad.Ghc))
                                                  @ Data.Proxy.Proxy
                                                  $dFunctor
                                                  $dApplicative
@@ -1031,36 +2093,36 @@ ed7f9ad9e5e22bae571ac8bc736c616b
                                                  $dApplicative1
                                                  $dMonad1
   = RecordWildCardsChecker.$s$fRefMonadswr
-"SPEC/RecordWildCardsChecker $fRefMonadswr_$cp4RefMonads @ (StateT
-                                                             (Map Extension [SrcSpan]) Ghc) @ Proxy" [ALWAYS] forall ($dMonad1 :: GHC.Base.Monad
-                                                                                                                                                                                                       Data.Proxy.Proxy)
-                                                                                                                                                                                        ($dApplicative1 :: GHC.Base.Applicative
-                                                                                                                                                                                                             Data.Proxy.Proxy)
-                                                                                                                                                                                        ($dFunctor1 :: GHC.Base.Functor
-                                                                                                                                                                                                         Data.Proxy.Proxy)
-                                                                                                                                                                                        ($dMonad :: GHC.Base.Monad
-                                                                                                                                                                                                      (Control.Monad.Trans.State.Lazy.StateT
-                                                                                                                                                                                                         (Data.Map.Base.Map
-                                                                                                                                                                                                            GHC.LanguageExtensions.Type.Extension
-                                                                                                                                                                                                            [SrcLoc.SrcSpan])
-                                                                                                                                                                                                         GhcMonad.Ghc))
-                                                                                                                                                                                        ($dApplicative :: GHC.Base.Applicative
-                                                                                                                                                                                                            (Control.Monad.Trans.State.Lazy.StateT
-                                                                                                                                                                                                               (Data.Map.Base.Map
-                                                                                                                                                                                                                  GHC.LanguageExtensions.Type.Extension
-                                                                                                                                                                                                                  [SrcLoc.SrcSpan])
-                                                                                                                                                                                                               GhcMonad.Ghc))
-                                                                                                                                                                                        ($dFunctor :: GHC.Base.Functor
-                                                                                                                                                                                                        (Control.Monad.Trans.State.Lazy.StateT
-                                                                                                                                                                                                           (Data.Map.Base.Map
-                                                                                                                                                                                                              GHC.LanguageExtensions.Type.Extension
-                                                                                                                                                                                                              [SrcLoc.SrcSpan])
-                                                                                                                                                                                                           GhcMonad.Ghc))
-  Control.Reference.Representation.$fRefMonadswr_$cp4RefMonads @ (Control.Monad.Trans.State.Lazy.StateT
-                                                                    (Data.Map.Base.Map
-                                                                       GHC.LanguageExtensions.Type.Extension
-                                                                       [SrcLoc.SrcSpan])
-                                                                    GhcMonad.Ghc)
+"SPEC/RecordWildCardsChecker $fRefMonadswr_$cp4RefMonads @ (ReaderT
+                                                             [Extension]
+                                                             (StateT ExtMap Ghc)) @ Proxy" [ALWAYS] forall ($dMonad1 :: GHC.Base.Monad
+                                                                                                                                                                                                                                                                       Data.Proxy.Proxy)
+                                                                                                                                                                                                                                                        ($dApplicative1 :: GHC.Base.Applicative
+                                                                                                                                                                                                                                                                             Data.Proxy.Proxy)
+                                                                                                                                                                                                                                                        ($dFunctor1 :: GHC.Base.Functor
+                                                                                                                                                                                                                                                                         Data.Proxy.Proxy)
+                                                                                                                                                                                                                                                        ($dMonad :: GHC.Base.Monad
+                                                                                                                                                                                                                                                                      (Control.Monad.Trans.Reader.ReaderT
+                                                                                                                                                                                                                                                                         [GHC.LanguageExtensions.Type.Extension]
+                                                                                                                                                                                                                                                                         (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                                                                                                                                                                                            ExtMap.ExtMap
+                                                                                                                                                                                                                                                                            GhcMonad.Ghc)))
+                                                                                                                                                                                                                                                        ($dApplicative :: GHC.Base.Applicative
+                                                                                                                                                                                                                                                                            (Control.Monad.Trans.Reader.ReaderT
+                                                                                                                                                                                                                                                                               [GHC.LanguageExtensions.Type.Extension]
+                                                                                                                                                                                                                                                                               (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                                                                                                                                                                                                  ExtMap.ExtMap
+                                                                                                                                                                                                                                                                                  GhcMonad.Ghc)))
+                                                                                                                                                                                                                                                        ($dFunctor :: GHC.Base.Functor
+                                                                                                                                                                                                                                                                        (Control.Monad.Trans.Reader.ReaderT
+                                                                                                                                                                                                                                                                           [GHC.LanguageExtensions.Type.Extension]
+                                                                                                                                                                                                                                                                           (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                                                                                                                                                                                              ExtMap.ExtMap
+                                                                                                                                                                                                                                                                              GhcMonad.Ghc)))
+  Control.Reference.Representation.$fRefMonadswr_$cp4RefMonads @ (Control.Monad.Trans.Reader.ReaderT
+                                                                    [GHC.LanguageExtensions.Type.Extension]
+                                                                    (Control.Monad.Trans.State.Lazy.StateT
+                                                                       ExtMap.ExtMap GhcMonad.Ghc))
                                                                @ Data.Proxy.Proxy
                                                                $dFunctor
                                                                $dApplicative
@@ -1069,36 +2131,36 @@ ed7f9ad9e5e22bae571ac8bc736c616b
                                                                $dApplicative1
                                                                $dMonad1
   = RecordWildCardsChecker.$s$fRefMonadswr_$s$fRefMonadswr_$cp4RefMonads
-"SPEC/RecordWildCardsChecker $fRefMonadswr_$cp5RefMonads @ (StateT
-                                                             (Map Extension [SrcSpan]) Ghc) @ Proxy" [ALWAYS] forall ($dMonad1 :: GHC.Base.Monad
-                                                                                                                                                                                                       Data.Proxy.Proxy)
-                                                                                                                                                                                        ($dApplicative1 :: GHC.Base.Applicative
-                                                                                                                                                                                                             Data.Proxy.Proxy)
-                                                                                                                                                                                        ($dFunctor1 :: GHC.Base.Functor
-                                                                                                                                                                                                         Data.Proxy.Proxy)
-                                                                                                                                                                                        ($dMonad :: GHC.Base.Monad
-                                                                                                                                                                                                      (Control.Monad.Trans.State.Lazy.StateT
-                                                                                                                                                                                                         (Data.Map.Base.Map
-                                                                                                                                                                                                            GHC.LanguageExtensions.Type.Extension
-                                                                                                                                                                                                            [SrcLoc.SrcSpan])
-                                                                                                                                                                                                         GhcMonad.Ghc))
-                                                                                                                                                                                        ($dApplicative :: GHC.Base.Applicative
-                                                                                                                                                                                                            (Control.Monad.Trans.State.Lazy.StateT
-                                                                                                                                                                                                               (Data.Map.Base.Map
-                                                                                                                                                                                                                  GHC.LanguageExtensions.Type.Extension
-                                                                                                                                                                                                                  [SrcLoc.SrcSpan])
-                                                                                                                                                                                                               GhcMonad.Ghc))
-                                                                                                                                                                                        ($dFunctor :: GHC.Base.Functor
-                                                                                                                                                                                                        (Control.Monad.Trans.State.Lazy.StateT
-                                                                                                                                                                                                           (Data.Map.Base.Map
-                                                                                                                                                                                                              GHC.LanguageExtensions.Type.Extension
-                                                                                                                                                                                                              [SrcLoc.SrcSpan])
-                                                                                                                                                                                                           GhcMonad.Ghc))
-  Control.Reference.Representation.$fRefMonadswr_$cp5RefMonads @ (Control.Monad.Trans.State.Lazy.StateT
-                                                                    (Data.Map.Base.Map
-                                                                       GHC.LanguageExtensions.Type.Extension
-                                                                       [SrcLoc.SrcSpan])
-                                                                    GhcMonad.Ghc)
+"SPEC/RecordWildCardsChecker $fRefMonadswr_$cp5RefMonads @ (ReaderT
+                                                             [Extension]
+                                                             (StateT ExtMap Ghc)) @ Proxy" [ALWAYS] forall ($dMonad1 :: GHC.Base.Monad
+                                                                                                                                                                                                                                                                       Data.Proxy.Proxy)
+                                                                                                                                                                                                                                                        ($dApplicative1 :: GHC.Base.Applicative
+                                                                                                                                                                                                                                                                             Data.Proxy.Proxy)
+                                                                                                                                                                                                                                                        ($dFunctor1 :: GHC.Base.Functor
+                                                                                                                                                                                                                                                                         Data.Proxy.Proxy)
+                                                                                                                                                                                                                                                        ($dMonad :: GHC.Base.Monad
+                                                                                                                                                                                                                                                                      (Control.Monad.Trans.Reader.ReaderT
+                                                                                                                                                                                                                                                                         [GHC.LanguageExtensions.Type.Extension]
+                                                                                                                                                                                                                                                                         (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                                                                                                                                                                                            ExtMap.ExtMap
+                                                                                                                                                                                                                                                                            GhcMonad.Ghc)))
+                                                                                                                                                                                                                                                        ($dApplicative :: GHC.Base.Applicative
+                                                                                                                                                                                                                                                                            (Control.Monad.Trans.Reader.ReaderT
+                                                                                                                                                                                                                                                                               [GHC.LanguageExtensions.Type.Extension]
+                                                                                                                                                                                                                                                                               (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                                                                                                                                                                                                  ExtMap.ExtMap
+                                                                                                                                                                                                                                                                                  GhcMonad.Ghc)))
+                                                                                                                                                                                                                                                        ($dFunctor :: GHC.Base.Functor
+                                                                                                                                                                                                                                                                        (Control.Monad.Trans.Reader.ReaderT
+                                                                                                                                                                                                                                                                           [GHC.LanguageExtensions.Type.Extension]
+                                                                                                                                                                                                                                                                           (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                                                                                                                                                                                              ExtMap.ExtMap
+                                                                                                                                                                                                                                                                              GhcMonad.Ghc)))
+  Control.Reference.Representation.$fRefMonadswr_$cp5RefMonads @ (Control.Monad.Trans.Reader.ReaderT
+                                                                    [GHC.LanguageExtensions.Type.Extension]
+                                                                    (Control.Monad.Trans.State.Lazy.StateT
+                                                                       ExtMap.ExtMap GhcMonad.Ghc))
                                                                @ Data.Proxy.Proxy
                                                                $dFunctor
                                                                $dApplicative
@@ -1107,36 +2169,36 @@ ed7f9ad9e5e22bae571ac8bc736c616b
                                                                $dApplicative1
                                                                $dMonad1
   = RecordWildCardsChecker.$s$fRefMonadswr_$s$fRefMonadswr_$cp5RefMonads
-"SPEC/RecordWildCardsChecker $fRefMonadswr_$cp6RefMonads @ (StateT
-                                                             (Map Extension [SrcSpan]) Ghc) @ Proxy" [ALWAYS] forall ($dMonad1 :: GHC.Base.Monad
-                                                                                                                                                                                                       Data.Proxy.Proxy)
-                                                                                                                                                                                        ($dApplicative1 :: GHC.Base.Applicative
-                                                                                                                                                                                                             Data.Proxy.Proxy)
-                                                                                                                                                                                        ($dFunctor1 :: GHC.Base.Functor
-                                                                                                                                                                                                         Data.Proxy.Proxy)
-                                                                                                                                                                                        ($dMonad :: GHC.Base.Monad
-                                                                                                                                                                                                      (Control.Monad.Trans.State.Lazy.StateT
-                                                                                                                                                                                                         (Data.Map.Base.Map
-                                                                                                                                                                                                            GHC.LanguageExtensions.Type.Extension
-                                                                                                                                                                                                            [SrcLoc.SrcSpan])
-                                                                                                                                                                                                         GhcMonad.Ghc))
-                                                                                                                                                                                        ($dApplicative :: GHC.Base.Applicative
-                                                                                                                                                                                                            (Control.Monad.Trans.State.Lazy.StateT
-                                                                                                                                                                                                               (Data.Map.Base.Map
-                                                                                                                                                                                                                  GHC.LanguageExtensions.Type.Extension
-                                                                                                                                                                                                                  [SrcLoc.SrcSpan])
-                                                                                                                                                                                                               GhcMonad.Ghc))
-                                                                                                                                                                                        ($dFunctor :: GHC.Base.Functor
-                                                                                                                                                                                                        (Control.Monad.Trans.State.Lazy.StateT
-                                                                                                                                                                                                           (Data.Map.Base.Map
-                                                                                                                                                                                                              GHC.LanguageExtensions.Type.Extension
-                                                                                                                                                                                                              [SrcLoc.SrcSpan])
-                                                                                                                                                                                                           GhcMonad.Ghc))
-  Control.Reference.Representation.$fRefMonadswr_$cp6RefMonads @ (Control.Monad.Trans.State.Lazy.StateT
-                                                                    (Data.Map.Base.Map
-                                                                       GHC.LanguageExtensions.Type.Extension
-                                                                       [SrcLoc.SrcSpan])
-                                                                    GhcMonad.Ghc)
+"SPEC/RecordWildCardsChecker $fRefMonadswr_$cp6RefMonads @ (ReaderT
+                                                             [Extension]
+                                                             (StateT ExtMap Ghc)) @ Proxy" [ALWAYS] forall ($dMonad1 :: GHC.Base.Monad
+                                                                                                                                                                                                                                                                       Data.Proxy.Proxy)
+                                                                                                                                                                                                                                                        ($dApplicative1 :: GHC.Base.Applicative
+                                                                                                                                                                                                                                                                             Data.Proxy.Proxy)
+                                                                                                                                                                                                                                                        ($dFunctor1 :: GHC.Base.Functor
+                                                                                                                                                                                                                                                                         Data.Proxy.Proxy)
+                                                                                                                                                                                                                                                        ($dMonad :: GHC.Base.Monad
+                                                                                                                                                                                                                                                                      (Control.Monad.Trans.Reader.ReaderT
+                                                                                                                                                                                                                                                                         [GHC.LanguageExtensions.Type.Extension]
+                                                                                                                                                                                                                                                                         (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                                                                                                                                                                                            ExtMap.ExtMap
+                                                                                                                                                                                                                                                                            GhcMonad.Ghc)))
+                                                                                                                                                                                                                                                        ($dApplicative :: GHC.Base.Applicative
+                                                                                                                                                                                                                                                                            (Control.Monad.Trans.Reader.ReaderT
+                                                                                                                                                                                                                                                                               [GHC.LanguageExtensions.Type.Extension]
+                                                                                                                                                                                                                                                                               (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                                                                                                                                                                                                  ExtMap.ExtMap
+                                                                                                                                                                                                                                                                                  GhcMonad.Ghc)))
+                                                                                                                                                                                                                                                        ($dFunctor :: GHC.Base.Functor
+                                                                                                                                                                                                                                                                        (Control.Monad.Trans.Reader.ReaderT
+                                                                                                                                                                                                                                                                           [GHC.LanguageExtensions.Type.Extension]
+                                                                                                                                                                                                                                                                           (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                                                                                                                                                                                              ExtMap.ExtMap
+                                                                                                                                                                                                                                                                              GhcMonad.Ghc)))
+  Control.Reference.Representation.$fRefMonadswr_$cp6RefMonads @ (Control.Monad.Trans.Reader.ReaderT
+                                                                    [GHC.LanguageExtensions.Type.Extension]
+                                                                    (Control.Monad.Trans.State.Lazy.StateT
+                                                                       ExtMap.ExtMap GhcMonad.Ghc))
                                                                @ Data.Proxy.Proxy
                                                                $dFunctor
                                                                $dApplicative

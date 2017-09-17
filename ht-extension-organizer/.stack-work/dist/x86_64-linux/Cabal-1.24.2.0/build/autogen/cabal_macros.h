@@ -98,6 +98,13 @@
   (major1) == 0 && (major2) <  8 || \
   (major1) == 0 && (major2) == 8 && (minor) <= 1)
 
+/* package incremental-sat-solver-0.1.8 */
+#define VERSION_incremental_sat_solver "0.1.8"
+#define MIN_VERSION_incremental_sat_solver(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  1 || \
+  (major1) == 0 && (major2) == 1 && (minor) <= 8)
+
 /* package mtl-2.2.1 */
 #define VERSION_mtl "2.2.1"
 #define MIN_VERSION_mtl(major1,major2,minor) (\
@@ -280,7 +287,7 @@
   (major1) == 2 && (major2) <  26 || \
   (major1) == 2 && (major2) == 26 && (minor) <= 0)
 
-#define CURRENT_COMPONENT_ID "ht-extension-organizer-0.1.0.0-1NgBbe619AH4JExLErEUCI"
+#define CURRENT_COMPONENT_ID "ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL"
 
-#define CURRENT_PACKAGE_KEY "ht-extension-organizer-0.1.0.0-1NgBbe619AH4JExLErEUCI"
+#define CURRENT_PACKAGE_KEY "ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL"
 

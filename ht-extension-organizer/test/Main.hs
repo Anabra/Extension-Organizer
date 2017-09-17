@@ -38,12 +38,12 @@ type TestSuite = (FilePath, [TestName])
 type TestName = String
 type ModuleName = String
 type Line = Int
-type SimpleMap = SMap.Map Extension [Line]
+type SimpleMap = SMap.Map (LogicalRelation Extension) [Line]
 
 spanToLine :: SrcSpan -> Line
 spanToLine (RealSrcSpan s) = srcSpanEndLine s
 
-simplifyExtMap :: SMap.Map Extension [SrcSpan] -> SimpleMap
+simplifyExtMap :: ExtMap -> SimpleMap
 simplifyExtMap = SMap.map (map spanToLine)
 
 loadModuleAST :: FilePath -> ModuleName -> Ghc TypedModule
@@ -55,8 +55,7 @@ loadModuleAST dir moduleName = do
 getExtensionsFrom :: FilePath -> ModuleName -> IO SimpleMap
 getExtensionsFrom dir moduleName = runGhc (Just libdir) $ do
   modAST <- loadModuleAST dir moduleName
-  let span' = correctRefactorSpan modAST $ readSrcSpan "1:1-1000:1"
-  exts <- collectExtensions span' modAST
+  exts <- collectExtensions modAST
   return $! simplifyExtMap exts
 
 getExtAnnotsFrom :: FilePath -> ModuleName -> IO SimpleMap

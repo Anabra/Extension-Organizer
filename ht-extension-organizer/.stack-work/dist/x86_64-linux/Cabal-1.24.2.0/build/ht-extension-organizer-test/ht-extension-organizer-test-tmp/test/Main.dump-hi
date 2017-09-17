@@ -1,12 +1,12 @@
 
 ==================== FINAL INTERFACE ====================
-2017-09-04 20:04:06.733034 UTC
+2017-09-17 21:35:13.276966 UTC
 
 interface main@main:Main 8002
-  interface hash: 80d0cac58a15454c3e4ba45c20c7b598
-  ABI hash: 6ec5236fec9d33898a7bff9a87e2769c
-  export-list hash: 6b783e9eea531602f1cf162b24aaf5b9
-  orphan hash: 6be3e5723c6abe8a639883f5174d2a85
+  interface hash: d6046fcd85435a027bf7a66e7211a9de
+  ABI hash: 2f65777c9936a2a41d6da4bae6e40e5d
+  export-list hash: 7174156419904577254bb62c19a3fbfa
+  orphan hash: a3ac865c7bb566e48a741dd4484cba63
   flag hash: ccf1cf6c4a769ce9a094061d778c3c71
   sig of: Nothing
   used TH splices: False
@@ -59,7 +59,7 @@ package dependencies: ansi-terminal-0.6.3.1@ansi-terminal-0.6.3.1-3RTqikoQf47ajV
                       haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8
                       haskell-tools-rewrite-0.8.1.0@haskell-tools-rewrite-0.8.1.0-85A6q9dMQgvKEKG9I8fxVU
                       hoopl-3.10.2.1@hoopl-3.10.2.1 hpc-0.6.0.3@hpc-0.6.0.3
-                      ht-extension-organizer-0.1.0.0@ht-extension-organizer-0.1.0.0-1NgBbe619AH4JExLErEUCI
+                      ht-extension-organizer-0.1.0.0@ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL
                       instance-control-0.1.1.1@instance-control-0.1.1.1-1defRS82vAAEmZKRhe67aa
                       integer-gmp-1.0.0.1 mtl-2.2.1@mtl-2.2.1-BLKBelFsPB3BoFeSWSOYj6
                       optparse-applicative-0.13.2.0@optparse-applicative-0.13.2.0-EqIYOWOFTvf23sT5QTYn9U
@@ -106,8 +106,7 @@ orphans: base-4.9.1.0:GHC.Base base-4.9.1.0:GHC.Float
          haskell-tools-prettyprint-0.8.1.0@haskell-tools-prettyprint-0.8.1.0-F9iWkGq5ppnLH6whHm0DlC:Language.Haskell.Tools.Transform.SourceTemplate
          haskell-tools-prettyprint-0.8.1.0@haskell-tools-prettyprint-0.8.1.0-F9iWkGq5ppnLH6whHm0DlC:Language.Haskell.Tools.Transform.SourceTemplateHelpers
          haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8:Language.Haskell.Tools.Refactor.RefactorBase
-         ht-extension-organizer-0.1.0.0@ht-extension-organizer-0.1.0.0-1NgBbe619AH4JExLErEUCI:AnnotationParser
-         ht-extension-organizer-0.1.0.0@ht-extension-organizer-0.1.0.0-1NgBbe619AH4JExLErEUCI:ExtMonad
+         ht-extension-organizer-0.1.0.0@ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:ExtMonad
          references-0.3.2.2@references-0.3.2.2-y362bKYomIKNQKMTfOWVo:Control.Reference.Predefined.Containers.Tree
          references-0.3.2.2@references-0.3.2.2-y362bKYomIKNQKMTfOWVo:Control.Reference.TH.Records
          regex-base-0.93.2@regex-base-0.93.2-AYjYAsBidAc8f5XNm9b2Aa:Text.Regex.Base.Context
@@ -188,25 +187,513 @@ import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
 import  -/  haskell-tools-prettyprint-0.8.1.0@haskell-tools-prettyprint-0.8.1.0-F9iWkGq5ppnLH6whHm0DlC:Language.Haskell.Tools.PrettyPrint da7dea6ac299ef1620d7160216fb97b0
 import  -/  haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8:Language.Haskell.Tools.Refactor 84acc8d60e278de91351468f26f90e1c
 import  -/  haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8:Language.Haskell.Tools.Refactor.Prepare 06c995907993af4dca8399eaa224a412
-import  -/  ht-extension-organizer-0.1.0.0@ht-extension-organizer-0.1.0.0-1NgBbe619AH4JExLErEUCI:AnnotationParser 997a9807aaa4027ae152123ee93e5201
-import  -/  ht-extension-organizer-0.1.0.0@ht-extension-organizer-0.1.0.0-1NgBbe619AH4JExLErEUCI:ExtensionOrganizer c3ec034cfdf8d27e82e026d5f40fc218
+import  -/  ht-extension-organizer-0.1.0.0@ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:AnnotationParser f78aabf0e2d657a79857d2d0d402ed8c
+import  -/  ht-extension-organizer-0.1.0.0@ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:ExtMap ce208fa2f233772cc4b03c60efef446e
+import  -/  ht-extension-organizer-0.1.0.0@ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:ExtensionOrganizer 7947abdb4a418d192203341ea1a76215
 import  -/  tasty-0.11.2.5@tasty-0.11.2.5-9CHOVHcPPPS3fAInAil5pA:Test.Tasty 195b167c336d9a923d4ad9d6346408fc
 import  -/  tasty-0.11.2.5@tasty-0.11.2.5-9CHOVHcPPPS3fAInAil5pA:Test.Tasty.Core bde15bbc7e9c0cafa410fe290b644921
 import  -/  tasty-hunit-0.9.2@tasty-hunit-0.9.2-8EqOuwvMdXe8awhjhOAP3F:Test.Tasty.HUnit b76eb16e90e5f18943bf39820b0509f5
 import  -/  tasty-hunit-0.9.2@tasty-hunit-0.9.2-8EqOuwvMdXe8awhjhOAP3F:Test.Tasty.HUnit.Orig 6fb02f2910bbd54df12313c60e73becc
-fdab416ae3db9b946ce06f4df3af3519
+779b44a2e144a82cd5ef668765926d93
+  $s$fDataImportInfo ::
+    Data.Data.Data
+      (Language.Haskell.Tools.AST.SemaInfoTypes.ImportInfo Var.Var)
+  {- Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ (Language.Haskell.Tools.AST.SemaInfoTypes.ImportInfo Var.Var)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo_$cp1Data
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo_$cgfoldl
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo_$cgunfold
+                     @ Var.Var
+                     Var.$fDataVar)
+                  Main.$s$fDataImportInfo_$s$fDataImportInfo_$ctoConstr
+                  Main.$s$fDataImportInfo_$s$fDataImportInfo_$cdataTypeOf
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo_$cdataCast1
+                     @ Var.Var
+                     Var.$fDataVar)
+                  Main.$s$fDataImportInfo_$s$fDataImportInfo_$cdataCast2
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo_$cgmapT
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo_$cgmapQl
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo_$cgmapQr
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo_$cgmapQ
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo_$cgmapQi
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo_$cgmapM
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo_$cgmapMp
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo_$cgmapMo
+                     @ Var.Var
+                     Var.$fDataVar) -}
+dfc039ff7032bc62a2454ec34dfc5fc5
+  $s$fDataImportInfo_$s$fDataImportInfo_$cdataCast2 ::
+    Data.Typeable.Internal.Typeable t =>
+    (forall d e. (Data.Data.Data d, Data.Data.Data e) => c (t d e))
+    -> GHC.Base.Maybe
+         (c (Language.Haskell.Tools.AST.SemaInfoTypes.ImportInfo Var.Var))
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,A><L,A>,
+     Unfolding: InlineRule (2, True, True)
+                (\ @ (t :: * -> * -> *)
+                   @ (c :: * -> *)
+                   ($dTypeable :: Data.Typeable.Internal.Typeable t)
+                   (ds1 :: forall d e.
+                           (Data.Data.Data d, Data.Data.Data e) =>
+                           c (t d e)) ->
+                 GHC.Base.Nothing
+                   @ (c (Language.Haskell.Tools.AST.SemaInfoTypes.ImportInfo
+                           Var.Var))) -}
+f305fdbd283d6d795755b032f996cba9
+  $s$fDataImportInfo_$s$fDataImportInfo_$cdataTypeOf ::
+    Language.Haskell.Tools.AST.SemaInfoTypes.ImportInfo Var.Var
+    -> Data.Data.DataType
+  {- Arity: 1, Strictness: <L,A>m,
+     Unfolding: InlineRule (1, True, True)
+                (\ (ds1 :: Language.Haskell.Tools.AST.SemaInfoTypes.ImportInfo
+                             Var.Var) ->
+                 Language.Haskell.Tools.AST.SemaInfoTypes.$tCGCyyeAJlLA79SU0hhqeif) -}
+a875dd1f2cf42586fd5855c8d3367e82
+  $s$fDataImportInfo_$s$fDataImportInfo_$ctoConstr ::
+    Language.Haskell.Tools.AST.SemaInfoTypes.ImportInfo Var.Var
+    -> Data.Data.Constr
+  {- Arity: 1, Strictness: <S,1*H>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds1 :: Language.Haskell.Tools.AST.SemaInfoTypes.ImportInfo
+                             Var.Var) ->
+                 case ds1 of wild { Language.Haskell.Tools.AST.SemaInfoTypes.ImportInfo ds2 ds3 ds4 ds5 ds6 ->
+                 Language.Haskell.Tools.AST.SemaInfoTypes.$cCGCyyeAJlLA79SU0hhqeif }) -}
+44cdf8dd9b5b2f46bc875337c591ff2e
+  $s$fDataModuleInfo ::
+    Data.Data.Data
+      (Language.Haskell.Tools.AST.SemaInfoTypes.ModuleInfo Var.Var)
+  {- Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ (Language.Haskell.Tools.AST.SemaInfoTypes.ModuleInfo Var.Var)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataModuleInfo_$cp1Data
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataModuleInfo_$cgfoldl
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataModuleInfo_$cgunfold
+                     @ Var.Var
+                     Var.$fDataVar)
+                  Main.$s$fDataModuleInfo_$s$fDataModuleInfo_$ctoConstr
+                  Main.$s$fDataModuleInfo_$s$fDataModuleInfo_$cdataTypeOf
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataModuleInfo_$cdataCast1
+                     @ Var.Var
+                     Var.$fDataVar)
+                  Main.$s$fDataModuleInfo_$s$fDataModuleInfo_$cdataCast2
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataModuleInfo_$cgmapT
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataModuleInfo_$cgmapQl
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataModuleInfo_$cgmapQr
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataModuleInfo_$cgmapQ
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataModuleInfo_$cgmapQi
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataModuleInfo_$cgmapM
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataModuleInfo_$cgmapMp
+                     @ Var.Var
+                     Var.$fDataVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fDataModuleInfo_$cgmapMo
+                     @ Var.Var
+                     Var.$fDataVar) -}
+c6bd97ca6fc8d3881afc0ad3cd026f7b
+  $s$fDataModuleInfo_$s$fDataModuleInfo_$cdataCast2 ::
+    Data.Typeable.Internal.Typeable t =>
+    (forall d e. (Data.Data.Data d, Data.Data.Data e) => c (t d e))
+    -> GHC.Base.Maybe
+         (c (Language.Haskell.Tools.AST.SemaInfoTypes.ModuleInfo Var.Var))
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,A><L,A>,
+     Unfolding: InlineRule (2, True, True)
+                (\ @ (t :: * -> * -> *)
+                   @ (c :: * -> *)
+                   ($dTypeable :: Data.Typeable.Internal.Typeable t)
+                   (ds1 :: forall d e.
+                           (Data.Data.Data d, Data.Data.Data e) =>
+                           c (t d e)) ->
+                 GHC.Base.Nothing
+                   @ (c (Language.Haskell.Tools.AST.SemaInfoTypes.ModuleInfo
+                           Var.Var))) -}
+22a57732800a562f635f5caa5a6f6061
+  $s$fDataModuleInfo_$s$fDataModuleInfo_$cdataTypeOf ::
+    Language.Haskell.Tools.AST.SemaInfoTypes.ModuleInfo Var.Var
+    -> Data.Data.DataType
+  {- Arity: 1, Strictness: <L,A>m,
+     Unfolding: InlineRule (1, True, True)
+                (\ (ds1 :: Language.Haskell.Tools.AST.SemaInfoTypes.ModuleInfo
+                             Var.Var) ->
+                 Language.Haskell.Tools.AST.SemaInfoTypes.$t8kQvtqUmj9O26DNBHuLtDJ) -}
+171c97e13a576c2d9f686019aed4e008
+  $s$fDataModuleInfo_$s$fDataModuleInfo_$ctoConstr ::
+    Language.Haskell.Tools.AST.SemaInfoTypes.ModuleInfo Var.Var
+    -> Data.Data.Constr
+  {- Arity: 1, Strictness: <S,1*H>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds1 :: Language.Haskell.Tools.AST.SemaInfoTypes.ModuleInfo
+                             Var.Var) ->
+                 case ds1 of wild { Language.Haskell.Tools.AST.SemaInfoTypes.ModuleInfo ds2 ds3 ds4 ds5 ds6 ds7 ->
+                 Language.Haskell.Tools.AST.SemaInfoTypes.$c8kQvtqUmj9O26DNBHuLtDJ }) -}
+efdb72e3a7389f33b847408622f48fd6
+  $s$fDomaind ::
+    Language.Haskell.Tools.AST.Ann.Domain
+      Language.Haskell.Tools.AST.Ann.IdDom
+  {- Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ Language.Haskell.Tools.AST.Ann.IdDom
+                  Main.$s$fDomaind7
+                  Main.$s$fDomaind_$s$fDomaind_$cp2Domain
+                  Main.$s$fDomaind_$s$fDomaind_$cp3Domain
+                  Main.$s$fDomaind_$s$fDomaind_$cp4Domain
+                  Main.$s$fDomaind_$s$fDomaind_$cp5Domain
+                  Main.$s$fDomaind_$s$fDomaind_$cp6Domain
+                  Main.$s$fDomaind_$s$fDomaind_$cp7Domain
+                  Main.$s$fDomaind_$s$fDomaind_$cp8Domain
+                  Main.$s$fDomaind_$s$fDomaind_$cp9Domain
+                  Main.$s$fDomaind_$s$fDomaind_$cp10Domain
+                  Main.$s$fDomaind_$s$fDomaind_$cp11Domain
+                  Main.$s$fDomaind_$s$fDomaind_$cp12Domain
+                  Main.$s$fDomaind_$s$fDomaind_$cp13Domain -}
+2549f98d1a866c0aaac1f1712c78d502
+  $s$fDomaind1 ::
+    GHC.Show.Show
+      (Language.Haskell.Tools.AST.SemaInfoTypes.ModuleInfo Var.Id)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                Main.$s$fDomaind_$s$fShowModuleInfo -}
+4fddde215526ee166066de8848ccad08
+  $s$fDomaind10 :: GHC.Fingerprint.Type.Fingerprint
+  {- HasNoCafRefs,
+     Unfolding: (GHC.Fingerprint.Type.Fingerprint
+                   11145549849738423769##
+                   13393259708013230772##) -}
+3b3c4675bac475dc4779ba378d5b539c
+  $s$fDomaind2 ::
+    GHC.Show.Show
+      (Language.Haskell.Tools.AST.SemaInfoTypes.ImportInfo Var.Id)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                Main.$s$fDomaind_$s$fShowImportInfo -}
+9e3aea66d00b5499cd55f3e462713116
+  $s$fDomaind3 ::
+    Data.Data.Data
+      (Language.Haskell.Tools.AST.SemaInfoTypes.ModuleInfo Var.Id)
+  {- Unfolding: InlineRule (0, True, True) Main.$s$fDataModuleInfo -}
+e4edeac3e408e0edb6ab8131a30f8bdc
+  $s$fDomaind4 ::
+    Data.Data.Data
+      (Language.Haskell.Tools.AST.SemaInfoTypes.ImportInfo Var.Id)
+  {- Unfolding: InlineRule (0, True, True) Main.$s$fDataImportInfo -}
+bf0c847f957974b00c530cae98a9d46b
+  $s$fDomaind5 ::
+    Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo
+    Data.Type.Equality.~ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                Main.$s$fDomaind6
+                  `cast`
+                (Sym (Data.Type.Equality.N:~[0]
+                          <*>_N) <Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo>_N <Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo>_N) -}
+5e4805d233cd4ae5a534d049b3d86b9c
+  $s$fDomaind6 ::
+    Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo
+    GHC.Types.~~ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Eq#
+                   @ *
+                   @ *
+                   @ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo
+                   @ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo
+                   @~ <Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo>_N) -}
+5491fe2f63e15519c830aba0f0cf471b
+  $s$fDomaind7 ::
+    Data.Typeable.Internal.Typeable
+      Language.Haskell.Tools.AST.Ann.IdDom
+  {- Arity: 1, Strictness: <L,A>,
+     Unfolding: InlineRule (0, True, True)
+                Main.$s$fDomaind8
+                  `cast`
+                (Sym (Data.Typeable.Internal.N:Typeable[0]
+                          <*>_N <Language.Haskell.Tools.AST.Ann.IdDom>_N)) -}
+dfbf39e21930ea6fe7f417ed050763df
+  $s$fDomaind8 ::
+    GHC.Prim.Proxy# Language.Haskell.Tools.AST.Ann.IdDom
+    -> Data.Typeable.Internal.TypeRep
+  {- Arity: 1, Strictness: <L,A>,
+     Unfolding: InlineRule (1, True, True)
+                (\ (wild :: GHC.Prim.Proxy#
+                              Language.Haskell.Tools.AST.Ann.IdDom) ->
+                 Main.$s$fDomaind9) -}
+88ccbb73a28fd419dcd0048c16592b99
+  $s$fDomaind9 :: Data.Typeable.Internal.TypeRep
+  {- Unfolding: (case Data.Typeable.Internal.typeRepFingerprints
+                        (GHC.Types.[] @ Data.Typeable.Internal.TypeRep)
+                        (GHC.Types.[]
+                           @ Data.Typeable.Internal.TypeRep) of kt_fps { DEFAULT ->
+                 case GHC.Fingerprint.fingerprintFingerprints
+                        (GHC.Types.:
+                           @ GHC.Fingerprint.Type.Fingerprint
+                           Main.$s$fDomaind10
+                           kt_fps) of dt { GHC.Fingerprint.Type.Fingerprint dt1 dt2 ->
+                 Data.Typeable.Internal.TypeRep
+                   dt1
+                   dt2
+                   Language.Haskell.Tools.AST.Ann.$tcIdDom
+                   (GHC.Types.[] @ Data.Typeable.Internal.TypeRep)
+                   (GHC.Types.[] @ Data.Typeable.Internal.TypeRep) } }) -}
+8d32839dee3cf59cb03b2390d2726b61
+  $s$fDomaind_$s$fDomaind_$cp10Domain ::
+    GHC.Show.Show
+      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+         Language.Haskell.Tools.AST.Ann.IdDom
+         Language.Haskell.Tools.AST.Ann.SameInfoExprCls)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                Language.Haskell.Tools.AST.SemaInfoTypes.$fShowScopeInfo
+                  `cast`
+                (GHC.Show.Show
+                   (Sym (Language.Haskell.Tools.AST.Ann.D:R:SemanticInfo'IdDomSameInfoExprCls[0])))_R -}
+9c28c66ca95eeb47f7babe091f297aff
+  $s$fDomaind_$s$fDomaind_$cp11Domain ::
+    GHC.Show.Show
+      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+         Language.Haskell.Tools.AST.Ann.IdDom
+         Language.Haskell.Tools.AST.Ann.SameInfoImportCls)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                Main.$s$fDomaind2
+                  `cast`
+                (GHC.Show.Show
+                   (Sym (Language.Haskell.Tools.AST.Ann.D:R:SemanticInfo'IdDomSameInfoImportCls[0])))_R -}
+cff916c7951f88d19154c219f0f5bf0c
+  $s$fDomaind_$s$fDomaind_$cp12Domain ::
+    GHC.Show.Show
+      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+         Language.Haskell.Tools.AST.Ann.IdDom
+         Language.Haskell.Tools.AST.Ann.SameInfoModuleCls)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                Main.$s$fDomaind1
+                  `cast`
+                (GHC.Show.Show
+                   (Sym (Language.Haskell.Tools.AST.Ann.D:R:SemanticInfo'IdDomSameInfoModuleCls[0])))_R -}
+5144d505054c89d4b68d41f93d126b88
+  $s$fDomaind_$s$fDomaind_$cp13Domain ::
+    GHC.Show.Show
+      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+         Language.Haskell.Tools.AST.Ann.IdDom
+         Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                Language.Haskell.Tools.AST.SemaInfoTypes.$fShowImplicitFieldInfo
+                  `cast`
+                (GHC.Show.Show
+                   (Sym (Language.Haskell.Tools.AST.Ann.D:R:SemanticInfo'IdDomSameInfoWildcardCls[0])))_R -}
+e12f55c7d9911873eac87042049df685
+  $s$fDomaind_$s$fDomaind_$cp2Domain ::
+    Data.Data.Data Language.Haskell.Tools.AST.Ann.IdDom
+  {- Unfolding: InlineRule (0, True, True)
+                Language.Haskell.Tools.AST.Ann.$fDataIdDom -}
+ba375b5679fe8c6a2035fa2d427cabb9
+  $s$fDomaind_$s$fDomaind_$cp3Domain ::
+    Language.Haskell.Tools.AST.Ann.SemanticInfo'
+      Language.Haskell.Tools.AST.Ann.IdDom
+      Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls
+    Data.Type.Equality.~ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                Main.$s$fDomaind5
+                  `cast`
+                ((Data.Type.Equality.~)
+                   <*>_N
+                   (Sym (Language.Haskell.Tools.AST.Ann.D:R:SemanticInfo'IdDomSameInfoDefaultCls[0]))
+                   <Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo>_N)_R -}
+15a29af09bb235bee509d53ab684b0a6
+  $s$fDomaind_$s$fDomaind_$cp4Domain ::
+    Data.Data.Data
+      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+         Language.Haskell.Tools.AST.Ann.IdDom
+         Language.Haskell.Tools.AST.Ann.SameInfoNameCls)
+  {- Unfolding: InlineRule (0, True, True)
+                Language.Haskell.Tools.AST.SemaInfoTypes.$fDataCNameInfo
+                  `cast`
+                (Data.Data.Data
+                   (Sym (Language.Haskell.Tools.AST.Ann.D:R:SemanticInfo'IdDomSameInfoNameCls[0])))_R -}
+b9b414b5aa534231c8d33677beace835
+  $s$fDomaind_$s$fDomaind_$cp5Domain ::
+    Data.Data.Data
+      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+         Language.Haskell.Tools.AST.Ann.IdDom
+         Language.Haskell.Tools.AST.Ann.SameInfoExprCls)
+  {- Unfolding: InlineRule (0, True, True)
+                Language.Haskell.Tools.AST.SemaInfoTypes.$fDataScopeInfo
+                  `cast`
+                (Data.Data.Data
+                   (Sym (Language.Haskell.Tools.AST.Ann.D:R:SemanticInfo'IdDomSameInfoExprCls[0])))_R -}
+3eb93907e64507f96fe11b77913ebb1c
+  $s$fDomaind_$s$fDomaind_$cp6Domain ::
+    Data.Data.Data
+      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+         Language.Haskell.Tools.AST.Ann.IdDom
+         Language.Haskell.Tools.AST.Ann.SameInfoImportCls)
+  {- Unfolding: InlineRule (0, True, True)
+                Main.$s$fDomaind4
+                  `cast`
+                (Data.Data.Data
+                   (Sym (Language.Haskell.Tools.AST.Ann.D:R:SemanticInfo'IdDomSameInfoImportCls[0])))_R -}
+b01745e66cbb7f33f437fe8fed1fe91c
+  $s$fDomaind_$s$fDomaind_$cp7Domain ::
+    Data.Data.Data
+      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+         Language.Haskell.Tools.AST.Ann.IdDom
+         Language.Haskell.Tools.AST.Ann.SameInfoModuleCls)
+  {- Unfolding: InlineRule (0, True, True)
+                Main.$s$fDomaind3
+                  `cast`
+                (Data.Data.Data
+                   (Sym (Language.Haskell.Tools.AST.Ann.D:R:SemanticInfo'IdDomSameInfoModuleCls[0])))_R -}
+bbadef693fa0a5ce07d86b2dff5f4bbf
+  $s$fDomaind_$s$fDomaind_$cp8Domain ::
+    Data.Data.Data
+      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+         Language.Haskell.Tools.AST.Ann.IdDom
+         Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls)
+  {- Unfolding: InlineRule (0, True, True)
+                Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImplicitFieldInfo
+                  `cast`
+                (Data.Data.Data
+                   (Sym (Language.Haskell.Tools.AST.Ann.D:R:SemanticInfo'IdDomSameInfoWildcardCls[0])))_R -}
+d0599d40db052aaf8c0be0051cc8c13f
+  $s$fDomaind_$s$fDomaind_$cp9Domain ::
+    GHC.Show.Show
+      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+         Language.Haskell.Tools.AST.Ann.IdDom
+         Language.Haskell.Tools.AST.Ann.SameInfoNameCls)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                Language.Haskell.Tools.AST.SemaInfoTypes.$fShowCNameInfo
+                  `cast`
+                (GHC.Show.Show
+                   (Sym (Language.Haskell.Tools.AST.Ann.D:R:SemanticInfo'IdDomSameInfoNameCls[0])))_R -}
+4c36d2f1a2c39b4cf747fdde562ff7f8
+  $s$fDomaind_$s$fShowImportInfo ::
+    GHC.Show.Show
+      (Language.Haskell.Tools.AST.SemaInfoTypes.ImportInfo Var.Var)
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ (Language.Haskell.Tools.AST.SemaInfoTypes.ImportInfo Var.Var)
+                  Main.$s$fDomaind_$s$fShowImportInfo_$cshowsPrec
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fShowImportInfo_$cshow
+                     @ Var.Var
+                     Var.$fOutputableVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fShowImportInfo_$cshowList
+                     @ Var.Var
+                     Var.$fOutputableVar) -}
+59a994187f9e09447cad302d88ba5538
+  $s$fDomaind_$s$fShowImportInfo_$cshowsPrec ::
+    GHC.Types.Int
+    -> Language.Haskell.Tools.AST.SemaInfoTypes.ImportInfo Var.Var
+    -> GHC.Show.ShowS
+  {- Arity: 3,
+     Strictness: <L,A><S,1*U(1*U(U(U,U,U,U,U,U,U),U(U,U,U,U,U,U,U)),1*U,1*U,1*U,1*U)><L,1*U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ (ds1 :: GHC.Types.Int)
+                   (x :: Language.Haskell.Tools.AST.SemaInfoTypes.ImportInfo Var.Var)
+                   (s :: GHC.Base.String) ->
+                 GHC.Base.augment
+                   @ GHC.Types.Char
+                   (\ @ b
+                      (c :: GHC.Types.Char -> b -> b)[OneShot]
+                      (n1 :: b)[OneShot] ->
+                    GHC.Base.foldr
+                      @ GHC.Types.Char
+                      @ b
+                      c
+                      n1
+                      (Language.Haskell.Tools.AST.SemaInfoTypes.$fShowImportInfo_$cshow
+                         @ Var.Var
+                         Var.$fOutputableVar
+                         x))
+                   s) -}
+f2f1dc7360175c7a33408ce59df1e171
+  $s$fDomaind_$s$fShowModuleInfo ::
+    GHC.Show.Show
+      (Language.Haskell.Tools.AST.SemaInfoTypes.ModuleInfo Var.Var)
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ (Language.Haskell.Tools.AST.SemaInfoTypes.ModuleInfo Var.Var)
+                  Main.$s$fDomaind_$s$fShowModuleInfo_$cshowsPrec
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fShowModuleInfo_$cshow
+                     @ Var.Var
+                     Var.$fOutputableVar)
+                  (Language.Haskell.Tools.AST.SemaInfoTypes.$fShowModuleInfo_$cshowList
+                     @ Var.Var
+                     Var.$fOutputableVar) -}
+fe21de8fb6be01368eb530ba7f3fe9a2
+  $s$fDomaind_$s$fShowModuleInfo_$cshowsPrec ::
+    GHC.Types.Int
+    -> Language.Haskell.Tools.AST.SemaInfoTypes.ModuleInfo Var.Var
+    -> GHC.Show.ShowS
+  {- Arity: 3,
+     Strictness: <L,A><S,1*U(1*U(U(U,U,U,U,U,U,U),U(U,U,U,U,U,U,U)),A,1*U,1*U,1*U,1*U)><L,1*U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ (ds1 :: GHC.Types.Int)
+                   (x :: Language.Haskell.Tools.AST.SemaInfoTypes.ModuleInfo Var.Var)
+                   (s :: GHC.Base.String) ->
+                 GHC.Base.augment
+                   @ GHC.Types.Char
+                   (\ @ b
+                      (c :: GHC.Types.Char -> b -> b)[OneShot]
+                      (n1 :: b)[OneShot] ->
+                    GHC.Base.foldr
+                      @ GHC.Types.Char
+                      @ b
+                      c
+                      n1
+                      (Language.Haskell.Tools.AST.SemaInfoTypes.$fShowModuleInfo_$cshow
+                         @ Var.Var
+                         Var.$fOutputableVar
+                         x))
+                   s) -}
+f55a55711c1df029b1336aec4adf906c
   $s$fEqMap ::
     GHC.Classes.Eq
       (Data.Map.Base.Map
-         GHC.LanguageExtensions.Type.Extension [Main.Line])
+         (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+         [Main.Line])
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ (Data.Map.Base.Map
-                       GHC.LanguageExtensions.Type.Extension [Main.Line])
+                       (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                       [Main.Line])
                   (Data.Map.Base.$fEqMap_$c==
-                     @ GHC.LanguageExtensions.Type.Extension
+                     @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                      @ [Main.Line]
-                     GHC.LanguageExtensions.Type.$fEqExtension
+                     Main.$s$fEqMap2
                      Main.$s$fEqMap1)
                   Main.$s$fEqMap_$s$fEqMap_$c/= -}
 1ef5807f154a6efb94620287a07da277
@@ -214,44 +701,101 @@ fdab416ae3db9b946ce06f4df3af3519
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 GHC.Classes.$fEq[]_$s$fEq[] -}
-3b0942045ebcff32ff7152d010936ee4
+8427c59e197ac88adc7c7d3c34e7b2db
+  $s$fEqMap2 ::
+    GHC.Classes.Eq
+      (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                ExtMonad.$s$fEqLogicalRelation -}
+167019da22b8caa22e927ff9808feab6
   $s$fEqMap_$s$fEqMap_$c/= ::
-    Data.Map.Base.Map GHC.LanguageExtensions.Type.Extension [Main.Line]
+    Data.Map.Base.Map
+      (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+      [Main.Line]
     -> Data.Map.Base.Map
-         GHC.LanguageExtensions.Type.Extension [Main.Line]
+         (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+         [Main.Line]
     -> GHC.Types.Bool
   {- Arity: 2, Strictness: <L,U><L,U>, Inline: INLINE (sat-args=2),
      Unfolding: InlineRule (2, False, False)
                 (\ (x :: Data.Map.Base.Map
-                           GHC.LanguageExtensions.Type.Extension [Main.Line])
+                           (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                           [Main.Line])
                    (y :: Data.Map.Base.Map
-                           GHC.LanguageExtensions.Type.Extension [Main.Line]) ->
+                           (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                           [Main.Line]) ->
                  GHC.Classes.not
                    (Data.Map.Base.$fEqMap_$c==
-                      @ GHC.LanguageExtensions.Type.Extension
+                      @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                       @ [Main.Line]
-                      GHC.LanguageExtensions.Type.$fEqExtension
+                      Main.$s$fEqMap2
                       Main.$s$fEqMap1
                       x
                       y)) -}
-cea23d1f02af85f62cd3f18544ab0da7
+aef04c7b3fe10935eee7beada8768236
+  $s$fShowLogicalRelation ::
+    GHC.Show.Show
+      (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun:.
+                  @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                  (ExtMap.$fShowLogicalRelation_$cshowsPrec
+                     @ GHC.LanguageExtensions.Type.Extension
+                     GHC.LanguageExtensions.Type.$fShowExtension)
+                  Main.$s$fShowLogicalRelation_$s$fShowLogicalRelation_$cshow
+                  Main.$s$fShowLogicalRelation_$s$fShowLogicalRelation_$cshowList -}
+a2bfedec67f2e89bc6d5afe528b440b9
+  $s$fShowLogicalRelation_$s$fShowLogicalRelation_$cshow ::
+    ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension
+    -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: ExtMap.LogicalRelation
+                           GHC.LanguageExtensions.Type.Extension) ->
+                 ExtMap.$fShowLogicalRelation_$cshowsPrec
+                   @ GHC.LanguageExtensions.Type.Extension
+                   GHC.LanguageExtensions.Type.$fShowExtension
+                   GHC.Show.shows22
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+a56e096abaddfe29c564bdb766684157
+  $s$fShowLogicalRelation_$s$fShowLogicalRelation_$cshowList ::
+    [ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension]
+    -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S,1*U><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (eta :: [ExtMap.LogicalRelation
+                              GHC.LanguageExtensions.Type.Extension])
+                   (eta1 :: GHC.Base.String) ->
+                 GHC.Show.showList__
+                   @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                   (ExtMap.$fShowLogicalRelation_$cshowsPrec
+                      @ GHC.LanguageExtensions.Type.Extension
+                      GHC.LanguageExtensions.Type.$fShowExtension
+                      ExtMap.$fShowLogicalRelation1)
+                   eta
+                   eta1) -}
+e9a3d4e03d33a6a40290ea16a35706e9
   $s$fShowMap ::
     GHC.Show.Show
       (Data.Map.Base.Map
-         GHC.LanguageExtensions.Type.Extension [Main.Line])
+         (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+         [Main.Line])
   {- Strictness: m, Inline: [ALWAYS] CONLIKE,
      Unfolding: DFun:.
                   @ (Data.Map.Base.Map
-                       GHC.LanguageExtensions.Type.Extension [Main.Line])
+                       (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                       [Main.Line])
                   (Data.Map.Base.$fShowMap_$cshowsPrec
-                     @ GHC.LanguageExtensions.Type.Extension
+                     @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                      @ [Main.Line]
-                     GHC.LanguageExtensions.Type.$fShowExtension
+                     Main.$s$fShowMap2
                      Main.$s$fShowMap1)
                   (Data.Map.Base.$fShowMap_$cshow
-                     @ GHC.LanguageExtensions.Type.Extension
+                     @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                      @ [Main.Line]
-                     GHC.LanguageExtensions.Type.$fShowExtension
+                     Main.$s$fShowMap2
                      Main.$s$fShowMap1)
                   Main.$s$fShowMap_$s$fShowMap_$cshowList -}
 5d06d4a5cb2c21c16bc4c4559837bbfb
@@ -259,33 +803,37 @@ cea23d1f02af85f62cd3f18544ab0da7
   {- Strictness: m,
      Unfolding: InlineRule (0, True, True)
                 GHC.Show.$fShow[]_$s$fShow[] -}
-88914014831edac92a3f2e7fc84f1811
+af82a058fd4d2c376cd038d76cb4578a
+  $s$fShowMap2 ::
+    GHC.Show.Show
+      (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                Main.$s$fShowLogicalRelation -}
+d45b606a6169e6e390ed38c0c39fe197
   $s$fShowMap_$s$fShowMap_$cshowList ::
     [Data.Map.Base.Map
-       GHC.LanguageExtensions.Type.Extension [Main.Line]]
+       (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+       [Main.Line]]
     -> GHC.Show.ShowS
   {- Arity: 2, Strictness: <S,1*U><L,U>,
      Unfolding: InlineRule (2, True, False)
                 (\ (ls :: [Data.Map.Base.Map
-                             GHC.LanguageExtensions.Type.Extension [Main.Line]])
+                             (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                             [Main.Line]])
                    (s :: GHC.Base.String) ->
                  GHC.Show.showList__
                    @ (Data.Map.Base.Map
-                        GHC.LanguageExtensions.Type.Extension [Main.Line])
+                        (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                        [Main.Line])
                    (Data.Map.Base.$fShowMap_$cshowsPrec
-                      @ GHC.LanguageExtensions.Type.Extension
+                      @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                       @ [Main.Line]
-                      GHC.LanguageExtensions.Type.$fShowExtension
+                      Main.$s$fShowMap2
                       Main.$s$fShowMap1
                       GHC.Show.shows22)
                    ls
                    s) -}
-0b048e0faf41695d8586f8fd87a74eb0
-  $ssort :: [Main.Line] -> [Main.Line]
-  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
-     Unfolding: InlineRule (1, True, False)
-                (\ (eta :: [Main.Line]) ->
-                 Data.OldList.sortBy @ Main.Line GHC.Classes.compareInt eta) -}
 d6831ef04cb9301b090dfae6f7bb7ec7
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
@@ -302,9 +850,11 @@ d6831ef04cb9301b090dfae6f7bb7ec7
   type Line = GHC.Types.Int
 69cefa388be49c50c1f4617683a15f66
   type ModuleName = GHC.Base.String
-5a8054876d8c7fb6c39bf0a93c13752b
+00ee6e5de6d68262e83bc75f983ce276
   type SimpleMap =
-    Data.Map.Base.Map GHC.LanguageExtensions.Type.Extension [Main.Line]
+    Data.Map.Base.Map
+      (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+      [Main.Line]
 ac591eb9759f42c740e55bbe2c0673aa
   type TestName = GHC.Base.String
 d4fa7246dc264273548aacc630b4bc5a
@@ -490,7 +1040,7 @@ fa2dcf154d31bfeaa13c55f596f4d33d
   {- Strictness: m,
      Unfolding: ((Main.flexibleInstancesRoot,
                   Main.flexibleInstancesModules)) -}
-444a72adf3e576a69057d70803f874e4
+b46145ead61e299c855e0554420bc226
   getExtAnnotsFrom ::
     GHC.IO.FilePath -> Main.ModuleName -> GHC.Types.IO Main.SimpleMap
   {- Arity: 3, Strictness: <L,1*U><L,U><S,U>,
@@ -500,7 +1050,7 @@ fa2dcf154d31bfeaa13c55f596f4d33d
                 (<GHC.IO.FilePath>_R
                  ->_R <Main.ModuleName>_R
                  ->_R Sym (GHC.Types.N:IO[0] <Main.SimpleMap>_R)) -}
-7153549a7a3092828e1221958d3d46ba
+7d1ba0ece8b72fc8054d609045232a67
   getExtAnnotsFrom1 ::
     GHC.IO.FilePath
     -> Main.ModuleName
@@ -523,13 +1073,13 @@ fa2dcf154d31bfeaa13c55f596f4d33d
                         AnnotationParser.getExtensionAnnotations1
                         (Data.OldList.lines ipv3)
                         (Data.Map.Base.Tip
-                           @ GHC.LanguageExtensions.Type.Extension
+                           @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                            @ [GHC.Types.Int]) of vx { DEFAULT ->
                  (# ipv2, vx #) } } }) -}
 08ae4287bb474c4f8b4c21f6f12f3057
   getExtAnnotsFrom2 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# ".hs"#) -}
-f0ef793805e2146a7870297e88344e16
+a43066266bbe47a8bf09e8bd31569043
   getExtensionsFrom ::
     GHC.IO.FilePath -> Main.ModuleName -> GHC.Types.IO Main.SimpleMap
   {- Arity: 3, Strictness: <L,U><L,U><S,U>,
@@ -539,7 +1089,7 @@ f0ef793805e2146a7870297e88344e16
                 (<GHC.IO.FilePath>_R
                  ->_R <Main.ModuleName>_R
                  ->_R Sym (GHC.Types.N:IO[0] <Main.SimpleMap>_R)) -}
-e21291706dc8ba5de686b0a95323d9e5
+aaf5363777a685e3d57eb877739d2b00
   getExtensionsFrom1 ::
     GHC.IO.FilePath
     -> Main.ModuleName
@@ -551,7 +1101,7 @@ e21291706dc8ba5de686b0a95323d9e5
                    (eta :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
                  GHC.runGhc1
                    @ Main.SimpleMap
-                   Main.getExtensionsFrom6
+                   Main.getExtensionsFrom5
                    (let {
                       m :: GhcMonad.Ghc
                              Language.Haskell.Tools.Refactor.Prepare.TypedModule
@@ -567,90 +1117,20 @@ e21291706dc8ba5de686b0a95323d9e5
                           (GHC.Types.N:IO[0]
                                <Language.Haskell.Tools.Refactor.Prepare.TypedModule>_R)
                             s1 of ds1 { (#,#) ipv ipv1 ->
-                     case (((ExtensionOrganizer.collectExtensions6
-                               (case Main.getExtensionsFrom3 of wild { SrcLoc.RealSrcSpan' ds dt dt1 dt2 dt3 ->
-                                case ipv1 of wild1 { Language.Haskell.Tools.AST.Ann.Ann a ds2 ->
-                                case a of wild2 { Language.Haskell.Tools.AST.Ann.NodeInfo ds3 ds4 ->
-                                case ds4
-                                       `cast`
-                                     (Language.Haskell.Tools.Transform.SourceTemplate.D:R:SpanInfoSrcTemplateStage0[0]) of wild3 { Language.Haskell.Tools.Transform.SourceTemplate.SourceTemplateNode ds5 ds6 ds7 ds8 ->
-                                case ds5 of wild4 {
-                                  SrcLoc.RealSrcSpan s2
-                                  -> case s2 of wild5 { SrcLoc.RealSrcSpan' ds9 dt4 dt5 dt6 dt7 ->
-                                     SrcLoc.RealSrcSpan' ds9 dt dt1 dt2 dt3 }
-                                  SrcLoc.UnhelpfulSpan str
-                                  -> case Language.Haskell.Tools.Refactor.Prepare.correctRefactorSpan1
-                                     ret_ty SrcLoc.RealSrcSpan
-                                     of {} } } } } })
-                               ipv1)
-                              `cast`
-                            (Control.Monad.Trans.State.Lazy.N:StateT[0]
-                                 <Data.Map.Base.Map
-                                    GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan]>_N
-                                 <GhcMonad.Ghc>_R
-                                 <Language.Haskell.Tools.AST.Ann.Ann
-                                    Language.Haskell.Tools.AST.Representation.Modules.UModule
-                                    Language.Haskell.Tools.AST.Ann.IdDom
-                                    Language.Haskell.Tools.AST.Ann.SrcTemplateStage>_N)
-                              (Data.Map.Base.Tip
-                                 @ GHC.LanguageExtensions.Type.Extension
-                                 @ [SrcLoc.SrcSpan]))
+                     case ((Main.getExtensionsFrom3 ipv1)
                              `cast`
-                           (GhcMonad.N:Ghc[0]
-                                <(Language.Haskell.Tools.AST.Ann.Ann
-                                    Language.Haskell.Tools.AST.Representation.Modules.UModule
-                                    Language.Haskell.Tools.AST.Ann.IdDom
-                                    Language.Haskell.Tools.AST.Ann.SrcTemplateStage,
-                                  Data.Map.Base.Map
-                                    GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])>_R)
+                           (GhcMonad.N:Ghc[0] <ExtMap.ExtMap>_R)
                              s)
                             `cast`
-                          (GHC.Types.N:IO[0]
-                               <(Language.Haskell.Tools.AST.Ann.Ann
-                                   Language.Haskell.Tools.AST.Representation.Modules.UModule
-                                   Language.Haskell.Tools.AST.Ann.IdDom
-                                   Language.Haskell.Tools.AST.Ann.SrcTemplateStage,
-                                 Data.Map.Base.Map
-                                   GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])>_R)
+                          (GHC.Types.N:IO[0] <ExtMap.ExtMap>_R)
                             ipv of ds2 { (#,#) ipv2 ipv3 ->
-                     case (((ExtensionOrganizer.collectExtensions1
-                               (case ipv3 of wild { (,) a3 s' -> a3 }))
-                              `cast`
-                            (Control.Monad.Trans.State.Lazy.N:StateT[0]
-                                 <Data.Map.Base.Map
-                                    GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan]>_N
-                                 <GhcMonad.Ghc>_R
-                                 <Language.Haskell.Tools.AST.Ann.Ann
-                                    Language.Haskell.Tools.AST.Representation.Modules.UModule
-                                    Language.Haskell.Tools.AST.Ann.IdDom
-                                    Language.Haskell.Tools.AST.Ann.SrcTemplateStage>_N)
-                              (case ipv3 of wild { (,) a3 s' -> s' }))
-                             `cast`
-                           (GhcMonad.N:Ghc[0]
-                                <(Language.Haskell.Tools.AST.Ann.Ann
-                                    Language.Haskell.Tools.AST.Representation.Modules.UModule
-                                    Language.Haskell.Tools.AST.Ann.IdDom
-                                    Language.Haskell.Tools.AST.Ann.SrcTemplateStage,
-                                  Data.Map.Base.Map
-                                    GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])>_R)
-                             s)
-                            `cast`
-                          (GHC.Types.N:IO[0]
-                               <(Language.Haskell.Tools.AST.Ann.Ann
-                                   Language.Haskell.Tools.AST.Representation.Modules.UModule
-                                   Language.Haskell.Tools.AST.Ann.IdDom
-                                   Language.Haskell.Tools.AST.Ann.SrcTemplateStage,
-                                 Data.Map.Base.Map
-                                   GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan])>_R)
-                            ipv2 of ds3 { (#,#) ipv4 ipv5 ->
-                     case ipv5 of wild { (,) ds exts ->
                      case Data.Map.Strict.map
                             @ [SrcLoc.SrcSpan]
                             @ [Main.Line]
-                            @ GHC.LanguageExtensions.Type.Extension
+                            @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                             Main.getExtensionsFrom2
-                            exts of vx { DEFAULT ->
-                     (# ipv4, vx #) } } } } })
+                            ipv3 of vx { DEFAULT ->
+                     (# ipv2, vx #) } } })
                       `cast`
                     (Trans
                          (<GhcMonad.Session>_R
@@ -664,40 +1144,38 @@ e21291706dc8ba5de686b0a95323d9e5
                    @ SrcLoc.SrcSpan
                    @ Main.Line
                    Main.spanToLine) -}
-13362a324b9a49e1c30fc5167f80cd3c
-  getExtensionsFrom3 :: SrcLoc.RealSrcSpan
-  {- Unfolding: (case Main.getExtensionsFrom5
-                        Main.getExtensionsFrom4 of wild {
-                   [] -> Language.Haskell.Tools.Refactor.Prepare.readSrcSpan1
-                   : one ds
-                   -> case ds of wild1 {
-                        []
-                        -> case Language.Haskell.Tools.Refactor.Prepare.$wreadSrcLoc
-                                  one of ww { (#,,#) ww1 ww2 ww3 ->
-                           case ww1 of dt2 { FastString.FastString ipv ipv1 ipv2 ipv3 ipv4 ipv5 ipv6 ->
-                           SrcLoc.RealSrcSpan' dt2 ww2 ww3 ww2 ww3 } }
-                        : to ds1
-                        -> case ds1 of wild2 {
-                             []
-                             -> case Language.Haskell.Tools.Refactor.Prepare.$wreadSrcLoc
-                                       one of ww { (#,,#) ww1 ww2 ww3 ->
-                                case ww1 of dt2 { FastString.FastString ipv ipv1 ipv2 ipv3 ipv4 ipv5 ipv6 ->
-                                case Language.Haskell.Tools.Refactor.Prepare.$wreadSrcLoc
-                                       to of ww4 { (#,,#) ww5 ww6 ww7 ->
-                                SrcLoc.RealSrcSpan' dt2 ww2 ww3 ww6 ww7 } } }
-                             : ipv ipv1
-                             -> Language.Haskell.Tools.Refactor.Prepare.readSrcSpan1 } } }) -}
-c3f10f17817d9c954263a712f0d6c3d2
-  getExtensionsFrom4 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "1:1-1000:1"#) -}
-380d8ce2153399db09a480016a2063f6
-  getExtensionsFrom5 :: [GHC.Types.Char] -> [[GHC.Types.Char]]
-  {- Unfolding: (Data.List.Split.Internals.splitOn
-                   @ GHC.Types.Char
-                   GHC.Classes.$fEqChar
-                   Language.Haskell.Tools.Refactor.Prepare.readSrcSpan2) -}
-0907f92da8eceeabd79d7f7d4409a4d1
-  getExtensionsFrom6 :: GHC.Base.Maybe GHC.IO.FilePath
+2caec9b842c1073e048df0a35b86dd32
+  getExtensionsFrom3 ::
+    Language.Haskell.Tools.Refactor.RefactorBase.UnnamedModule
+      Language.Haskell.Tools.AST.Ann.IdDom
+    -> GhcMonad.Ghc ExtMap.ExtMap
+  {- Unfolding: (ExtensionOrganizer.collectExtensions
+                   @ Language.Haskell.Tools.AST.Ann.IdDom
+                   Main.getExtensionsFrom4
+                     `cast`
+                   (GHC.Classes.(%,%)
+                      <Language.Haskell.Tools.AST.Ann.Domain
+                         Language.Haskell.Tools.AST.Ann.IdDom>_N
+                      (Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo'
+                         (Trans
+                              (Sym (Language.Haskell.Tools.AST.Ann.D:R:SemanticInfo'IdDomSameInfoNameCls[0]))
+                              (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                 <Language.Haskell.Tools.AST.Ann.IdDom>_N
+                                 (Sym (Language.Haskell.Tools.AST.Ann.D:R:SemaInfoClassify[0])))_N))_N)_R) -}
+ea3a5dcd276fd2867780e11b234287cf
+  getExtensionsFrom4 ::
+    (Language.Haskell.Tools.AST.Ann.Domain
+       Language.Haskell.Tools.AST.Ann.IdDom,
+     Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo'
+       Language.Haskell.Tools.AST.SemaInfoTypes.CNameInfo)
+  {- Strictness: m,
+     Unfolding: ((Main.$s$fDomaind,
+                  Language.Haskell.Tools.AST.SemaInfoClasses.$fHasIdInfo'CNameInfo_$csemanticsName
+                    `cast`
+                  (Sym (Language.Haskell.Tools.AST.SemaInfoClasses.N:HasNameInfo'[0]
+                            <Language.Haskell.Tools.AST.SemaInfoTypes.CNameInfo>_N)))) -}
+c220c7729d09e9920ab72e81eeabb643
+  getExtensionsFrom5 :: GHC.Base.Maybe GHC.IO.FilePath
   {- Strictness: m2,
      Unfolding: (GHC.Base.Just @ GHC.IO.FilePath GHC.Paths.libdir) -}
 ac0d92fb393ae1251b4956e703e909f7
@@ -751,12 +1229,12 @@ ac0d92fb393ae1251b4956e703e909f7
 45dac10961750443034cd033db16cc06
   loadModuleAST3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "-w"#) -}
-aaf1a42a5c955a117bac3842218d7503
+3679111f25da61c633a5de58c5ce67b4
   main :: GHC.Types.IO ()
   {- Arity: 1,
      Unfolding: InlineRule (0, True, True)
                 Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-105a6d1fbb45f4437b64120568158f39
+1bcefacf5efd866cf9559a9beaa4ed03
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
@@ -764,36 +1242,36 @@ aaf1a42a5c955a117bac3842218d7503
      Unfolding: (Test.Tasty.CmdLine.defaultMainWithIngredients1
                    Test.Tasty.defaultIngredients
                    Main.main2) -}
-8583aa338bc5acf288f7e61365fc12fe
+0ef66246d55fbc0bf52060f2a323a3d2
   main10 :: [Test.Tasty.Core.TestTree]
   {- Unfolding: (GHC.Base.map
                    @ [GHC.Types.Char]
                    @ Test.Tasty.Core.TestTree
                    Main.main11
                    Main.flexibleInstancesModules) -}
-e1a7c67936bf316ee413692294f0db33
+ce1a18ce0ae709a61e901b3e31c6e4cf
   main11 :: Main.ModuleName -> Test.Tasty.Core.TestTree
   {- Arity: 1, Unfolding: (Main.mkTest Main.flexibleInstancesRoot) -}
-0ce7627d616312e931c39fc5895b1182
+4a00818d64034072e33a320f53173ea6
   main12 :: Test.Tasty.Core.TestTree
   {- Strictness: m2,
      Unfolding: (Test.Tasty.Core.TestGroup
                    Main.recordWildCardsRoot
                    Main.main13) -}
-e3dc16abc8d7ecbac078e442c548bc5c
+d0c9eb751fdf52d8db79a41f3d1c7135
   main13 :: [Test.Tasty.Core.TestTree]
   {- Unfolding: (GHC.Base.map
                    @ [GHC.Types.Char]
                    @ Test.Tasty.Core.TestTree
                    Main.main14
                    Main.recordWildCardsModules) -}
-32859d24d7490a1487af7ca38c72a5da
+22aeb941cc16c2e0ef1645c5161478d4
   main14 :: Main.ModuleName -> Test.Tasty.Core.TestTree
   {- Arity: 1, Unfolding: (Main.mkTest Main.recordWildCardsRoot) -}
 55c30feccd765deec651b006fa14aaa9
   main15 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "All tests"#) -}
-25808567cf85259fb8ccf5e1459545d7
+999e00139757bc8e78b917a2399bd98a
   main16 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
@@ -801,54 +1279,54 @@ e3dc16abc8d7ecbac078e442c548bc5c
      Unfolding: (GHC.TopHandler.runMainIO1
                    @ ()
                    Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R))) -}
-044bf04cc72983e3c7d7662b96fdeee2
+5705e5a7992329e52fed8f2fa429c553
   main2 :: Test.Tasty.Core.TestTree
   {- Strictness: m2,
      Unfolding: (Test.Tasty.Core.TestGroup Main.main15 Main.main3) -}
-6bd2e0891598ddc77a0e89e9f5bb7d55
+b4e841b52695dea1b9c7b408af2866b2
   main3 :: [Test.Tasty.Core.TestTree]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ Test.Tasty.Core.TestTree
                    Main.main12
                    Main.main4) -}
-c775a902105697313e69cb2edc1fae85
+542b7610c041b16f029ef093088f2f28
   main4 :: [Test.Tasty.Core.TestTree]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ Test.Tasty.Core.TestTree
                    Main.main9
                    Main.main5) -}
-fab7edfa63e8d0f713f413a0a12ce2f3
+9996dd10194f29cb16fd657eff8af142
   main5 :: [Test.Tasty.Core.TestTree]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ Test.Tasty.Core.TestTree
                    Main.main6
                    (GHC.Types.[] @ Test.Tasty.Core.TestTree)) -}
-3aca9e3a6000cda88569c4e961443503
+d999a5c19b94183e1d0cd8cbb2ef488a
   main6 :: Test.Tasty.Core.TestTree
   {- Strictness: m2,
      Unfolding: (Test.Tasty.Core.TestGroup
                    Main.derivingsRoot
                    Main.main7) -}
-191a0e5b328cf99786a97754cf2fc7a4
+329ab2526dbf202900920db40fb21fcb
   main7 :: [Test.Tasty.Core.TestTree]
   {- Unfolding: (GHC.Base.map
                    @ [GHC.Types.Char]
                    @ Test.Tasty.Core.TestTree
                    Main.main8
                    Main.derivingsModules) -}
-2c15aaab8618aa577724db8a64c8af35
+654a715e2cc08eb0379408421b9b79b1
   main8 :: Main.ModuleName -> Test.Tasty.Core.TestTree
   {- Arity: 1, Unfolding: (Main.mkTest Main.derivingsRoot) -}
-46786c3aee5a9dde1a66f466e6eef3d8
+178373713dec75db20c76e1c1d6abc59
   main9 :: Test.Tasty.Core.TestTree
   {- Strictness: m2,
      Unfolding: (Test.Tasty.Core.TestGroup
                    Main.flexibleInstancesRoot
                    Main.main10) -}
-a64aec513459efa6c21cbbd84c6f2975
+c058ad1da9a7718dc4b40e6ed726f265
   mkAssertion ::
     GHC.IO.FilePath -> Main.ModuleName -> GHC.Types.IO ()
   {- Arity: 3, Strictness: <L,U><L,U><S,U>,
@@ -867,7 +1345,7 @@ a64aec513459efa6c21cbbd84c6f2975
                  System.FilePath.Posix.combine
                    Main.testRoot
                    (System.FilePath.Posix.combine testDir testName)) -}
-be88bf7a8164334d90a84383ae9f4356
+b69d38cf07eb1ff29ff577229af8f7f7
   mkTest ::
     GHC.IO.FilePath -> Main.ModuleName -> Test.Tasty.Core.TestTree
   {- Arity: 2, Strictness: <L,U><L,U>,
@@ -884,7 +1362,7 @@ be88bf7a8164334d90a84383ae9f4356
                    (Trans
                         (Sym (GHC.Types.N:IO[0] <[GHC.Types.Char]>_R))
                         (Sym (Test.Tasty.HUnit.N:TestCase[0])))) -}
-2a2ff5536b5b8f87468feb5e5aa50650
+cb1d49a38b78e9df5d4c424e59635eeb
   mkTest1 ::
     GHC.IO.FilePath
     -> Main.ModuleName
@@ -904,27 +1382,34 @@ be88bf7a8164334d90a84383ae9f4356
                         ipv of ds2 { (#,#) ipv2 ipv3 ->
                  Test.Tasty.HUnit.Orig.@=?2
                    @ (Data.Map.Base.Map
-                        GHC.LanguageExtensions.Type.Extension [Main.Line])
+                        (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                        [Main.Line])
                    Main.$s$fEqMap
                    Main.$s$fShowMap
-                   Main.mkTest2
+                   Main.mkTest3
                    (Data.Map.Strict.map
                       @ [Main.Line]
                       @ [Main.Line]
-                      @ GHC.LanguageExtensions.Type.Extension
-                      Main.$ssort
+                      @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                      Main.mkTest2
                       ipv3)
                    (Data.Map.Strict.map
                       @ [Main.Line]
                       @ [Main.Line]
-                      @ GHC.LanguageExtensions.Type.Extension
-                      Main.$ssort
+                      @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                      Main.mkTest2
                       ipv1)
                    ipv2 } }) -}
-36d1d3b644eb25015180a4d5d79c624a
-  mkTest2 :: [GHC.Types.Char]
+ea51d7161b21374195ab0a06476ec1c2
+  mkTest2 :: [Main.Line] -> [Main.Line]
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (eta :: [Main.Line]) ->
+                 Data.OldList.sortBy @ Main.Line GHC.Classes.compareInt eta) -}
+6d90334f42732faea674cc6c4fa94683
+  mkTest3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "Failure"#) -}
-8b0c1b93266dca6238d1a064bf76bfa2
+9ade2ce846db2a25332ffac6f7fd0251
   mkTests :: Main.TestSuite -> Test.Tasty.Core.TestTree
   {- Arity: 1, Strictness: <S,1*U(U,1*U)>m2,
      Unfolding: InlineRule (1, True, False)
@@ -967,16 +1452,13 @@ e3e119b2d92ba4548075f397a0e91757
   {- Strictness: m,
      Unfolding: ((Main.recordWildCardsRoot,
                   Main.recordWildCardsModules)) -}
-cc19905ef3b806fb2a2e1df5e7e968fd
-  simplifyExtMap ::
-    Data.Map.Base.Map
-      GHC.LanguageExtensions.Type.Extension [SrcLoc.SrcSpan]
-    -> Main.SimpleMap
+c6f33b25e519a4805bb997b665b33db2
+  simplifyExtMap :: ExtMap.ExtMap -> Main.SimpleMap
   {- Arity: 1,
      Unfolding: (Data.Map.Strict.map
                    @ [SrcLoc.SrcSpan]
                    @ [Main.Line]
-                   @ GHC.LanguageExtensions.Type.Extension
+                   @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                    Main.getExtensionsFrom2) -}
 fd1b74381642bb227af1548d8ad903df
   spanToLine :: SrcLoc.SrcSpan -> Main.Line
@@ -994,45 +1476,945 @@ fd1b74381642bb227af1548d8ad903df
 5929189f95e54ac5738439752429a699
   testRoot :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "test"#) -}
-"SPEC/Main $fEqMap @ Extension @ [Line]" [ALWAYS] forall ($dEq1 :: GHC.Classes.Eq
-                                                                     [Main.Line])
-                                                         ($dEq :: GHC.Classes.Eq
-                                                                    GHC.LanguageExtensions.Type.Extension)
-  Data.Map.Base.$fEqMap @ GHC.LanguageExtensions.Type.Extension
+"SPEC/Main $fDataImportInfo @ Var" [ALWAYS] forall ($dData :: Data.Data.Data
+                                                                Var.Var)
+  Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo @ Var.Var
+                                                            $dData
+  = Main.$s$fDataImportInfo
+"SPEC/Main $fDataImportInfo_$cdataCast2 @ Var" [ALWAYS] forall ($dData :: Data.Data.Data
+                                                                            Var.Var)
+  Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo_$cdataCast2 @ Var.Var
+                                                                        $dData
+  = Main.$s$fDataImportInfo_$s$fDataImportInfo_$cdataCast2
+"SPEC/Main $fDataImportInfo_$cdataTypeOf @ Var" [ALWAYS] forall ($dData :: Data.Data.Data
+                                                                             Var.Var)
+  Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo_$cdataTypeOf @ Var.Var
+                                                                         $dData
+  = Main.$s$fDataImportInfo_$s$fDataImportInfo_$cdataTypeOf
+"SPEC/Main $fDataImportInfo_$ctoConstr @ Var" [ALWAYS] forall ($dData :: Data.Data.Data
+                                                                           Var.Var)
+  Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo_$ctoConstr @ Var.Var
+                                                                       $dData
+  = Main.$s$fDataImportInfo_$s$fDataImportInfo_$ctoConstr
+"SPEC/Main $fDataModuleInfo @ Var" [ALWAYS] forall ($dData :: Data.Data.Data
+                                                                Var.Var)
+  Language.Haskell.Tools.AST.SemaInfoTypes.$fDataModuleInfo @ Var.Var
+                                                            $dData
+  = Main.$s$fDataModuleInfo
+"SPEC/Main $fDataModuleInfo_$cdataCast2 @ Var" [ALWAYS] forall ($dData :: Data.Data.Data
+                                                                            Var.Var)
+  Language.Haskell.Tools.AST.SemaInfoTypes.$fDataModuleInfo_$cdataCast2 @ Var.Var
+                                                                        $dData
+  = Main.$s$fDataModuleInfo_$s$fDataModuleInfo_$cdataCast2
+"SPEC/Main $fDataModuleInfo_$cdataTypeOf @ Var" [ALWAYS] forall ($dData :: Data.Data.Data
+                                                                             Var.Var)
+  Language.Haskell.Tools.AST.SemaInfoTypes.$fDataModuleInfo_$cdataTypeOf @ Var.Var
+                                                                         $dData
+  = Main.$s$fDataModuleInfo_$s$fDataModuleInfo_$cdataTypeOf
+"SPEC/Main $fDataModuleInfo_$ctoConstr @ Var" [ALWAYS] forall ($dData :: Data.Data.Data
+                                                                           Var.Var)
+  Language.Haskell.Tools.AST.SemaInfoTypes.$fDataModuleInfo_$ctoConstr @ Var.Var
+                                                                       $dData
+  = Main.$s$fDataModuleInfo_$s$fDataModuleInfo_$ctoConstr
+"SPEC/Main $fDomaind @ IdDom" [ALWAYS] forall ($dShow4 :: GHC.Show.Show
+                                                            (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                               Language.Haskell.Tools.AST.Ann.IdDom
+                                                               Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                              ($dShow3 :: GHC.Show.Show
+                                                            (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                               Language.Haskell.Tools.AST.Ann.IdDom
+                                                               Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                              ($dShow2 :: GHC.Show.Show
+                                                            (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                               Language.Haskell.Tools.AST.Ann.IdDom
+                                                               Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                              ($dShow1 :: GHC.Show.Show
+                                                            (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                               Language.Haskell.Tools.AST.Ann.IdDom
+                                                               Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                              ($dShow :: GHC.Show.Show
+                                                           (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                              Language.Haskell.Tools.AST.Ann.IdDom
+                                                              Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                              ($dData5 :: Data.Data.Data
+                                                            (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                               Language.Haskell.Tools.AST.Ann.IdDom
+                                                               Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                              ($dData4 :: Data.Data.Data
+                                                            (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                               Language.Haskell.Tools.AST.Ann.IdDom
+                                                               Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                              ($dData3 :: Data.Data.Data
+                                                            (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                               Language.Haskell.Tools.AST.Ann.IdDom
+                                                               Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                              ($dData2 :: Data.Data.Data
+                                                            (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                               Language.Haskell.Tools.AST.Ann.IdDom
+                                                               Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                              ($dData1 :: Data.Data.Data
+                                                            (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                               Language.Haskell.Tools.AST.Ann.IdDom
+                                                               Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                              ($d~ :: Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                        Language.Haskell.Tools.AST.Ann.IdDom
+                                                        Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls
+                                                      Data.Type.Equality.~ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo)
+                                              ($dData :: Data.Data.Data
+                                                           Language.Haskell.Tools.AST.Ann.IdDom)
+                                              ($dTypeable :: Data.Typeable.Internal.Typeable
+                                                               Language.Haskell.Tools.AST.Ann.IdDom)
+  Language.Haskell.Tools.AST.Ann.$fDomaind @ Language.Haskell.Tools.AST.Ann.IdDom
+                                           $dTypeable
+                                           $dData
+                                           $d~
+                                           $dData1
+                                           $dData2
+                                           $dData3
+                                           $dData4
+                                           $dData5
+                                           $dShow
+                                           $dShow1
+                                           $dShow2
+                                           $dShow3
+                                           $dShow4
+  = Main.$s$fDomaind
+"SPEC/Main $fDomaind_$cp10Domain @ IdDom" [ALWAYS] forall ($dShow4 :: GHC.Show.Show
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                          ($dShow3 :: GHC.Show.Show
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                          ($dShow2 :: GHC.Show.Show
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                          ($dShow1 :: GHC.Show.Show
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                          ($dShow :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                          ($dData5 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                          ($dData4 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                          ($dData3 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                          ($dData2 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                          ($dData1 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                          ($d~ :: Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                    Language.Haskell.Tools.AST.Ann.IdDom
+                                                                    Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls
+                                                                  Data.Type.Equality.~ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo)
+                                                          ($dData :: Data.Data.Data
+                                                                       Language.Haskell.Tools.AST.Ann.IdDom)
+                                                          ($dTypeable :: Data.Typeable.Internal.Typeable
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom)
+  Language.Haskell.Tools.AST.Ann.$fDomaind_$cp10Domain @ Language.Haskell.Tools.AST.Ann.IdDom
+                                                       $dTypeable
+                                                       $dData
+                                                       $d~
+                                                       $dData1
+                                                       $dData2
+                                                       $dData3
+                                                       $dData4
+                                                       $dData5
+                                                       $dShow
+                                                       $dShow1
+                                                       $dShow2
+                                                       $dShow3
+                                                       $dShow4
+  = Main.$s$fDomaind_$s$fDomaind_$cp10Domain
+"SPEC/Main $fDomaind_$cp11Domain @ IdDom" [ALWAYS] forall ($dShow4 :: GHC.Show.Show
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                          ($dShow3 :: GHC.Show.Show
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                          ($dShow2 :: GHC.Show.Show
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                          ($dShow1 :: GHC.Show.Show
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                          ($dShow :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                          ($dData5 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                          ($dData4 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                          ($dData3 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                          ($dData2 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                          ($dData1 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                          ($d~ :: Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                    Language.Haskell.Tools.AST.Ann.IdDom
+                                                                    Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls
+                                                                  Data.Type.Equality.~ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo)
+                                                          ($dData :: Data.Data.Data
+                                                                       Language.Haskell.Tools.AST.Ann.IdDom)
+                                                          ($dTypeable :: Data.Typeable.Internal.Typeable
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom)
+  Language.Haskell.Tools.AST.Ann.$fDomaind_$cp11Domain @ Language.Haskell.Tools.AST.Ann.IdDom
+                                                       $dTypeable
+                                                       $dData
+                                                       $d~
+                                                       $dData1
+                                                       $dData2
+                                                       $dData3
+                                                       $dData4
+                                                       $dData5
+                                                       $dShow
+                                                       $dShow1
+                                                       $dShow2
+                                                       $dShow3
+                                                       $dShow4
+  = Main.$s$fDomaind_$s$fDomaind_$cp11Domain
+"SPEC/Main $fDomaind_$cp12Domain @ IdDom" [ALWAYS] forall ($dShow4 :: GHC.Show.Show
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                          ($dShow3 :: GHC.Show.Show
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                          ($dShow2 :: GHC.Show.Show
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                          ($dShow1 :: GHC.Show.Show
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                          ($dShow :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                          ($dData5 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                          ($dData4 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                          ($dData3 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                          ($dData2 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                          ($dData1 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                          ($d~ :: Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                    Language.Haskell.Tools.AST.Ann.IdDom
+                                                                    Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls
+                                                                  Data.Type.Equality.~ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo)
+                                                          ($dData :: Data.Data.Data
+                                                                       Language.Haskell.Tools.AST.Ann.IdDom)
+                                                          ($dTypeable :: Data.Typeable.Internal.Typeable
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom)
+  Language.Haskell.Tools.AST.Ann.$fDomaind_$cp12Domain @ Language.Haskell.Tools.AST.Ann.IdDom
+                                                       $dTypeable
+                                                       $dData
+                                                       $d~
+                                                       $dData1
+                                                       $dData2
+                                                       $dData3
+                                                       $dData4
+                                                       $dData5
+                                                       $dShow
+                                                       $dShow1
+                                                       $dShow2
+                                                       $dShow3
+                                                       $dShow4
+  = Main.$s$fDomaind_$s$fDomaind_$cp12Domain
+"SPEC/Main $fDomaind_$cp13Domain @ IdDom" [ALWAYS] forall ($dShow4 :: GHC.Show.Show
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                          ($dShow3 :: GHC.Show.Show
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                          ($dShow2 :: GHC.Show.Show
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                          ($dShow1 :: GHC.Show.Show
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                          ($dShow :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                          ($dData5 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                          ($dData4 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                          ($dData3 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                          ($dData2 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                          ($dData1 :: Data.Data.Data
+                                                                        (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom
+                                                                           Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                          ($d~ :: Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                    Language.Haskell.Tools.AST.Ann.IdDom
+                                                                    Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls
+                                                                  Data.Type.Equality.~ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo)
+                                                          ($dData :: Data.Data.Data
+                                                                       Language.Haskell.Tools.AST.Ann.IdDom)
+                                                          ($dTypeable :: Data.Typeable.Internal.Typeable
+                                                                           Language.Haskell.Tools.AST.Ann.IdDom)
+  Language.Haskell.Tools.AST.Ann.$fDomaind_$cp13Domain @ Language.Haskell.Tools.AST.Ann.IdDom
+                                                       $dTypeable
+                                                       $dData
+                                                       $d~
+                                                       $dData1
+                                                       $dData2
+                                                       $dData3
+                                                       $dData4
+                                                       $dData5
+                                                       $dShow
+                                                       $dShow1
+                                                       $dShow2
+                                                       $dShow3
+                                                       $dShow4
+  = Main.$s$fDomaind_$s$fDomaind_$cp13Domain
+"SPEC/Main $fDomaind_$cp2Domain @ IdDom" [ALWAYS] forall ($dShow4 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                         ($dShow3 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                         ($dShow2 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                         ($dShow1 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                         ($dShow :: GHC.Show.Show
+                                                                      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                         Language.Haskell.Tools.AST.Ann.IdDom
+                                                                         Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                         ($dData5 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                         ($dData4 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                         ($dData3 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                         ($dData2 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                         ($dData1 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                         ($d~ :: Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                   Language.Haskell.Tools.AST.Ann.IdDom
+                                                                   Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls
+                                                                 Data.Type.Equality.~ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo)
+                                                         ($dData :: Data.Data.Data
+                                                                      Language.Haskell.Tools.AST.Ann.IdDom)
+                                                         ($dTypeable :: Data.Typeable.Internal.Typeable
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom)
+  Language.Haskell.Tools.AST.Ann.$fDomaind_$cp2Domain @ Language.Haskell.Tools.AST.Ann.IdDom
+                                                      $dTypeable
+                                                      $dData
+                                                      $d~
+                                                      $dData1
+                                                      $dData2
+                                                      $dData3
+                                                      $dData4
+                                                      $dData5
+                                                      $dShow
+                                                      $dShow1
+                                                      $dShow2
+                                                      $dShow3
+                                                      $dShow4
+  = Main.$s$fDomaind_$s$fDomaind_$cp2Domain
+"SPEC/Main $fDomaind_$cp3Domain @ IdDom" [ALWAYS] forall ($dShow4 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                         ($dShow3 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                         ($dShow2 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                         ($dShow1 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                         ($dShow :: GHC.Show.Show
+                                                                      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                         Language.Haskell.Tools.AST.Ann.IdDom
+                                                                         Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                         ($dData5 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                         ($dData4 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                         ($dData3 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                         ($dData2 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                         ($dData1 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                         ($d~ :: Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                   Language.Haskell.Tools.AST.Ann.IdDom
+                                                                   Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls
+                                                                 Data.Type.Equality.~ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo)
+                                                         ($dData :: Data.Data.Data
+                                                                      Language.Haskell.Tools.AST.Ann.IdDom)
+                                                         ($dTypeable :: Data.Typeable.Internal.Typeable
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom)
+  Language.Haskell.Tools.AST.Ann.$fDomaind_$cp3Domain @ Language.Haskell.Tools.AST.Ann.IdDom
+                                                      $dTypeable
+                                                      $dData
+                                                      $d~
+                                                      $dData1
+                                                      $dData2
+                                                      $dData3
+                                                      $dData4
+                                                      $dData5
+                                                      $dShow
+                                                      $dShow1
+                                                      $dShow2
+                                                      $dShow3
+                                                      $dShow4
+  = Main.$s$fDomaind_$s$fDomaind_$cp3Domain
+"SPEC/Main $fDomaind_$cp4Domain @ IdDom" [ALWAYS] forall ($dShow4 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                         ($dShow3 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                         ($dShow2 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                         ($dShow1 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                         ($dShow :: GHC.Show.Show
+                                                                      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                         Language.Haskell.Tools.AST.Ann.IdDom
+                                                                         Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                         ($dData5 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                         ($dData4 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                         ($dData3 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                         ($dData2 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                         ($dData1 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                         ($d~ :: Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                   Language.Haskell.Tools.AST.Ann.IdDom
+                                                                   Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls
+                                                                 Data.Type.Equality.~ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo)
+                                                         ($dData :: Data.Data.Data
+                                                                      Language.Haskell.Tools.AST.Ann.IdDom)
+                                                         ($dTypeable :: Data.Typeable.Internal.Typeable
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom)
+  Language.Haskell.Tools.AST.Ann.$fDomaind_$cp4Domain @ Language.Haskell.Tools.AST.Ann.IdDom
+                                                      $dTypeable
+                                                      $dData
+                                                      $d~
+                                                      $dData1
+                                                      $dData2
+                                                      $dData3
+                                                      $dData4
+                                                      $dData5
+                                                      $dShow
+                                                      $dShow1
+                                                      $dShow2
+                                                      $dShow3
+                                                      $dShow4
+  = Main.$s$fDomaind_$s$fDomaind_$cp4Domain
+"SPEC/Main $fDomaind_$cp5Domain @ IdDom" [ALWAYS] forall ($dShow4 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                         ($dShow3 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                         ($dShow2 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                         ($dShow1 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                         ($dShow :: GHC.Show.Show
+                                                                      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                         Language.Haskell.Tools.AST.Ann.IdDom
+                                                                         Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                         ($dData5 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                         ($dData4 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                         ($dData3 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                         ($dData2 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                         ($dData1 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                         ($d~ :: Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                   Language.Haskell.Tools.AST.Ann.IdDom
+                                                                   Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls
+                                                                 Data.Type.Equality.~ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo)
+                                                         ($dData :: Data.Data.Data
+                                                                      Language.Haskell.Tools.AST.Ann.IdDom)
+                                                         ($dTypeable :: Data.Typeable.Internal.Typeable
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom)
+  Language.Haskell.Tools.AST.Ann.$fDomaind_$cp5Domain @ Language.Haskell.Tools.AST.Ann.IdDom
+                                                      $dTypeable
+                                                      $dData
+                                                      $d~
+                                                      $dData1
+                                                      $dData2
+                                                      $dData3
+                                                      $dData4
+                                                      $dData5
+                                                      $dShow
+                                                      $dShow1
+                                                      $dShow2
+                                                      $dShow3
+                                                      $dShow4
+  = Main.$s$fDomaind_$s$fDomaind_$cp5Domain
+"SPEC/Main $fDomaind_$cp6Domain @ IdDom" [ALWAYS] forall ($dShow4 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                         ($dShow3 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                         ($dShow2 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                         ($dShow1 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                         ($dShow :: GHC.Show.Show
+                                                                      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                         Language.Haskell.Tools.AST.Ann.IdDom
+                                                                         Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                         ($dData5 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                         ($dData4 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                         ($dData3 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                         ($dData2 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                         ($dData1 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                         ($d~ :: Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                   Language.Haskell.Tools.AST.Ann.IdDom
+                                                                   Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls
+                                                                 Data.Type.Equality.~ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo)
+                                                         ($dData :: Data.Data.Data
+                                                                      Language.Haskell.Tools.AST.Ann.IdDom)
+                                                         ($dTypeable :: Data.Typeable.Internal.Typeable
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom)
+  Language.Haskell.Tools.AST.Ann.$fDomaind_$cp6Domain @ Language.Haskell.Tools.AST.Ann.IdDom
+                                                      $dTypeable
+                                                      $dData
+                                                      $d~
+                                                      $dData1
+                                                      $dData2
+                                                      $dData3
+                                                      $dData4
+                                                      $dData5
+                                                      $dShow
+                                                      $dShow1
+                                                      $dShow2
+                                                      $dShow3
+                                                      $dShow4
+  = Main.$s$fDomaind_$s$fDomaind_$cp6Domain
+"SPEC/Main $fDomaind_$cp7Domain @ IdDom" [ALWAYS] forall ($dShow4 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                         ($dShow3 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                         ($dShow2 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                         ($dShow1 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                         ($dShow :: GHC.Show.Show
+                                                                      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                         Language.Haskell.Tools.AST.Ann.IdDom
+                                                                         Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                         ($dData5 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                         ($dData4 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                         ($dData3 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                         ($dData2 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                         ($dData1 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                         ($d~ :: Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                   Language.Haskell.Tools.AST.Ann.IdDom
+                                                                   Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls
+                                                                 Data.Type.Equality.~ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo)
+                                                         ($dData :: Data.Data.Data
+                                                                      Language.Haskell.Tools.AST.Ann.IdDom)
+                                                         ($dTypeable :: Data.Typeable.Internal.Typeable
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom)
+  Language.Haskell.Tools.AST.Ann.$fDomaind_$cp7Domain @ Language.Haskell.Tools.AST.Ann.IdDom
+                                                      $dTypeable
+                                                      $dData
+                                                      $d~
+                                                      $dData1
+                                                      $dData2
+                                                      $dData3
+                                                      $dData4
+                                                      $dData5
+                                                      $dShow
+                                                      $dShow1
+                                                      $dShow2
+                                                      $dShow3
+                                                      $dShow4
+  = Main.$s$fDomaind_$s$fDomaind_$cp7Domain
+"SPEC/Main $fDomaind_$cp8Domain @ IdDom" [ALWAYS] forall ($dShow4 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                         ($dShow3 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                         ($dShow2 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                         ($dShow1 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                         ($dShow :: GHC.Show.Show
+                                                                      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                         Language.Haskell.Tools.AST.Ann.IdDom
+                                                                         Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                         ($dData5 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                         ($dData4 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                         ($dData3 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                         ($dData2 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                         ($dData1 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                         ($d~ :: Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                   Language.Haskell.Tools.AST.Ann.IdDom
+                                                                   Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls
+                                                                 Data.Type.Equality.~ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo)
+                                                         ($dData :: Data.Data.Data
+                                                                      Language.Haskell.Tools.AST.Ann.IdDom)
+                                                         ($dTypeable :: Data.Typeable.Internal.Typeable
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom)
+  Language.Haskell.Tools.AST.Ann.$fDomaind_$cp8Domain @ Language.Haskell.Tools.AST.Ann.IdDom
+                                                      $dTypeable
+                                                      $dData
+                                                      $d~
+                                                      $dData1
+                                                      $dData2
+                                                      $dData3
+                                                      $dData4
+                                                      $dData5
+                                                      $dShow
+                                                      $dShow1
+                                                      $dShow2
+                                                      $dShow3
+                                                      $dShow4
+  = Main.$s$fDomaind_$s$fDomaind_$cp8Domain
+"SPEC/Main $fDomaind_$cp9Domain @ IdDom" [ALWAYS] forall ($dShow4 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                         ($dShow3 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                         ($dShow2 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                         ($dShow1 :: GHC.Show.Show
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                         ($dShow :: GHC.Show.Show
+                                                                      (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                         Language.Haskell.Tools.AST.Ann.IdDom
+                                                                         Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                         ($dData5 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoWildcardCls))
+                                                         ($dData4 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoModuleCls))
+                                                         ($dData3 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoImportCls))
+                                                         ($dData2 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoExprCls))
+                                                         ($dData1 :: Data.Data.Data
+                                                                       (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom
+                                                                          Language.Haskell.Tools.AST.Ann.SameInfoNameCls))
+                                                         ($d~ :: Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                                                   Language.Haskell.Tools.AST.Ann.IdDom
+                                                                   Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls
+                                                                 Data.Type.Equality.~ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo)
+                                                         ($dData :: Data.Data.Data
+                                                                      Language.Haskell.Tools.AST.Ann.IdDom)
+                                                         ($dTypeable :: Data.Typeable.Internal.Typeable
+                                                                          Language.Haskell.Tools.AST.Ann.IdDom)
+  Language.Haskell.Tools.AST.Ann.$fDomaind_$cp9Domain @ Language.Haskell.Tools.AST.Ann.IdDom
+                                                      $dTypeable
+                                                      $dData
+                                                      $d~
+                                                      $dData1
+                                                      $dData2
+                                                      $dData3
+                                                      $dData4
+                                                      $dData5
+                                                      $dShow
+                                                      $dShow1
+                                                      $dShow2
+                                                      $dShow3
+                                                      $dShow4
+  = Main.$s$fDomaind_$s$fDomaind_$cp9Domain
+"SPEC/Main $fEqMap @ (LogicalRelation Extension) @ [Line]" [ALWAYS] forall ($dEq1 :: GHC.Classes.Eq
+                                                                                       [Main.Line])
+                                                                           ($dEq :: GHC.Classes.Eq
+                                                                                      (ExtMap.LogicalRelation
+                                                                                         GHC.LanguageExtensions.Type.Extension))
+  Data.Map.Base.$fEqMap @ (ExtMap.LogicalRelation
+                             GHC.LanguageExtensions.Type.Extension)
                         @ [Main.Line]
                         $dEq
                         $dEq1
   = Main.$s$fEqMap
-"SPEC/Main $fEqMap_$c/= @ Extension @ [Line]" [ALWAYS] forall ($dEq1 :: GHC.Classes.Eq
-                                                                          [Main.Line])
-                                                              ($dEq :: GHC.Classes.Eq
-                                                                         GHC.LanguageExtensions.Type.Extension)
-  Data.Map.Base.$fEqMap_$c/= @ GHC.LanguageExtensions.Type.Extension
+"SPEC/Main $fEqMap_$c/= @ (LogicalRelation Extension) @ [Line]" [ALWAYS] forall ($dEq1 :: GHC.Classes.Eq
+                                                                                            [Main.Line])
+                                                                                ($dEq :: GHC.Classes.Eq
+                                                                                           (ExtMap.LogicalRelation
+                                                                                              GHC.LanguageExtensions.Type.Extension))
+  Data.Map.Base.$fEqMap_$c/= @ (ExtMap.LogicalRelation
+                                  GHC.LanguageExtensions.Type.Extension)
                              @ [Main.Line]
                              $dEq
                              $dEq1
   = Main.$s$fEqMap_$s$fEqMap_$c/=
-"SPEC/Main $fShowMap @ Extension @ [Line]" [ALWAYS] forall ($dShow1 :: GHC.Show.Show
-                                                                         [Main.Line])
-                                                           ($dShow :: GHC.Show.Show
-                                                                        GHC.LanguageExtensions.Type.Extension)
-  Data.Map.Base.$fShowMap @ GHC.LanguageExtensions.Type.Extension
+"SPEC/Main $fShowImportInfo @ Var" [ALWAYS] forall ($dOutputable :: Outputable.Outputable
+                                                                      Var.Var)
+  Language.Haskell.Tools.AST.SemaInfoTypes.$fShowImportInfo @ Var.Var
+                                                            $dOutputable
+  = Main.$s$fDomaind_$s$fShowImportInfo
+"SPEC/Main $fShowImportInfo_$cshowsPrec @ Var" [ALWAYS] forall ($dOutputable :: Outputable.Outputable
+                                                                                  Var.Var)
+  Language.Haskell.Tools.AST.SemaInfoTypes.$fShowImportInfo_$cshowsPrec @ Var.Var
+                                                                        $dOutputable
+  = Main.$s$fDomaind_$s$fShowImportInfo_$cshowsPrec
+"SPEC/Main $fShowLogicalRelation @ Extension" [ALWAYS] forall ($dShow :: GHC.Show.Show
+                                                                           GHC.LanguageExtensions.Type.Extension)
+  ExtMap.$fShowLogicalRelation @ GHC.LanguageExtensions.Type.Extension
+                               $dShow
+  = Main.$s$fShowLogicalRelation
+"SPEC/Main $fShowLogicalRelation_$cshow @ Extension" [ALWAYS] forall ($dShow :: GHC.Show.Show
+                                                                                  GHC.LanguageExtensions.Type.Extension)
+  ExtMap.$fShowLogicalRelation_$cshow @ GHC.LanguageExtensions.Type.Extension
+                                      $dShow
+  = Main.$s$fShowLogicalRelation_$s$fShowLogicalRelation_$cshow
+"SPEC/Main $fShowLogicalRelation_$cshowList @ Extension" [ALWAYS] forall ($dShow :: GHC.Show.Show
+                                                                                      GHC.LanguageExtensions.Type.Extension)
+  ExtMap.$fShowLogicalRelation_$cshowList @ GHC.LanguageExtensions.Type.Extension
+                                          $dShow
+  = Main.$s$fShowLogicalRelation_$s$fShowLogicalRelation_$cshowList
+"SPEC/Main $fShowMap @ (LogicalRelation Extension) @ [Line]" [ALWAYS] forall ($dShow1 :: GHC.Show.Show
+                                                                                           [Main.Line])
+                                                                             ($dShow :: GHC.Show.Show
+                                                                                          (ExtMap.LogicalRelation
+                                                                                             GHC.LanguageExtensions.Type.Extension))
+  Data.Map.Base.$fShowMap @ (ExtMap.LogicalRelation
+                               GHC.LanguageExtensions.Type.Extension)
                           @ [Main.Line]
                           $dShow
                           $dShow1
   = Main.$s$fShowMap
-"SPEC/Main $fShowMap_$cshowList @ Extension @ [Line]" [ALWAYS] forall ($dShow1 :: GHC.Show.Show
-                                                                                    [Main.Line])
-                                                                      ($dShow :: GHC.Show.Show
-                                                                                   GHC.LanguageExtensions.Type.Extension)
-  Data.Map.Base.$fShowMap_$cshowList @ GHC.LanguageExtensions.Type.Extension
+"SPEC/Main $fShowMap_$cshowList @ (LogicalRelation
+                                    Extension) @ [Line]" [ALWAYS] forall ($dShow1 :: GHC.Show.Show
+                                                                                                                                          [Main.Line])
+                                                                                                                            ($dShow :: GHC.Show.Show
+                                                                                                                                         (ExtMap.LogicalRelation
+                                                                                                                                            GHC.LanguageExtensions.Type.Extension))
+  Data.Map.Base.$fShowMap_$cshowList @ (ExtMap.LogicalRelation
+                                          GHC.LanguageExtensions.Type.Extension)
                                      @ [Main.Line]
                                      $dShow
                                      $dShow1
   = Main.$s$fShowMap_$s$fShowMap_$cshowList
-"SPEC/Main sort @ Line" [ALWAYS] forall ($dOrd :: GHC.Classes.Ord
-                                                    Main.Line)
-  Data.OldList.sort @ GHC.Types.Int $dOrd = Main.$ssort
+"SPEC/Main $fShowModuleInfo @ Var" [ALWAYS] forall ($dOutputable :: Outputable.Outputable
+                                                                      Var.Var)
+  Language.Haskell.Tools.AST.SemaInfoTypes.$fShowModuleInfo @ Var.Var
+                                                            $dOutputable
+  = Main.$s$fDomaind_$s$fShowModuleInfo
+"SPEC/Main $fShowModuleInfo_$cshowsPrec @ Var" [ALWAYS] forall ($dOutputable :: Outputable.Outputable
+                                                                                  Var.Var)
+  Language.Haskell.Tools.AST.SemaInfoTypes.$fShowModuleInfo_$cshowsPrec @ Var.Var
+                                                                        $dOutputable
+  = Main.$s$fDomaind_$s$fShowModuleInfo_$cshowsPrec
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

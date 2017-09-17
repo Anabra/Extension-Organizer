@@ -1,5 +1,3 @@
-{-# LANGUAGE StandaloneDeriving #-}
-
 module AnnotationParser where
 
 import Parser
@@ -10,12 +8,11 @@ import GHC.LanguageExtensions.Type
 
 {-# ANN module "HLint: ignore Use zipWith" #-}
 
-deriving instance Read Extension
 
-getExtensionAnnotations :: String -> SMap.Map Extension [Int]
+getExtensionAnnotations :: String -> SMap.Map (LogicalRelation Extension) [Int]
 getExtensionAnnotations s = foldl f SMap.empty (parseFile s)
   where f m (num, exts) = foldl (g num) m exts
-        g num m' ext = SMap.insertWith (++) ext [num] m'
+        g num m' ext = SMap.insertWith (++) (LVar ext) [num] m'
 
 parseFile :: String -> [(Int, [Extension])] -- SMap.Map Extension [Int]
 parseFile = map parseLine . zip [1..] . lines

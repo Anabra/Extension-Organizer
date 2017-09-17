@@ -30,7 +30,7 @@ version = Version [0,1,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
 bindir     = "/home/anabra/ELTE/Haskell_Tools/ht-extension-organizer/Extension-Organizer/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.3/8.0.2/bin"
-libdir     = "/home/anabra/ELTE/Haskell_Tools/ht-extension-organizer/Extension-Organizer/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.3/8.0.2/lib/x86_64-linux-ghc-8.0.2/ht-extension-organizer-0.1.0.0-1NgBbe619AH4JExLErEUCI"
+libdir     = "/home/anabra/ELTE/Haskell_Tools/ht-extension-organizer/Extension-Organizer/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.3/8.0.2/lib/x86_64-linux-ghc-8.0.2/ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL"
 dynlibdir  = "/home/anabra/ELTE/Haskell_Tools/ht-extension-organizer/Extension-Organizer/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.3/8.0.2/lib/x86_64-linux-ghc-8.0.2"
 datadir    = "/home/anabra/ELTE/Haskell_Tools/ht-extension-organizer/Extension-Organizer/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.3/8.0.2/share/x86_64-linux-ghc-8.0.2/ht-extension-organizer-0.1.0.0"
 libexecdir = "/home/anabra/ELTE/Haskell_Tools/ht-extension-organizer/Extension-Organizer/ht-extension-organizer/.stack-work/install/x86_64-linux/lts-9.3/8.0.2/libexec"

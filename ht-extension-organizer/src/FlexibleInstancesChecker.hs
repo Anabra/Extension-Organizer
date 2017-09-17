@@ -31,12 +31,12 @@ import Debug.Trace
 -- TODO: should expand type synonims  !!!
 
 chkFlexibleInstances :: ExtDomain dom =>
-                        Decl dom -> ExtMonad dom (Decl dom)
+                        Decl dom -> ExtMonad (Decl dom)
 chkFlexibleInstances d@(Refact.StandaloneDeriving rule) = checkedReturn rule d
 chkFlexibleInstances d@(InstanceDecl rule _) = checkedReturn rule d
 chkFlexibleInstances d = return d
 
-checkedReturn :: ExtDomain dom => InstanceRule dom -> a -> ExtMonad dom a
+checkedReturn :: ExtDomain dom => InstanceRule dom -> a -> ExtMonad a
 checkedReturn rule x = chkInstanceRule rule >> return x
 
 -- this check DOES transform the AST for its internal computations
@@ -45,7 +45,7 @@ checkedReturn rule x = chkInstanceRule rule >> return x
 --       First one on the class level, and the second one one on the type level.
 --       Since biplateRef is lazy, it won't go down to the type level in the first traversal
 chkInstanceRule :: ExtDomain dom =>
-                   InstanceRule dom -> ExtMonad dom (InstanceRule dom)
+                   InstanceRule dom -> ExtMonad (InstanceRule dom)
 chkInstanceRule r@(InstanceRule _ _ ihead) = do
   chkInstanceHead ihead
   return $! r
@@ -63,7 +63,7 @@ refact op = biplateRef !~ op
 -- thus with MultiParamTypeclasses each param will be checked independently
 -- (so the same type variable can appear in multiple params)
 chkInstanceHead :: ExtDomain dom =>
-                   InstanceHead dom -> ExtMonad dom (InstanceHead dom)
+                   InstanceHead dom -> ExtMonad (InstanceHead dom)
 chkInstanceHead x@(InfixInstanceHead tyvars op) = do
   tyvars' <- refact rmTypeMisc tyvars
   chkTyVars tyvars'
@@ -89,7 +89,7 @@ chkInstanceHead app = return app
 -- unboxed tuple (has different kind, can't use in ihead), par array?
 -- TH ctors
 -- other misc ...
-chkTyVars :: ExtDomain dom => Type dom -> ExtMonad dom (Type dom)
+chkTyVars :: ExtDomain dom => Type dom -> ExtMonad (Type dom)
 chkTyVars vars = do
   exts <- get
   (isOk, (cs, vs)) <- runStateT (runMaybeT (chkAll vars)) ([],[])
@@ -144,7 +144,7 @@ chkTyVars vars = do
 
         chkOnlyApp :: (MonadState ([Name dom],[Name dom]) (m1 m2),
                        MonadTrans m1,
-                       MonadState (SMap.Map Extension [SrcSpan]) m2,
+                       MonadState ExtMap m2,
                        ExtDomain dom) =>
                        Type dom -> MaybeT (m1 m2) Bool
         chkOnlyApp (TypeApp f v@(VarType x)) = do
@@ -169,15 +169,15 @@ chkTyVars vars = do
 
         tyVarSemNameM x = MaybeT . return . semanticsName $ x ^. simpleName
 
-rmTypeMisc :: Type dom -> ExtMonad dom (Type dom)
+rmTypeMisc :: Type dom -> ExtMonad (Type dom)
 rmTypeMisc = rmTParens >=> rmTKinded
 
-rmTKinded :: Type dom -> ExtMonad dom (Type dom)
+rmTKinded :: Type dom -> ExtMonad (Type dom)
 rmTKinded kt@(KindedType t _) = addOccurenceM KindSignatures kt >> return t
 rmTKinded x                   = return x
 
 -- removes Parentheses from the AST
 -- the structure is reserved
-rmTParens :: Type dom -> ExtMonad dom (Type dom)
+rmTParens :: Type dom -> ExtMonad (Type dom)
 rmTParens (ParenType x) = return x
 rmTParens x             = return x
