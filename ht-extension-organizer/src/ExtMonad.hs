@@ -45,19 +45,31 @@ type ExtDomain dom   = (HasNameInfo dom)
 type CheckNode elem  = forall dom . ExtDomain dom => elem dom -> ExtMonad (elem dom)
 type CheckUNode uelem = forall dom . ExtDomain dom => Ann uelem dom SrcTemplateStage -> ExtMonad (Ann uelem dom SrcTemplateStage)
 
-addOccurence :: (Ord k, HasRange a) =>
-                k -> a -> SMap.Map k [SrcSpan] -> SMap.Map k [SrcSpan]
-addOccurence key node = SMap.insertWith (++) key [getRange node]
+addOccurence' :: (Ord k, HasRange a) =>
+                 k -> a -> SMap.Map k [SrcSpan] -> SMap.Map k [SrcSpan]
+addOccurence' key node = SMap.insertWith (++) key [getRange node]
 
 -- TODO: add isTurnedOn check
-addOccurenceM :: (MonadState ExtMap m, HasRange v) =>
-                 Extension -> v -> m ()
-addOccurenceM extension element = modify $ addOccurence (LVar extension) element
+addOccurence_ :: (MonadState ExtMap m, HasRange node) =>
+                  Extension -> node -> m ()
+addOccurence_ extension element = modify $ addOccurence' (LVar extension) element
+
+addOccurence :: (MonadState ExtMap m, HasRange node) =>
+                 Extension -> node -> m node
+addOccurence ext node = addOccurence_ ext node >> return node
 
 isTurnedOn :: Extension -> ExtMonad Bool
 isTurnedOn ext = do
   defaults <- ask
   return $! ext `elem` defaults
+
+conditional :: (elem -> ExtMonad elem) ->
+               Extension ->
+               elem ->
+               ExtMonad elem
+conditional checker ext node = do
+  b <- isTurnedOn ext
+  if b then checker node else return node
 
 runExtMonadIO :: ExtMonad a -> IO a
 runExtMonadIO = runGhc (Just libdir) . runExtMonadGHC

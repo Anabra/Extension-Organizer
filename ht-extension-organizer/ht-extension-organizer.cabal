@@ -17,16 +17,22 @@ cabal-version:       >=1.10
 
 extra-source-files:    test/RecordWildCardsTest/*.hs
                        test/FlexibleInstancesTest/*.hs
+                       test/DerivingsTest/*.hs
+                       test/BangPatternsTest/*.hs
+                       test/PatternSynonymsTest/*.hs
 
 library
   exposed-modules:     ExtensionOrganizer,
                        AnnotationParser
 
   other-modules:       DerivingsChecker,
-                       ExtMonad,
-                       ExtMap,
                        FlexibleInstancesChecker,
                        RecordWildCardsChecker,
+                       BangPatternsChecker,
+                       PatternSynonymsChecker,
+                       TemplateHaskellChecker,
+                       ExtMonad,
+                       ExtMap,
                        TraverseAST,
                        Parser
   -- other-extensions:

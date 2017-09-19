@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2017-09-17 21:33:20.395032 UTC
+2017-09-19 15:19:12.618106 UTC
 
 interface ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:ExtMonad [orphan module] 8002
-  interface hash: 77d73498e8b2a7c56c0951331e87ec4f
-  ABI hash: ba8ffd9426181404fb75035ef644b9e7
-  export-list hash: 51ded8efed0652d9c90b74dc7d2ea417
+  interface hash: 9cf925b9e2c900e0e21769824a47ab6a
+  ABI hash: 059f5fd988c212e6bf2913400d89e5c4
+  export-list hash: e114cdeb7f705ff3639c044bf88c57d7
   orphan hash: 60a64deffb6d970f503832a968fa85f4
   flag hash: 05b17016aa09336e3f4e69856bdb1734
   sig of: Nothing
@@ -44,7 +44,9 @@ exports:
   GHC.Base.liftM5
   GHC.Base.when
   ExtMonad.addOccurence
-  ExtMonad.addOccurenceM
+  ExtMonad.addOccurence'
+  ExtMonad.addOccurence_
+  ExtMonad.conditional
   ExtMonad.isTurnedOn
   ExtMonad.runExtMonadGHC
   ExtMonad.runExtMonadIO
@@ -5396,8 +5398,42 @@ d2a8a000f373c241c0362787c4b3f842
       [GHC.LanguageExtensions.Type.Extension]
       (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc)
     :: * -> *
-e1dcefec14468590880f2bf277f2db7f
+c9603992ac2a28741343ebc5c8fe7b56
   addOccurence ::
+    (Control.Monad.State.Class.MonadState ExtMap.ExtMap m,
+     Language.Haskell.Tools.AST.Ann.HasRange node) =>
+    GHC.LanguageExtensions.Type.Extension -> node -> m node
+  {- Arity: 4,
+     Strictness: <S(SLLL),U(1*U,A,A,1*C1(U))><L,1*U(1*C1(U),A)><L,U><L,U>,
+     Unfolding: (\ @ (m :: * -> *)
+                   @ node
+                   ($dMonadState :: Control.Monad.State.Class.MonadState
+                                      ExtMap.ExtMap m)
+                   ($dHasRange :: Language.Haskell.Tools.AST.Ann.HasRange node)
+                   (eta :: GHC.LanguageExtensions.Type.Extension)
+                   (eta1 :: node) ->
+                 let {
+                   $dMonad :: GHC.Base.Monad m
+                   = Control.Monad.State.Class.$p1MonadState
+                       @ ExtMap.ExtMap
+                       @ m
+                       $dMonadState
+                 } in
+                 GHC.Base.>>
+                   @ m
+                   $dMonad
+                   @ ()
+                   @ node
+                   (ExtMonad.addOccurence_
+                      @ m
+                      @ node
+                      $dMonadState
+                      $dHasRange
+                      eta
+                      eta1)
+                   (GHC.Base.return @ m $dMonad @ node eta1)) -}
+806962a54b1c16e16558458575c9a479
+  addOccurence' ::
     (GHC.Classes.Ord k, Language.Haskell.Tools.AST.Ann.HasRange a) =>
     k
     -> a
@@ -5424,40 +5460,31 @@ e1dcefec14468590880f2bf277f2db7f
                    @ k
                    @ [SrcLoc.SrcSpan]
                    $dOrd
-                   (ExtMonad.addOccurence1 @ k)
+                   (ExtMonad.addOccurence_1 @ k)
                    key
                    eta2
                    eta3) -}
-13e6338d89220a4f509821f3d7d3c54e
-  addOccurence1 ::
-    k -> [SrcLoc.SrcSpan] -> [SrcLoc.SrcSpan] -> [SrcLoc.SrcSpan]
-  {- Arity: 3, HasNoCafRefs,
-     Unfolding: (\ @ k
-                   (ds :: k)[OneShot]
-                   (x' :: [SrcLoc.SrcSpan])[OneShot]
-                   (y' :: [SrcLoc.SrcSpan])[OneShot] ->
-                 GHC.Base.++ @ SrcLoc.SrcSpan x' y') -}
-71387d0d2739879a11fb1935a16e7cc4
-  addOccurenceM ::
+0a70efda5e7142f7b588f7458ea99597
+  addOccurence_ ::
     (Control.Monad.State.Class.MonadState ExtMap.ExtMap m,
-     Language.Haskell.Tools.AST.Ann.HasRange v) =>
-    GHC.LanguageExtensions.Type.Extension -> v -> m ()
+     Language.Haskell.Tools.AST.Ann.HasRange node) =>
+    GHC.LanguageExtensions.Type.Extension -> node -> m ()
   {- Arity: 4,
      Strictness: <S(LLLC(S)),1*U(A,A,A,1*C1(U))><L,1*U(1*C1(U),A)><L,U><L,U>,
      Unfolding: (\ @ (m :: * -> *)
-                   @ v
+                   @ node
                    ($dMonadState :: Control.Monad.State.Class.MonadState
                                       ExtMap.ExtMap m)
-                   ($dHasRange :: Language.Haskell.Tools.AST.Ann.HasRange v)
+                   ($dHasRange :: Language.Haskell.Tools.AST.Ann.HasRange node)
                    (extension :: GHC.LanguageExtensions.Type.Extension)
-                   (element :: v) ->
+                   (element :: node) ->
                  let {
                    key :: ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension
                    = ExtMap.LVar @ GHC.LanguageExtensions.Type.Extension extension
                  } in
                  let {
                    eta1 :: SrcLoc.SrcSpan
-                   = Language.Haskell.Tools.AST.Ann.getRange @ v $dHasRange element
+                   = Language.Haskell.Tools.AST.Ann.getRange @ node $dHasRange element
                  } in
                  let {
                    eta2 :: [SrcLoc.SrcSpan]
@@ -5478,11 +5505,129 @@ e1dcefec14468590880f2bf277f2db7f
                        @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                        @ [SrcLoc.SrcSpan]
                        ExtMonad.$s$fOrdLogicalRelation
-                       (ExtMonad.addOccurence1
+                       (ExtMonad.addOccurence_1
                           @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension))
                        key
                        eta2
                        s1))) -}
+124b8c73ddb725d9b04bfbfc21f60869
+  addOccurence_1 ::
+    k -> [SrcLoc.SrcSpan] -> [SrcLoc.SrcSpan] -> [SrcLoc.SrcSpan]
+  {- Arity: 3, HasNoCafRefs,
+     Unfolding: (\ @ k
+                   (ds :: k)[OneShot]
+                   (x' :: [SrcLoc.SrcSpan])[OneShot]
+                   (y' :: [SrcLoc.SrcSpan])[OneShot] ->
+                 GHC.Base.++ @ SrcLoc.SrcSpan x' y') -}
+170d45fd139eef252718316404a1e1aa
+  conditional ::
+    (elem -> ExtMonad.ExtMonad elem)
+    -> GHC.LanguageExtensions.Type.Extension
+    -> elem
+    -> ExtMonad.ExtMonad elem
+  {- Arity: 4, HasNoCafRefs, Strictness: <L,1*C1(U)><L,U><L,U><L,U>,
+     Unfolding: InlineRule (0, True, True)
+                ExtMonad.conditional1
+                  `cast`
+                (forall (elem :: <*>_N).
+                 <elem -> ExtMonad.ExtMonad elem>_R
+                 ->_R <GHC.LanguageExtensions.Type.Extension>_R
+                 ->_R <elem>_R
+                 ->_R Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                               <*>_N
+                               <[GHC.LanguageExtensions.Type.Extension]>_R
+                               <Control.Monad.Trans.State.Lazy.StateT
+                                  ExtMap.ExtMap GhcMonad.Ghc>_R
+                               <elem>_N)) -}
+6f9be5f658e3e2b0f02766188068662d
+  conditional1 ::
+    (elem -> ExtMonad.ExtMonad elem)
+    -> GHC.LanguageExtensions.Type.Extension
+    -> elem
+    -> [GHC.LanguageExtensions.Type.Extension]
+    -> Control.Monad.Trans.State.Lazy.StateT
+         ExtMap.ExtMap GhcMonad.Ghc elem
+  {- Arity: 4, HasNoCafRefs, Strictness: <L,1*C1(U)><L,U><L,U><L,U>,
+     Unfolding: (\ @ elem
+                   (checker :: elem -> ExtMonad.ExtMonad elem)
+                   (ext :: GHC.LanguageExtensions.Type.Extension)
+                   (node :: elem)
+                   (eta :: [GHC.LanguageExtensions.Type.Extension]) ->
+                 let {
+                   lvl4 :: ExtMonad.ExtMonad elem = checker node
+                 } in
+                 let {
+                   lvl5 :: GHC.Types.Bool
+                   = GHC.List.elem
+                       @ GHC.LanguageExtensions.Type.Extension
+                       GHC.LanguageExtensions.Type.$fEqExtension
+                       ext
+                       eta
+                 } in
+                 (\ (eta1 :: Data.Map.Base.Map
+                               (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                               [SrcLoc.SrcSpan])
+                    (eta2 :: GhcMonad.Session)
+                    (eta3 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                  case lvl5 of vx {
+                    GHC.Types.False -> (# eta3, (node, eta1) #)
+                    GHC.Types.True
+                    -> (((lvl4
+                            `cast`
+                          (Control.Monad.Trans.Reader.N:ReaderT[0]
+                               <*>_N
+                               <[GHC.LanguageExtensions.Type.Extension]>_R
+                               <Control.Monad.Trans.State.Lazy.StateT
+                                  ExtMap.ExtMap GhcMonad.Ghc>_R
+                               <elem>_N)
+                            eta)
+                           `cast`
+                         (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                              <Data.Map.Base.Map
+                                 (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                 [SrcLoc.SrcSpan]>_N
+                              <GhcMonad.Ghc>_R
+                              <elem>_N)
+                           eta1)
+                          `cast`
+                        (GhcMonad.N:Ghc[0]
+                             <(elem,
+                               Data.Map.Base.Map
+                                 (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                 [SrcLoc.SrcSpan])>_R)
+                          eta2)
+                         `cast`
+                       (GHC.Types.N:IO[0]
+                            <(elem,
+                              Data.Map.Base.Map
+                                (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                [SrcLoc.SrcSpan])>_R)
+                         eta3 })
+                   `cast`
+                 (Trans
+                      (<Data.Map.Base.Map
+                          (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                          [SrcLoc.SrcSpan]>_R
+                       ->_R Trans
+                                (<GhcMonad.Session>_R
+                                 ->_R Sym (GHC.Types.N:IO[0]
+                                               <(elem,
+                                                 Data.Map.Base.Map
+                                                   (ExtMap.LogicalRelation
+                                                      GHC.LanguageExtensions.Type.Extension)
+                                                   [SrcLoc.SrcSpan])>_R))
+                                (Sym (GhcMonad.N:Ghc[0]
+                                          <(elem,
+                                            Data.Map.Base.Map
+                                              (ExtMap.LogicalRelation
+                                                 GHC.LanguageExtensions.Type.Extension)
+                                              [SrcLoc.SrcSpan])>_R)))
+                      (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                <Data.Map.Base.Map
+                                   (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                   [SrcLoc.SrcSpan]>_N
+                                <GhcMonad.Ghc>_R
+                                <elem>_N)))) -}
 58326d046a06fcac13f090ffdee96f9d
   isTurnedOn ::
     GHC.LanguageExtensions.Type.Extension

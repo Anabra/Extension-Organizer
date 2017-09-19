@@ -27,6 +27,8 @@ main = defaultMain $
           [ mkTests recordWildCardsTest
           , mkTests flexibleInstancesTest
           , mkTests derivingsTest
+          , mkTests patternSynonymsTest
+          , mkTests bangPatternsTest
           ]
 
 testRoot = "test"
@@ -88,7 +90,8 @@ flexibleInstancesModules = [ "Combined"
                            , "NestedTypes"
                            , "NestedUnitTyCon"
                            , "NestedWiredInType"
-                           , "NoFlexInst"
+                           , "NoOccurenceON"
+                           , "NoOccurenceOFF"
                            , "SameTyVars"
                            , "TopLevelTyVar"
                            , "TopLevelWiredInType"
@@ -105,3 +108,19 @@ derivingsModules = [ "DataDeriving"
                    , "StandaloneNewtypeSynonyms"
                    , "StandaloneNewtypeSynonymsAny"
                    ]
+
+patternSynonymsTest = (patSynRoot, patSynModules)
+patSynRoot = "PatternSynonymsTest"
+patSynModules = [ "SimpleTest" ]
+
+bangPatternsTest = (bangPatternsRoot, bangPatternsModules)
+bangPatternsRoot = "BangPatternsTest"
+bangPatternsModules = [ "Combined"
+                      , "InAlt"
+                      , "InExpr"
+                      , "InMatchLhs"
+                      , "InPatSynRhs"
+                      , "InRhsGuard"
+                      , "InStmt"
+                      , "InValueBind"
+                      ]

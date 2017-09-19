@@ -1,14 +1,12 @@
 {-# LANGUAGE FlexibleContexts,
              TypeFamilies,
-             TypeSynonymInstances,
-             FlexibleInstances,
              MultiWayIf
              #-}
 
 module FlexibleInstancesChecker where
 
 import ExtMonad
-import Control.Reference ((.-), (^.), (!~), (&), biplateRef, Traversal)
+import Control.Reference ((^.), (!~), (&), biplateRef)
 import Language.Haskell.Tools.Refactor as Refact
 import Language.Haskell.Tools.PrettyPrint (prettyPrint)
 import Language.Haskell.Tools.AST
@@ -30,11 +28,16 @@ import Debug.Trace
 -- TODO: write "deriving instance ..." tests (should work)
 -- TODO: should expand type synonims  !!!
 
-chkFlexibleInstances :: ExtDomain dom =>
-                        Decl dom -> ExtMonad (Decl dom)
-chkFlexibleInstances d@(Refact.StandaloneDeriving rule) = checkedReturn rule d
-chkFlexibleInstances d@(InstanceDecl rule _) = checkedReturn rule d
-chkFlexibleInstances d = return d
+-- NOTE: Here we implicitly constrained the type with ExtDomain.
+--       but we only really need HasNameInfo.
+
+chkFlexibleInstances :: CheckNode Decl
+chkFlexibleInstances = conditional chkFlexibleInstances' FlexibleInstances
+
+chkFlexibleInstances' :: CheckNode Decl
+chkFlexibleInstances' d@(Refact.StandaloneDeriving rule) = checkedReturn rule d
+chkFlexibleInstances' d@(InstanceDecl rule _) = checkedReturn rule d
+chkFlexibleInstances' d = return d
 
 checkedReturn :: ExtDomain dom => InstanceRule dom -> a -> ExtMonad a
 checkedReturn rule x = chkInstanceRule rule >> return x
@@ -44,8 +47,7 @@ checkedReturn rule x = chkInstanceRule rule >> return x
 -- NOTE: There are two traversal:
 --       First one on the class level, and the second one one on the type level.
 --       Since biplateRef is lazy, it won't go down to the type level in the first traversal
-chkInstanceRule :: ExtDomain dom =>
-                   InstanceRule dom -> ExtMonad (InstanceRule dom)
+chkInstanceRule :: CheckNode InstanceRule
 chkInstanceRule r@(InstanceRule _ _ ihead) = do
   chkInstanceHead ihead
   return $! r
@@ -62,19 +64,18 @@ refact op = biplateRef !~ op
 -- one IHApp will only check its own tyvars (their structure and uniqueness)
 -- thus with MultiParamTypeclasses each param will be checked independently
 -- (so the same type variable can appear in multiple params)
-chkInstanceHead :: ExtDomain dom =>
-                   InstanceHead dom -> ExtMonad (InstanceHead dom)
+chkInstanceHead :: CheckNode InstanceHead
 chkInstanceHead x@(InfixInstanceHead tyvars op) = do
   tyvars' <- refact rmTypeMisc tyvars
   chkTyVars tyvars'
-  addOccurenceM MultiParamTypeClasses x
-  addOccurenceM TypeOperators x
+  addOccurence_ MultiParamTypeClasses x
+  addOccurence_ TypeOperators x
   return x
 chkInstanceHead app@(AppInstanceHead f tyvars) = do
   tyvars' <- refact rmTypeMisc tyvars
   chkTyVars tyvars'
   case f of
-    AppInstanceHead _ _ -> addOccurenceM MultiParamTypeClasses app
+    AppInstanceHead _ _ -> addOccurence_ MultiParamTypeClasses app
     _ -> return ()
   chkInstanceHead f
   return app
@@ -89,14 +90,14 @@ chkInstanceHead app = return app
 -- unboxed tuple (has different kind, can't use in ihead), par array?
 -- TH ctors
 -- other misc ...
-chkTyVars :: ExtDomain dom => Type dom -> ExtMonad (Type dom)
+chkTyVars :: CheckNode Type
 chkTyVars vars = do
   exts <- get
   (isOk, (cs, vs)) <- runStateT (runMaybeT (chkAll vars)) ([],[])
   case isOk of
     Just isOk ->
       unless (isOk && length vs == (length . nub $ vs)) --tyvars are different
-        (addOccurenceM FlexibleInstances vars)
+        (addOccurence_ FlexibleInstances vars)
     _         -> error "chkTyVars: Couldn't look up something"
   return vars
 
@@ -155,7 +156,7 @@ chkTyVars vars = do
               _           -> chkOnlyApp f
             else return False
         chkOnlyApp x@(InfixTypeApp lhs op rhs) = do
-          lift . lift $ addOccurenceM TypeOperators x
+          lift . lift $ addOccurence_ TypeOperators x
           addTyConM . mkNormalName $ (op ^. operatorName)
           lOK <- chkSingleTyVar lhs
           rOK <- chkSingleTyVar rhs
@@ -173,7 +174,7 @@ rmTypeMisc :: Type dom -> ExtMonad (Type dom)
 rmTypeMisc = rmTParens >=> rmTKinded
 
 rmTKinded :: Type dom -> ExtMonad (Type dom)
-rmTKinded kt@(KindedType t _) = addOccurenceM KindSignatures kt >> return t
+rmTKinded kt@(KindedType t _) = addOccurence_ KindSignatures kt >> return t
 rmTKinded x                   = return x
 
 -- removes Parentheses from the AST

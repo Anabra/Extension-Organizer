@@ -1,13 +1,19 @@
 {-# LANGUAGE KindSignatures,
              TypeOperators,
-             MultiParamTypeClasses
+             MultiParamTypeClasses,
+             FlexibleInstances
              #-}
 
-module NoFlexInst where
+module NoOccurenceON where
 
 import Definitions
 
 {-# ANN module "HLint: ignore Redundant bracket" #-}
+
+-- NOTE: The FlexibleInstancesChecker should find some extensions,
+--       because FlexibleInstances is turned on.
+--       (However it shouldn't find FlexibleInstances)
+--       Same test-cases as in NoOccurenceOFF.
 
 
 instance (C1 (((T4) (a)) b c d)) where

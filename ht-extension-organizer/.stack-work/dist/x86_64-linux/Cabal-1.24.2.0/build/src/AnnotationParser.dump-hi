@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2017-09-17 21:33:29.319907 UTC
+2017-09-19 19:52:26.714698 UTC
 
 interface ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:AnnotationParser 8002
-  interface hash: f9cb4601a1eb41fd6959015d418282aa
-  ABI hash: f78aabf0e2d657a79857d2d0d402ed8c
+  interface hash: f843c4157beb67ac3a2549ba2ad6899c
+  ABI hash: e9fa5cde54e897bcd0f177d60ebb351f
   export-list hash: 7e8c927110ec1601832a14fd3fa6e069
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: ab396f11155bd696ab63895436e6f1df
@@ -128,6 +128,7 @@ family instance modules: base-4.9.1.0:Control.Applicative
 import  -/  base-4.9.1.0:Data.Foldable 3e0b6967a1da89945d0e2d47266337a2
 import  -/  base-4.9.1.0:Data.List 07ae2acca6538aa0800bd0a993ac6ac1
 import  -/  base-4.9.1.0:Data.OldList 27987919d8da2f92e3f472ca81f730f8
+import  -/  base-4.9.1.0:Debug.Trace a9edf3aec504f4423d8ba829ab373a25
 import  -/  base-4.9.1.0:GHC.Base c4231c43c07e46080a26bf94094c7aa1
 import  -/  base-4.9.1.0:GHC.List ab8c4e523e6c479c549d3bcd5fc4a439
 import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
@@ -139,8 +140,8 @@ import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
 import  -/  ExtMap ce208fa2f233772cc4b03c60efef446e
   LVar c2b251913343abac99e887c1b70f0c95
   LogicalRelation 244102f8a6d7434a090b758121b05523
-import  -/  ExtMonad ba8ffd9426181404fb75035ef644b9e7
-  exports: 51ded8efed0652d9c90b74dc7d2ea417
+import  -/  ExtMonad 059f5fd988c212e6bf2913400d89e5c4
+  exports: e114cdeb7f705ff3639c044bf88c57d7
 import  -/  Parser 77ce690f6247fd99ccb953c8714523de
   exports: 517a04406f0420b909851443746cbeba
 Module target ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:AnnotationParser annotated by 1059 of type [Char]
@@ -243,7 +244,7 @@ b545c125c9ea6282425fd620d56a6fca
 ef374ae519522e7510f3f9b1970c0c80
   getAnnot_go :: [[GHC.Types.Char]] -> [GHC.Types.Char]
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U> -}
-a85b0fc338bc14012c97ce4515c6cd7e
+1265a30c991cada0153ef119745e7274
   getExtensionAnnotations ::
     GHC.Base.String
     -> Data.Map.Base.Map
@@ -251,15 +252,23 @@ a85b0fc338bc14012c97ce4515c6cd7e
          [GHC.Types.Int]
   {- Arity: 1, Strictness: <L,1*U>,
      Unfolding: (\ (s :: GHC.Base.String) ->
-                 AnnotationParser.getExtensionAnnotations_go
-                   AnnotationParser.getExtensionAnnotations1
-                   (Data.OldList.lines s)
-                   (Data.Map.Base.Tip
-                      @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
-                      @ [GHC.Types.Int])) -}
+                 Debug.Trace.trace
+                   @ (Data.Map.Base.Map
+                        (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                        [GHC.Types.Int])
+                   AnnotationParser.getExtensionAnnotations2
+                   (AnnotationParser.getExtensionAnnotations_go
+                      AnnotationParser.getExtensionAnnotations1
+                      (Data.OldList.lines s)
+                      (Data.Map.Base.Tip
+                         @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                         @ [GHC.Types.Int]))) -}
 e21a06d13c232a02a62eaefbef9e2554
   getExtensionAnnotations1 :: [GHC.Types.Int]
   {- Unfolding: (GHC.Enum.eftInt 1# 9223372036854775807#) -}
+31ebfab38febb175245eb20353b37063
+  getExtensionAnnotations2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "ASD"#) -}
 a9f87b869ee2f7ea8be0e32c49fe079a
   getExtensionAnnotations_go ::
     [GHC.Types.Int]

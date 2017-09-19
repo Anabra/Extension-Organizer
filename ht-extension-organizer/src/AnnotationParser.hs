@@ -6,6 +6,8 @@ import Data.List
 import qualified Data.Map.Strict as SMap
 import GHC.LanguageExtensions.Type
 
+import Debug.Trace (trace)
+
 {-# ANN module "HLint: ignore Use zipWith" #-}
 
 

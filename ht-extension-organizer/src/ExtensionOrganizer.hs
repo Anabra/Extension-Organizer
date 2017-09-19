@@ -63,8 +63,7 @@ collectExtensions :: ExtDomain dom =>
                      Ghc ExtMap
 collectExtensions = \moduleAST -> do
   let defaults = collectDefaultExtensions moduleAST
-  flip execStateT SMap.empty . flip runReaderT defaults  . runAllChecks $ moduleAST
-  where runAllChecks = traverseModuleLevel
+  flip execStateT SMap.empty . flip runReaderT defaults  . traverseModule $ moduleAST
 
 
 

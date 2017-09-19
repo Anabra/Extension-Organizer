@@ -1,7 +1,4 @@
 {-# LANGUAGE FlexibleContexts,
-             TypeFamilies,
-             TypeSynonymInstances,
-             FlexibleInstances,
              MultiWayIf
              #-}
 
@@ -37,6 +34,10 @@
 
   TODO:
   - write tests for GADTs, data instances
+  - conditional check
+
+  NOTE: Here we implicitly constrained the type with ExtDomain.
+        but we only really need HasNameInfo.
 -}
 
 
@@ -114,7 +115,7 @@ wiredInClasses = [ eqClassName
 isWiredInClass = flip elem wiredInClasses
 
 
-chkDerivings :: HasNameInfo dom => Decl dom -> ExtMonad (Decl dom)
+chkDerivings :: CheckNode Decl
 chkDerivings = chkDataDecl
            >=> chkGADTDataDecl
            >=> chkDataInstance
@@ -122,22 +123,22 @@ chkDerivings = chkDataDecl
 
 
 
-chkDataDecl :: HasNameInfo dom => Decl dom -> ExtMonad (Decl dom)
+chkDataDecl :: CheckNode Decl
 chkDataDecl d@(DataDecl keyw _ _ _ derivs) = do
   separateByKeyword keyw derivs
   return d
 chkDataDecl d = return d
 
-chkGADTDataDecl :: HasNameInfo dom => Decl dom -> ExtMonad (Decl dom)
+chkGADTDataDecl :: CheckNode Decl
 chkGADTDataDecl d@(GADTDataDecl keyw _ _ _ _ derivs) = do
-  addOccurenceM GADTs d
+  addOccurence_ GADTs d
   separateByKeyword keyw derivs
   return d
 chkGADTDataDecl d = return d
 
-chkDataInstance :: HasNameInfo dom => Decl dom -> ExtMonad (Decl dom)
+chkDataInstance :: CheckNode Decl
 chkDataInstance d@(DataInstance keyw _ _ derivs) = do
-  addOccurenceM TypeFamilies d
+  addOccurence_ TypeFamilies d
   separateByKeyword keyw derivs
   return d
 chkDataInstance d = return d
@@ -158,9 +159,9 @@ separateByKeyword keyw derivs
 
 
 
-chkStandaloneDeriving :: HasNameInfo dom => Decl dom -> ExtMonad (Decl dom)
+chkStandaloneDeriving :: CheckNode Decl
 chkStandaloneDeriving d@(Refact.StandaloneDeriving instRule) = do
-  addOccurenceM Ext.StandaloneDeriving d
+  addOccurence_ Ext.StandaloneDeriving d
   let ihead = instRule ^. irHead
       ty    = rightmostType ihead
       cls   = getClassCon   ihead
@@ -195,7 +196,7 @@ isSynNewType t = do
   where isSynNewType' x = case lookupSynDef x of
                             Nothing  -> return False
                             Just def -> do
-                                        addOccurenceM TypeSynonymInstances t
+                                        addOccurence_ TypeSynonymInstances t
                                         return (GHC.isNewTyCon def)
 
 
@@ -270,8 +271,7 @@ chkDerivingClause checker d@(DerivingMulti xs) = do
  NOTE: Works only for "class names". If it gets an input from a standalone
        deriving clause, it has to be simplified.
 -}
-chkClassForData :: HasNameInfo dom =>
-                   InstanceHead dom -> ExtMonad (InstanceHead dom)
+chkClassForData :: CheckNode InstanceHead
 chkClassForData x
   | InstanceHead name <- skipParens x,
     Just sname <- getSemName name,
@@ -279,15 +279,14 @@ chkClassForData x
     = do
       let className = name ^. (simpleName & unqualifiedName & simpleNameStr)
       case readIntoExt className of
-        Just ext -> addOccurenceM ext x >> return x
+        Just ext -> addOccurence ext x
         Nothing  -> return x
-  | otherwise = addOccurenceM DeriveAnyClass x >> return x
+  | otherwise = addOccurence DeriveAnyClass x
 
 
 -- TODO: really similar to chkClassForData, try to refactor
 -- NOTE: always adds GeneralizedNewtypeDeriving
-chkClassForNewtype :: HasNameInfo dom =>
-                      InstanceHead dom -> ExtMonad (InstanceHead dom)
+chkClassForNewtype :: CheckNode InstanceHead
 chkClassForNewtype x
   | InstanceHead name <- skipParens x,
     Just sname <- getSemName name,
@@ -296,16 +295,16 @@ chkClassForNewtype x
       let className = name ^. (simpleName & unqualifiedName & simpleNameStr)
       deriveAnyOff <- liftM not $ isTurnedOn DeriveAnyClass
       when (canBeGeneralized sname && deriveAnyOff)
-        (addOccurenceM GeneralizedNewtypeDeriving x)
+        (addOccurence_ GeneralizedNewtypeDeriving x)
       case readIntoExt className of
-        Just ext -> addOccurenceM ext x >> return x
+        Just ext -> addOccurence ext x
         Nothing  -> return x
   | otherwise = do
       gntdOn      <- isTurnedOn GeneralizedNewtypeDeriving
       deriveAnyOn <- isTurnedOn DeriveAnyClass
-      if | gntdOn && deriveAnyOn -> addOccurenceM DeriveAnyClass x
-         | deriveAnyOn           -> addOccurenceM DeriveAnyClass x
-         | gntdOn                -> addOccurenceM GeneralizedNewtypeDeriving x
+      if | gntdOn && deriveAnyOn -> addOccurence_ DeriveAnyClass x
+         | deriveAnyOn           -> addOccurence_ DeriveAnyClass x
+         | gntdOn                -> addOccurence_ GeneralizedNewtypeDeriving x
          | otherwise             -> return ()
       return x
 

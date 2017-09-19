@@ -6,6 +6,7 @@ module Combined where
 
 import Definitions
 
+-- NOTE: runs really slowly
 
 -- same TyVars and TopLevelTyVar
 

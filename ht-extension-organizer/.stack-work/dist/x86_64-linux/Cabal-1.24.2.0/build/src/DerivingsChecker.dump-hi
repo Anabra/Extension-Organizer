@@ -1,13 +1,13 @@
 
 ==================== FINAL INTERFACE ====================
-2017-09-17 21:33:25.376571 UTC
+2017-09-19 15:19:16.356099 UTC
 
 interface ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:DerivingsChecker 8002
-  interface hash: 37b8327ca89dafd8b41bdaf2dd6ea187
-  ABI hash: 20ffc2f005321f90898d855d558a5d88
-  export-list hash: 06f50276fa556a0cd7fa8ed70655242f
-  orphan hash: a25a5ba1b94a14c1d7a0153f1d12382e
-  flag hash: 101c77503659fad94496422c07041012
+  interface hash: 12ec8d04a19475b1b1ee693cccabc49d
+  ABI hash: 508b12dc2c43e9c76a38bc9f50ae230e
+  export-list hash: c9c99a13421ec9464a9b0877252e817a
+  orphan hash: 3ead2fc9ae6a795da7b4383e40705ad9
+  flag hash: c009764d2a5cf9388241fdc2e65020cd
   sig of: Nothing
   used TH splices: False
   where
@@ -176,10 +176,12 @@ import  -/  haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4c
 import  -/  haskell-tools-rewrite-0.8.1.0@haskell-tools-rewrite-0.8.1.0-85A6q9dMQgvKEKG9I8fxVU:Language.Haskell.Tools.AST.ElementTypes df954b524d036aee274d8ad0f571417a
 import  -/  haskell-tools-rewrite-0.8.1.0@haskell-tools-rewrite-0.8.1.0-85A6q9dMQgvKEKG9I8fxVU:Language.Haskell.Tools.AST.Match.Decls b84d56450f5735caccd2c24b62b5f303
 import  -/  haskell-tools-rewrite-0.8.1.0@haskell-tools-rewrite-0.8.1.0-85A6q9dMQgvKEKG9I8fxVU:Language.Haskell.Tools.AST.Match.Types 85da168b886fc25a3bfd49c2d6ecd710
-import  -/  ExtMonad ba8ffd9426181404fb75035ef644b9e7
-  exports: 51ded8efed0652d9c90b74dc7d2ea417
+import  -/  ExtMonad 059f5fd988c212e6bf2913400d89e5c4
+  exports: e114cdeb7f705ff3639c044bf88c57d7
+  CheckNode d2a8a000f373c241c0362787c4b3f842
   ExtMonad 6ab37cbe93709f9dcdeffcf18c24ce9b
-  addOccurenceM 71387d0d2739879a11fb1935a16e7cc4
+  addOccurence c9603992ac2a28741343ebc5c8fe7b56
+  addOccurence_ 0a70efda5e7142f7b588f7458ea99597
   isTurnedOn 58326d046a06fcac13f090ffdee96f9d
 import  -/  references-0.3.2.2@references-0.3.2.2-y362bKYomIKNQKMTfOWVo:Control.Reference d89ee82346f6e25c55a8a19dbf84658e
 import  -/  references-0.3.2.2@references-0.3.2.2-y362bKYomIKNQKMTfOWVo:Control.Reference.Combinators ab836299cfb9898d02f637bc65b3765a
@@ -1860,7 +1862,7 @@ aa994ac6a2e076a5bf176fa15556b722
                            <Control.Monad.Trans.State.Lazy.StateT
                               ExtMap.ExtMap GhcMonad.Ghc>_R
                            <a>_N))) -}
-a1dd7ed8c2d875a1a7c4cc9767743974
+82111ea084e15ad6cca3ddca045585df
   $s$fMonadReaderT ::
     GHC.Base.Monad
       (Control.Monad.Trans.Reader.ReaderT
@@ -1871,30 +1873,12 @@ a1dd7ed8c2d875a1a7c4cc9767743974
                   @ (Control.Monad.Trans.Reader.ReaderT
                        r
                        (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
-                  (Control.Monad.Trans.Reader.$fMonadReaderT_$cp1Monad
-                     @ (Control.Monad.Trans.State.Lazy.StateT
-                          ExtMap.ExtMap GhcMonad.Ghc)
-                     @ r
-                     DerivingsChecker.$s$fMonadReaderT1)
+                  (DerivingsChecker.$s$fMonadReaderT_$s$fMonadReaderT_$cp1Monad @ r)
                   (DerivingsChecker.$s$fMonadReaderT_$s$fMonadReaderT_$c>>= @ r)
                   (DerivingsChecker.$s$fMonadReaderT_$s$fMonadReaderT_$c>> @ r)
                   (DerivingsChecker.$s$fMonadMaybeT_$c>>=_$s$fMonadReaderT_$creturn
                      @ r)
-                  (Control.Monad.Trans.Reader.$fMonadReaderT_$cfail
-                     @ (Control.Monad.Trans.State.Lazy.StateT
-                          ExtMap.ExtMap GhcMonad.Ghc)
-                     @ r
-                     DerivingsChecker.$s$fMonadReaderT1) -}
-5ca0a3b5f70353618f37ae788dfdaab1
-  $s$fMonadReaderT1 ::
-    GHC.Base.Monad
-      (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc)
-  {- Strictness: m,
-     Unfolding: InlineRule (0, True, True)
-                (DerivingsChecker.$s$fExceptionMonadStateT_$s$fMonadStateT
-                   @ (Data.Map.Base.Map
-                        (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
-                        [SrcLoc.SrcSpan])) -}
+                  (DerivingsChecker.$s$fMonadReaderT_$s$fMonadReaderT_$cfail @ r) -}
 2e02c5e96c1ad0346d498f6b5dc0c0c9
   $s$fMonadReaderT_$s$fMonadReaderT_$c>> ::
     Control.Monad.Trans.Reader.ReaderT
@@ -2196,6 +2180,95 @@ fac77dbc9cbb86874f7442156ee601d0
                                (k (case ds of wild { (,) a1 s' -> a1 }))
                                r1)
                             (case ds of wild { (,) a1 s' -> s' }))))) -}
+b58132c2917f9d41e900e3047eb5af83
+  $s$fMonadReaderT_$s$fMonadReaderT_$cfail ::
+    GHC.Base.String
+    -> Control.Monad.Trans.Reader.ReaderT
+         r
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc)
+         a
+  {- Arity: 3, Strictness: <B,U><B,A><B,A>x,
+     Inline: INLINE (sat-args=1),
+     Unfolding: InlineRule (1, False, False)
+                (\ @ r @ a (msg :: GHC.Base.String) ->
+                 let {
+                   eta :: Control.Monad.Trans.State.Lazy.StateT
+                            ExtMap.ExtMap GhcMonad.Ghc a
+                   = GHC.Base.$
+                       @ 'GHC.Types.PtrRepLifted
+                       @ (Data.Map.Base.Map
+                            (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                            [SrcLoc.SrcSpan]
+                          -> GhcMonad.Ghc
+                               (a,
+                                Data.Map.Base.Map
+                                  (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                  [SrcLoc.SrcSpan]))
+                       @ (Control.Monad.Trans.State.Lazy.StateT
+                            (Data.Map.Base.Map
+                               (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                               [SrcLoc.SrcSpan])
+                            GhcMonad.Ghc
+                            a)
+                       (\ (tpl :: Data.Map.Base.Map
+                                    (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                    [SrcLoc.SrcSpan]
+                                  -> GhcMonad.Ghc
+                                       (a,
+                                        Data.Map.Base.Map
+                                          (ExtMap.LogicalRelation
+                                             GHC.LanguageExtensions.Type.Extension)
+                                          [SrcLoc.SrcSpan])) ->
+                        tpl)
+                         `cast`
+                       (<Data.Map.Base.Map
+                           (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                           [SrcLoc.SrcSpan]
+                         -> GhcMonad.Ghc
+                              (a,
+                               Data.Map.Base.Map
+                                 (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                 [SrcLoc.SrcSpan])>_R
+                        ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                      <Data.Map.Base.Map
+                                         (ExtMap.LogicalRelation
+                                            GHC.LanguageExtensions.Type.Extension)
+                                         [SrcLoc.SrcSpan]>_N
+                                      <GhcMonad.Ghc>_R
+                                      <a>_N))
+                       (\ (ds :: Data.Map.Base.Map
+                                   (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                   [SrcLoc.SrcSpan]) ->
+                        GhcMonad.$fMonadGhc_$s$dmfail
+                          @ (a,
+                             Data.Map.Base.Map
+                               (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                               [SrcLoc.SrcSpan])
+                          msg)
+                 } in
+                 (\ (eta1 :: r) ->
+                  GHC.Base.const
+                    @ (Control.Monad.Trans.State.Lazy.StateT
+                         ExtMap.ExtMap GhcMonad.Ghc a)
+                    @ r
+                    eta
+                    eta1)
+                   `cast`
+                 (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                           <*>_N
+                           <r>_R
+                           <Control.Monad.Trans.State.Lazy.StateT
+                              ExtMap.ExtMap GhcMonad.Ghc>_R
+                           <a>_N))) -}
+ec14a90cfe6480913ba7bd67ca2e0f1a
+  $s$fMonadReaderT_$s$fMonadReaderT_$cp1Monad ::
+    GHC.Base.Applicative
+      (Control.Monad.Trans.Reader.ReaderT
+         r
+         (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc))
+  {- Strictness: m,
+     Unfolding: InlineRule (0, True, True)
+                DerivingsChecker.$s$fApplicativeReaderT -}
 79440aeec9099e900c251adf95e58da7
   $sannJust1 :: GHC.Base.Maybe a -> Data.Proxy.Proxy a
   {- Arity: 1, HasNoCafRefs, Strictness: <L,A>,
@@ -2479,9 +2552,9 @@ dec3fa58fbeb0b35f5a66459fba7f756
                         @ GHC.Types.Char
                         DerivingsChecker.$fReadDerivableClass19
                         w1 }) -}
-8eafb5944aaff37e078cb0140950db9d
+f1032bdb9ac4334d4b637b0325b25082
   $wchkClassForData ::
-    Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
+    ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.Ann.NodeInfo
       (Language.Haskell.Tools.AST.Ann.SemanticInfo
          dom Language.Haskell.Tools.AST.Representation.Decls.UInstanceHead)
@@ -2495,7 +2568,7 @@ dec3fa58fbeb0b35f5a66459fba7f756
      Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),C(U))><L,U(U,U(U,U,U,U))><S,U>,
      Inline: [0],
      Unfolding: (\ @ dom
-                   (w :: Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom)
+                   (w :: ExtMonad.ExtDomain dom)
                    (ww :: Language.Haskell.Tools.AST.Ann.NodeInfo
                             (Language.Haskell.Tools.AST.Ann.SemanticInfo
                                dom Language.Haskell.Tools.AST.Representation.Decls.UInstanceHead)
@@ -2504,7 +2577,7 @@ dec3fa58fbeb0b35f5a66459fba7f756
                    (ww7 :: Language.Haskell.Tools.AST.Representation.Decls.UInstanceHead
                              dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage) ->
                  let {
-                   lvl36 :: SrcLoc.SrcSpan
+                   lvl35 :: SrcLoc.SrcSpan
                    = case ww of wild1 { Language.Haskell.Tools.AST.Ann.NodeInfo ds1 ds2 ->
                      case ds2
                             `cast`
@@ -2512,10 +2585,10 @@ dec3fa58fbeb0b35f5a66459fba7f756
                      ds4 } }
                  } in
                  let {
-                   lvl37 :: [SrcLoc.SrcSpan]
+                   lvl36 :: [SrcLoc.SrcSpan]
                    = GHC.Types.:
                        @ SrcLoc.SrcSpan
-                       lvl36
+                       lvl35
                        (GHC.Types.[] @ SrcLoc.SrcSpan)
                  } in
                  case GHC.Types.HEq_sc
@@ -2568,14 +2641,14 @@ dec3fa58fbeb0b35f5a66459fba7f756
                            @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                            @ [SrcLoc.SrcSpan]
                            ExtMonad.$s$fOrdLogicalRelation
-                           (ExtMonad.addOccurence1
+                           (ExtMonad.addOccurence_1
                               @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension))
                            DerivingsChecker.chkClassForData9
-                           lvl37
+                           lvl36
                            w1
                      } in
                      let {
-                       lvl38 :: (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom,
+                       lvl37 :: (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom,
                                  Data.Map.Base.Map
                                    (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                                    [SrcLoc.SrcSpan])
@@ -2583,7 +2656,7 @@ dec3fa58fbeb0b35f5a66459fba7f756
                      } in
                      (\ (s :: GhcMonad.Session)
                         (s1 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                      (# s1, lvl38 #))
+                      (# s1, lvl37 #))
                        `cast`
                      (Trans
                           (<GhcMonad.Session>_R
@@ -2762,17 +2835,17 @@ dec3fa58fbeb0b35f5a66459fba7f756
                                                     GHC.LanguageExtensions.Type.Extension)
                                                @ [SrcLoc.SrcSpan]
                                                ExtMonad.$s$fOrdLogicalRelation
-                                               (ExtMonad.addOccurence1
+                                               (ExtMonad.addOccurence_1
                                                   @ (ExtMap.LogicalRelation
                                                        GHC.LanguageExtensions.Type.Extension))
                                                (ExtMap.LVar
                                                   @ GHC.LanguageExtensions.Type.Extension
                                                   w1)
-                                               lvl37
+                                               lvl36
                                                w2
                                          } in
                                          let {
-                                           lvl38 :: (Language.Haskell.Tools.AST.ElementTypes.InstanceHead
+                                           lvl37 :: (Language.Haskell.Tools.AST.ElementTypes.InstanceHead
                                                        dom,
                                                      Data.Map.Base.Map
                                                        (ExtMap.LogicalRelation
@@ -2782,7 +2855,7 @@ dec3fa58fbeb0b35f5a66459fba7f756
                                          } in
                                          (\ (s :: GhcMonad.Session)
                                             (s1 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                                          (# s1, lvl38 #))
+                                          (# s1, lvl37 #))
                                            `cast`
                                          (Trans
                                               (<GhcMonad.Session>_R
@@ -2965,9 +3038,9 @@ dec3fa58fbeb0b35f5a66459fba7f756
                                                             ExtMap.ExtMap GhcMonad.Ghc>_R
                                                          <Language.Haskell.Tools.AST.ElementTypes.InstanceHead
                                                             dom>_N))) } } } } } } } }) -}
-b12a4c1a0f4955389d4a4ec283d6db07
+397323cbf2029653a9722926f2e5acfd
   $wchkClassForNewtype ::
-    Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
+    ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.Ann.NodeInfo
       (Language.Haskell.Tools.AST.Ann.SemanticInfo
          dom Language.Haskell.Tools.AST.Representation.Decls.UInstanceHead)
@@ -2980,9 +3053,9 @@ b12a4c1a0f4955389d4a4ec283d6db07
   {- Arity: 3,
      Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),C(U))><L,U(U,U(U,U,U,U))><S,U>,
      Inline: [0] -}
-7c359c6d748458a7352c3d83de52c0a9
+8c4680ac6382afa110d2d4c93f37cd67
   $wchkDataDecl ::
-    Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
+    ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.Ann.NodeInfo
       (Language.Haskell.Tools.AST.Ann.SemanticInfo
          dom Language.Haskell.Tools.AST.Representation.Decls.UDecl)
@@ -2996,7 +3069,7 @@ b12a4c1a0f4955389d4a4ec283d6db07
      Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),C(U))><L,U><S,U>,
      Inline: [0],
      Unfolding: (\ @ dom
-                   (w :: Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom)
+                   (w :: ExtMonad.ExtDomain dom)
                    (ww :: Language.Haskell.Tools.AST.Ann.NodeInfo
                             (Language.Haskell.Tools.AST.Ann.SemanticInfo
                                dom Language.Haskell.Tools.AST.Representation.Decls.UDecl)
@@ -3160,9 +3233,9 @@ b12a4c1a0f4955389d4a4ec283d6db07
                                 <Control.Monad.Trans.State.Lazy.StateT
                                    ExtMap.ExtMap GhcMonad.Ghc>_R
                                 <Language.Haskell.Tools.AST.ElementTypes.Decl dom>_N)) } }) -}
-6a3f55e1b3437ad66d76039d652dc8d0
+a2e4e44d367d761bd16eb8e09ea3bb48
   $wchkDataInstance ::
-    Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
+    ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.Ann.NodeInfo
       (Language.Haskell.Tools.AST.Ann.SemanticInfo
          dom Language.Haskell.Tools.AST.Representation.Decls.UDecl)
@@ -3176,7 +3249,7 @@ b12a4c1a0f4955389d4a4ec283d6db07
      Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),C(U))><L,U(U,U(U,U,U,U))><S,U>,
      Inline: [0],
      Unfolding: (\ @ dom
-                   (w :: Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom)
+                   (w :: ExtMonad.ExtDomain dom)
                    (ww :: Language.Haskell.Tools.AST.Ann.NodeInfo
                             (Language.Haskell.Tools.AST.Ann.SemanticInfo
                                dom Language.Haskell.Tools.AST.Representation.Decls.UDecl)
@@ -3293,7 +3366,7 @@ b12a4c1a0f4955389d4a4ec283d6db07
                              @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                              @ [SrcLoc.SrcSpan]
                              ExtMonad.$s$fOrdLogicalRelation
-                             (ExtMonad.addOccurence1
+                             (ExtMonad.addOccurence_1
                                 @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension))
                              DerivingsChecker.chkDataInstance_key
                              eta2
@@ -3366,35 +3439,29 @@ b12a4c1a0f4955389d4a4ec283d6db07
                                      <Control.Monad.Trans.State.Lazy.StateT
                                         ExtMap.ExtMap GhcMonad.Ghc>_R
                                      <Language.Haskell.Tools.AST.ElementTypes.Decl dom>_N))) } }) -}
-501ea0eeeee5e376491ad04d6e9b97ce
-  $wchkDerivingClause ::
-    Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
-    (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom
-     -> ExtMonad.ExtMonad
-          (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom))
-    -> Language.Haskell.Tools.AST.Ann.NodeInfo
-         (Language.Haskell.Tools.AST.Ann.SemanticInfo
-            dom Language.Haskell.Tools.AST.Representation.Decls.UDeriving)
-         (Language.Haskell.Tools.AST.Ann.SpanInfo
-            Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
-    -> Language.Haskell.Tools.AST.Representation.Decls.UDeriving
+fa3904133ab788323f9840198b2cba6c
+  $wchkGADTDataDecl ::
+    ExtMonad.ExtDomain dom =>
+    Language.Haskell.Tools.AST.Ann.NodeInfo
+      (Language.Haskell.Tools.AST.Ann.SemanticInfo
+         dom Language.Haskell.Tools.AST.Representation.Decls.UDecl)
+      (Language.Haskell.Tools.AST.Ann.SpanInfo
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+    -> Language.Haskell.Tools.AST.Representation.Decls.UDecl
          dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage
     -> ExtMonad.ExtMonad
-         (Language.Haskell.Tools.AST.ElementTypes.Deriving dom)
-  {- Arity: 4, HasNoCafRefs,
-     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),1*U(1*U(A,A,1*U(1*U),A,A,A,A,A,A,A,A,A,A),A)><L,C(U)><L,U><S,U>,
+         (Language.Haskell.Tools.AST.ElementTypes.Decl dom)
+  {- Arity: 3,
+     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),C(U))><L,U(U,U(U,U,U,U))><S,U>,
      Inline: [0],
      Unfolding: (\ @ dom
-                   (w :: Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom)
-                   (w1 :: Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom
-                          -> ExtMonad.ExtMonad
-                               (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom))
+                   (w :: ExtMonad.ExtDomain dom)
                    (ww :: Language.Haskell.Tools.AST.Ann.NodeInfo
                             (Language.Haskell.Tools.AST.Ann.SemanticInfo
-                               dom Language.Haskell.Tools.AST.Representation.Decls.UDeriving)
+                               dom Language.Haskell.Tools.AST.Representation.Decls.UDecl)
                             (Language.Haskell.Tools.AST.Ann.SpanInfo
                                Language.Haskell.Tools.AST.Ann.SrcTemplateStage))
-                   (ww7 :: Language.Haskell.Tools.AST.Representation.Decls.UDeriving
+                   (ww7 :: Language.Haskell.Tools.AST.Representation.Decls.UDecl
                              dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage) ->
                  case GHC.Types.HEq_sc
                         @ *
@@ -3417,6 +3484,213 @@ b12a4c1a0f4955389d4a4ec283d6db07
                                       dom
                                       Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls>_N <Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo>_N) of cobox0 { DEFAULT ->
                  let {
+                   ww8 :: Language.Haskell.Tools.AST.ElementTypes.Decl dom
+                   = Language.Haskell.Tools.AST.Ann.Ann
+                       @ Language.Haskell.Tools.AST.Representation.Decls.UDecl
+                       @ dom
+                       @ Language.Haskell.Tools.AST.Ann.SrcTemplateStage
+                       ww
+                       ww7
+                 } in
+                 case ww7 of wild {
+                   DEFAULT
+                   -> (\ (eta :: [GHC.LanguageExtensions.Type.Extension])
+                         (eta1 :: ExtMap.ExtMap)
+                         (eta2 :: GhcMonad.Session)
+                         (eta3 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                       (# eta3, (ww8, eta1) #))
+                        `cast`
+                      (Trans
+                           (<[GHC.LanguageExtensions.Type.Extension]>_R
+                            ->_R Trans
+                                     (<ExtMap.ExtMap>_R
+                                      ->_R Trans
+                                               (<GhcMonad.Session>_R
+                                                ->_R Sym (GHC.Types.N:IO[0]
+                                                              <(Language.Haskell.Tools.AST.ElementTypes.Decl
+                                                                  dom,
+                                                                ExtMap.ExtMap)>_R))
+                                               (Sym (GhcMonad.N:Ghc[0]
+                                                         <(Language.Haskell.Tools.AST.ElementTypes.Decl
+                                                             dom,
+                                                           ExtMap.ExtMap)>_R)))
+                                     (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                               <ExtMap.ExtMap>_N
+                                               <GhcMonad.Ghc>_R
+                                               <Language.Haskell.Tools.AST.ElementTypes.Decl
+                                                  dom>_N)))
+                           (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                     <*>_N
+                                     <[GHC.LanguageExtensions.Type.Extension]>_R
+                                     <Control.Monad.Trans.State.Lazy.StateT
+                                        ExtMap.ExtMap GhcMonad.Ghc>_R
+                                     <Language.Haskell.Tools.AST.ElementTypes.Decl dom>_N)))
+                   Language.Haskell.Tools.AST.Representation.Decls.UGDataDecl keyw ctx dh kind cons derivs
+                   -> let {
+                        eta1 :: SrcLoc.SrcSpan
+                        = case ww of wild1 { Language.Haskell.Tools.AST.Ann.NodeInfo ds1 ds2 ->
+                          case ds2
+                                 `cast`
+                               (Language.Haskell.Tools.Transform.SourceTemplate.D:R:SpanInfoSrcTemplateStage0[0]) of wild2 { Language.Haskell.Tools.Transform.SourceTemplate.SourceTemplateNode ds4 ds5 ds3 ds6 ->
+                          ds4 } }
+                      } in
+                      let {
+                        eta2 :: [SrcLoc.SrcSpan]
+                        = GHC.Types.: @ SrcLoc.SrcSpan eta1 (GHC.Types.[] @ SrcLoc.SrcSpan)
+                      } in
+                      let {
+                        m1 :: Control.Monad.Trans.Reader.ReaderT
+                                [GHC.LanguageExtensions.Type.Extension]
+                                (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc)
+                                ()
+                        = case keyw of ww9 { Language.Haskell.Tools.AST.Ann.Ann ww10 ww11 ->
+                          DerivingsChecker.$wseparateByKeyword @ dom w ww11 derivs }
+                      } in
+                      (\ (r1 :: [GHC.LanguageExtensions.Type.Extension])
+                         (s1 :: Data.Map.Base.Map
+                                  (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                  [SrcLoc.SrcSpan]) ->
+                       let {
+                         a1 :: Data.Map.Base.Map
+                                 (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                 [SrcLoc.SrcSpan]
+                         = Data.Map.Strict.insertWithKey
+                             @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                             @ [SrcLoc.SrcSpan]
+                             ExtMonad.$s$fOrdLogicalRelation
+                             (ExtMonad.addOccurence_1
+                                @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension))
+                             DerivingsChecker.chkDerivings_key
+                             eta2
+                             s1
+                       } in
+                       (\ (s :: GhcMonad.Session)
+                          (s2 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                        case (((m1
+                                  `cast`
+                                (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                     <*>_N
+                                     <[GHC.LanguageExtensions.Type.Extension]>_R
+                                     <Control.Monad.Trans.State.Lazy.StateT
+                                        ExtMap.ExtMap GhcMonad.Ghc>_R
+                                     <()>_N)
+                                  r1)
+                                 `cast`
+                               (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                    <Data.Map.Base.Map
+                                       (ExtMap.LogicalRelation
+                                          GHC.LanguageExtensions.Type.Extension)
+                                       [SrcLoc.SrcSpan]>_N
+                                    <GhcMonad.Ghc>_R
+                                    <()>_N)
+                                 a1)
+                                `cast`
+                              (GhcMonad.N:Ghc[0]
+                                   <((),
+                                     Data.Map.Base.Map
+                                       (ExtMap.LogicalRelation
+                                          GHC.LanguageExtensions.Type.Extension)
+                                       [SrcLoc.SrcSpan])>_R)
+                                s)
+                               `cast`
+                             (GHC.Types.N:IO[0]
+                                  <((),
+                                    Data.Map.Base.Map
+                                      (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                                      [SrcLoc.SrcSpan])>_R)
+                               s2 of ds1 { (#,#) ipv ipv1 ->
+                        (# ipv, (ww8, case ipv1 of wild1 { (,) a2 s' -> s' }) #) })
+                         `cast`
+                       (Trans
+                            (<GhcMonad.Session>_R
+                             ->_R Sym (GHC.Types.N:IO[0]
+                                           <(Language.Haskell.Tools.AST.ElementTypes.Decl dom,
+                                             Data.Map.Base.Map
+                                               (ExtMap.LogicalRelation
+                                                  GHC.LanguageExtensions.Type.Extension)
+                                               [SrcLoc.SrcSpan])>_R))
+                            (Sym (GhcMonad.N:Ghc[0]
+                                      <(Language.Haskell.Tools.AST.ElementTypes.Decl dom,
+                                        Data.Map.Base.Map
+                                          (ExtMap.LogicalRelation
+                                             GHC.LanguageExtensions.Type.Extension)
+                                          [SrcLoc.SrcSpan])>_R))))
+                        `cast`
+                      (Trans
+                           (<[GHC.LanguageExtensions.Type.Extension]>_R
+                            ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                          <Data.Map.Base.Map
+                                             (ExtMap.LogicalRelation
+                                                GHC.LanguageExtensions.Type.Extension)
+                                             [SrcLoc.SrcSpan]>_N
+                                          <GhcMonad.Ghc>_R
+                                          <Language.Haskell.Tools.AST.ElementTypes.Decl dom>_N))
+                           (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                     <*>_N
+                                     <[GHC.LanguageExtensions.Type.Extension]>_R
+                                     <Control.Monad.Trans.State.Lazy.StateT
+                                        ExtMap.ExtMap GhcMonad.Ghc>_R
+                                     <Language.Haskell.Tools.AST.ElementTypes.Decl dom>_N))) } }) -}
+f2c9e091f928e7dfc95536174251a047
+  $wchkStandaloneDeriving ::
+    ExtMonad.ExtDomain dom =>
+    Language.Haskell.Tools.AST.Ann.NodeInfo
+      (Language.Haskell.Tools.AST.Ann.SemanticInfo
+         dom Language.Haskell.Tools.AST.Representation.Decls.UDecl)
+      (Language.Haskell.Tools.AST.Ann.SpanInfo
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+    -> Language.Haskell.Tools.AST.Representation.Decls.UDecl
+         dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage
+    -> ExtMonad.ExtMonad
+         (Language.Haskell.Tools.AST.ElementTypes.Decl dom)
+  {- Arity: 3,
+     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),C(U))><L,U(U,U(U,U,U,U))><S,U>,
+     Inline: [0] -}
+bc38a28bc3207389c87f50d478ba4e36
+  $wgetClassCon ::
+    Language.Haskell.Tools.AST.Ann.NodeInfo
+      (Language.Haskell.Tools.AST.Ann.SemanticInfo
+         dom Language.Haskell.Tools.AST.Representation.Decls.UInstanceHead)
+      (Language.Haskell.Tools.AST.Ann.SpanInfo
+         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+    -> Language.Haskell.Tools.AST.Representation.Decls.UInstanceHead
+         dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage
+    -> (# Language.Haskell.Tools.AST.Ann.NodeInfo
+            (Language.Haskell.Tools.AST.Ann.SemanticInfo
+               dom Language.Haskell.Tools.AST.Representation.Decls.UInstanceHead)
+            (Language.Haskell.Tools.AST.Ann.SpanInfo
+               Language.Haskell.Tools.AST.Ann.SrcTemplateStage),
+          Language.Haskell.Tools.AST.Representation.Decls.UInstanceHead
+            dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage #)
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,U><S,U>, Inline: [0] -}
+7b4758bb374feca2bcb31777123620e9
+  $wlvl ::
+    (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom
+     -> ExtMonad.ExtMonad
+          (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom))
+    -> Language.Haskell.Tools.AST.Ann.NodeInfo
+         (Language.Haskell.Tools.AST.Ann.SemanticInfo
+            dom Language.Haskell.Tools.AST.Representation.Decls.UDeriving)
+         (Language.Haskell.Tools.AST.Ann.SpanInfo
+            Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
+    -> Language.Haskell.Tools.AST.Representation.Decls.UDeriving
+         dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage
+    -> ExtMonad.ExtMonad
+         (Language.Haskell.Tools.AST.ElementTypes.Deriving dom)
+  {- Arity: 3, HasNoCafRefs, Strictness: <L,C(U)><L,U><S,U>,
+     Inline: [0],
+     Unfolding: (\ @ dom
+                   (w :: Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom
+                         -> ExtMonad.ExtMonad
+                              (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom))
+                   (ww :: Language.Haskell.Tools.AST.Ann.NodeInfo
+                            (Language.Haskell.Tools.AST.Ann.SemanticInfo
+                               dom Language.Haskell.Tools.AST.Representation.Decls.UDeriving)
+                            (Language.Haskell.Tools.AST.Ann.SpanInfo
+                               Language.Haskell.Tools.AST.Ann.SrcTemplateStage))
+                   (ww7 :: Language.Haskell.Tools.AST.Representation.Decls.UDeriving
+                             dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage) ->
+                 let {
                    wild :: Language.Haskell.Tools.AST.ElementTypes.Deriving dom
                    = Language.Haskell.Tools.AST.Ann.Ann
                        @ Language.Haskell.Tools.AST.Representation.Decls.UDeriving
@@ -3432,7 +3706,7 @@ b12a4c1a0f4955389d4a4ec283d6db07
                                 [GHC.LanguageExtensions.Type.Extension]
                                 (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc)
                                 (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom)
-                        = w1 deriv
+                        = w deriv
                       } in
                       (\ (r1 :: [GHC.LanguageExtensions.Type.Extension]) ->
                        let {
@@ -3582,7 +3856,7 @@ b12a4c1a0f4955389d4a4ec283d6db07
                                                 ExtMap.ExtMap GhcMonad.Ghc)
                                              (Language.Haskell.Tools.AST.ElementTypes.InstanceHead
                                                 dom)
-                                     = w1 y
+                                     = w y
                                    } in
                                    let {
                                      k :: Control.Monad.Trans.Reader.ReaderT
@@ -3807,233 +4081,9 @@ b12a4c1a0f4955389d4a4ec283d6db07
                                 <[GHC.LanguageExtensions.Type.Extension]>_R
                                 <Control.Monad.Trans.State.Lazy.StateT
                                    ExtMap.ExtMap GhcMonad.Ghc>_R
-                                <Language.Haskell.Tools.AST.ElementTypes.Deriving dom>_N)) } }) -}
-a4688abe579de536feb5fdb85a5a661c
-  $wchkGADTDataDecl ::
-    Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
-    Language.Haskell.Tools.AST.Ann.NodeInfo
-      (Language.Haskell.Tools.AST.Ann.SemanticInfo
-         dom Language.Haskell.Tools.AST.Representation.Decls.UDecl)
-      (Language.Haskell.Tools.AST.Ann.SpanInfo
-         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
-    -> Language.Haskell.Tools.AST.Representation.Decls.UDecl
-         dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage
-    -> ExtMonad.ExtMonad
-         (Language.Haskell.Tools.AST.ElementTypes.Decl dom)
-  {- Arity: 3,
-     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),C(U))><L,U(U,U(U,U,U,U))><S,U>,
-     Inline: [0],
-     Unfolding: (\ @ dom
-                   (w :: Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom)
-                   (ww :: Language.Haskell.Tools.AST.Ann.NodeInfo
-                            (Language.Haskell.Tools.AST.Ann.SemanticInfo
-                               dom Language.Haskell.Tools.AST.Representation.Decls.UDecl)
-                            (Language.Haskell.Tools.AST.Ann.SpanInfo
-                               Language.Haskell.Tools.AST.Ann.SrcTemplateStage))
-                   (ww7 :: Language.Haskell.Tools.AST.Representation.Decls.UDecl
-                             dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage) ->
-                 case GHC.Types.HEq_sc
-                        @ *
-                        @ *
-                        @ (Language.Haskell.Tools.AST.Ann.SemanticInfo'
-                             dom Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls)
-                        @ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo
-                        (Language.Haskell.Tools.AST.Ann.$p3Domain
-                           @ dom
-                           (GHC.Classes.$p1(%,%)
-                              @ (Language.Haskell.Tools.AST.Ann.Domain dom)
-                              @ (Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo'
-                                   (Language.Haskell.Tools.AST.Ann.SemanticInfo
-                                      dom
-                                      Language.Haskell.Tools.AST.Representation.Names.UQualifiedName))
-                              w))
-                          `cast`
-                        (Data.Type.Equality.N:~[0]
-                             <*>_N <Language.Haskell.Tools.AST.Ann.SemanticInfo'
-                                      dom
-                                      Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls>_N <Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo>_N) of cobox0 { DEFAULT ->
-                 let {
-                   ww8 :: Language.Haskell.Tools.AST.ElementTypes.Decl dom
-                   = Language.Haskell.Tools.AST.Ann.Ann
-                       @ Language.Haskell.Tools.AST.Representation.Decls.UDecl
-                       @ dom
-                       @ Language.Haskell.Tools.AST.Ann.SrcTemplateStage
-                       ww
-                       ww7
-                 } in
-                 case ww7 of wild {
-                   DEFAULT
-                   -> (\ (eta :: [GHC.LanguageExtensions.Type.Extension])
-                         (eta1 :: ExtMap.ExtMap)
-                         (eta2 :: GhcMonad.Session)
-                         (eta3 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                       (# eta3, (ww8, eta1) #))
-                        `cast`
-                      (Trans
-                           (<[GHC.LanguageExtensions.Type.Extension]>_R
-                            ->_R Trans
-                                     (<ExtMap.ExtMap>_R
-                                      ->_R Trans
-                                               (<GhcMonad.Session>_R
-                                                ->_R Sym (GHC.Types.N:IO[0]
-                                                              <(Language.Haskell.Tools.AST.ElementTypes.Decl
-                                                                  dom,
-                                                                ExtMap.ExtMap)>_R))
-                                               (Sym (GhcMonad.N:Ghc[0]
-                                                         <(Language.Haskell.Tools.AST.ElementTypes.Decl
-                                                             dom,
-                                                           ExtMap.ExtMap)>_R)))
-                                     (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
-                                               <ExtMap.ExtMap>_N
-                                               <GhcMonad.Ghc>_R
-                                               <Language.Haskell.Tools.AST.ElementTypes.Decl
-                                                  dom>_N)))
-                           (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
-                                     <*>_N
-                                     <[GHC.LanguageExtensions.Type.Extension]>_R
-                                     <Control.Monad.Trans.State.Lazy.StateT
-                                        ExtMap.ExtMap GhcMonad.Ghc>_R
-                                     <Language.Haskell.Tools.AST.ElementTypes.Decl dom>_N)))
-                   Language.Haskell.Tools.AST.Representation.Decls.UGDataDecl keyw ctx dh kind cons derivs
-                   -> let {
-                        eta1 :: SrcLoc.SrcSpan
-                        = case ww of wild1 { Language.Haskell.Tools.AST.Ann.NodeInfo ds1 ds2 ->
-                          case ds2
-                                 `cast`
-                               (Language.Haskell.Tools.Transform.SourceTemplate.D:R:SpanInfoSrcTemplateStage0[0]) of wild2 { Language.Haskell.Tools.Transform.SourceTemplate.SourceTemplateNode ds4 ds5 ds3 ds6 ->
-                          ds4 } }
-                      } in
-                      let {
-                        eta2 :: [SrcLoc.SrcSpan]
-                        = GHC.Types.: @ SrcLoc.SrcSpan eta1 (GHC.Types.[] @ SrcLoc.SrcSpan)
-                      } in
-                      let {
-                        m1 :: Control.Monad.Trans.Reader.ReaderT
-                                [GHC.LanguageExtensions.Type.Extension]
-                                (Control.Monad.Trans.State.Lazy.StateT ExtMap.ExtMap GhcMonad.Ghc)
-                                ()
-                        = case keyw of ww9 { Language.Haskell.Tools.AST.Ann.Ann ww10 ww11 ->
-                          DerivingsChecker.$wseparateByKeyword @ dom w ww11 derivs }
-                      } in
-                      (\ (r1 :: [GHC.LanguageExtensions.Type.Extension])
-                         (s1 :: Data.Map.Base.Map
-                                  (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
-                                  [SrcLoc.SrcSpan]) ->
-                       let {
-                         a1 :: Data.Map.Base.Map
-                                 (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
-                                 [SrcLoc.SrcSpan]
-                         = Data.Map.Strict.insertWithKey
-                             @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
-                             @ [SrcLoc.SrcSpan]
-                             ExtMonad.$s$fOrdLogicalRelation
-                             (ExtMonad.addOccurence1
-                                @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension))
-                             DerivingsChecker.chkDerivings_key
-                             eta2
-                             s1
-                       } in
-                       (\ (s :: GhcMonad.Session)
-                          (s2 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                        case (((m1
-                                  `cast`
-                                (Control.Monad.Trans.Reader.N:ReaderT[0]
-                                     <*>_N
-                                     <[GHC.LanguageExtensions.Type.Extension]>_R
-                                     <Control.Monad.Trans.State.Lazy.StateT
-                                        ExtMap.ExtMap GhcMonad.Ghc>_R
-                                     <()>_N)
-                                  r1)
-                                 `cast`
-                               (Control.Monad.Trans.State.Lazy.N:StateT[0]
-                                    <Data.Map.Base.Map
-                                       (ExtMap.LogicalRelation
-                                          GHC.LanguageExtensions.Type.Extension)
-                                       [SrcLoc.SrcSpan]>_N
-                                    <GhcMonad.Ghc>_R
-                                    <()>_N)
-                                 a1)
-                                `cast`
-                              (GhcMonad.N:Ghc[0]
-                                   <((),
-                                     Data.Map.Base.Map
-                                       (ExtMap.LogicalRelation
-                                          GHC.LanguageExtensions.Type.Extension)
-                                       [SrcLoc.SrcSpan])>_R)
-                                s)
-                               `cast`
-                             (GHC.Types.N:IO[0]
-                                  <((),
-                                    Data.Map.Base.Map
-                                      (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
-                                      [SrcLoc.SrcSpan])>_R)
-                               s2 of ds1 { (#,#) ipv ipv1 ->
-                        (# ipv, (ww8, case ipv1 of wild1 { (,) a2 s' -> s' }) #) })
-                         `cast`
-                       (Trans
-                            (<GhcMonad.Session>_R
-                             ->_R Sym (GHC.Types.N:IO[0]
-                                           <(Language.Haskell.Tools.AST.ElementTypes.Decl dom,
-                                             Data.Map.Base.Map
-                                               (ExtMap.LogicalRelation
-                                                  GHC.LanguageExtensions.Type.Extension)
-                                               [SrcLoc.SrcSpan])>_R))
-                            (Sym (GhcMonad.N:Ghc[0]
-                                      <(Language.Haskell.Tools.AST.ElementTypes.Decl dom,
-                                        Data.Map.Base.Map
-                                          (ExtMap.LogicalRelation
-                                             GHC.LanguageExtensions.Type.Extension)
-                                          [SrcLoc.SrcSpan])>_R))))
-                        `cast`
-                      (Trans
-                           (<[GHC.LanguageExtensions.Type.Extension]>_R
-                            ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
-                                          <Data.Map.Base.Map
-                                             (ExtMap.LogicalRelation
-                                                GHC.LanguageExtensions.Type.Extension)
-                                             [SrcLoc.SrcSpan]>_N
-                                          <GhcMonad.Ghc>_R
-                                          <Language.Haskell.Tools.AST.ElementTypes.Decl dom>_N))
-                           (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
-                                     <*>_N
-                                     <[GHC.LanguageExtensions.Type.Extension]>_R
-                                     <Control.Monad.Trans.State.Lazy.StateT
-                                        ExtMap.ExtMap GhcMonad.Ghc>_R
-                                     <Language.Haskell.Tools.AST.ElementTypes.Decl dom>_N))) } }) -}
-f979ea80b0bc09237c3b2b19be965573
-  $wchkStandaloneDeriving ::
-    Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
-    Language.Haskell.Tools.AST.Ann.NodeInfo
-      (Language.Haskell.Tools.AST.Ann.SemanticInfo
-         dom Language.Haskell.Tools.AST.Representation.Decls.UDecl)
-      (Language.Haskell.Tools.AST.Ann.SpanInfo
-         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
-    -> Language.Haskell.Tools.AST.Representation.Decls.UDecl
-         dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage
-    -> ExtMonad.ExtMonad
-         (Language.Haskell.Tools.AST.ElementTypes.Decl dom)
-  {- Arity: 3,
-     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),C(U))><L,U(U,U(U,U,U,U))><S,U>,
-     Inline: [0] -}
-bc38a28bc3207389c87f50d478ba4e36
-  $wgetClassCon ::
-    Language.Haskell.Tools.AST.Ann.NodeInfo
-      (Language.Haskell.Tools.AST.Ann.SemanticInfo
-         dom Language.Haskell.Tools.AST.Representation.Decls.UInstanceHead)
-      (Language.Haskell.Tools.AST.Ann.SpanInfo
-         Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
-    -> Language.Haskell.Tools.AST.Representation.Decls.UInstanceHead
-         dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage
-    -> (# Language.Haskell.Tools.AST.Ann.NodeInfo
-            (Language.Haskell.Tools.AST.Ann.SemanticInfo
-               dom Language.Haskell.Tools.AST.Representation.Decls.UInstanceHead)
-            (Language.Haskell.Tools.AST.Ann.SpanInfo
-               Language.Haskell.Tools.AST.Ann.SrcTemplateStage),
-          Language.Haskell.Tools.AST.Representation.Decls.UInstanceHead
-            dom Language.Haskell.Tools.AST.Ann.SrcTemplateStage #)
-  {- Arity: 2, HasNoCafRefs, Strictness: <L,U><S,U>, Inline: [0] -}
-5cafb0ccfced21800e083c5d4eca4b82
-  $wlvl ::
+                                <Language.Haskell.Tools.AST.ElementTypes.Deriving dom>_N)) }) -}
+2268379b3b57265263fef17af48bd1ae
+  $wlvl1 ::
     GHC.Prim.Void# -> Language.Haskell.Tools.AST.ElementTypes.Type dom
   {- Arity: 1, Strictness: <L,U>x, Inline: [0] -}
 a3aeb260bd83cd55cb3d07fcc8a2e1ea
@@ -4043,7 +4093,7 @@ a3aeb260bd83cd55cb3d07fcc8a2e1ea
     -> GHC.Base.Maybe
          (Language.Haskell.Tools.AST.ElementTypes.Name dom)
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>, Inline: [0] -}
-df602b38fdf828b7925806ac3e65c35e
+4a95f3cda901b4bd32656c3fd9d41bf5
   $wseparateByKeyword ::
     Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
     Language.Haskell.Tools.AST.Representation.Decls.UDataOrNewtypeKeyword
@@ -4110,9 +4160,12 @@ df602b38fdf828b7925806ac3e65c35e
                                   Language.Haskell.Tools.AST.Representation.Decls.UDeriving
                                   dom
                                   Language.Haskell.Tools.AST.Ann.SrcTemplateStage)
-                       = case DerivingsChecker.chkDataDecl1
+                       = case DerivingsChecker.chkDataDecl2
                                 @ dom of wild { Control.Reference.Representation.Reference ds1 ds2 ds3 ds4 ds5 ds6 ->
-                         ds3 (DerivingsChecker.chkDerivingClause @ dom w f) w1 }
+                         ds3
+                           (\ (eta :: Language.Haskell.Tools.AST.ElementTypes.Deriving dom) ->
+                            DerivingsChecker.chkDataDecl1 @ dom f eta)
+                           w1 }
                      } in
                      (\ (r1 :: [GHC.LanguageExtensions.Type.Extension]) ->
                       let {
@@ -4266,18 +4319,16 @@ f12cee0ae3ee5cdc3c731e856486a5ff
                         DerivingsChecker.notGNTD of wild {
                    GHC.Types.False -> GHC.Types.True
                    GHC.Types.True -> GHC.Types.False }) -}
-5c91f8d6d6e217771a1918def7a7620e
+053b7322a7e2ae27aeba89f05b8fde14
   chkClassForData ::
-    Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
-    Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom
-    -> ExtMonad.ExtMonad
-         (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom)
+    ExtMonad.CheckNode
+      Language.Haskell.Tools.AST.ElementTypes.InstanceHead
   {- Arity: 2,
      Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),C(U))><S(LS),U(U(U,U(U,U,U,U)),U)>,
      Inline: INLINE[0],
      Unfolding: InlineRule (2, True, False)
                 (\ @ dom
-                   (w :: Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom)
+                   (w :: ExtMonad.ExtDomain dom)
                    (w1 :: Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom) ->
                  case w1 of ww { Language.Haskell.Tools.AST.Ann.Ann ww7 ww8 ->
                  DerivingsChecker.$wchkClassForData @ dom w ww7 ww8 }) -}
@@ -4626,38 +4677,51 @@ a50dc2da2c4ea219627a11622425fc4e
      Unfolding: (ExtMap.LVar
                    @ GHC.LanguageExtensions.Type.Extension
                    GHC.LanguageExtensions.Type.DeriveAnyClass) -}
-18ea899cbc995a39c0bb7d735d68bc7c
+c9d9392bf798bfbf861be963abed78d1
   chkClassForNewtype ::
-    Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
-    Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom
-    -> ExtMonad.ExtMonad
-         (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom)
+    ExtMonad.CheckNode
+      Language.Haskell.Tools.AST.ElementTypes.InstanceHead
   {- Arity: 2,
      Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),C(U))><S(LS),U(U(U,U(U,U,U,U)),U)>,
      Inline: INLINE[0],
      Unfolding: InlineRule (2, True, False)
                 (\ @ dom
-                   (w :: Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom)
+                   (w :: ExtMonad.ExtDomain dom)
                    (w1 :: Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom) ->
                  case w1 of ww { Language.Haskell.Tools.AST.Ann.Ann ww7 ww8 ->
                  DerivingsChecker.$wchkClassForNewtype @ dom w ww7 ww8 }) -}
-afaf915f1b6cc903ff6781019028e7a4
+d27727685eb39eea1abecb9ca83c3fc2
   chkDataDecl ::
-    Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
-    Language.Haskell.Tools.AST.ElementTypes.Decl dom
-    -> ExtMonad.ExtMonad
-         (Language.Haskell.Tools.AST.ElementTypes.Decl dom)
+    ExtMonad.CheckNode Language.Haskell.Tools.AST.ElementTypes.Decl
   {- Arity: 2,
      Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),C(U))><S(LS),1*U(U,U)>,
      Inline: INLINE[0],
      Unfolding: InlineRule (2, True, False)
                 (\ @ dom
-                   (w :: Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom)
+                   (w :: ExtMonad.ExtDomain dom)
                    (w1 :: Language.Haskell.Tools.AST.ElementTypes.Decl dom) ->
                  case w1 of ww { Language.Haskell.Tools.AST.Ann.Ann ww7 ww8 ->
                  DerivingsChecker.$wchkDataDecl @ dom w ww7 ww8 }) -}
-1ca5a4a4a18c2c6a70759b83486a7579
+ae0fdce968b07f83f8b683fb2d0b8bea
   chkDataDecl1 ::
+    (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom
+     -> ExtMonad.ExtMonad
+          (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom))
+    -> Language.Haskell.Tools.AST.ElementTypes.Deriving dom
+    -> ExtMonad.ExtMonad
+         (Language.Haskell.Tools.AST.ElementTypes.Deriving dom)
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,C(U)><S(LS),1*U(U,U)>,
+     Inline: INLINE[0],
+     Unfolding: InlineRule (2, True, False)
+                (\ @ dom
+                   (w :: Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom
+                         -> ExtMonad.ExtMonad
+                              (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom))
+                   (w1 :: Language.Haskell.Tools.AST.ElementTypes.Deriving dom) ->
+                 case w1 of ww { Language.Haskell.Tools.AST.Ann.Ann ww7 ww8 ->
+                 DerivingsChecker.$wlvl @ dom w ww7 ww8 }) -}
+40a667298acc24f47533e4bb4e25c25f
+  chkDataDecl2 ::
     Control.Reference.Representation.Reference
       (Control.Monad.Trans.Reader.ReaderT
          [GHC.LanguageExtensions.Type.Extension]
@@ -4730,18 +4794,15 @@ afaf915f1b6cc903ff6781019028e7a4
                    ww10
                    ww11
                    ww12 }) -}
-f22cce7d0a426e1bc21ed3e2c67e1448
+a077bf743ad425d2734be87b597eaa97
   chkDataInstance ::
-    Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
-    Language.Haskell.Tools.AST.ElementTypes.Decl dom
-    -> ExtMonad.ExtMonad
-         (Language.Haskell.Tools.AST.ElementTypes.Decl dom)
+    ExtMonad.CheckNode Language.Haskell.Tools.AST.ElementTypes.Decl
   {- Arity: 2,
      Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),C(U))><S(LS),1*U(U(U,U(U,U,U,U)),U)>,
      Inline: INLINE[0],
      Unfolding: InlineRule (2, True, False)
                 (\ @ dom
-                   (w :: Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom)
+                   (w :: ExtMonad.ExtDomain dom)
                    (w1 :: Language.Haskell.Tools.AST.ElementTypes.Decl dom) ->
                  case w1 of ww { Language.Haskell.Tools.AST.Ann.Ann ww7 ww8 ->
                  DerivingsChecker.$wchkDataInstance @ dom w ww7 ww8 }) -}
@@ -4752,7 +4813,7 @@ f22cce7d0a426e1bc21ed3e2c67e1448
      Unfolding: (ExtMap.LVar
                    @ GHC.LanguageExtensions.Type.Extension
                    GHC.LanguageExtensions.Type.TypeFamilies) -}
-c655e9a457cec17f177341f38db19887
+38d9de2f72936623bf6353459c5f87cb
   chkDerivingClause ::
     Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
     (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom
@@ -4763,27 +4824,42 @@ c655e9a457cec17f177341f38db19887
          (Language.Haskell.Tools.AST.ElementTypes.Deriving dom)
   {- Arity: 3, HasNoCafRefs,
      Strictness: <S(S(LLS(S)LLLLLLLLLL)L),1*U(1*U(A,A,1*U(1*U),A,A,A,A,A,A,A,A,A,A),A)><L,C(U)><S(LS),1*U(U,U)>,
-     Inline: INLINE[0],
      Unfolding: InlineRule (3, True, False)
                 (\ @ dom
-                   (w :: Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom)
-                   (w1 :: Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom
-                          -> ExtMonad.ExtMonad
-                               (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom))
-                   (w2 :: Language.Haskell.Tools.AST.ElementTypes.Deriving dom) ->
-                 case w2 of ww { Language.Haskell.Tools.AST.Ann.Ann ww7 ww8 ->
-                 DerivingsChecker.$wchkDerivingClause @ dom w w1 ww7 ww8 }) -}
-ffa4220245a0aa4cfccfa0089fd8a12f
+                   ($d(%,%) :: Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo
+                                 dom)
+                   (eta :: Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom
+                           -> ExtMonad.ExtMonad
+                                (Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom))
+                   (eta1 :: Language.Haskell.Tools.AST.ElementTypes.Deriving dom) ->
+                 case GHC.Types.HEq_sc
+                        @ *
+                        @ *
+                        @ (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                             dom Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls)
+                        @ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo
+                        (Language.Haskell.Tools.AST.Ann.$p3Domain
+                           @ dom
+                           (GHC.Classes.$p1(%,%)
+                              @ (Language.Haskell.Tools.AST.Ann.Domain dom)
+                              @ (Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo'
+                                   (Language.Haskell.Tools.AST.Ann.SemanticInfo
+                                      dom
+                                      Language.Haskell.Tools.AST.Representation.Names.UQualifiedName))
+                              $d(%,%)))
+                          `cast`
+                        (Data.Type.Equality.N:~[0]
+                             <*>_N <Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                      dom
+                                      Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls>_N <Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo>_N) of cobox0 { DEFAULT ->
+                 DerivingsChecker.chkDataDecl1 @ dom eta eta1 }) -}
+312dc4ded8018c8b659e198ee893ff28
   chkDerivings ::
-    Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
-    Language.Haskell.Tools.AST.ElementTypes.Decl dom
-    -> ExtMonad.ExtMonad
-         (Language.Haskell.Tools.AST.ElementTypes.Decl dom)
+    ExtMonad.CheckNode Language.Haskell.Tools.AST.ElementTypes.Decl
   {- Arity: 2,
      Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),C(U))><L,1*U(U,U)>,
      Unfolding: (\ @ dom
-                   ($d(%,%) :: Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo
-                                 dom)
+                   ($d(%,%) :: ExtMonad.ExtDomain dom)
                    (eta :: Language.Haskell.Tools.AST.ElementTypes.Decl dom) ->
                  case GHC.Types.HEq_sc
                         @ *
@@ -5008,33 +5084,27 @@ ffa4220245a0aa4cfccfa0089fd8a12f
      Unfolding: (ExtMap.LVar
                    @ GHC.LanguageExtensions.Type.Extension
                    GHC.LanguageExtensions.Type.GADTs) -}
-017f4e2c9dadd85f7950aab1f78a774a
+ca36debdd0afc557f476184fdffb2c6a
   chkGADTDataDecl ::
-    Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
-    Language.Haskell.Tools.AST.ElementTypes.Decl dom
-    -> ExtMonad.ExtMonad
-         (Language.Haskell.Tools.AST.ElementTypes.Decl dom)
+    ExtMonad.CheckNode Language.Haskell.Tools.AST.ElementTypes.Decl
   {- Arity: 2,
      Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),C(U))><S(LS),1*U(U(U,U(U,U,U,U)),U)>,
      Inline: INLINE[0],
      Unfolding: InlineRule (2, True, False)
                 (\ @ dom
-                   (w :: Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom)
+                   (w :: ExtMonad.ExtDomain dom)
                    (w1 :: Language.Haskell.Tools.AST.ElementTypes.Decl dom) ->
                  case w1 of ww { Language.Haskell.Tools.AST.Ann.Ann ww7 ww8 ->
                  DerivingsChecker.$wchkGADTDataDecl @ dom w ww7 ww8 }) -}
-e5b13fdcde3e00b867a37e8216831c97
+941fade4fe00ab9e118102c5e5ae4ea4
   chkStandaloneDeriving ::
-    Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
-    Language.Haskell.Tools.AST.ElementTypes.Decl dom
-    -> ExtMonad.ExtMonad
-         (Language.Haskell.Tools.AST.ElementTypes.Decl dom)
+    ExtMonad.CheckNode Language.Haskell.Tools.AST.ElementTypes.Decl
   {- Arity: 2,
      Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),C(U))><S(LS),1*U(U(U,U(U,U,U,U)),U)>,
      Inline: INLINE[0],
      Unfolding: InlineRule (2, True, False)
                 (\ @ dom
-                   (w :: Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom)
+                   (w :: ExtMonad.ExtDomain dom)
                    (w1 :: Language.Haskell.Tools.AST.ElementTypes.Decl dom) ->
                  case w1 of ww { Language.Haskell.Tools.AST.Ann.Ann ww7 ww8 ->
                  DerivingsChecker.$wchkStandaloneDeriving @ dom w ww7 ww8 }) -}
@@ -5256,7 +5326,7 @@ e5b347efa71f69e4fc8a46541268a9fb
                  case ds of wild {
                    DEFAULT -> GHC.Types.False
                    TyCoRep.ATyCon tycon -> TyCon.isNewTyCon tycon }) -}
-923a9a70d54c884a8b235ab2c50bf698
+018c38b73ee66b9b6b0abfcf0e5bf99e
   isSynNewType ::
     Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
     Language.Haskell.Tools.AST.ElementTypes.Type dom
@@ -5387,7 +5457,7 @@ e5b347efa71f69e4fc8a46541268a9fb
                                                    GHC.LanguageExtensions.Type.Extension)
                                               @ [SrcLoc.SrcSpan]
                                               ExtMonad.$s$fOrdLogicalRelation
-                                              (ExtMonad.addOccurence1
+                                              (ExtMonad.addOccurence_1
                                                  @ (ExtMap.LogicalRelation
                                                       GHC.LanguageExtensions.Type.Extension))
                                               DerivingsChecker.isSynNewType_key
@@ -5702,7 +5772,7 @@ e2236e5575364e6d48377a7dd368b6ba
      Unfolding: (GHC.Base.Just
                    @ GHC.LanguageExtensions.Type.Extension
                    GHC.LanguageExtensions.Type.DeriveDataTypeable) -}
-7ca0aeaf14d3c6c0418bb03785e1b1f8
+5bc1ddccf48831b311a9ca4adb94b3f8
   rightmostType ::
     Language.Haskell.Tools.AST.ElementTypes.InstanceHead dom
     -> Language.Haskell.Tools.AST.ElementTypes.Type dom
@@ -5718,14 +5788,14 @@ e2236e5575364e6d48377a7dd368b6ba
                    DEFAULT -> DerivingsChecker.rightmostType1 @ dom GHC.Prim.void#
                    Language.Haskell.Tools.AST.Representation.Decls.UInstanceHeadApp fun arg
                    -> arg } }) -}
-b5518f3a5b0504e18292367622c4ddcf
+2c8d38e61b37208fc924715d9b058efa
   rightmostType1 ::
     GHC.Prim.Void# -> Language.Haskell.Tools.AST.ElementTypes.Type dom
   {- Arity: 1, Strictness: <B,A>x, Inline: INLINE[0],
      Unfolding: InlineRule (1, True, True)
                 (\ @ dom (w :: GHC.Prim.Void#)[OneShot] ->
-                 DerivingsChecker.$wlvl @ dom GHC.Prim.void#) -}
-11085fe7231738fc98b9b93e29cb49c4
+                 DerivingsChecker.$wlvl1 @ dom GHC.Prim.void#) -}
+897867c60502a46f8ca4639ac679215e
   separateByKeyword ::
     Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo dom =>
     Language.Haskell.Tools.AST.ElementTypes.DataOrNewtypeKeyword dom
@@ -6057,6 +6127,27 @@ instance GHC.Show.Show [DerivingsChecker.DerivableClass]
                                                   @ r
                                                   $dMonad
   = DerivingsChecker.$s$fMonadReaderT_$s$fMonadReaderT_$c>>= @ r
+"SPEC/DerivingsChecker $fMonadReaderT_$cfail @ (StateT ExtMap Ghc) _" [ALWAYS] forall @ r
+                                                                                      ($dMonad :: GHC.Base.Monad
+                                                                                                    (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                       ExtMap.ExtMap
+                                                                                                       GhcMonad.Ghc))
+  Control.Monad.Trans.Reader.$fMonadReaderT_$cfail @ (Control.Monad.Trans.State.Lazy.StateT
+                                                        ExtMap.ExtMap GhcMonad.Ghc)
+                                                   @ r
+                                                   $dMonad
+  = DerivingsChecker.$s$fMonadReaderT_$s$fMonadReaderT_$cfail @ r
+"SPEC/DerivingsChecker $fMonadReaderT_$cp1Monad @ (StateT
+                                                    ExtMap Ghc) _" [ALWAYS] forall @ r
+                                                                                                                                             ($dMonad :: GHC.Base.Monad
+                                                                                                                                                           (Control.Monad.Trans.State.Lazy.StateT
+                                                                                                                                                              ExtMap.ExtMap
+                                                                                                                                                              GhcMonad.Ghc))
+  Control.Monad.Trans.Reader.$fMonadReaderT_$cp1Monad @ (Control.Monad.Trans.State.Lazy.StateT
+                                                           ExtMap.ExtMap GhcMonad.Ghc)
+                                                      @ r
+                                                      $dMonad
+  = DerivingsChecker.$s$fMonadReaderT_$s$fMonadReaderT_$cp1Monad @ r
 "SPEC/DerivingsChecker $fMonadReaderT_$creturn @ (StateT
                                                    ExtMap Ghc) _" [ALWAYS] forall @ r
                                                                                                                                            ($dMonad :: GHC.Base.Monad
