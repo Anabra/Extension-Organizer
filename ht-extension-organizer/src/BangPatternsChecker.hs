@@ -11,7 +11,7 @@ import Debug.Trace (trace)
 --       but we don't really need any.
 
 chkBangPatterns :: CheckNode Pattern
-chkBangPatterns = conditional chkBangPatterns BangPatterns
+chkBangPatterns = conditional chkBangPatterns' BangPatterns
 
 chkBangPatterns' :: CheckNode Pattern
 chkBangPatterns' p@(BangPat _) = addOccurence BangPatterns p
@@ -24,8 +24,7 @@ chkBangPatterns' x = return x
   Expr DONE
   Alt DONE
   Stmt DONE
-  Pattern TO ASK
-  Bracket,
+  Pattern MORE TESTS
+  Bracket ASK
   PatSynRhs DONE
-
 -}

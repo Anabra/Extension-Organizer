@@ -20,6 +20,10 @@ extra-source-files:    test/RecordWildCardsTest/*.hs
                        test/DerivingsTest/*.hs
                        test/BangPatternsTest/*.hs
                        test/PatternSynonymsTest/*.hs
+                       test/ViewPatternsTest/*.hs
+                       test/LambdaCaseTest/*.hs
+                       test/TupleSectionsTest/*.hs
+                       test/UnboxedTuplesTest/*.hs
 
 library
   exposed-modules:     ExtensionOrganizer,
@@ -31,6 +35,10 @@ library
                        BangPatternsChecker,
                        PatternSynonymsChecker,
                        TemplateHaskellChecker,
+                       ViewPatternsChecker,
+                       LambdaCaseChecker,
+                       TupleSectionsChecker,
+                       UnboxedTuplesChecker,
                        ExtMonad,
                        ExtMap,
                        TraverseAST,

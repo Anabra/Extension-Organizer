@@ -3,5 +3,6 @@
 module InStmt where
 
 f = do
-  (!a,_) <- Just (1,2)
+  let !x = 5              {-* BangPatterns *-}
+  (!a,_) <- Just (1,2)    {-* BangPatterns *-}
   return a

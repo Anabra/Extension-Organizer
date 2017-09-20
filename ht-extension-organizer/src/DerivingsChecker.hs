@@ -116,10 +116,20 @@ isWiredInClass = flip elem wiredInClasses
 
 
 chkDerivings :: CheckNode Decl
-chkDerivings = chkDataDecl
-           >=> chkGADTDataDecl
-           >=> chkDataInstance
-           >=> chkStandaloneDeriving
+chkDerivings = conditionalAny chkDerivings' derivingExts
+           >=> conditional chkStandaloneDeriving Ext.StandaloneDeriving
+
+      where chkDerivings' = chkDataDecl
+                        >=> chkGADTDataDecl
+                        >=> chkDataInstance
+
+            derivingExts = [ DeriveDataTypeable
+                           , DeriveGeneric
+                           , DeriveFunctor
+                           , DeriveFoldable
+                           , DeriveTraversable
+                           , DeriveAnyClass
+                           , GeneralizedNewtypeDeriving]
 
 
 

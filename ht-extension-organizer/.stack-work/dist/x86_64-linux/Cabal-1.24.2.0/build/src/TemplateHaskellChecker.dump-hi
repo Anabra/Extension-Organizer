@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2017-09-19 15:19:15.315397 UTC
+2017-09-20 19:16:12.512414 UTC
 
 interface ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:TemplateHaskellChecker 8002
-  interface hash: 8f96c5cd96078e29ddf3d12d56f7f8a1
-  ABI hash: 6b055ac3b574e2a59aed83905d635a0f
+  interface hash: c83641fb6450166825b9d9ed103a10e3
+  ABI hash: 3c89e361079b926599f42291f89d0476
   export-list hash: 6b876baa0770906a0f5ca7b25a09757f
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 91cd76246f60d900fce8e309e594df82
@@ -124,8 +124,8 @@ import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
 import  -/  ghc-boot-th-8.0.2@ghc-boot-th-8.0.2:GHC.LanguageExtensions.Type 92441ea50916fa3940e20fae60f255d7
 import  -/  haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8:Language.Haskell.Tools.Refactor 84acc8d60e278de91351468f26f90e1c
 import  -/  haskell-tools-rewrite-0.8.1.0@haskell-tools-rewrite-0.8.1.0-85A6q9dMQgvKEKG9I8fxVU:Language.Haskell.Tools.AST.ElementTypes df954b524d036aee274d8ad0f571417a
-import  -/  ExtMonad 059f5fd988c212e6bf2913400d89e5c4
-  exports: e114cdeb7f705ff3639c044bf88c57d7
+import  -/  ExtMonad af7b60a65d818af19a46d996e27297ca
+  exports: 7f69547596e05261c6f5806398624025
   CheckNode d2a8a000f373c241c0362787c4b3f842
   addOccurence c9603992ac2a28741343ebc5c8fe7b56
 6faf370cca14eb324b0778aa1794f0d7
@@ -143,7 +143,7 @@ import  -/  ExtMonad 059f5fd988c212e6bf2913400d89e5c4
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
                    "ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL"#) -}
-85bd7f93152247cd8c7125b4a5b3ca2f
+466a82d7172620a7353b10f65c824bbe
   $wchkTemplateHaskellBracket ::
     ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.ElementTypes.Bracket dom
@@ -224,7 +224,7 @@ import  -/  ExtMonad 059f5fd988c212e6bf2913400d89e5c4
                                   Data.Map.Base.Map
                                     (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                                     [SrcLoc.SrcSpan])>_R))) }) -}
-7fcf902253f68339ed59cee214e10e29
+f9203b78d299f1981622299102fdac78
   $wchkTemplateHaskellQuasiQuote ::
     ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.ElementTypes.QuasiQuote dom
@@ -269,7 +269,7 @@ import  -/  ExtMonad 059f5fd988c212e6bf2913400d89e5c4
                        ExtMonad.$s$fOrdLogicalRelation
                        (ExtMonad.addOccurence_1
                           @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension))
-                       TemplateHaskellChecker.chkTemplateHaskellBracket2
+                       TemplateHaskellChecker.chkTemplateHaskellQuasiQuote2
                        (GHC.Types.:
                           @ SrcLoc.SrcSpan
                           (case w1 of wild { Language.Haskell.Tools.AST.Ann.Ann a ds ->
@@ -305,7 +305,7 @@ import  -/  ExtMonad 059f5fd988c212e6bf2913400d89e5c4
                                   Data.Map.Base.Map
                                     (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                                     [SrcLoc.SrcSpan])>_R))) }) -}
-858758d0e9616f62284fe7a0579e6b5e
+14451eba479da2c9b3f2e41b8b9c260b
   $wchkTemplateHaskellSplice ::
     ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.ElementTypes.Splice dom
@@ -349,7 +349,7 @@ import  -/  ExtMonad 059f5fd988c212e6bf2913400d89e5c4
                        ExtMonad.$s$fOrdLogicalRelation
                        (ExtMonad.addOccurence_1
                           @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension))
-                       TemplateHaskellChecker.chkTemplateHaskellBracket2
+                       TemplateHaskellChecker.chkTemplateHaskellSplice2
                        (GHC.Types.:
                           @ SrcLoc.SrcSpan
                           (case w1 of wild { Language.Haskell.Tools.AST.Ann.Ann a ds ->
@@ -385,7 +385,7 @@ import  -/  ExtMonad 059f5fd988c212e6bf2913400d89e5c4
                                   Data.Map.Base.Map
                                     (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                                     [SrcLoc.SrcSpan])>_R))) }) -}
-b40d662889b540ee1015cef72058d53b
+867a06769c3118999b210d4241bee5de
   chkTemplateHaskellBracket ::
     ExtMonad.CheckNode Language.Haskell.Tools.AST.ElementTypes.Bracket
   {- Arity: 4,
@@ -408,7 +408,7 @@ b40d662889b540ee1015cef72058d53b
                                     <Control.Monad.Trans.State.Lazy.StateT
                                        ExtMap.ExtMap GhcMonad.Ghc>_R
                                     <Language.Haskell.Tools.AST.ElementTypes.Bracket dom>_N))) -}
-fe17743af6b07746be24fbf87a54bc4b
+ef13964839f51f45c2a37c7c29ebbb1d
   chkTemplateHaskellBracket1 ::
     ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.ElementTypes.Bracket dom
@@ -431,14 +431,14 @@ fe17743af6b07746be24fbf87a54bc4b
                    w
                    w1
                    w3) -}
-60179c91fbf0801d92c6c8c336162714
+32eb9c7482eed97e730761c175028e77
   chkTemplateHaskellBracket2 ::
     ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension
   {- HasNoCafRefs,
      Unfolding: (ExtMap.LVar
                    @ GHC.LanguageExtensions.Type.Extension
-                   GHC.LanguageExtensions.Type.TemplateHaskell) -}
-0a4c3c26672378c840bfb514df3e8ee3
+                   GHC.LanguageExtensions.Type.TemplateHaskellQuotes) -}
+5d7156feb2d88253be3c9044f2711921
   chkTemplateHaskellQuasiQuote ::
     ExtMonad.CheckNode
       Language.Haskell.Tools.AST.ElementTypes.QuasiQuote
@@ -463,7 +463,7 @@ fe17743af6b07746be24fbf87a54bc4b
                                     <Control.Monad.Trans.State.Lazy.StateT
                                        ExtMap.ExtMap GhcMonad.Ghc>_R
                                     <Language.Haskell.Tools.AST.ElementTypes.QuasiQuote dom>_N))) -}
-574808a1cfafbbb6a15098829369bd80
+5c9557bdd7a6454ed52b0aa30ada4bae
   chkTemplateHaskellQuasiQuote1 ::
     ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.ElementTypes.QuasiQuote dom
@@ -486,7 +486,14 @@ fe17743af6b07746be24fbf87a54bc4b
                    w
                    w1
                    w3) -}
-7ed124f42a42221af99a92d023c5d80c
+e5bee0e915ebe3fcf66694b35aa9b02f
+  chkTemplateHaskellQuasiQuote2 ::
+    ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension
+  {- HasNoCafRefs,
+     Unfolding: (ExtMap.LVar
+                   @ GHC.LanguageExtensions.Type.Extension
+                   GHC.LanguageExtensions.Type.QuasiQuotes) -}
+150bb6855f9042fc1e7ba4288a85f2b6
   chkTemplateHaskellSplice ::
     ExtMonad.CheckNode Language.Haskell.Tools.AST.ElementTypes.Splice
   {- Arity: 4,
@@ -509,7 +516,7 @@ fe17743af6b07746be24fbf87a54bc4b
                                     <Control.Monad.Trans.State.Lazy.StateT
                                        ExtMap.ExtMap GhcMonad.Ghc>_R
                                     <Language.Haskell.Tools.AST.ElementTypes.Splice dom>_N))) -}
-65d9560db5f8418dbd68bb5ca6f71c9f
+ce6550b42d2810861842f548e3cef50e
   chkTemplateHaskellSplice1 ::
     ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.ElementTypes.Splice dom
@@ -527,6 +534,13 @@ fe17743af6b07746be24fbf87a54bc4b
                    (w2 :: [GHC.LanguageExtensions.Type.Extension])
                    (w3 :: ExtMap.ExtMap) ->
                  TemplateHaskellChecker.$wchkTemplateHaskellSplice @ dom w w1 w3) -}
+480f64e9e05d9e64e70c85c02b9af753
+  chkTemplateHaskellSplice2 ::
+    ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension
+  {- HasNoCafRefs,
+     Unfolding: (ExtMap.LVar
+                   @ GHC.LanguageExtensions.Type.Extension
+                   GHC.LanguageExtensions.Type.TemplateHaskell) -}
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

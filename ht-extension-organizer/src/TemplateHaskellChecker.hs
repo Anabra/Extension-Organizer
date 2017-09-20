@@ -14,8 +14,8 @@ chkTemplateHaskellSplice = addOccurence TemplateHaskell
 
 -- can be reached from: Type, Expr, Pattern
 chkTemplateHaskellQuasiQuote :: CheckNode QuasiQuote
-chkTemplateHaskellQuasiQuote = addOccurence TemplateHaskell
+chkTemplateHaskellQuasiQuote = addOccurence QuasiQuotes
 
 -- can be reached from: Expr
 chkTemplateHaskellBracket :: CheckNode Bracket
-chkTemplateHaskellBracket = addOccurence TemplateHaskell
+chkTemplateHaskellBracket = addOccurence TemplateHaskellQuotes

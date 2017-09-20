@@ -1,5 +1,5 @@
 {-# LANGUAGE PatternSynonyms #-}
 
-module SimpleTest where
+module UniDirectional where
 
 pattern X a b c <- (a,b,c) {-* PatternSynonyms *-}

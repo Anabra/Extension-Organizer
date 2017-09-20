@@ -19,7 +19,12 @@ import Language.Haskell.Tools.PrettyPrint hiding (ModuleName)
 import AnnotationParser
 import ExtensionOrganizer
 
-import Debug.Trace
+import Debug.Trace (trace, traceShow)
+
+{- NOTE:
+  Exhaustive checks for Pattern type AST nodes are not given for each check.
+  We only give exhaustive test cases for nested patterns in bangPatternsTest.
+-}
 
 main :: IO ()
 main = defaultMain $
@@ -29,6 +34,9 @@ main = defaultMain $
           , mkTests derivingsTest
           , mkTests patternSynonymsTest
           , mkTests bangPatternsTest
+          , mkTests templateHaskellTest
+          , mkTests viewPatternsTest
+          , mkTests lambdaCasePatternsTest
           ]
 
 testRoot = "test"
@@ -71,8 +79,8 @@ mkTest dir moduleName = testCase moduleName $ mkAssertion dir moduleName
 
 mkAssertion :: FilePath -> ModuleName -> IO ()
 mkAssertion dir moduleName = do
-  result   <- getExtensionsFrom dir moduleName
   expected <- getExtAnnotsFrom  dir moduleName
+  result   <- getExtensionsFrom dir moduleName
   assertEqual "Failure" (mapSort expected) (mapSort result)
   where mapSort = SMap.map sort
 
@@ -82,7 +90,9 @@ mkTests (testDir, tests) = testGroup testDir (map (mkTest testDir) tests)
 
 recordWildCardsTest = (recordWildCardsRoot, recordWildCardsModules)
 recordWildCardsRoot = "RecordWildCardsTest"
-recordWildCardsModules = ["Simple"]
+recordWildCardsModules = [ "InExpression"
+                         , "InPattern"
+                         ]
 
 flexibleInstancesTest = (flexibleInstancesRoot, flexibleInstancesModules)
 flexibleInstancesRoot = "FlexibleInstancesTest"
@@ -111,7 +121,9 @@ derivingsModules = [ "DataDeriving"
 
 patternSynonymsTest = (patSynRoot, patSynModules)
 patSynRoot = "PatternSynonymsTest"
-patSynModules = [ "SimpleTest" ]
+patSynModules = [ "UniDirectional"
+                , "BiDirectional"
+                ]
 
 bangPatternsTest = (bangPatternsRoot, bangPatternsModules)
 bangPatternsRoot = "BangPatternsTest"
@@ -120,7 +132,35 @@ bangPatternsModules = [ "Combined"
                       , "InExpr"
                       , "InMatchLhs"
                       , "InPatSynRhs"
+                      , "InPattern"
                       , "InRhsGuard"
                       , "InStmt"
                       , "InValueBind"
                       ]
+
+templateHaskellTest = (thRoot, thModules)
+thRoot = "TemplateHaskellTest"
+thModules = [ "Quote"
+            , "Splice"
+            ]
+
+viewPatternsTest = (vpRoot, vpModules)
+vpRoot = "ViewPatternsTest"
+vpModules = [ "InAlt"
+            , "InExpr"
+            , "InMatchLhs"
+            , "InMatchLhsNested"
+            ]
+
+lambdaCasePatternsTest = (lcRoot, lcModules)
+lcRoot = "LambdaCaseTest"
+lcModules = [ "InCaseRhs"
+            , "InCompStmt"
+            , "InExpr"
+            , "InFieldUpdate"
+            , "InPattern"
+            , "InRhs"
+            , "InRhsGuard"
+            , "InStmt"
+            , "InTupSecElem"
+            ]

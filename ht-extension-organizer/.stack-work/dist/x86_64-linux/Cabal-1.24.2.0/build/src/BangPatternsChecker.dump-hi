@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2017-09-19 19:44:56.96452 UTC
+2017-09-20 19:16:14.382654 UTC
 
 interface ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:BangPatternsChecker 8002
-  interface hash: 8eaf6f737ba16cdcfd9ae15a447f5a43
-  ABI hash: f42dc1624d94d92d8eaf535720f55ebc
+  interface hash: c24b7eb5601b5315696890eef854d3eb
+  ABI hash: 79fc278df5854f4e562680fa7afa40cc
   export-list hash: b384d4aba88e8297ccfed74c60cab264
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 91cd76246f60d900fce8e309e594df82
@@ -126,11 +126,11 @@ import  -/  ghc-boot-th-8.0.2@ghc-boot-th-8.0.2:GHC.LanguageExtensions.Type 9244
 import  -/  haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8:Language.Haskell.Tools.Refactor 84acc8d60e278de91351468f26f90e1c
 import  -/  haskell-tools-rewrite-0.8.1.0@haskell-tools-rewrite-0.8.1.0-85A6q9dMQgvKEKG9I8fxVU:Language.Haskell.Tools.AST.ElementTypes df954b524d036aee274d8ad0f571417a
 import  -/  haskell-tools-rewrite-0.8.1.0@haskell-tools-rewrite-0.8.1.0-85A6q9dMQgvKEKG9I8fxVU:Language.Haskell.Tools.AST.Match.Patterns 2fd4c4dbea6a0193d161dd2ecdde7cd7
-import  -/  ExtMonad 059f5fd988c212e6bf2913400d89e5c4
-  exports: e114cdeb7f705ff3639c044bf88c57d7
+import  -/  ExtMonad af7b60a65d818af19a46d996e27297ca
+  exports: 7f69547596e05261c6f5806398624025
   CheckNode d2a8a000f373c241c0362787c4b3f842
   addOccurence c9603992ac2a28741343ebc5c8fe7b56
-  conditional 170d45fd139eef252718316404a1e1aa
+  conditional 179fcfe6ec57edddd9abe173be82121d
 4b2fc8acf0a09c6b7474857cc7ec1971
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
@@ -146,7 +146,7 @@ c57f9ab1fffa7d6e5a63f1415d26f587
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
                    "ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL"#) -}
-081975478bf5b1fef329aefa5c42c9c1
+38e739ebbbaa72ee1cc9ed9f4c340539
   $wchkBangPatterns' ::
     ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.Ann.NodeInfo
@@ -240,7 +240,7 @@ c57f9ab1fffa7d6e5a63f1415d26f587
                             ExtMonad.$s$fOrdLogicalRelation
                             (ExtMonad.addOccurence_1
                                @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension))
-                            BangPatternsChecker.chkBangPatterns'2
+                            BangPatternsChecker.chkBangPatterns3
                             (GHC.Types.:
                                @ SrcLoc.SrcSpan
                                (case ww of wild2 { Language.Haskell.Tools.AST.Ann.NodeInfo ds1 ds2 ->
@@ -276,30 +276,61 @@ c57f9ab1fffa7d6e5a63f1415d26f587
                                          (ExtMap.LogicalRelation
                                             GHC.LanguageExtensions.Type.Extension)
                                          [SrcLoc.SrcSpan])>_R))) } }) -}
-c2c55ce8bfa7b47ff22b7f25978aa177
+0b6d3d89d712cda762aef76f1ed9f58c
   chkBangPatterns ::
     ExtMonad.CheckNode Language.Haskell.Tools.AST.ElementTypes.Pattern
-  {- Arity: 3, HasNoCafRefs,
-     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),A)><L,U><L,U>,
-     Unfolding: InlineRule (0, True, True)
-                BangPatternsChecker.chkBangPatterns1
-                  `cast`
-                (forall (dom :: <*>_N).
-                 <ExtMonad.ExtDomain dom>_R
-                 ->_R <Language.Haskell.Tools.AST.ElementTypes.Pattern dom>_R
-                 ->_R Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
-                               <*>_N
-                               <[GHC.LanguageExtensions.Type.Extension]>_R
-                               <Control.Monad.Trans.State.Lazy.StateT
-                                  ExtMap.ExtMap GhcMonad.Ghc>_R
-                               <Language.Haskell.Tools.AST.ElementTypes.Pattern dom>_N)) -}
-7ee8c4174e4173777fe40ca1ae28ae92
+  {- Arity: 2,
+     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),A)><L,U>,
+     Unfolding: (\ @ dom
+                   ($d(%,%) :: ExtMonad.ExtDomain dom)
+                   (eta :: Language.Haskell.Tools.AST.ElementTypes.Pattern dom) ->
+                 case GHC.Types.HEq_sc
+                        @ *
+                        @ *
+                        @ (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                             dom Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls)
+                        @ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo
+                        (Language.Haskell.Tools.AST.Ann.$p3Domain
+                           @ dom
+                           (GHC.Classes.$p1(%,%)
+                              @ (Language.Haskell.Tools.AST.Ann.Domain dom)
+                              @ (Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo'
+                                   (Language.Haskell.Tools.AST.Ann.SemanticInfo
+                                      dom
+                                      Language.Haskell.Tools.AST.Representation.Names.UQualifiedName))
+                              $d(%,%)))
+                          `cast`
+                        (Data.Type.Equality.N:~[0]
+                             <*>_N <Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                      dom
+                                      Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls>_N <Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo>_N) of cobox0 { DEFAULT ->
+                 ExtMonad.conditionalAny
+                   @ (Language.Haskell.Tools.AST.ElementTypes.Pattern dom)
+                   (BangPatternsChecker.chkBangPatterns2 @ dom $d(%,%))
+                     `cast`
+                   (<Language.Haskell.Tools.AST.ElementTypes.Pattern dom>_R
+                    ->_R Trans
+                             (<[GHC.LanguageExtensions.Type.Extension]>_R
+                              ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                            <ExtMap.ExtMap>_N
+                                            <GhcMonad.Ghc>_R
+                                            <Language.Haskell.Tools.AST.ElementTypes.Pattern
+                                               dom>_N))
+                             (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                       <*>_N
+                                       <[GHC.LanguageExtensions.Type.Extension]>_R
+                                       <Control.Monad.Trans.State.Lazy.StateT
+                                          ExtMap.ExtMap GhcMonad.Ghc>_R
+                                       <Language.Haskell.Tools.AST.ElementTypes.Pattern dom>_N)))
+                   BangPatternsChecker.chkBangPatterns1
+                   eta }) -}
+5c7e4e8cf62d9abcec9320f22637662b
   chkBangPatterns' ::
     ExtMonad.CheckNode Language.Haskell.Tools.AST.ElementTypes.Pattern
   {- Arity: 4,
      Strictness: <S(S(LLS(S)LLLLLLLLLL)L),1*U(1*U(A,A,1*U(1*U),A,A,A,A,A,A,A,A,A,A),A)><S(LS),1*U(U(U,U(U,U,U,U)),U)><L,A><L,U>,
      Unfolding: InlineRule (0, True, True)
-                BangPatternsChecker.chkBangPatterns'1
+                BangPatternsChecker.chkBangPatterns2
                   `cast`
                 (forall (dom :: <*>_N).
                  <ExtMonad.ExtDomain dom>_R
@@ -316,8 +347,15 @@ c2c55ce8bfa7b47ff22b7f25978aa177
                                     <Control.Monad.Trans.State.Lazy.StateT
                                        ExtMap.ExtMap GhcMonad.Ghc>_R
                                     <Language.Haskell.Tools.AST.ElementTypes.Pattern dom>_N))) -}
-2e77ad8f42f318215936af93f3e2d96c
-  chkBangPatterns'1 ::
+edbf72e6d0112b49c3205bb0fb92528c
+  chkBangPatterns1 :: [GHC.LanguageExtensions.Type.Extension]
+  {- HasNoCafRefs,
+     Unfolding: (GHC.Types.:
+                   @ GHC.LanguageExtensions.Type.Extension
+                   GHC.LanguageExtensions.Type.BangPatterns
+                   (GHC.Types.[] @ GHC.LanguageExtensions.Type.Extension)) -}
+0a0e9864c28d61dbdbf2f703d829eb26
+  chkBangPatterns2 ::
     ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.ElementTypes.Pattern dom
     -> [GHC.LanguageExtensions.Type.Extension]
@@ -336,24 +374,13 @@ c2c55ce8bfa7b47ff22b7f25978aa177
                    (w3 :: ExtMap.ExtMap) ->
                  case w1 of ww { Language.Haskell.Tools.AST.Ann.Ann ww1 ww2 ->
                  BangPatternsChecker.$wchkBangPatterns' @ dom w ww1 ww2 w3 }) -}
-c7130f69dcdf2620948159003b007b36
-  chkBangPatterns'2 ::
+347d571665e9f2070ac5f5ddd4f2fc97
+  chkBangPatterns3 ::
     ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension
   {- HasNoCafRefs,
      Unfolding: (ExtMap.LVar
                    @ GHC.LanguageExtensions.Type.Extension
                    GHC.LanguageExtensions.Type.BangPatterns) -}
-f85a475307192fd50c652abde1dbe396
-  chkBangPatterns1 ::
-    ExtMonad.ExtDomain dom =>
-    Language.Haskell.Tools.AST.ElementTypes.Pattern dom
-    -> [GHC.LanguageExtensions.Type.Extension]
-    -> Control.Monad.Trans.State.Lazy.StateT
-         ExtMap.ExtMap
-         GhcMonad.Ghc
-         (Language.Haskell.Tools.AST.ElementTypes.Pattern dom)
-  {- Arity: 3, HasNoCafRefs,
-     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),A)><L,U><L,U> -}
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

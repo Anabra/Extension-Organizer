@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2017-09-19 15:19:15.048362 UTC
+2017-09-20 19:16:12.232147 UTC
 
 interface ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:PatternSynonymsChecker 8002
-  interface hash: 72ef9928dcd6b5364560b1daf5dbc25c
-  ABI hash: 4d00c81a2e1cb0839b4614ab76e37ee6
+  interface hash: ca9bee10d6c68b86257ece9ef8fd848b
+  ABI hash: 209b276d2c449fd9cc90bf0a43b54cce
   export-list hash: cc58466d11f708e17113e46f0997b812
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 91cd76246f60d900fce8e309e594df82
@@ -123,11 +123,11 @@ import  -/  base-4.9.1.0:Prelude 22dd289b8469a8fa8dc81cab7b237771
 import  -/  ghc-boot-th-8.0.2@ghc-boot-th-8.0.2:GHC.LanguageExtensions.Type 92441ea50916fa3940e20fae60f255d7
 import  -/  haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8:Language.Haskell.Tools.Refactor 84acc8d60e278de91351468f26f90e1c
 import  -/  haskell-tools-rewrite-0.8.1.0@haskell-tools-rewrite-0.8.1.0-85A6q9dMQgvKEKG9I8fxVU:Language.Haskell.Tools.AST.ElementTypes df954b524d036aee274d8ad0f571417a
-import  -/  ExtMonad 059f5fd988c212e6bf2913400d89e5c4
-  exports: e114cdeb7f705ff3639c044bf88c57d7
+import  -/  ExtMonad af7b60a65d818af19a46d996e27297ca
+  exports: 7f69547596e05261c6f5806398624025
   CheckNode d2a8a000f373c241c0362787c4b3f842
   addOccurence c9603992ac2a28741343ebc5c8fe7b56
-  conditional 170d45fd139eef252718316404a1e1aa
+  conditional 179fcfe6ec57edddd9abe173be82121d
 f83749f3290a8de1ffdea8955814a162
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
@@ -143,7 +143,7 @@ f83749f3290a8de1ffdea8955814a162
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
                    "ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL"#) -}
-1343ebc6aefcf9b992b2448460a15b0d
+96d013a71dda95c6c0d38fa1ccce57f1
   $wchkPatternSynonyms' ::
     ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.ElementTypes.PatternSynonym dom
@@ -188,7 +188,7 @@ f83749f3290a8de1ffdea8955814a162
                        ExtMonad.$s$fOrdLogicalRelation
                        (ExtMonad.addOccurence_1
                           @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension))
-                       PatternSynonymsChecker.chkPatternSynonyms_key
+                       PatternSynonymsChecker.chkPatternSynonyms2
                        (GHC.Types.:
                           @ SrcLoc.SrcSpan
                           (case w1 of wild { Language.Haskell.Tools.AST.Ann.Ann a ds ->
@@ -225,25 +225,62 @@ f83749f3290a8de1ffdea8955814a162
                                   Data.Map.Base.Map
                                     (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                                     [SrcLoc.SrcSpan])>_R))) }) -}
-5c6a04e5fe98212584351c5e521f1628
+c03f09ba5b7466131e6959a62459e2ec
   chkPatternSynonyms ::
     ExtMonad.CheckNode
       Language.Haskell.Tools.AST.ElementTypes.PatternSynonym
-  {- Arity: 3,
-     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),A)><L,U(U(U,U(U,U,U,U)),U)><L,U>,
-     Unfolding: InlineRule (0, True, True)
-                PatternSynonymsChecker.chkPatternSynonyms1
-                  `cast`
-                (forall (dom :: <*>_N).
-                 <ExtMonad.ExtDomain dom>_R
-                 ->_R <Language.Haskell.Tools.AST.ElementTypes.PatternSynonym dom>_R
-                 ->_R Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
-                               <*>_N
-                               <[GHC.LanguageExtensions.Type.Extension]>_R
-                               <Control.Monad.Trans.State.Lazy.StateT
-                                  ExtMap.ExtMap GhcMonad.Ghc>_R
-                               <Language.Haskell.Tools.AST.ElementTypes.PatternSynonym dom>_N)) -}
-418e9aea1892a7c5134bc8018e9a4794
+  {- Arity: 2,
+     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),A)><L,U>,
+     Unfolding: (\ @ dom
+                   ($d(%,%) :: ExtMonad.ExtDomain dom)
+                   (eta :: Language.Haskell.Tools.AST.ElementTypes.PatternSynonym
+                             dom) ->
+                 case GHC.Types.HEq_sc
+                        @ *
+                        @ *
+                        @ (Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                             dom Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls)
+                        @ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo
+                        (Language.Haskell.Tools.AST.Ann.$p3Domain
+                           @ dom
+                           (GHC.Classes.$p1(%,%)
+                              @ (Language.Haskell.Tools.AST.Ann.Domain dom)
+                              @ (Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo'
+                                   (Language.Haskell.Tools.AST.Ann.SemanticInfo
+                                      dom
+                                      Language.Haskell.Tools.AST.Representation.Names.UQualifiedName))
+                              $d(%,%)))
+                          `cast`
+                        (Data.Type.Equality.N:~[0]
+                             <*>_N <Language.Haskell.Tools.AST.Ann.SemanticInfo'
+                                      dom
+                                      Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls>_N <Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo>_N) of cobox0 { DEFAULT ->
+                 ExtMonad.conditionalAny
+                   @ (Language.Haskell.Tools.AST.ElementTypes.PatternSynonym dom)
+                   (\ (w :: Language.Haskell.Tools.AST.ElementTypes.PatternSynonym
+                              dom)[OneShot]
+                      (w1 :: [GHC.LanguageExtensions.Type.Extension])
+                      (w2 :: ExtMap.ExtMap) ->
+                    PatternSynonymsChecker.$wchkPatternSynonyms' @ dom $d(%,%) w w2)
+                     `cast`
+                   (<Language.Haskell.Tools.AST.ElementTypes.PatternSynonym dom>_R
+                    ->_R Trans
+                             (<[GHC.LanguageExtensions.Type.Extension]>_R
+                              ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                            <ExtMap.ExtMap>_N
+                                            <GhcMonad.Ghc>_R
+                                            <Language.Haskell.Tools.AST.ElementTypes.PatternSynonym
+                                               dom>_N))
+                             (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                       <*>_N
+                                       <[GHC.LanguageExtensions.Type.Extension]>_R
+                                       <Control.Monad.Trans.State.Lazy.StateT
+                                          ExtMap.ExtMap GhcMonad.Ghc>_R
+                                       <Language.Haskell.Tools.AST.ElementTypes.PatternSynonym
+                                          dom>_N)))
+                   PatternSynonymsChecker.chkPatternSynonyms1
+                   eta }) -}
+c7941031685acd3768e45f14f7497cb4
   chkPatternSynonyms' ::
     ExtMonad.CheckNode
       Language.Haskell.Tools.AST.ElementTypes.PatternSynonym
@@ -269,7 +306,7 @@ f83749f3290a8de1ffdea8955814a162
                                        ExtMap.ExtMap GhcMonad.Ghc>_R
                                     <Language.Haskell.Tools.AST.ElementTypes.PatternSynonym
                                        dom>_N))) -}
-5d891e1e906683aebd45b3ae32888daa
+bed0109183aebf20f8af20d77addff8a
   chkPatternSynonyms'1 ::
     ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.AST.ElementTypes.PatternSynonym dom
@@ -288,111 +325,15 @@ f83749f3290a8de1ffdea8955814a162
                    (w2 :: [GHC.LanguageExtensions.Type.Extension])
                    (w3 :: ExtMap.ExtMap) ->
                  PatternSynonymsChecker.$wchkPatternSynonyms' @ dom w w1 w3) -}
-613dfaf3f0a1dc4cba3c6d2496ec1db5
-  chkPatternSynonyms1 ::
-    ExtMonad.ExtDomain dom =>
-    Language.Haskell.Tools.AST.ElementTypes.PatternSynonym dom
-    -> [GHC.LanguageExtensions.Type.Extension]
-    -> Control.Monad.Trans.State.Lazy.StateT
-         ExtMap.ExtMap
-         GhcMonad.Ghc
-         (Language.Haskell.Tools.AST.ElementTypes.PatternSynonym dom)
-  {- Arity: 3,
-     Strictness: <S(S(LLS(S)LLLLLLLLLL)L),U(U(A,A,U(U),A,A,A,A,A,A,A,A,A,A),A)><L,U(U(U,U(U,U,U,U)),U)><L,U>,
-     Unfolding: (\ @ dom
-                   ($d(%,%) :: ExtMonad.ExtDomain dom)
-                   (eta :: Language.Haskell.Tools.AST.ElementTypes.PatternSynonym dom)
-                   (eta1 :: [GHC.LanguageExtensions.Type.Extension]) ->
-                 case GHC.Types.HEq_sc
-                        @ *
-                        @ *
-                        @ (Language.Haskell.Tools.AST.Ann.SemanticInfo'
-                             dom Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls)
-                        @ Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo
-                        (Language.Haskell.Tools.AST.Ann.$p3Domain
-                           @ dom
-                           (GHC.Classes.$p1(%,%)
-                              @ (Language.Haskell.Tools.AST.Ann.Domain dom)
-                              @ (Language.Haskell.Tools.AST.SemaInfoClasses.HasNameInfo'
-                                   (Language.Haskell.Tools.AST.Ann.SemanticInfo
-                                      dom
-                                      Language.Haskell.Tools.AST.Representation.Names.UQualifiedName))
-                              $d(%,%)))
-                          `cast`
-                        (Data.Type.Equality.N:~[0]
-                             <*>_N <Language.Haskell.Tools.AST.Ann.SemanticInfo'
-                                      dom
-                                      Language.Haskell.Tools.AST.Ann.SameInfoDefaultCls>_N <Language.Haskell.Tools.AST.SemaInfoTypes.NoSemanticInfo>_N) of cobox0 { DEFAULT ->
-                 let {
-                   eta2 :: SrcLoc.SrcSpan
-                   = case eta of wild { Language.Haskell.Tools.AST.Ann.Ann a ds ->
-                     case a of wild1 { Language.Haskell.Tools.AST.Ann.NodeInfo ds1 ds2 ->
-                     case ds2
-                            `cast`
-                          (Language.Haskell.Tools.Transform.SourceTemplate.D:R:SpanInfoSrcTemplateStage0[0]) of wild2 { Language.Haskell.Tools.Transform.SourceTemplate.SourceTemplateNode ds4 ds5 ds3 ds6 ->
-                     ds4 } } }
-                 } in
-                 let {
-                   eta3 :: [SrcLoc.SrcSpan]
-                   = GHC.Types.: @ SrcLoc.SrcSpan eta2 (GHC.Types.[] @ SrcLoc.SrcSpan)
-                 } in
-                 let {
-                   lvl12 :: GHC.Types.Bool
-                   = GHC.List.elem
-                       @ GHC.LanguageExtensions.Type.Extension
-                       GHC.LanguageExtensions.Type.$fEqExtension
-                       GHC.LanguageExtensions.Type.PatternSynonyms
-                       eta1
-                 } in
-                 (\ (eta4 :: Data.Map.Base.Map
-                               (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
-                               [SrcLoc.SrcSpan])
-                    (eta5 :: GhcMonad.Session)
-                    (eta6 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                  case lvl12 of vx {
-                    GHC.Types.False -> (# eta6, (eta, eta4) #)
-                    GHC.Types.True
-                    -> (# eta6,
-                          (eta,
-                           Data.Map.Strict.insertWithKey
-                             @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
-                             @ [SrcLoc.SrcSpan]
-                             ExtMonad.$s$fOrdLogicalRelation
-                             (ExtMonad.addOccurence_1
-                                @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension))
-                             PatternSynonymsChecker.chkPatternSynonyms_key
-                             eta3
-                             eta4) #) })
-                   `cast`
-                 (Trans
-                      (<Data.Map.Base.Map
-                          (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
-                          [SrcLoc.SrcSpan]>_R
-                       ->_R Trans
-                                (<GhcMonad.Session>_R
-                                 ->_R Sym (GHC.Types.N:IO[0]
-                                               <(Language.Haskell.Tools.AST.ElementTypes.PatternSynonym
-                                                   dom,
-                                                 Data.Map.Base.Map
-                                                   (ExtMap.LogicalRelation
-                                                      GHC.LanguageExtensions.Type.Extension)
-                                                   [SrcLoc.SrcSpan])>_R))
-                                (Sym (GhcMonad.N:Ghc[0]
-                                          <(Language.Haskell.Tools.AST.ElementTypes.PatternSynonym
-                                              dom,
-                                            Data.Map.Base.Map
-                                              (ExtMap.LogicalRelation
-                                                 GHC.LanguageExtensions.Type.Extension)
-                                              [SrcLoc.SrcSpan])>_R)))
-                      (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
-                                <Data.Map.Base.Map
-                                   (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
-                                   [SrcLoc.SrcSpan]>_N
-                                <GhcMonad.Ghc>_R
-                                <Language.Haskell.Tools.AST.ElementTypes.PatternSynonym
-                                   dom>_N))) }) -}
-f85893eaa4d66cacecfa5b0bee908774
-  chkPatternSynonyms_key ::
+e386b7d00f576edb1a5563184ccc680f
+  chkPatternSynonyms1 :: [GHC.LanguageExtensions.Type.Extension]
+  {- HasNoCafRefs,
+     Unfolding: (GHC.Types.:
+                   @ GHC.LanguageExtensions.Type.Extension
+                   GHC.LanguageExtensions.Type.PatternSynonyms
+                   (GHC.Types.[] @ GHC.LanguageExtensions.Type.Extension)) -}
+0bf3aa945fab7bf2a4aa424f558524ba
+  chkPatternSynonyms2 ::
     ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension
   {- HasNoCafRefs,
      Unfolding: (ExtMap.LVar

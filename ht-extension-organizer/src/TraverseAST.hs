@@ -22,6 +22,10 @@ import DerivingsChecker
 import BangPatternsChecker
 import PatternSynonymsChecker
 import TemplateHaskellChecker
+import ViewPatternsChecker
+import LambdaCaseChecker
+import TupleSectionsChecker
+import UnboxedTuplesChecker
 
 
 chkDecl :: CheckNode Decl
@@ -29,6 +33,16 @@ chkDecl = chkFlexibleInstances >=> chkDerivings
 
 chkPattern :: CheckNode Pattern
 chkPattern = chkBangPatterns
+         >=> chkViewPatterns
+         >=> chkUnboxedTuplesPat
+
+chkExpr :: CheckNode Expr
+chkExpr = chkTupleSections
+      >=> chkUnboxedTuplesExpr
+      >=> chkLambdaCase
+
+chkType :: CheckNode Type
+chkType = chkUnboxedTuplesType
 
 chkPatternField :: CheckNode PatternField
 chkPatternField = chkRecordWildCardsPatField
@@ -166,7 +180,8 @@ traversePatternField = chkPatternField
 
 -- TODO: TemplateHaskell?
 traverseExpr :: CheckNode Expr
-traverseExpr = (innerExpressions !~ traverseExpr)
+traverseExpr = chkExpr
+              >=> (innerExpressions !~ traverseExpr)
               >=> (innerPatterns !~ traversePattern)
               >=> (exprFunBind & annList !~ traverseLocalBind)
               >=> (exprIfAlts & annList !~ traverseGuardedCaseRhs traverseExpr)
@@ -213,6 +228,8 @@ type StmtG uexpr dom           = Ann (UStmt' uexpr) dom SrcTemplateStage
 type CaseRhsG uexpr dom        = Ann (UCaseRhs' uexpr) dom SrcTemplateStage
 type GuardedCaseRhsG uexpr dom = Ann (UGuardedCaseRhs' uexpr) dom SrcTemplateStage
 
+type PromotedG t dom = Ann (UPromoted t) dom  SrcTemplateStage
+
 traverseAlt :: CheckUNode uexpr -> CheckNode (AltG uexpr)
 traverseAlt f = (altPattern !~ traversePattern)
                >=> (altRhs !~ traverseCaseRhs f)
@@ -231,6 +248,10 @@ traverseStmt f = (stmtPattern !~ traversePattern)
                 >=> (stmtExpr !~ f)
                 >=> (stmtBinds & annList !~ traverseLocalBind)
                 >=> (cmdStmtBinds & annList !~ traverseStmt f)
+
+traversePromoted :: CheckUNode t -> CheckNode (PromotedG t)
+traversePromoted f = (promotedConName !~ traverseName)
+                 >=> (promotedElements & annList !~ f)
 
 traverseTupSecElem :: CheckNode TupSecElem
 traverseTupSecElem = tupSecExpr !~ traverseExpr
@@ -290,6 +311,57 @@ traverseQuasiQuote :: CheckNode QuasiQuote
 traverseQuasiQuote = chkTemplateHaskellQuasiQuote
                      >=> (qqExprName !~ traverseName)
 
+traverseType :: CheckNode Type
+traverseType = chkType
+              >=> (typeBounded & annList !~ traverseTyVar)
+              >=> (innerType !~ traverseType)
+              >=> (innerName !~ traverseName)
+              >=> (typeCtx !~ traverseContext)
+              >=> (typeOperator !~ traverseOperator)
+              >=> (typeKind !~ traverseKind)
+              >=> (tpPromoted !~ traversePromoted traverseType)
+              >=> (tsSplice !~ traverseSplice)
+              >=> (typeQQ !~ traverseQuasiQuote)
+
+ where innerType = typeType
+                   &+& typeParam
+                   &+& typeResult
+                   &+& (typeElements & annList)
+                   &+& typeElement
+                   &+& typeCon
+                   &+& typeArg
+                   &+& typeInner
+                   &+& typeLeft
+                   &+& typeRight
+
+       innerName = typeName &+& typeWildcardName
+
+traverseTyVar :: CheckNode TyVar
+traverseTyVar = (tyVarName !~ traverseName)
+               >=> (tyVarKind & annJust !~ traverseKindContraint)
+
+traverseKindContraint :: CheckNode KindConstraint
+traverseKindContraint = kindConstr !~ traverseKind
+
+traverseKind :: CheckNode Kind
+traverseKind = return
+
+traverseContext :: CheckNode Context
+traverseContext = contextAssertion !~ traverseAssertion
+
+traverseAssertion :: CheckNode Assertion
+traverseAssertion = (innerType !~ traverseType)
+                   >=> (innerName !~ traverseName)
+                   >=> (assertOp !~ traverseOperator)
+                   >=> (innerAsserts & annList !~ traverseAssertion)
+
+ where innerType = (assertTypes & annList)
+                   &+& assertLhs
+                   &+& assertRhs
+                   &+& assertImplType
+
+       innerName = assertClsName &+& assertImplVar
+
 -- TODO:
 
 traverseTypeSignature :: CheckNode TypeSignature
@@ -303,11 +375,6 @@ traverseName = return
 
 traverseOperator :: CheckNode Operator
 traverseOperator = return
-
-traverseType :: CheckNode Type
-traverseType = (tsSplice !~ traverseSplice)
-               >=> (typeQQ !~ traverseQuasiQuote)
-               -- needs a lot more
 
 traverseLiteral :: CheckNode Literal
 traverseLiteral = return

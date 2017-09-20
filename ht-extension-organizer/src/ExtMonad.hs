@@ -27,6 +27,8 @@ import Control.Monad.Reader
 
 import ExtMap
 
+import Debug.Trace (trace, traceShow)
+
 
 {-# ANN module "HLint: ignore Use mappend" #-}
 {-# ANN module "HLint: ignore Use import/export shortcut" #-}
@@ -63,13 +65,19 @@ isTurnedOn ext = do
   defaults <- ask
   return $! ext `elem` defaults
 
-conditional :: (elem -> ExtMonad elem) ->
+conditional :: (node -> ExtMonad node) ->
                Extension ->
-               elem ->
-               ExtMonad elem
-conditional checker ext node = do
-  b <- isTurnedOn ext
-  if b then checker node else return node
+               node ->
+               ExtMonad node
+conditional checker ext = conditionalAny checker [ext]
+
+conditionalAny :: (node -> ExtMonad node) ->
+                   [Extension] ->
+                   node ->
+                   ExtMonad node
+conditionalAny checker exts node = do
+  bs <- mapM isTurnedOn exts
+  if or bs then checker node else return node
 
 runExtMonadIO :: ExtMonad a -> IO a
 runExtMonadIO = runGhc (Just libdir) . runExtMonadGHC

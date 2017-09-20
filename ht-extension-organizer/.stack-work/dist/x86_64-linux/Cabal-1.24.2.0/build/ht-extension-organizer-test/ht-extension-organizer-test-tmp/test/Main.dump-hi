@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2017-09-19 19:52:28.898676 UTC
+2017-09-20 23:02:23.042082 UTC
 
 interface main@main:Main 8002
-  interface hash: 4b92f1474f9a1d1aa75a0e87ef28ec93
-  ABI hash: c191af9c08b69048f9b1b60a264e2e2d
-  export-list hash: 55b44b0a0070d61e960950865e47adda
+  interface hash: bb2be03c6b4f641245337fa466170c15
+  ABI hash: a10e88f4c545e54cfffef766cc40b20f
+  export-list hash: a0a51d177aa4e2c38eda9b5e60348869
   orphan hash: a3ac865c7bb566e48a741dd4484cba63
   flag hash: ccf1cf6c4a769ce9a094061d778c3c71
   sig of: Nothing
@@ -23,6 +23,9 @@ exports:
   Main.flexibleInstancesTest
   Main.getExtAnnotsFrom
   Main.getExtensionsFrom
+  Main.lambdaCasePatternsTest
+  Main.lcModules
+  Main.lcRoot
   Main.loadModuleAST
   Main.main
   Main.mkAssertion
@@ -37,7 +40,13 @@ exports:
   Main.recordWildCardsTest
   Main.simplifyExtMap
   Main.spanToLine
+  Main.templateHaskellTest
   Main.testRoot
+  Main.thModules
+  Main.thRoot
+  Main.viewPatternsTest
+  Main.vpModules
+  Main.vpRoot
   Main.Line
   Main.ModuleName
   Main.SimpleMap
@@ -193,9 +202,9 @@ import  -/  ghc-prim-0.5.0.0:GHC.Types 89f8de4f08018c9177c98d979eae0e45
 import  -/  haskell-tools-prettyprint-0.8.1.0@haskell-tools-prettyprint-0.8.1.0-F9iWkGq5ppnLH6whHm0DlC:Language.Haskell.Tools.PrettyPrint da7dea6ac299ef1620d7160216fb97b0
 import  -/  haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8:Language.Haskell.Tools.Refactor 84acc8d60e278de91351468f26f90e1c
 import  -/  haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8:Language.Haskell.Tools.Refactor.Prepare 06c995907993af4dca8399eaa224a412
-import  -/  ht-extension-organizer-0.1.0.0@ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:AnnotationParser e9fa5cde54e897bcd0f177d60ebb351f
+import  -/  ht-extension-organizer-0.1.0.0@ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:AnnotationParser f78aabf0e2d657a79857d2d0d402ed8c
 import  -/  ht-extension-organizer-0.1.0.0@ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:ExtMap ce208fa2f233772cc4b03c60efef446e
-import  -/  ht-extension-organizer-0.1.0.0@ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:ExtensionOrganizer 9779a9959a8f0504f700996e461b23b0
+import  -/  ht-extension-organizer-0.1.0.0@ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:ExtensionOrganizer a3b17db1c45307edc6e5a4c4d6152e61
 import  -/  tasty-0.11.2.5@tasty-0.11.2.5-9CHOVHcPPPS3fAInAil5pA:Test.Tasty 195b167c336d9a923d4ad9d6346408fc
 import  -/  tasty-0.11.2.5@tasty-0.11.2.5-9CHOVHcPPPS3fAInAil5pA:Test.Tasty.Core bde15bbc7e9c0cafa410fe290b644921
 import  -/  tasty-hunit-0.9.2@tasty-hunit-0.9.2-8EqOuwvMdXe8awhjhOAP3F:Test.Tasty.HUnit b76eb16e90e5f18943bf39820b0509f5
@@ -865,90 +874,100 @@ ac591eb9759f42c740e55bbe2c0673aa
   type TestName = GHC.Base.String
 d4fa7246dc264273548aacc630b4bc5a
   type TestSuite = (GHC.IO.FilePath, [Main.TestName])
-0d43b8ecf2bd21486d83c277fe300522
+f0547d2e69a5046b646d61f5851d0c4b
   bangPatternsModules :: [[GHC.Types.Char]]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ [GHC.Types.Char]
-                   Main.bangPatternsModules15
+                   Main.bangPatternsModules17
                    Main.bangPatternsModules1) -}
-ce39de9fbb4e3f83691f053101303360
+30f24ce83abf4e5db373fa6fdfaae521
   bangPatternsModules1 :: [[GHC.Types.Char]]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ [GHC.Types.Char]
-                   Main.bangPatternsModules14
+                   Main.bangPatternsModules16
                    Main.bangPatternsModules2) -}
-682140388bcc97a54b3ee9f5106e1ad9
+9048534094b767f1ecc982942f27b7b8
   bangPatternsModules10 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "InRhsGuard"#) -}
-e88a1106470a38b5abd45a3c56563a56
+  {- Unfolding: (GHC.CString.unpackCString# "InStmt"#) -}
+af5d1eb938c84e0b0dd6f6318dd9b906
   bangPatternsModules11 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "InPatSynRhs"#) -}
-024e2cb36e7a092abb808121add8243b
+  {- Unfolding: (GHC.CString.unpackCString# "InRhsGuard"#) -}
+783e2b4818b50ce60eaa2a06952ada3c
   bangPatternsModules12 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "InMatchLhs"#) -}
-5021aa30f7de5a9d915dfd805ffe74ad
+  {- Unfolding: (GHC.CString.unpackCString# "InPattern"#) -}
+0cd44b51f53daf418cca61ebb49421c5
   bangPatternsModules13 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "InExpr"#) -}
-d0edd0f97570ea095204b7b947c7a9ab
+  {- Unfolding: (GHC.CString.unpackCString# "InPatSynRhs"#) -}
+1ed36f0e592ca26893e4aebcf3a1837f
   bangPatternsModules14 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "InAlt"#) -}
-cc4bc3d2f96230a0eb3bb82942758c00
+  {- Unfolding: (GHC.CString.unpackCString# "InMatchLhs"#) -}
+e7cd7d8cf7798eafd7b18ded33c85b3d
   bangPatternsModules15 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "InExpr"#) -}
+59e4d816203b30de0474526abb1b9231
+  bangPatternsModules16 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "InAlt"#) -}
+70a46e73c7f5fa4800b5731582cb425e
+  bangPatternsModules17 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "Combined"#) -}
-90c806df1d956aee300e69591ddc31ea
+881ac0e4a728e7557827f79bd1de6651
   bangPatternsModules2 :: [[GHC.Types.Char]]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ [GHC.Types.Char]
-                   Main.bangPatternsModules13
+                   Main.bangPatternsModules15
                    Main.bangPatternsModules3) -}
-7cb00279c7d0b5a1fa739bca0c907e8b
+12d61956138a804e089d75ed43a15f7b
   bangPatternsModules3 :: [[GHC.Types.Char]]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ [GHC.Types.Char]
-                   Main.bangPatternsModules12
+                   Main.bangPatternsModules14
                    Main.bangPatternsModules4) -}
-101c3dc4f16fea2622ab1fbc7726c93b
+a30df90e8b70c25693f98c57a175b1c8
   bangPatternsModules4 :: [[GHC.Types.Char]]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ [GHC.Types.Char]
-                   Main.bangPatternsModules11
+                   Main.bangPatternsModules13
                    Main.bangPatternsModules5) -}
-80e363de1f8fd42a6cd4db4150a89923
+3eebbeb2b5141d06dcd2ebe63bafbbbc
   bangPatternsModules5 :: [[GHC.Types.Char]]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ [GHC.Types.Char]
-                   Main.bangPatternsModules10
+                   Main.bangPatternsModules12
                    Main.bangPatternsModules6) -}
-bfb44264615745fcc6ca411d5205b1bd
+0253e134f3c0e39bb8b85f8932019dc9
   bangPatternsModules6 :: [[GHC.Types.Char]]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ [GHC.Types.Char]
-                   Main.bangPatternsModules9
+                   Main.bangPatternsModules11
                    Main.bangPatternsModules7) -}
-6953af72b956e7f583ede78aa2ffe14c
+44979c73501bf00b81fd376ce656e56b
   bangPatternsModules7 :: [[GHC.Types.Char]]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ [GHC.Types.Char]
-                   Main.bangPatternsModules8
+                   Main.bangPatternsModules10
+                   Main.bangPatternsModules8) -}
+180d393ed71f6a731e6fbcc94dfe4bfe
+  bangPatternsModules8 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.bangPatternsModules9
                    (GHC.Types.[] @ [GHC.Types.Char])) -}
-5cbda6660ece5250d238c02da03fa7b4
-  bangPatternsModules8 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "InValueBind"#) -}
-70e369a7b35d48306724c1a4c94588c7
+2e2a8a2b614a8c0d09f2f39ef0399e26
   bangPatternsModules9 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "InStmt"#) -}
+  {- Unfolding: (GHC.CString.unpackCString# "InValueBind"#) -}
 c6fa2917a0c98fa82c79a3d6d6118a6b
   bangPatternsRoot :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "BangPatternsTest"#) -}
-00565e2f3926d580cc964d940cec7ca9
+4c316cecf41294bc3cf986a252cb01b1
   bangPatternsTest :: ([GHC.Types.Char], [[GHC.Types.Char]])
   {- Strictness: m,
      Unfolding: ((Main.bangPatternsRoot, Main.bangPatternsModules)) -}
@@ -1043,12 +1062,12 @@ d1e100a04fb71c52d5e8d37a29bbf10d
   derivingsTest :: ([GHC.Types.Char], [[GHC.Types.Char]])
   {- Strictness: m,
      Unfolding: ((Main.derivingsRoot, Main.derivingsModules)) -}
-87a0b077518fad9ee86c0672ce6c63b8
+f3110d6a70c40a631023ad01671f87e2
   flexibleInstancesModules :: [[GHC.Types.Char]]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ [GHC.Types.Char]
-                   Main.bangPatternsModules15
+                   Main.bangPatternsModules17
                    Main.flexibleInstancesModules1) -}
 f4bca34c7e536b267021104728cda15b
   flexibleInstancesModules1 :: [[GHC.Types.Char]]
@@ -1135,12 +1154,12 @@ dadc6ede0fcb62fcdd0b4224aa2996eb
   flexibleInstancesRoot :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString#
                    "FlexibleInstancesTest"#) -}
-435113124a30785ddbbc231d5bde0f41
+70a3d4715e7f9a1fd934438bd9d9c407
   flexibleInstancesTest :: ([GHC.Types.Char], [[GHC.Types.Char]])
   {- Strictness: m,
      Unfolding: ((Main.flexibleInstancesRoot,
                   Main.flexibleInstancesModules)) -}
-5df7108a265a91c724d389a48b6ce2e7
+b46145ead61e299c855e0554420bc226
   getExtAnnotsFrom ::
     GHC.IO.FilePath -> Main.ModuleName -> GHC.Types.IO Main.SimpleMap
   {- Arity: 3, Strictness: <L,1*U><L,U><S,U>,
@@ -1150,7 +1169,7 @@ dadc6ede0fcb62fcdd0b4224aa2996eb
                 (<GHC.IO.FilePath>_R
                  ->_R <Main.ModuleName>_R
                  ->_R Sym (GHC.Types.N:IO[0] <Main.SimpleMap>_R)) -}
-b948d445b000f3a6e19cb730e1a385cc
+7d1ba0ece8b72fc8054d609045232a67
   getExtAnnotsFrom1 ::
     GHC.IO.FilePath
     -> Main.ModuleName
@@ -1169,13 +1188,17 @@ b948d445b000f3a6e19cb730e1a385cc
                  case GHC.IO.Handle.Text.hGetContents1
                         ipv1
                         ipv of ds2 { (#,#) ipv2 ipv3 ->
-                 case AnnotationParser.getExtensionAnnotations
-                        ipv3 of vx { DEFAULT ->
+                 case AnnotationParser.getExtensionAnnotations_go
+                        AnnotationParser.getExtensionAnnotations1
+                        (Data.OldList.lines ipv3)
+                        (Data.Map.Base.Tip
+                           @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
+                           @ [GHC.Types.Int]) of vx { DEFAULT ->
                  (# ipv2, vx #) } } }) -}
 08ae4287bb474c4f8b4c21f6f12f3057
   getExtAnnotsFrom2 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# ".hs"#) -}
-02592f9e90849a73ed6f2a5df03c1590
+65462fe1c82c728c2546fd372bceb4ea
   getExtensionsFrom ::
     GHC.IO.FilePath -> Main.ModuleName -> GHC.Types.IO Main.SimpleMap
   {- Arity: 3, Strictness: <L,U><L,U><S,U>,
@@ -1185,7 +1208,7 @@ b948d445b000f3a6e19cb730e1a385cc
                 (<GHC.IO.FilePath>_R
                  ->_R <Main.ModuleName>_R
                  ->_R Sym (GHC.Types.N:IO[0] <Main.SimpleMap>_R)) -}
-e212bf920240cdfc43b69d5de7c3ac3f
+92f49b190e9b991277c8de30f8ac6c77
   getExtensionsFrom1 ::
     GHC.IO.FilePath
     -> Main.ModuleName
@@ -1317,6 +1340,90 @@ c220c7729d09e9920ab72e81eeabb643
   getExtensionsFrom5 :: GHC.Base.Maybe GHC.IO.FilePath
   {- Strictness: m2,
      Unfolding: (GHC.Base.Just @ GHC.IO.FilePath GHC.Paths.libdir) -}
+531689932a0606966cee8c22423e1803
+  lambdaCasePatternsTest :: ([GHC.Types.Char], [[GHC.Types.Char]])
+  {- Strictness: m, Unfolding: ((Main.lcRoot, Main.lcModules)) -}
+aec5af6f01d1402d4397abe883a1c0e2
+  lcModules :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.lcModules13
+                   Main.lcModules1) -}
+f8b24055ab6de4569730158a313e1dc7
+  lcModules1 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.lcModules12
+                   Main.lcModules2) -}
+bd6fcd229568154fca6baeadcc619920
+  lcModules10 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "InRhs"#) -}
+ef6a9bd215a025aef45db2edb15bf8a5
+  lcModules11 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "InFieldUpdate"#) -}
+0b58f6e49b8ffe95e43df3cc717a94f4
+  lcModules12 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "InCompStmt"#) -}
+b4ac30b851f24dcb4662a9535413038b
+  lcModules13 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "InCaseRhs"#) -}
+5847427804559d76ee0f2684b9f4c750
+  lcModules2 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.bangPatternsModules15
+                   Main.lcModules3) -}
+93a192f30e9b14c8c0fde3cea05074a3
+  lcModules3 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.lcModules11
+                   Main.lcModules4) -}
+1503be11a2dab13aef48731b127dd66c
+  lcModules4 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.bangPatternsModules12
+                   Main.lcModules5) -}
+9459dcb6f7d48cf1abf8a190b2b1305b
+  lcModules5 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.lcModules10
+                   Main.lcModules6) -}
+e114095e3f230e1a5be33b70652d21b3
+  lcModules6 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.bangPatternsModules11
+                   Main.lcModules7) -}
+393296443eba82b78dfb9a91ea705edd
+  lcModules7 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.bangPatternsModules10
+                   Main.lcModules8) -}
+dfa31e01c104c60c34c35094d5ef4d83
+  lcModules8 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.lcModules9
+                   (GHC.Types.[] @ [GHC.Types.Char])) -}
+bd7533ef9f781880140ba978981b6fba
+  lcModules9 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "InTupSecElem"#) -}
+216085c029653066848fc4ddd44d2e57
+  lcRoot :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "LambdaCaseTest"#) -}
 ac0d92fb393ae1251b4956e703e909f7
   loadModuleAST ::
     GHC.IO.FilePath
@@ -1368,12 +1475,12 @@ ac0d92fb393ae1251b4956e703e909f7
 45dac10961750443034cd033db16cc06
   loadModuleAST3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "-w"#) -}
-c80f1df16eb97c001adc26c2443d9ab0
+594aea3d365f373f71164ac0756c0b12
   main :: GHC.Types.IO ()
   {- Arity: 1,
      Unfolding: InlineRule (0, True, True)
                 Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-e8e2142c7ebe09be84e1fc96591ba99d
+b9740cecd6a56221c7923c6451764961
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
@@ -1381,137 +1488,200 @@ e8e2142c7ebe09be84e1fc96591ba99d
      Unfolding: (Test.Tasty.CmdLine.defaultMainWithIngredients1
                    Test.Tasty.defaultIngredients
                    Main.main2) -}
-10191558ceff4b2f32ba69d17f8d5616
-  main10 :: Main.ModuleName -> Test.Tasty.Core.TestTree
-  {- Arity: 1, Unfolding: (Main.mkTest Main.bangPatternsRoot) -}
-da845adf3bb5cbbcb2d14f6687202b5a
+4d8edb876f9c4b1e7e0128f53b9ecc0f
+  main10 :: [Test.Tasty.Core.TestTree]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Test.Tasty.Core.TestTree
+                   Main.main11
+                   (GHC.Types.[] @ Test.Tasty.Core.TestTree)) -}
+aa9698e351c38fe36c35936ed7cd607e
   main11 :: Test.Tasty.Core.TestTree
   {- Strictness: m2,
-     Unfolding: (Test.Tasty.Core.TestGroup
-                   Main.patSynRoot
-                   Main.main12) -}
-4c233866d5be6d0b3949b710642e6c57
+     Unfolding: (Test.Tasty.Core.TestGroup Main.lcRoot Main.main12) -}
+f03a4014421c39cda91d86a5bd2c6682
   main12 :: [Test.Tasty.Core.TestTree]
   {- Unfolding: (GHC.Base.map
                    @ [GHC.Types.Char]
                    @ Test.Tasty.Core.TestTree
                    Main.main13
-                   Main.patSynModules) -}
-4ae42e6f2490a2afb8acc9a3c22e6d54
+                   Main.lcModules) -}
+a9da3fa25c9d533bb24f6c5c669337ee
   main13 :: Main.ModuleName -> Test.Tasty.Core.TestTree
-  {- Arity: 1, Unfolding: (Main.mkTest Main.patSynRoot) -}
-8fc6a357b688f01755973b3d5fddc877
+  {- Arity: 1, Unfolding: (Main.mkTest Main.lcRoot) -}
+f188c6a17c1c263540f1f873f4792742
   main14 :: Test.Tasty.Core.TestTree
   {- Strictness: m2,
-     Unfolding: (Test.Tasty.Core.TestGroup
-                   Main.derivingsRoot
-                   Main.main15) -}
-6d3720a3f20000aa018f4afb545335eb
+     Unfolding: (Test.Tasty.Core.TestGroup Main.vpRoot Main.main15) -}
+eab08550ae901ec879dc8574c6ab3490
   main15 :: [Test.Tasty.Core.TestTree]
   {- Unfolding: (GHC.Base.map
                    @ [GHC.Types.Char]
                    @ Test.Tasty.Core.TestTree
                    Main.main16
-                   Main.derivingsModules) -}
-a102b145dc0b2594805505175526e933
+                   Main.vpModules) -}
+6acad45eb8ab6a0c0b7f52a3773e3842
   main16 :: Main.ModuleName -> Test.Tasty.Core.TestTree
-  {- Arity: 1, Unfolding: (Main.mkTest Main.derivingsRoot) -}
-4137a196fde43acfb9230605f9f685ee
+  {- Arity: 1, Unfolding: (Main.mkTest Main.vpRoot) -}
+331dc3eff855396df554a08f7186c05c
   main17 :: Test.Tasty.Core.TestTree
   {- Strictness: m2,
-     Unfolding: (Test.Tasty.Core.TestGroup
-                   Main.flexibleInstancesRoot
-                   Main.main18) -}
-d1310616d4e27538094278c520c560c8
+     Unfolding: (Test.Tasty.Core.TestGroup Main.thRoot Main.main18) -}
+1305a7e4106b283baa827ca81035035a
   main18 :: [Test.Tasty.Core.TestTree]
   {- Unfolding: (GHC.Base.map
                    @ [GHC.Types.Char]
                    @ Test.Tasty.Core.TestTree
                    Main.main19
-                   Main.flexibleInstancesModules) -}
-e4c145d3fe7f24a1881aa653f4740f01
+                   Main.thModules) -}
+1fdb5b3691c11c37679bfcc608fa71f8
   main19 :: Main.ModuleName -> Test.Tasty.Core.TestTree
-  {- Arity: 1, Unfolding: (Main.mkTest Main.flexibleInstancesRoot) -}
-fb1d76142076d9c13edc800cdf96e007
+  {- Arity: 1, Unfolding: (Main.mkTest Main.thRoot) -}
+018950524e78abcbb783659ec11e2456
   main2 :: Test.Tasty.Core.TestTree
   {- Strictness: m2,
-     Unfolding: (Test.Tasty.Core.TestGroup Main.main23 Main.main3) -}
-4ae507c64834b193ad9f0f9c28e3dd48
+     Unfolding: (Test.Tasty.Core.TestGroup Main.main35 Main.main3) -}
+94c9f4e641c4538b80ebdea60b01572b
   main20 :: Test.Tasty.Core.TestTree
   {- Strictness: m2,
      Unfolding: (Test.Tasty.Core.TestGroup
-                   Main.recordWildCardsRoot
+                   Main.bangPatternsRoot
                    Main.main21) -}
-82561939ecc1323b7bc5d119414adb3f
+ff23560272068ba34be7a3f3ba288992
   main21 :: [Test.Tasty.Core.TestTree]
   {- Unfolding: (GHC.Base.map
                    @ [GHC.Types.Char]
                    @ Test.Tasty.Core.TestTree
                    Main.main22
-                   Main.recordWildCardsModules) -}
-51a35801ea9221520d8674b11ef4ac82
+                   Main.bangPatternsModules) -}
+74deccfbfec4a3797839719ebc03adce
   main22 :: Main.ModuleName -> Test.Tasty.Core.TestTree
+  {- Arity: 1, Unfolding: (Main.mkTest Main.bangPatternsRoot) -}
+d2812218d73b8359a5c2b6100e2973ad
+  main23 :: Test.Tasty.Core.TestTree
+  {- Strictness: m2,
+     Unfolding: (Test.Tasty.Core.TestGroup
+                   Main.patSynRoot
+                   Main.main24) -}
+aece131ea4d10c5fb10da3b9b248350f
+  main24 :: [Test.Tasty.Core.TestTree]
+  {- Unfolding: (GHC.Base.map
+                   @ [GHC.Types.Char]
+                   @ Test.Tasty.Core.TestTree
+                   Main.main25
+                   Main.patSynModules) -}
+fd3ca0cd24577efed33abe22cc10fa03
+  main25 :: Main.ModuleName -> Test.Tasty.Core.TestTree
+  {- Arity: 1, Unfolding: (Main.mkTest Main.patSynRoot) -}
+b88cb69fd29b12bea9c9a02bf38a1e4c
+  main26 :: Test.Tasty.Core.TestTree
+  {- Strictness: m2,
+     Unfolding: (Test.Tasty.Core.TestGroup
+                   Main.derivingsRoot
+                   Main.main27) -}
+d8ba71d79234aa83b51889eeb8dcc118
+  main27 :: [Test.Tasty.Core.TestTree]
+  {- Unfolding: (GHC.Base.map
+                   @ [GHC.Types.Char]
+                   @ Test.Tasty.Core.TestTree
+                   Main.main28
+                   Main.derivingsModules) -}
+d21cc72aa75f38a58a9ffef81196b5f9
+  main28 :: Main.ModuleName -> Test.Tasty.Core.TestTree
+  {- Arity: 1, Unfolding: (Main.mkTest Main.derivingsRoot) -}
+70061df650701877f5c421236152b995
+  main29 :: Test.Tasty.Core.TestTree
+  {- Strictness: m2,
+     Unfolding: (Test.Tasty.Core.TestGroup
+                   Main.flexibleInstancesRoot
+                   Main.main30) -}
+692f13a255d5b6cefe520ae436abdce9
+  main3 :: [Test.Tasty.Core.TestTree]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Test.Tasty.Core.TestTree
+                   Main.main32
+                   Main.main4) -}
+360ad8b09163b6aa55e430081687e0dd
+  main30 :: [Test.Tasty.Core.TestTree]
+  {- Unfolding: (GHC.Base.map
+                   @ [GHC.Types.Char]
+                   @ Test.Tasty.Core.TestTree
+                   Main.main31
+                   Main.flexibleInstancesModules) -}
+ad0cf959c98cbec28ba604a31db3647f
+  main31 :: Main.ModuleName -> Test.Tasty.Core.TestTree
+  {- Arity: 1, Unfolding: (Main.mkTest Main.flexibleInstancesRoot) -}
+449dc17f565d95447823db65402fd9ef
+  main32 :: Test.Tasty.Core.TestTree
+  {- Strictness: m2,
+     Unfolding: (Test.Tasty.Core.TestGroup
+                   Main.recordWildCardsRoot
+                   Main.main33) -}
+80f3273e58c4f4b0e934171cb0aaf513
+  main33 :: [Test.Tasty.Core.TestTree]
+  {- Unfolding: (GHC.Base.map
+                   @ [GHC.Types.Char]
+                   @ Test.Tasty.Core.TestTree
+                   Main.main34
+                   Main.recordWildCardsModules) -}
+41349dfff70b619664a527efc1bd78d2
+  main34 :: Main.ModuleName -> Test.Tasty.Core.TestTree
   {- Arity: 1, Unfolding: (Main.mkTest Main.recordWildCardsRoot) -}
-9b918f73f9625b7f812896acae5745fe
-  main23 :: [GHC.Types.Char]
+30f2bbd5667b169a1468c7393d904613
+  main35 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "All tests"#) -}
-7c310e95ee4f8abd2fc6540ca8fddd23
-  main24 ::
+61c92c8bf2f05798cf88170e413290ee
+  main36 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
   {- Arity: 1,
      Unfolding: (GHC.TopHandler.runMainIO1
                    @ ()
                    Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R))) -}
-233a3131c2936cdd95009c63e508f82f
-  main3 :: [Test.Tasty.Core.TestTree]
-  {- Strictness: m2,
-     Unfolding: (GHC.Types.:
-                   @ Test.Tasty.Core.TestTree
-                   Main.main20
-                   Main.main4) -}
-45875b4b2aee5dd735580b97ff3757ef
+5a920c251d5711dcdcfee1ff59857c27
   main4 :: [Test.Tasty.Core.TestTree]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ Test.Tasty.Core.TestTree
-                   Main.main17
+                   Main.main29
                    Main.main5) -}
-0f2336f99666d9033f9332a6a32e40f1
+13ae9fd5c4470e0913dd2203817e9bc7
   main5 :: [Test.Tasty.Core.TestTree]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ Test.Tasty.Core.TestTree
-                   Main.main14
+                   Main.main26
                    Main.main6) -}
-87665c8867499bf5cfb4805ddc82e1f8
+c457c8cb1e6ef24debe22f961a8fca82
   main6 :: [Test.Tasty.Core.TestTree]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ Test.Tasty.Core.TestTree
-                   Main.main11
+                   Main.main23
                    Main.main7) -}
-b6e4c22bc518c8271063f3d0b71680e5
+1dc8d5e4c6908c8d4dca5e8b37d229ff
   main7 :: [Test.Tasty.Core.TestTree]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ Test.Tasty.Core.TestTree
-                   Main.main8
-                   (GHC.Types.[] @ Test.Tasty.Core.TestTree)) -}
-f11e63dff6b7ae23de781a49ce0d1ccb
-  main8 :: Test.Tasty.Core.TestTree
+                   Main.main20
+                   Main.main8) -}
+5a1ed78b157f0fe050e90eb4ed8c009d
+  main8 :: [Test.Tasty.Core.TestTree]
   {- Strictness: m2,
-     Unfolding: (Test.Tasty.Core.TestGroup
-                   Main.bangPatternsRoot
-                   Main.main9) -}
-30a667976183631896493f0c86141652
-  main9 :: [Test.Tasty.Core.TestTree]
-  {- Unfolding: (GHC.Base.map
-                   @ [GHC.Types.Char]
+     Unfolding: (GHC.Types.:
                    @ Test.Tasty.Core.TestTree
-                   Main.main10
-                   Main.bangPatternsModules) -}
-66879028a54bc88abb632ae1ae84af20
+                   Main.main17
+                   Main.main9) -}
+d1e9c30cf2a5592e9601440f1e3359c7
+  main9 :: [Test.Tasty.Core.TestTree]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Test.Tasty.Core.TestTree
+                   Main.main14
+                   Main.main10) -}
+ec6da98ff92019942387a85de226b890
   mkAssertion ::
     GHC.IO.FilePath -> Main.ModuleName -> GHC.Types.IO ()
   {- Arity: 3, Strictness: <L,U><L,U><S,U>,
@@ -1530,7 +1700,7 @@ f11e63dff6b7ae23de781a49ce0d1ccb
                  System.FilePath.Posix.combine
                    Main.testRoot
                    (System.FilePath.Posix.combine testDir testName)) -}
-a23f86d40a4297e9d29cc8a593ade06d
+ff6663a5ec8dcb2d7733c2fb27b95d88
   mkTest ::
     GHC.IO.FilePath -> Main.ModuleName -> Test.Tasty.Core.TestTree
   {- Arity: 2, Strictness: <L,U><L,U>,
@@ -1547,7 +1717,7 @@ a23f86d40a4297e9d29cc8a593ade06d
                    (Trans
                         (Sym (GHC.Types.N:IO[0] <[GHC.Types.Char]>_R))
                         (Sym (Test.Tasty.HUnit.N:TestCase[0])))) -}
-4ea3222059c8dde29170b4be9a8e4c83
+8b08793892ebe6ccdf3125a2d14621ba
   mkTest1 ::
     GHC.IO.FilePath
     -> Main.ModuleName
@@ -1557,11 +1727,11 @@ a23f86d40a4297e9d29cc8a593ade06d
      Unfolding: (\ (dir :: GHC.IO.FilePath)
                    (moduleName :: Main.ModuleName)
                    (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
-                 case Main.getExtensionsFrom1
+                 case Main.getExtAnnotsFrom1
                         dir
                         moduleName
                         s of ds1 { (#,#) ipv ipv1 ->
-                 case Main.getExtAnnotsFrom1
+                 case Main.getExtensionsFrom1
                         dir
                         moduleName
                         ipv of ds2 { (#,#) ipv2 ipv3 ->
@@ -1577,13 +1747,13 @@ a23f86d40a4297e9d29cc8a593ade06d
                       @ [Main.Line]
                       @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                       Main.mkTest2
-                      ipv3)
+                      ipv1)
                    (Data.Map.Strict.map
                       @ [Main.Line]
                       @ [Main.Line]
                       @ (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                       Main.mkTest2
-                      ipv1)
+                      ipv3)
                    ipv2 } }) -}
 ea51d7161b21374195ab0a06476ec1c2
   mkTest2 :: [Main.Line] -> [Main.Line]
@@ -1594,7 +1764,7 @@ ea51d7161b21374195ab0a06476ec1c2
 6d90334f42732faea674cc6c4fa94683
   mkTest3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "Failure"#) -}
-6719c509fcffefaf6283864f6d387d0c
+98dcbf78489f53f5415f91d0b3cbfe1b
   mkTests :: Main.TestSuite -> Test.Tasty.Core.TestTree
   {- Arity: 1, Strictness: <S,1*U(U,1*U)>m2,
      Unfolding: InlineRule (1, True, False)
@@ -1618,39 +1788,56 @@ ea51d7161b21374195ab0a06476ec1c2
                             (Main.mkTest testDir))
                          n
                          tests)) }) -}
-360f46155f06d66bcfabf35c79296fa2
+091c66d9c4768f62e5cd7aa1162af49f
   patSynModules :: [[GHC.Types.Char]]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ [GHC.Types.Char]
-                   Main.patSynModules1
+                   Main.patSynModules3
+                   Main.patSynModules1) -}
+02691799984433237c2f53905075fdda
+  patSynModules1 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.patSynModules2
                    (GHC.Types.[] @ [GHC.Types.Char])) -}
-3120365b43aa437425ed652d38a9691b
-  patSynModules1 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "SimpleTest"#) -}
+5aa9c5bc240e082575734a001edba059
+  patSynModules2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "BiDirectional"#) -}
+d596adf5fd951378a0c7a05912aae61a
+  patSynModules3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "UniDirectional"#) -}
 863d30207d592fe9283e7aae06bca9fc
   patSynRoot :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString#
                    "PatternSynonymsTest"#) -}
-ae4da05c529053135130dff31de46d49
+05eab7c68eabc330ea406a1b84e13a5e
   patternSynonymsTest :: ([GHC.Types.Char], [[GHC.Types.Char]])
   {- Strictness: m,
      Unfolding: ((Main.patSynRoot, Main.patSynModules)) -}
-0fb3c23323ce7f4efc7af96caecaff41
+d50ff39db500125c79002e3244d2d455
   recordWildCardsModules :: [[GHC.Types.Char]]
   {- Strictness: m2,
      Unfolding: (GHC.Types.:
                    @ [GHC.Types.Char]
-                   Main.recordWildCardsModules1
+                   Main.recordWildCardsModules2
+                   Main.recordWildCardsModules1) -}
+8dd20198597c53b0f6b9315662c8846b
+  recordWildCardsModules1 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.bangPatternsModules12
                    (GHC.Types.[] @ [GHC.Types.Char])) -}
-e01e2a3a0299f6ae8723e7451729a376
-  recordWildCardsModules1 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "Simple"#) -}
+a2ddc21790372146e11bd4757ac762f5
+  recordWildCardsModules2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "InExpression"#) -}
 65837ce0a9cac2898856bee5b3da70ab
   recordWildCardsRoot :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString#
                    "RecordWildCardsTest"#) -}
-e3e119b2d92ba4548075f397a0e91757
+d2305f7fed87fd74dfe33976e41de6e3
   recordWildCardsTest :: ([GHC.Types.Char], [[GHC.Types.Char]])
   {- Strictness: m,
      Unfolding: ((Main.recordWildCardsRoot,
@@ -1676,9 +1863,73 @@ fd1b74381642bb227af1548d8ad903df
 649a00f1d5ad10af098c48dbe5830626
   spanToLine1 :: Main.Line
   {- Strictness: x -}
+3d6b3c9b16e7fb9a2db90779789829d9
+  templateHaskellTest :: ([GHC.Types.Char], [[GHC.Types.Char]])
+  {- Strictness: m, Unfolding: ((Main.thRoot, Main.thModules)) -}
 5929189f95e54ac5738439752429a699
   testRoot :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "test"#) -}
+5e762699a9f0fcdb2c53db2638d3e95d
+  thModules :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.thModules3
+                   Main.thModules1) -}
+d13ca44bd43ec0b153c1df9d6bc06c64
+  thModules1 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.thModules2
+                   (GHC.Types.[] @ [GHC.Types.Char])) -}
+5e24821ace60782ca1d53526087e92fa
+  thModules2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Splice"#) -}
+7fb6e20b151aa5b2296604ea7c60c8d3
+  thModules3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Quote"#) -}
+90f5c616ad66ecf385f5e5cadeccd648
+  thRoot :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   "TemplateHaskellTest"#) -}
+e64ac34693b3efa11beb2693edba3a8c
+  viewPatternsTest :: ([GHC.Types.Char], [[GHC.Types.Char]])
+  {- Strictness: m, Unfolding: ((Main.vpRoot, Main.vpModules)) -}
+aa36134ad8e9255a7cc0efbd71513844
+  vpModules :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.bangPatternsModules16
+                   Main.vpModules1) -}
+95a3c1db4a5b1ccdd15bf5c1652daf2e
+  vpModules1 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.bangPatternsModules15
+                   Main.vpModules2) -}
+5de0383deff6a112da94fd335e59d2fd
+  vpModules2 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.bangPatternsModules14
+                   Main.vpModules3) -}
+ecafe418fdf88daca863949a3952208a
+  vpModules3 :: [[GHC.Types.Char]]
+  {- Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ [GHC.Types.Char]
+                   Main.vpModules4
+                   (GHC.Types.[] @ [GHC.Types.Char])) -}
+109784b5608e6a6cf05bfd57c274d7cf
+  vpModules4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "InMatchLhsNested"#) -}
+9dcb9d6578fe40473573d77eb833df26
+  vpRoot :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "ViewPatternsTest"#) -}
 "SPEC/Main $fDataImportInfo @ Var" [ALWAYS] forall ($dData :: Data.Data.Data
                                                                 Var.Var)
   Language.Haskell.Tools.AST.SemaInfoTypes.$fDataImportInfo @ Var.Var

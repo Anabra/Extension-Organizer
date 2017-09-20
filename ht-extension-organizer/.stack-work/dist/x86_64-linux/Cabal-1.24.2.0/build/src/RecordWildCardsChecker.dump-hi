@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2017-09-19 15:19:15.149578 UTC
+2017-09-20 19:16:12.348462 UTC
 
 interface ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:RecordWildCardsChecker 8002
-  interface hash: 4a8bacd0c5b47e30ac13166b7c1981ba
+  interface hash: 4985e5d341f02a654908f5112694aee1
   ABI hash: e2f49d4df4442f9537924c3d04d106da
   export-list hash: e1d6c5023d5d4bebad625065ab76cd62
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
@@ -126,8 +126,8 @@ import  -/  haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4c
 import  -/  haskell-tools-rewrite-0.8.1.0@haskell-tools-rewrite-0.8.1.0-85A6q9dMQgvKEKG9I8fxVU:Language.Haskell.Tools.AST.ElementTypes df954b524d036aee274d8ad0f571417a
 import  -/  haskell-tools-rewrite-0.8.1.0@haskell-tools-rewrite-0.8.1.0-85A6q9dMQgvKEKG9I8fxVU:Language.Haskell.Tools.AST.Match.Exprs 40e6739cc8a80bd68ce2dee2765b9b5e
 import  -/  haskell-tools-rewrite-0.8.1.0@haskell-tools-rewrite-0.8.1.0-85A6q9dMQgvKEKG9I8fxVU:Language.Haskell.Tools.AST.Match.Patterns 2fd4c4dbea6a0193d161dd2ecdde7cd7
-import  -/  ExtMonad 059f5fd988c212e6bf2913400d89e5c4
-  exports: e114cdeb7f705ff3639c044bf88c57d7
+import  -/  ExtMonad af7b60a65d818af19a46d996e27297ca
+  exports: 7f69547596e05261c6f5806398624025
   CheckNode d2a8a000f373c241c0362787c4b3f842
   addOccurence c9603992ac2a28741343ebc5c8fe7b56
 import  -/  references-0.3.2.2@references-0.3.2.2-y362bKYomIKNQKMTfOWVo:Control.Reference d89ee82346f6e25c55a8a19dbf84658e

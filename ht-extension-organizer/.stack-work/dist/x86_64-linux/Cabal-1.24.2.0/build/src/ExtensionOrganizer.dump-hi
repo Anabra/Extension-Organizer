@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2017-09-19 19:50:27.418219 UTC
+2017-09-20 22:58:30.058244 UTC
 
 interface ht-extension-organizer-0.1.0.0-y3uypH7gCtA60AaWeuyZL:ExtensionOrganizer 8002
-  interface hash: 963b133637669a60770b07581d867e78
-  ABI hash: 9779a9959a8f0504f700996e461b23b0
-  export-list hash: 24bfb10ec1d02e5ddea96b49c9306199
+  interface hash: ea407c565017fa965a6e4290e2111f76
+  ABI hash: a3b17db1c45307edc6e5a4c4d6152e61
+  export-list hash: 21ad5fa3d0f74c9f052a90e9569e361f
   orphan hash: a962892118254bba982cbeb8cb003210
   flag hash: 532b60c6d8df1d08cc66908a0b327b0d
   sig of: Nothing
@@ -47,6 +47,7 @@ exports:
   ExtMonad.addOccurence'
   ExtMonad.addOccurence_
   ExtMonad.conditional
+  ExtMonad.conditionalAny
   ExtMonad.isTurnedOn
   ExtMonad.runExtMonadGHC
   ExtMonad.runExtMonadIO
@@ -93,8 +94,10 @@ exports:
   Control.Monad.Trans.State.Lazy.State
   Control.Monad.Trans.State.Lazy.StateT{Control.Monad.Trans.State.Lazy.StateT runStateT}
 module dependencies: BangPatternsChecker DerivingsChecker ExtMap
-                     ExtMonad FlexibleInstancesChecker PatternSynonymsChecker
-                     RecordWildCardsChecker TemplateHaskellChecker TraverseAST
+                     ExtMonad FlexibleInstancesChecker LambdaCaseChecker
+                     PatternSynonymsChecker RecordWildCardsChecker
+                     TemplateHaskellChecker TraverseAST TupleSectionsChecker
+                     UnboxedTuplesChecker ViewPatternsChecker
 package dependencies: array-0.5.1.1@array-0.5.1.1 base-4.9.1.0
                       binary-0.8.3.0@binary-0.8.3.0
                       bytestring-0.10.8.1@bytestring-0.10.8.1
@@ -227,7 +230,7 @@ import  -/  haskell-tools-prettyprint-0.8.1.0@haskell-tools-prettyprint-0.8.1.0-
 import  -/  haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8:Language.Haskell.Tools.Refactor 84acc8d60e278de91351468f26f90e1c
 import  -/  haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8:Language.Haskell.Tools.Refactor.Prepare 06c995907993af4dca8399eaa224a412
 import  -/  haskell-tools-refactor-0.8.1.0@haskell-tools-refactor-0.8.1.0-AF8Q4cA8mAnLNwu5t0Icw8:Language.Haskell.Tools.Refactor.RefactorBase d8cc79a36102a900280f4d51e9bf8f8a
-import  -/  DerivingsChecker 508b12dc2c43e9c76a38bc9f50ae230e
+import  -/  DerivingsChecker 8e1f2c0a55518acd3303c01e5ff11788
   exports: c9c99a13421ec9464a9b0877252e817a
 import  -/  ExtMap ce208fa2f233772cc4b03c60efef446e
   :&&: 4a12e4fbb68353aea1ce40a572e2a5f4
@@ -236,8 +239,8 @@ import  -/  ExtMap ce208fa2f233772cc4b03c60efef446e
   LVar c2b251913343abac99e887c1b70f0c95
   LogicalRelation 244102f8a6d7434a090b758121b05523
   Not a790822a2ae7d0c293b41158b7bc0e52
-import  -/  ExtMonad 059f5fd988c212e6bf2913400d89e5c4
-  exports: e114cdeb7f705ff3639c044bf88c57d7
+import  -/  ExtMonad af7b60a65d818af19a46d996e27297ca
+  exports: 7f69547596e05261c6f5806398624025
   CheckNode d2a8a000f373c241c0362787c4b3f842
   CheckUNode 9a3c78de9fdd35033f52f4944cc68138
   ExtDomain 7fc7ae623015a9d2031eb05f95b73507
@@ -245,17 +248,18 @@ import  -/  ExtMonad 059f5fd988c212e6bf2913400d89e5c4
   addOccurence c9603992ac2a28741343ebc5c8fe7b56
   addOccurence' 806962a54b1c16e16558458575c9a479
   addOccurence_ 0a70efda5e7142f7b588f7458ea99597
-  conditional 170d45fd139eef252718316404a1e1aa
+  conditional 179fcfe6ec57edddd9abe173be82121d
+  conditionalAny 53eb934c9b54c6f8fe1c33689d0d30d5
   isTurnedOn 58326d046a06fcac13f090ffdee96f9d
   runExtMonadGHC 64013254a8a069463528a96ade6c9f65
   runExtMonadIO 7d696a7ab8d541e03e4a3c0a61328a95
-import  -/  FlexibleInstancesChecker 26cd061368bb1a0bf0611eb326d384a1
+import  -/  FlexibleInstancesChecker 613725654704abee4fd54b0f4775ba97
   exports: e3e5947061f31e3de9af61a2611cb8cf
 import  -/  RecordWildCardsChecker e2f49d4df4442f9537924c3d04d106da
   exports: e1d6c5023d5d4bebad625065ab76cd62
-import  -/  TraverseAST 270d4e7613c05c6f818621402852cc2c
-  exports: a169f679eeb64a0a94954f2e93aaf92b
-  traverseModule 27db9dc597711ac3bc8a2ff8af97765a
+import  -/  TraverseAST 79558d01680b5677b4dadc7757e88c58
+  exports: aee07235b6b1241d28e3091e2b799ca6
+  traverseModule 4aa0c6520cfaace2f9c79830dc87fa55
 import  -/  mtl-2.2.1@mtl-2.2.1-BLKBelFsPB3BoFeSWSOYj6:Control.Monad.Reader.Class 9573b8d2ba4bcf8261d19527e0170c4d
 import  -/  mtl-2.2.1@mtl-2.2.1-BLKBelFsPB3BoFeSWSOYj6:Control.Monad.State 749dca8ca0e6625b32091d445bd92b01
 import  -/  mtl-2.2.1@mtl-2.2.1-BLKBelFsPB3BoFeSWSOYj6:Control.Monad.State.Class 6d31234b0a911b56412061943d18b89e
@@ -1457,7 +1461,7 @@ a8ca847229298bff19a816e1f3b5f1ae
                    -> case ds of wild1 {
                         [] -> x1
                         : ipv ipv1 -> ExtensionOrganizer.collectDefaultExtensions1 } }) -}
-e9c1fca336778cea1ca9c0ecec26f42b
+641b2d6102cd59c41083e549a5e248d8
   collectExtensions ::
     ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.Refactor.RefactorBase.UnnamedModule dom
@@ -1555,7 +1559,7 @@ e9c1fca336778cea1ca9c0ecec26f42b
                                 <Data.Map.Base.Map
                                    (ExtMap.LogicalRelation GHC.LanguageExtensions.Type.Extension)
                                    [SrcLoc.SrcSpan]>_R))) }) -}
-628953d65b6425826277bcf266414203
+99dd51505430e6bdc855413b639a79a5
   collectExtensions1 ::
     Language.Haskell.Tools.Refactor.RefactorBase.UnnamedModule
       Language.Haskell.Tools.AST.Ann.IdDom
@@ -1596,7 +1600,7 @@ eaa4238aeafe532198ffa50ce3c779f0
                     `cast`
                   (Sym (Language.Haskell.Tools.AST.SemaInfoClasses.N:HasNameInfo'[0]
                             <Language.Haskell.Tools.AST.SemaInfoTypes.CNameInfo>_N)))) -}
-f0530cac649cb12efec3ab210a79ccf8
+0275a5b21e43ec04f5b2f2ef28c60aa9
   organizeExtensions ::
     ExtMonad.ExtDomain dom =>
     Language.Haskell.Tools.Refactor.RefactorBase.LocalRefactoring dom
@@ -1893,7 +1897,7 @@ da92ae115f40b04c2ebfb3a39285b62a
     -> Language.Haskell.Tools.Refactor.RefactorBase.LocalRefactorT
          dom Language.Haskell.Tools.Refactor.RefactorBase.Refactor ()
   {- Arity: 2, Strictness: <L,1*U><S,1*U> -}
-ef81ddb65818b3243a0197722c182edd
+85f722627775fa7eef8ba2951795b4a1
   organizeExtensions_$sorganizeExtensions ::
     Language.Haskell.Tools.Refactor.RefactorBase.LocalRefactoring
       Language.Haskell.Tools.AST.Ann.IdDom
@@ -2188,7 +2192,7 @@ a4d63f9f5e0988dc79e02f867f09d513
          Language.Haskell.Tools.Refactor.RefactorBase.Refactor
          ()
   {- Arity: 2, Strictness: <L,1*U><S,1*U> -}
-e37467b9f9fbbf71351fcc7aa713e9e6
+032c26d52f869e4c6bc865705b0bdb98
   tryOut :: GHC.Base.String -> GHC.Base.String -> GHC.Types.IO ()
   {- Arity: 3,
      Unfolding: InlineRule (0, True, True)
@@ -2197,7 +2201,7 @@ e37467b9f9fbbf71351fcc7aa713e9e6
                 (<GHC.Base.String>_R
                  ->_R <GHC.Base.String>_R
                  ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
-67c32152353c21f89828ec11627d354e
+b0fee13352156b09db6d74263a94e136
   tryOut1 ::
     GHC.Base.String
     -> GHC.Base.String
@@ -2206,7 +2210,7 @@ e37467b9f9fbbf71351fcc7aa713e9e6
   {- Arity: 3,
      Unfolding: (Language.Haskell.Tools.Refactor.Prepare.tryRefactor1
                    ExtensionOrganizer.tryOut2) -}
-4c7252f7bf6d959fbb96b91c1aecf0e1
+d55c9c84ba37c2e3145e9f1366465b24
   tryOut2 ::
     SrcLoc.RealSrcSpan
     -> Language.Haskell.Tools.Refactor.RefactorBase.Refactoring
