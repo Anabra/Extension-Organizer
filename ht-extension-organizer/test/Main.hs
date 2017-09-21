@@ -36,7 +36,8 @@ main = defaultMain $
           , mkTests bangPatternsTest
           , mkTests templateHaskellTest
           , mkTests viewPatternsTest
-          , mkTests lambdaCasePatternsTest
+          , mkTests lambdaCaseTest
+          , mkTests tupleSectionsTest
           ]
 
 testRoot = "test"
@@ -152,7 +153,7 @@ vpModules = [ "InAlt"
             , "InMatchLhsNested"
             ]
 
-lambdaCasePatternsTest = (lcRoot, lcModules)
+lambdaCaseTest = (lcRoot, lcModules)
 lcRoot = "LambdaCaseTest"
 lcModules = [ "InCaseRhs"
             , "InCompStmt"
@@ -163,4 +164,18 @@ lcModules = [ "InCaseRhs"
             , "InRhsGuard"
             , "InStmt"
             , "InTupSecElem"
+            ]
+
+tupleSectionsTest = (tsRoot, tsModules)
+tsRoot = "TupleSectionsTest"
+tsModules = [ "InCaseRhs"
+            , "InCompStmt"
+            , "InExpr"
+            , "InFieldUpdate"
+            , "InPattern"
+            , "InRhs"
+            , "InRhsGuard"
+            , "InStmt"
+            , "InTupSecElem"
+            , "NoTupleSections"
             ]
