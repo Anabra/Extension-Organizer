@@ -26,6 +26,7 @@ import ViewPatternsChecker
 import LambdaCaseChecker
 import TupleSectionsChecker
 import UnboxedTuplesChecker
+import MagicHashChecker
 
 
 chkDecl :: CheckNode Decl
@@ -53,18 +54,210 @@ chkFieldUpdate = chkRecordWildCardsFieldUpdate
 chkPatternSynonym :: CheckNode PatternSynonym
 chkPatternSynonym = chkPatternSynonyms
 
+chkLiteral :: CheckNode Literal
+chkLiteral = chkMagicHashLiteral
+
+chkNamePart :: CheckNode NamePart
+chkNamePart = chkMagicHashNamePart
+
 
 traverseModule :: CheckNode UnnamedModule
-traverseModule = modDecl & annList !~ traverseDecl
+traverseModule = (modDecl & annList !~ traverseDecl)
+             >=> (modHead & annJust !~ traverseModuleHead)
+             -- more
+
+traverseModuleHead :: CheckNode ModuleHead
+traverseModuleHead = mhExports & annJust !~ traverseExportSpecs
+                    -- more
+
+traverseExportSpecs :: CheckNode ExportSpecs
+traverseExportSpecs = espExports & annList !~ traverseExportSpec
+
+traverseExportSpec :: CheckNode ExportSpec
+traverseExportSpec = exportDecl !~ traverseIESpec
+
+traverseIESpec :: CheckNode IESpec
+traverseIESpec = (ieName !~ traverseName)
+             >=> (ieSubspec & annJust !~ traverseSubSpec)
+
+traverseSubSpec :: CheckNode SubSpec
+traverseSubSpec = essList & annList !~ traverseName
 
 traverseDecl :: CheckNode Decl
 traverseDecl = chkDecl
                >=> (declValBind !~ traverseValueBind)
-               >=> (declPatSyn !~ traversePatternSynonym)
                >=> (declBody & annJust !~ traverseClassBody)
-               >=> (declInstDecl & annJust !~ traverseInstBody)
                >=> (declSplice !~ traverseSplice)
-               -- needs more (but could solve it through the checkers)
+               >=> (innerType !~ traverseType)
+               >=> (declTypeSig !~ traverseTypeSignature)
+               >=> (declTypeFamily !~ traverseTypeFamily) --
+               >=> (declSpec & annJust !~ traverseTypeFamilySpec)
+               >=> (declSafety & annJust !~ traverseSafety)
+               >=> (declRoles & annList !~ traverseRole)
+               >=> (declPragma !~ traverseTopLevelPragma)
+               >=> (declPatTypeSig !~ traversePatternSignature)
+               >=> (declPatSyn !~ traversePatternSynonym)
+               >=> (declOverlap & annJust !~ traverseOverlapPragma)
+               >=> (declKind & annJust !~ traverseKindContraint)
+               >=> (innerInstanceRule !~ traverseInstanceRule)
+               >=> (declInstDecl & annJust !~ traverseInstBody)
+               >=> (declHead !~ traverseDeclHead)
+               >=> (declGadt & annList !~ traverseGadtConDecl)
+               >=> (declFunDeps & annJust !~ traverseFunDeps)
+               >=> (declForeignType !~ traverseType)
+               >=> (declFixity !~ traverseFixitySignature)
+               >=> (declDeriving & annJust !~ traverseDeriving)
+               >=> (declDecl & annList !~ traverseTypeEqn)
+               >=> (declCtx & annJust !~ traverseContext)
+               >=> (declCons & annList !~ traverseConDecl)
+               >=> (declCallConv !~ traverseCallConv)
+               >=> (declName !~ traverseName)
+               >=> (declRoleType !~ traverseQualifiedName)
+
+  where innerType = (declTypes & annList)
+                &+& declType
+                &+& declAssignedType
+
+        innerInstanceRule = declInstance &+& declInstRule
+
+traverseTypeFamily :: CheckNode TypeFamily
+traverseTypeFamily = (tfHead !~ traverseDeclHead)
+                 >=> (tfSpec & annJust !~ traverseTypeFamilySpec)
+                 >=> (tfKind & annJust !~ traverseKindContraint)
+
+-- tfTypeVar is from 0.9
+traverseTypeFamilySpec :: CheckNode TypeFamilySpec
+traverseTypeFamilySpec = (tfSpecKind !~ traverseKindContraint)
+                     -- >=> (tfTypeVar !~ traverseTyVar)
+                     >=> (tfInjectivity !~ traverseInjectivityAnn)
+
+traverseInjectivityAnn :: CheckNode InjectivityAnn
+traverseInjectivityAnn = (injAnnRes !~ traverseTyVar)
+                     >=> (injAnnDeps & annList !~ traverseName)
+
+-- DONE
+traverseSafety :: CheckNode Safety
+traverseSafety = return
+
+-- DONE
+traverseRole :: CheckNode Role
+traverseRole = return
+
+traverseTopLevelPragma :: CheckNode TopLevelPragma
+traverseTopLevelPragma = (pragmaRule & annList !~ traverseRule)
+                     >=> (pragmaObjects & annList !~ traverseName)
+                     >=> (annotationSubject !~ traverseAnnotationSubject)
+                     >=> (pragmaInline !~ traverseInlinePragma)
+                     >=> (specializePragma !~ traverseSpecializePragma)
+
+-- no references for this
+traverseSpecializePragma :: CheckUNode USpecializePragma
+traverseSpecializePragma = return {- (specializeDef !~ traverseName)
+                       >=> (specializeType & annList !~ traverseType) -}
+
+traverseAnnotationSubject :: CheckNode AnnotationSubject
+traverseAnnotationSubject = annotateName !~ traverseName
+
+traverseRule :: CheckNode Rule
+traverseRule = (ruleBounded & annList !~ traverseRuleVar)
+           >=> (innerExpr !~ traverseExpr)
+           -- some more
+
+  where innerExpr = ruleLhs &+& ruleRhs
+
+traverseRuleVar :: CheckNode RuleVar
+traverseRuleVar = (ruleVarName !~ traverseName)
+              >=> (ruleVarType !~ traverseType)
+
+traversePatternSignature :: CheckNode PatternSignature
+traversePatternSignature = (patSigName !~ traverseName)
+                       >=> (patSigType !~ traverseType)
+
+-- DONE
+traverseOverlapPragma :: CheckNode OverlapPragma
+traverseOverlapPragma = return
+
+-- weird structure of nodes (Maybe (Ann AnnListG dom stage))
+traverseInstanceRule :: CheckNode InstanceRule
+traverseInstanceRule = (irVars & annJust & element & annList !~ traverseTyVar)
+                   >=> (irCtx & annJust !~ traverseContext)
+                   >=> (irHead !~ traverseInstanceHead)
+
+traverseInstanceHead :: CheckNode InstanceHead
+traverseInstanceHead = (ihConName !~ traverseName)
+                   >=> (ihOperator !~ traverseOperator)
+                   >=> (innerType !~ traverseType)
+                   >=> (innerIHead !~ traverseInstanceHead)
+
+  where innerType = ihLeftOp &+& ihType
+        innerIHead = ihHead &+& ihFun
+
+traverseDeclHead :: CheckNode DeclHead
+traverseDeclHead = (dhName !~ traverseName)
+               >=> (dhOperator !~ traverseOperator)
+               >=> (innerDHead !~ traverseDeclHead)
+               >=> (innerTyVar !~ traverseTyVar)
+
+  where innerDHead = dhBody &+& dhAppFun
+        innerTyVar = dhAppOperand &+& dhLeft &+& dhRight
+
+traverseGadtConDecl :: CheckNode GadtConDecl
+traverseGadtConDecl = (gadtConNames & annList !~ traverseName)
+                  >=> (gadtConTypeArgs & annList !~ traverseTyVar)
+                  >=> (gadtConTypeCtx & annJust !~ traverseContext)
+                  >=> (gadtConType !~ traverseGadtConType)
+
+traverseGadtConType :: CheckNode GadtConType
+traverseGadtConType = (innerType !~ traverseType)
+                  >=> (gadtConRecordFields & annList !~ traverseFieldDecl)
+
+  where innerType = gadtConNormalType &+& gadtConResultType
+
+traverseFieldDecl :: CheckNode FieldDecl
+traverseFieldDecl = (fieldNames & annList !~ traverseName)
+                >=> (fieldType !~ traverseType)
+
+traverseFunDeps :: CheckNode FunDeps
+traverseFunDeps = funDeps & annList !~ traverseFunDep
+
+traverseFunDep :: CheckNode FunDep
+traverseFunDep = innerName !~ traverseName
+  where innerName = (funDepLhs & annList) &+& (funDepRhs & annList)
+
+traverseDeriving :: CheckNode Deriving
+traverseDeriving = innerIHead !~ traverseInstanceHead
+  where innerIHead = oneDerived &+& (allDerived & annList)
+
+traverseConDecl :: CheckNode ConDecl
+traverseConDecl = (conTypeArgs & annList !~ traverseTyVar)
+              >=> (conTypeCtx & annJust !~ traverseContext)
+              >=> (conDeclName !~ traverseName)
+              >=> (innerType !~ traverseType)
+              >=> (conDeclFields & annList !~ traverseFieldDecl)
+
+  where innerType = (conDeclArgs & annList)
+                &+& conDeclLhs
+                &+& conDeclRhs
+
+-- DONE
+traverseCallConv :: CheckNode CallConv
+traverseCallConv = return
+
+traverseMinimalFormula :: CheckNode MinimalFormula
+traverseMinimalFormula = (minimalName !~ traverseName)
+                     >=> (innerFormula !~ traverseMinimalFormula)
+
+  where innerFormula = minimalInner
+                   &+& (minimalOrs & annList)
+                   &+& (minimalAnds & annList)
+
+-- there is no wrapper type for InlinePragma
+-- no references generated
+traverseInlinePragma :: CheckUNode UInlinePragma
+traverseInlinePragma = return {- nnerName !~ traverseName
+  where innerName = inlineDef &+& noInlineDef &+& inlinableDef -}
+
+
 
 
 traversePatternSynonym :: CheckNode PatternSynonym
@@ -344,7 +537,20 @@ traverseKindContraint :: CheckNode KindConstraint
 traverseKindContraint = kindConstr !~ traverseKind
 
 traverseKind :: CheckNode Kind
-traverseKind = return
+traverseKind = (innerKind !~ traverseKind)
+           >=> (kindVar !~ traverseName)
+           >=> (kindAppOp !~ traverseOperator)
+           >=> (kindPromoted !~ traversePromoted traverseKind)
+
+  where innerKind = kindLeft
+                &+& kindRight
+                &+& kindParen
+                &+& kindAppFun
+                &+& kindAppArg
+                &+& kindLhs
+                &+& kindRhs
+                &+& kindElem
+                &+& (kindElems & annList)
 
 traverseContext :: CheckNode Context
 traverseContext = contextAssertion !~ traverseAssertion
@@ -362,19 +568,25 @@ traverseAssertion = (innerType !~ traverseType)
 
        innerName = assertClsName &+& assertImplVar
 
--- TODO:
-
-traverseTypeSignature :: CheckNode TypeSignature
-traverseTypeSignature = return
-
-traverseFixitySignature :: CheckNode FixitySignature
-traverseFixitySignature = return
-
 traverseName :: CheckNode Name
-traverseName = return
+traverseName = simpleName !~ traverseQualifiedName
 
-traverseOperator :: CheckNode Operator
-traverseOperator = return
+traverseQualifiedName :: CheckNode QualifiedName
+traverseQualifiedName = unqualifiedName !~ traverseNamePart
+                   >=> qualifiers & annList !~ traverseNamePart
+
+traverseNamePart :: CheckNode NamePart
+traverseNamePart = chkNamePart
 
 traverseLiteral :: CheckNode Literal
-traverseLiteral = return
+traverseLiteral = chkLiteral
+
+traverseOperator :: CheckNode Operator
+traverseOperator = operatorName !~ traverseQualifiedName
+
+traverseTypeSignature :: CheckNode TypeSignature
+traverseTypeSignature = (tsName & annList !~ traverseName)
+                    >=> (tsType !~ traverseType)
+
+traverseFixitySignature :: CheckNode FixitySignature
+traverseFixitySignature = fixityOperators & annList !~ traverseOperator

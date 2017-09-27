@@ -39,6 +39,7 @@ library
                        LambdaCaseChecker,
                        TupleSectionsChecker,
                        UnboxedTuplesChecker,
+                       MagicHashChecker,
                        ExtMonad,
                        ExtMap,
                        TraverseAST,
