@@ -52,13 +52,19 @@ chkFieldUpdate :: CheckNode FieldUpdate
 chkFieldUpdate = chkRecordWildCardsFieldUpdate
 
 chkPatternSynonym :: CheckNode PatternSynonym
-chkPatternSynonym = chkPatternSynonyms
+chkPatternSynonym = chkPatternSynonymsSyn
+
+chkPatternSignature :: CheckNode PatternSignature
+chkPatternSignature = chkPatternSynonymsTypeSig
 
 chkLiteral :: CheckNode Literal
 chkLiteral = chkMagicHashLiteral
 
 chkNamePart :: CheckNode NamePart
 chkNamePart = chkMagicHashNamePart
+
+chkKind :: CheckNode Kind
+chkKind = chkMagicHashKind
 
 
 traverseModule :: CheckNode UnnamedModule
@@ -170,7 +176,8 @@ traverseRuleVar = (ruleVarName !~ traverseName)
               >=> (ruleVarType !~ traverseType)
 
 traversePatternSignature :: CheckNode PatternSignature
-traversePatternSignature = (patSigName !~ traverseName)
+traversePatternSignature = chkPatternSignature
+                       >=> (patSigName !~ traverseName)
                        >=> (patSigType !~ traverseType)
 
 -- DONE
@@ -537,7 +544,8 @@ traverseKindContraint :: CheckNode KindConstraint
 traverseKindContraint = kindConstr !~ traverseKind
 
 traverseKind :: CheckNode Kind
-traverseKind = (innerKind !~ traverseKind)
+traverseKind = chkKind
+           >=> (innerKind !~ traverseKind)
            >=> (kindVar !~ traverseName)
            >=> (kindAppOp !~ traverseOperator)
            >=> (kindPromoted !~ traversePromoted traverseKind)

@@ -16,6 +16,8 @@ import System.Directory (listDirectory)
 import Language.Haskell.Tools.Refactor hiding (ModuleName)
 import Language.Haskell.Tools.PrettyPrint hiding (ModuleName)
 
+import Control.Reference (_1, (.-))
+
 import AnnotationParser
 import ExtensionOrganizer
 
@@ -38,6 +40,7 @@ main = defaultMain $
           , mkTests viewPatternsTest
           , mkTests lambdaCaseTest
           , mkTests tupleSectionsTest
+          , mkNestedTests magicHashTest
           ]
 
 testRoot = "test"
@@ -45,6 +48,7 @@ testRoot = "test"
 mkModulePath :: FilePath -> ModuleName -> FilePath
 mkModulePath testDir testName = testRoot </> testDir </> testName
 
+type NestedTestSuite = (FilePath, [TestSuite])
 type TestSuite = (FilePath, [TestName])
 type TestName = String
 type ModuleName = String
@@ -88,13 +92,22 @@ mkAssertion dir moduleName = do
 mkTests :: TestSuite -> TestTree
 mkTests (testDir, tests) = testGroup testDir (map (mkTest testDir) tests)
 
+mkNestedTests :: NestedTestSuite -> TestTree
+mkNestedTests (parentDir, suites) = testGroup parentDir nestedTests
+  where nestedSuites = map (_1 .- (parentDir </>)) suites
+        nestedTests  = map mkTests nestedSuites
 
+
+
+
+recordWildCardsTest :: TestSuite
 recordWildCardsTest = (recordWildCardsRoot, recordWildCardsModules)
 recordWildCardsRoot = "RecordWildCardsTest"
 recordWildCardsModules = [ "InExpression"
                          , "InPattern"
                          ]
 
+flexibleInstancesTest :: TestSuite
 flexibleInstancesTest = (flexibleInstancesRoot, flexibleInstancesModules)
 flexibleInstancesRoot = "FlexibleInstancesTest"
 flexibleInstancesModules = [ "Combined"
@@ -108,6 +121,7 @@ flexibleInstancesModules = [ "Combined"
                            , "TopLevelWiredInType"
                            ]
 
+derivingsTest :: TestSuite
 derivingsTest = (derivingsRoot, derivingsModules)
 derivingsRoot = "DerivingsTest"
 derivingsModules = [ "DataDeriving"
@@ -120,12 +134,14 @@ derivingsModules = [ "DataDeriving"
                    , "StandaloneNewtypeSynonymsAny"
                    ]
 
+patternSynonymsTest :: TestSuite
 patternSynonymsTest = (patSynRoot, patSynModules)
 patSynRoot = "PatternSynonymsTest"
 patSynModules = [ "UniDirectional"
                 , "BiDirectional"
                 ]
 
+bangPatternsTest :: TestSuite
 bangPatternsTest = (bangPatternsRoot, bangPatternsModules)
 bangPatternsRoot = "BangPatternsTest"
 bangPatternsModules = [ "Combined"
@@ -139,12 +155,14 @@ bangPatternsModules = [ "Combined"
                       , "InValueBind"
                       ]
 
+templateHaskellTest :: TestSuite
 templateHaskellTest = (thRoot, thModules)
 thRoot = "TemplateHaskellTest"
 thModules = [ "Quote"
             , "Splice"
             ]
 
+viewPatternsTest :: TestSuite
 viewPatternsTest = (vpRoot, vpModules)
 vpRoot = "ViewPatternsTest"
 vpModules = [ "InAlt"
@@ -153,6 +171,7 @@ vpModules = [ "InAlt"
             , "InMatchLhsNested"
             ]
 
+lambdaCaseTest :: TestSuite
 lambdaCaseTest = (lcRoot, lcModules)
 lcRoot = "LambdaCaseTest"
 lcModules = [ "InCaseRhs"
@@ -166,6 +185,7 @@ lcModules = [ "InCaseRhs"
             , "InTupSecElem"
             ]
 
+tupleSectionsTest :: TestSuite
 tupleSectionsTest = (tsRoot, tsModules)
 tsRoot = "TupleSectionsTest"
 tsModules = [ "InCaseRhs"
@@ -179,3 +199,36 @@ tsModules = [ "InCaseRhs"
             , "InTupSecElem"
             , "NoTupleSections"
             ]
+
+
+magicHashTest :: NestedTestSuite
+magicHashTest = (mhRoot, [magicHashLiteralTest, magicHashNameTest])
+mhRoot = "MagicHashTest"
+
+
+magicHashNameTest :: TestSuite
+magicHashNameTest = (mhNameRoot, mhNameModules)
+mhNameRoot = "Name"
+mhNameModules = [ "InAssertion"
+                , "InClassElement"
+                , "InDecl"
+                , "InDeclHead"
+                , "InExpr"
+                , "InFieldDecl"
+                , "InFieldUpdate"
+                , "InFunDeps"
+                , "InInstanceHead"
+                --, "InKind"        NO PARSE
+                , "InMatchLhs"
+                , "InPatSynLhs"
+                , "InPattern"
+                , "InPatternField"
+                , "InType"
+                --, "InTypeFamily"  NO PARSE
+                , "InTypeSig"
+                ]
+
+magicHashLiteralTest :: TestSuite
+magicHashLiteralTest = (mhLiteralRoot, mhLiteralModules)
+mhLiteralRoot = "Literal"
+mhLiteralModules = [ "InExpr" ]

@@ -8,8 +8,11 @@ import Language.Haskell.Tools.Refactor
 -- NOTE: Here we implicitly constrained the type with ExtDomain.
 --       but we don't really need any.
 
-chkPatternSynonyms :: CheckNode PatternSynonym
-chkPatternSynonyms = conditional chkPatternSynonyms' PatternSynonyms
+chkPatternSynonymsSyn :: CheckNode PatternSynonym
+chkPatternSynonymsSyn = conditional chkPatternSynonymsSyn' PatternSynonyms
 
-chkPatternSynonyms' :: CheckNode PatternSynonym
-chkPatternSynonyms' = addOccurence PatternSynonyms
+chkPatternSynonymsSyn' :: CheckNode PatternSynonym
+chkPatternSynonymsSyn' = addOccurence PatternSynonyms
+
+chkPatternSynonymsTypeSig :: CheckNode PatternSignature
+chkPatternSynonymsTypeSig = conditional (addOccurence PatternSynonyms) PatternSynonyms

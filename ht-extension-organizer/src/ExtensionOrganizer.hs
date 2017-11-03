@@ -10,18 +10,19 @@ module ExtensionOrganizer
 
 import Language.Haskell.Tools.PrettyPrint (prettyPrint)
 import Language.Haskell.Tools.Refactor
+import Language.Haskell.Tools.Daemon.MapExtensions
 
 import GHC
 import GHC.LanguageExtensions.Type
 import SrcLoc (RealSrcSpan, SrcSpan)
 
-import Data.Ix
 import Data.List
 import Data.Char
 import qualified Data.Set as Set
 import qualified Data.Map.Strict as SMap
 import Control.Monad.State
-import Control.Reference ((^.), (&), (!~), (.-), (&+&), (^?), biplateRef)
+import Control.Reference ((^.), (&), (!~), (.-), (.=), (&+&), (^?), biplateRef, _1, _2, _3)
+import Control.Reference.Representation
 
 import Debug.Trace (trace, traceShow)
 
@@ -39,6 +40,10 @@ import DerivingsChecker
 --       For example if it already found a record wildcard, it won't check again
 
 
+organizeExtensionsRefactoring :: (HasModuleInfo dom, ExtDomain dom) => RefactoringChoice dom
+organizeExtensionsRefactoring = ModuleRefactoring "OrganizeExtensions" (localRefactoring organizeExtensions)
+
+
 tryOut :: String -> String -> IO ()
 tryOut = tryRefactor (localRefactoring . const organizeExtensions)
 
@@ -46,25 +51,36 @@ tryOut = tryRefactor (localRefactoring . const organizeExtensions)
 organizeExtensions :: ExtDomain dom => LocalRefactoring dom
 organizeExtensions = \moduleAST -> do
   exts <- liftGhc $ collectExtensions moduleAST
-  let xs = SMap.assocs exts
-  forM_ xs (\(ext, loc) -> do
-    traceShow ext $ return ()
-    forM loc (\l ->
-      traceShow l $ return ()
-      )
-    )
-  return moduleAST
+  let exts'      = calcExts exts
+      newPragmas = [mkLanguagePragma . map show $ exts']
+  return $ (filePragmas & annListElems .= newPragmas) moduleAST
+  where isLVar (LVar _) = True
+        isLVar _        = False
 
--- TODO: get rid of RealSrcSpan arguments
--- NOTE: We will need a read-only reference
--- NOTE: Need to understand (Getter/Setter `op` f) types
+        calcExts :: ExtMap -> [Extension]
+        calcExts logRels
+          | ks <- SMap.keys logRels
+          , all isLVar ks = map (\(LVar x) -> x) . SMap.keys $ logRels
+          | otherwise     = []
+
+        -- xs :: [(k, [v])]
+        printExts xs = forM_ xs (\(ext, loc) -> do
+                         traceShow ext $ return ()
+                         forM loc (\l ->
+                           traceShow l $ return ()
+                           )
+                         )
+
+
+
+
 collectExtensions :: ExtDomain dom =>
                      UnnamedModule dom ->
                      Ghc ExtMap
 collectExtensions = \moduleAST -> do
   let defaults = collectDefaultExtensions moduleAST
-  flip execStateT SMap.empty . flip runReaderT defaults  . traverseModule $ moduleAST
-
+      expanded = concatMap expandExtension defaults
+  flip execStateT SMap.empty . flip runReaderT expanded . traverseModule $ moduleAST
 
 
 collectDefaultExtensions :: UnnamedModule dom -> [Extension]
@@ -75,3 +91,12 @@ collectDefaultExtensions = map toExt . getExtensions
 
   toExt :: String -> Extension
   toExt = (read :: String -> Extension) . takeWhile isAlpha
+
+
+expandExtension :: Extension -> [Extension]
+expandExtension ext = ext : implied
+  where fst' = (^. _1) :: (a,b,c) -> a
+        snd' = (^. _2) :: (a,b,c) -> b
+        trd' = (^. _3) :: (a,b,c) -> c
+
+        implied = map trd' . filter snd' . filter ((== ext) . fst') $ impliedXFlags
